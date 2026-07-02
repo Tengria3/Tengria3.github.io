@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tengri</title>
+    <title>Tengri3</title>
 
     <style>
         /* ==========================================================================
@@ -701,7 +701,9 @@
         // sayısal font-weight değerlerini de <b> etiketine dönüştürür (sadece span ve strong)
         function hardProtectBoldStyles(r) {
             if (!r) return "";
-            r = r.replace(/<span\b[^>]*\bstyle\s*=\s*"[^"]*font-weight\s*:\s*(bold|bolder|[7-9]00)[^"]*"[^>]*>([\s\S]*?)<\/span>/gi, '<b>$2</b>');
+            // Herhangi bir etiketin inline stilinde font-weight:bold/bolder/700-900 varsa <b> ile sar
+            r = r.replace(/<(\w+)\b[^>]*\bstyle\s*=\s*"[^"]*font-weight\s*:\s*(bold|bolder|[7-9]00)[^"]*"[^>]*>([\s\S]*?)<\/\1>/gi, '<b>$3</b>');
+            // strong etiketlerini de <b>'ye çevir (yukarıdaki yakalamazsa diye)
             r = r.replace(/<strong\b[^>]*>([\s\S]*?)<\/strong>/gi, '<b>$1</b>');
             return r;
         }
