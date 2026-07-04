@@ -372,7 +372,7 @@
         }
 
         /* ==========================================================================
-           KEDİ TAKİP SİSTEMİ - POMPOM VE ARKADAŞLARI
+           GERÇEKÇİ KEDİ TAKİP SİSTEMİ
            ========================================================================== */
         #kitty-realm {
             position: fixed;
@@ -381,82 +381,82 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 999999;
+            z-index: 999998;
         }
 
         .cat-sprite {
             position: absolute;
             pointer-events: none;
-            will-change: transform, left, top, opacity;
-            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.5)) drop-shadow(0 0 8px rgba(255,200,150,0.3));
-            transition: left 0.08s linear, top 0.08s linear, opacity 0.5s ease, transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+            will-change: left, top, transform;
+            transition: none;
+            image-rendering: auto;
         }
 
-        .main-cat-sprite {
-            z-index: 10;
-            filter: drop-shadow(0 10px 18px rgba(0,0,0,0.6)) drop-shadow(0 0 20px rgba(255,180,120,0.5));
-            transition: left 0.06s linear, top 0.06s linear;
+        .main-cat {
+            z-index: 20;
+            filter: drop-shadow(0 6px 8px rgba(0,0,0,0.6));
         }
 
         .buddy-cat {
-            z-index: 5;
+            z-index: 15;
             opacity: 0;
-            transform: scale(0) rotate(0deg);
+            transform: scale(0.3);
+            transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+            pointer-events: none;
         }
 
         .buddy-cat.visible {
             opacity: 1;
-            animation: catAppear 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards;
+            transform: scale(0.8);
+            animation: buddySniff 1.5s ease-in-out infinite;
         }
 
         .buddy-cat.scattering {
             opacity: 0;
-            transition: left 0.4s cubic-bezier(0.25,0.46,0.45,0.94), top 0.4s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.3s ease, transform 0.4s ease;
-            transform: scale(0.6) rotate(180deg);
+            transform: scale(0.5);
+            transition: left 0.45s ease-out, top 0.45s ease-out, opacity 0.3s ease, transform 0.3s ease;
         }
 
-        @keyframes catAppear {
-            0% { transform: scale(0) rotate(-30deg); opacity: 0; }
-            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        @keyframes buddySniff {
+            0%, 100% { transform: scale(0.8) translateY(0px); }
+            30% { transform: scale(0.85) translateY(-4px); }
+            60% { transform: scale(0.8) translateY(-1px); }
         }
 
-        @keyframes catSniff {
-            0%,100% { transform: translateY(0) scale(1); }
-            30% { transform: translateY(-4px) scale(1.05); }
-            60% { transform: translateY(-2px) scale(1.02); }
-        }
-
-        @keyframes catWiggle {
-            0%,100% { transform: rotate(0deg); }
-            25% { transform: rotate(8deg); }
-            75% { transform: rotate(-8deg); }
-        }
-
-        @keyframes tailWag {
-            0%,100% { transform: rotate(0deg); }
-            30% { transform: rotate(15deg); }
-            60% { transform: rotate(-12deg); }
-            85% { transform: rotate(6deg); }
-        }
-
-        .cat-svg-wrapper {
+        .cat-body {
+            display: block;
             width: 100%;
             height: 100%;
-            display: block;
+            transform-origin: center bottom;
+            animation: catBreathe 2s ease-in-out infinite;
         }
 
-        .main-cat-sprite .cat-svg-wrapper {
-            animation: catWiggle 2.5s ease-in-out infinite;
+        .main-cat.running .cat-body {
+            animation: catRunBounce 0.4s ease-in-out infinite;
         }
 
-        .buddy-cat.visible .cat-svg-wrapper {
-            animation: catSniff 1.8s ease-in-out infinite;
+        @keyframes catBreathe {
+            0%, 100% { transform: scaleY(1) scaleX(1); }
+            50% { transform: scaleY(1.02) scaleX(0.98); }
         }
 
-        .buddy-cat:nth-child(2n).visible .cat-svg-wrapper { animation-delay: 0.3s; }
-        .buddy-cat:nth-child(3n).visible .cat-svg-wrapper { animation-delay: 0.7s; }
-        .buddy-cat:nth-child(4n).visible .cat-svg-wrapper { animation-delay: 1.1s; }
-        .buddy-cat:nth-child(5n).visible .cat-svg-wrapper { animation-delay: 0.5s; }
+        @keyframes catRunBounce {
+            0%, 100% { transform: translateY(0px) scaleY(1); }
+            30% { transform: translateY(-5px) scaleY(0.95); }
+            70% { transform: translateY(-2px) scaleY(1.02); }
+        }
+
+        .cat-shadow {
+            position: absolute;
+            bottom: 2px;
+            left: 15%;
+            width: 70%;
+            height: 12px;
+            background: radial-gradient(ellipse, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
     </style>
 </head>
 <body>
@@ -1554,217 +1554,226 @@
         }
 
         // ==========================================================================
-        // POMPOM VE ARKADAŞLARI – KEDİ TAKİP SİSTEMİ
+        // GERÇEKÇİ KEDİ TAKİP SİSTEMİ - ANA KOD
         // ==========================================================================
-        const kittyRealm = document.getElementById('kitty-realm');
-        const BUDDY_COUNT = 6;
-        const IDLE_THRESHOLD = 1400; // ms fare hareket etmeyince
-        const CAT_SIZE = 64;
-        const BUDDY_SIZE = 48;
+        (function() {
+            const realm = document.getElementById('kitty-realm');
+            const BUDDY_COUNT = 6;
+            const CAT_SIZE = 70;
+            const BUDDY_SIZE = 50;
+            const IDLE_TIME = 1500; // ms
 
-        let mouseX = window.innerWidth / 2;
-        let mouseY = window.innerHeight / 2;
-        let isIdle = false;
-        let idleTimer = null;
-        let animationFrame = null;
-        let buddies = [];
+            let mouseX = window.innerWidth / 2;
+            let mouseY = window.innerHeight / 2;
+            let isIdle = false;
+            let idleTimer = null;
+            let animationFrame = null;
+            let buddies = [];
 
-        // Kedi SVG'si (pofuduk, tatlı, gerçekçiye yakın)
-        function createCatSVG(size, color = '#f4a460', earInner = '#ffb6c1', eyes = '#2f1b0e') {
-            const s = size;
-            const scale = s / 100;
-            return `
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="${s}" height="${s}">
-              <defs>
-                <radialGradient id="furGrad-${color.replace('#','')}" cx="40%" cy="30%" r="60%">
-                  <stop offset="0%" stop-color="${lightenColor(color, 30)}"/>
-                  <stop offset="70%" stop-color="${color}"/>
-                  <stop offset="100%" stop-color="${darkenColor(color, 20)}"/>
-                </radialGradient>
-                <filter id="fluff-${color.replace('#','')}">
-                  <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise"/>
-                  <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G"/>
-                </filter>
-              </defs>
-              <!-- kuyruk -->
-              <path d="M68,72 Q82,60 78,48 Q74,36 66,42" stroke="${darkenColor(color,10)}" fill="none" stroke-width="9" stroke-linecap="round" opacity="0.9"/>
-              <!-- gövde -->
-              <ellipse cx="50" cy="68" rx="22" ry="24" fill="url(#furGrad-${color.replace('#','')})" filter="url(#fluff-${color.replace('#','')})"/>
-              <!-- ön patiler -->
-              <ellipse cx="36" cy="82" rx="6" ry="9" fill="${color}" transform="rotate(-15,36,82)"/>
-              <ellipse cx="64" cy="82" rx="6" ry="9" fill="${color}" transform="rotate(15,64,82)"/>
-              <!-- pati yastıkları -->
-              <circle cx="36" cy="86" r="3" fill="${earInner}" opacity="0.6"/>
-              <circle cx="64" cy="86" r="3" fill="${earInner}" opacity="0.6"/>
-              <!-- kafa -->
-              <circle cx="50" cy="36" r="23" fill="url(#furGrad-${color.replace('#','')})" filter="url(#fluff-${color.replace('#','')})"/>
-              <!-- kulaklar -->
-              <polygon points="30,25 24,2 42,16" fill="${color}"/>
-              <polygon points="70,25 76,2 58,16" fill="${color}"/>
-              <polygon points="32,22 27,6 41,17" fill="${earInner}"/>
-              <polygon points="68,22 73,6 59,17" fill="${earInner}"/>
-              <!-- gözler -->
-              <ellipse cx="40" cy="32" rx="5" ry="6" fill="${eyes}"/>
-              <ellipse cx="60" cy="32" rx="5" ry="6" fill="${eyes}"/>
-              <ellipse cx="41" cy="30" rx="2" ry="2.5" fill="white"/>
-              <ellipse cx="61" cy="30" rx="2" ry="2.5" fill="white"/>
-              <circle cx="42.5" cy="29" r="1" fill="white" opacity="0.8"/>
-              <circle cx="62.5" cy="29" r="1" fill="white" opacity="0.8"/>
-              <!-- burun -->
-              <polygon points="50,38 47,42 53,42" fill="#ff69b4"/>
-              <!-- ağız -->
-              <path d="M47,42 Q50,47 53,42" stroke="${eyes}" fill="none" stroke-width="1.5" stroke-linecap="round"/>
-              <!-- bıyıklar -->
-              <line x1="22" y1="35" x2="39" y2="38" stroke="${eyes}" stroke-width="1.2" opacity="0.5"/>
-              <line x1="22" y1="40" x2="39" y2="40" stroke="${eyes}" stroke-width="1.2" opacity="0.5"/>
-              <line x1="61" y1="38" x2="78" y2="35" stroke="${eyes}" stroke-width="1.2" opacity="0.5"/>
-              <line x1="61" y1="40" x2="78" y2="40" stroke="${eyes}" stroke-width="1.2" opacity="0.5"/>
-            </svg>`;
-        }
-
-        function lightenColor(hex, percent) {
-            const num = parseInt(hex.replace('#', ''), 16);
-            const amt = Math.round(2.55 * percent);
-            const R = Math.min(255, (num >> 16) + amt);
-            const G = Math.min(255, ((num >> 8) & 0x00FF) + amt);
-            const B = Math.min(255, (num & 0x0000FF) + amt);
-            return `#${(0x1000000 + R * 0x10000 + G * 0x100 + B).toString(16).slice(1)}`;
-        }
-
-        function darkenColor(hex, percent) {
-            const num = parseInt(hex.replace('#', ''), 16);
-            const amt = Math.round(2.55 * percent);
-            const R = Math.max(0, (num >> 16) - amt);
-            const G = Math.max(0, ((num >> 8) & 0x00FF) - amt);
-            const B = Math.max(0, (num & 0x0000FF) - amt);
-            return `#${(0x1000000 + R * 0x10000 + G * 0x100 + B).toString(16).slice(1)}`;
-        }
-
-        function createCatElement(size, className, color) {
-            const div = document.createElement('div');
-            div.classList.add('cat-sprite', className);
-            div.style.width = size + 'px';
-            div.style.height = size + 'px';
-            div.style.left = '-100px';
-            div.style.top = '-100px';
-            const wrapper = document.createElement('div');
-            wrapper.classList.add('cat-svg-wrapper');
-            wrapper.innerHTML = createCatSVG(size, color);
-            div.appendChild(wrapper);
-            return div;
-        }
-
-        // Ana kedi
-        const mainCat = createCatElement(CAT_SIZE, 'main-cat-sprite', '#f4a460');
-        kittyRealm.appendChild(mainCat);
-
-        function updateMainCatPosition() {
-            const rect = mainCat.getBoundingClientRect();
-            const catCenterX = rect.left + CAT_SIZE / 2;
-            const catCenterY = rect.top + CAT_SIZE / 2;
-            const dx = mouseX - catCenterX;
-            const dy = mouseY - catCenterY;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            const speed = Math.min(distance * 0.15, 15);
-            if (distance > 1) {
-                const newX = catCenterX + (dx / distance) * speed - CAT_SIZE / 2;
-                const newY = catCenterY + (dy / distance) * speed - CAT_SIZE / 2;
-                mainCat.style.left = newX + 'px';
-                mainCat.style.top = newY + 'px';
-            }
-        }
-
-        function spawnBuddies() {
-            // Mevcut arkadaşları temizle
-            buddies.forEach(b => b.remove());
-            buddies = [];
-
-            const mainRect = mainCat.getBoundingClientRect();
-            const mainCenterX = mainRect.left + CAT_SIZE / 2;
-            const mainCenterY = mainRect.top + CAT_SIZE / 2;
-
-            const colors = ['#d4a574', '#c49a6c', '#e8b88a', '#b8956e', '#f0c090', '#dbb07c'];
-            const positions = [];
-            for (let i = 0; i < BUDDY_COUNT; i++) {
-                const angle = (i / BUDDY_COUNT) * Math.PI * 2 + (Math.random() - 0.5) * 0.5;
-                const radius = 40 + Math.random() * 50;
-                const x = mainCenterX + Math.cos(angle) * radius - BUDDY_SIZE / 2;
-                const y = mainCenterY + Math.sin(angle) * radius - BUDDY_SIZE / 2;
-                positions.push({ x, y });
+            // Gerçekçi kedi SVG'si - pofuduk tekir
+            function buildCatSVG(size, baseColor = '#e8a850', stripes = '#c07830') {
+                const s = size;
+                return `
+                <svg viewBox="0 0 120 100" width="${s}" height="${s*100/120}">
+                  <defs>
+                    <radialGradient id="bodyGrad-${baseColor.replace('#','')}" cx="40%" cy="30%">
+                      <stop offset="0%" stop-color="#fcd9a7"/>
+                      <stop offset="60%" stop-color="${baseColor}"/>
+                      <stop offset="100%" stop-color="${stripes}"/>
+                    </radialGradient>
+                    <filter id="softShadow-${baseColor.replace('#','')}">
+                      <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#000000" flood-opacity="0.4"/>
+                    </filter>
+                  </defs>
+                  <!-- Gölge -->
+                  <ellipse cx="60" cy="95" rx="45" ry="8" fill="rgba(0,0,0,0.3)"/>
+                  <!-- Kuyruk -->
+                  <path d="M95,75 Q115,55 105,40 Q98,28 88,35" fill="none" stroke="${baseColor}" stroke-width="14" stroke-linecap="round"/>
+                  <path d="M95,75 Q115,55 105,40 Q98,28 88,35" fill="none" stroke="${stripes}" stroke-width="14" stroke-dasharray="8 16" stroke-linecap="round" opacity="0.5"/>
+                  <!-- Arka patiler -->
+                  <ellipse cx="45" cy="88" rx="14" ry="10" fill="${baseColor}" transform="rotate(-10,45,88)"/>
+                  <ellipse cx="75" cy="88" rx="14" ry="10" fill="${baseColor}" transform="rotate(10,75,88)"/>
+                  <!-- Gövde -->
+                  <ellipse cx="60" cy="72" rx="32" ry="26" fill="url(#bodyGrad-${baseColor.replace('#','')})" filter="url(#softShadow-${baseColor.replace('#','')})"/>
+                  <!-- Gövde çizgileri -->
+                  <path d="M42,62 Q60,58 78,62" fill="none" stroke="${stripes}" stroke-width="3" opacity="0.4"/>
+                  <path d="M38,70 Q60,66 82,70" fill="none" stroke="${stripes}" stroke-width="3" opacity="0.4"/>
+                  <!-- Ön patiler -->
+                  <ellipse cx="38" cy="82" rx="8" ry="14" fill="${baseColor}" transform="rotate(-15,38,82)"/>
+                  <ellipse cx="82" cy="82" rx="8" ry="14" fill="${baseColor}" transform="rotate(15,82,82)"/>
+                  <!-- Pati yastıkları -->
+                  <circle cx="38" cy="89" r="4" fill="#f8c8d0"/>
+                  <circle cx="82" cy="89" r="4" fill="#f8c8d0"/>
+                  <!-- Kafa -->
+                  <circle cx="60" cy="38" r="28" fill="url(#bodyGrad-${baseColor.replace('#','')})"/>
+                  <!-- Kulaklar -->
+                  <polygon points="38,18 28,0 52,12" fill="${baseColor}"/>
+                  <polygon points="82,18 92,0 68,12" fill="${baseColor}"/>
+                  <polygon points="40,17 32,4 50,13" fill="#f8c8d0"/>
+                  <polygon points="80,17 88,4 70,13" fill="#f8c8d0"/>
+                  <!-- Alın çizgileri (M deseni) -->
+                  <path d="M42,28 L50,20 L60,28 L70,20 L78,28" fill="none" stroke="${stripes}" stroke-width="3" opacity="0.7"/>
+                  <!-- Gözler -->
+                  <ellipse cx="48" cy="34" rx="6" ry="7" fill="#2a1a0a"/>
+                  <ellipse cx="72" cy="34" rx="6" ry="7" fill="#2a1a0a"/>
+                  <ellipse cx="49" cy="32" rx="3" ry="3.5" fill="#ffffff"/>
+                  <ellipse cx="73" cy="32" rx="3" ry="3.5" fill="#ffffff"/>
+                  <circle cx="50.5" cy="31" r="1.5" fill="#ffffff"/>
+                  <circle cx="74.5" cy="31" r="1.5" fill="#ffffff"/>
+                  <!-- Burun -->
+                  <polygon points="60,42 57,46 63,46" fill="#ff7b9c"/>
+                  <!-- Ağız -->
+                  <path d="M57,46 Q60,50 63,46" fill="none" stroke="#2a1a0a" stroke-width="1.5"/>
+                  <path d="M60,46 L60,49" stroke="#2a1a0a" stroke-width="1.5"/>
+                  <!-- Bıyıklar -->
+                  <line x1="28" y1="40" x2="48" y2="42" stroke="#2a1a0a" stroke-width="1.2" opacity="0.6"/>
+                  <line x1="26" y1="44" x2="48" y2="45" stroke="#2a1a0a" stroke-width="1.2" opacity="0.6"/>
+                  <line x1="72" y1="42" x2="92" y2="40" stroke="#2a1a0a" stroke-width="1.2" opacity="0.6"/>
+                  <line x1="72" y1="45" x2="94" y2="44" stroke="#2a1a0a" stroke-width="1.2" opacity="0.6"/>
+                </svg>`;
             }
 
-            positions.forEach((pos, i) => {
-                const buddy = createCatElement(BUDDY_SIZE, 'buddy-cat', colors[i]);
-                buddy.style.left = pos.x + 'px';
-                buddy.style.top = pos.y + 'px';
-                kittyRealm.appendChild(buddy);
-                buddies.push(buddy);
+            function createCatElement(size, className, baseColor) {
+                const div = document.createElement('div');
+                div.className = `cat-sprite ${className}`;
+                div.style.width = size + 'px';
+                div.style.height = (size * 100 / 120) + 'px';
+                div.innerHTML = buildCatSVG(size, baseColor);
+                return div;
+            }
 
-                requestAnimationFrame(() => {
-                    buddy.classList.add('visible');
-                });
-            });
-        }
+            // Ana kedi
+            const mainCat = createCatElement(CAT_SIZE, 'main-cat', '#e8a850');
+            realm.appendChild(mainCat);
 
-        function scatterBuddies() {
-            buddies.forEach(buddy => {
-                buddy.classList.add('scattering');
-                buddy.classList.remove('visible');
-                const rect = buddy.getBoundingClientRect();
-                const centerX = rect.left + BUDDY_SIZE / 2;
-                const centerY = rect.top + BUDDY_SIZE / 2;
-                const angle = Math.random() * Math.PI * 2;
-                const distance = 200 + Math.random() * 400;
-                const destX = centerX + Math.cos(angle) * distance - BUDDY_SIZE / 2;
-                const destY = centerY + Math.sin(angle) * distance - BUDDY_SIZE / 2;
-                buddy.style.left = Math.max(-100, Math.min(window.innerWidth + 100, destX)) + 'px';
-                buddy.style.top = Math.max(-100, Math.min(window.innerHeight + 100, destY)) + 'px';
-            });
+            function getCatCenter(el) {
+                const rect = el.getBoundingClientRect();
+                return {
+                    x: rect.left + rect.width / 2,
+                    y: rect.top + rect.height / 2
+                };
+            }
 
-            setTimeout(() => {
+            function updateMainCat() {
+                const center = getCatCenter(mainCat);
+                const dx = mouseX - center.x;
+                const dy = mouseY - center.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                // Hız: yakınsa yavaş (yürüme), uzaksa hızlı (koşma)
+                let speed = 3;
+                if (dist > 200) speed = 14;
+                else if (dist > 80) speed = 7;
+                else if (dist < 20) speed = 0.5;
+
+                if (dist > 1.5) {
+                    const newX = center.x + (dx / dist) * speed - CAT_SIZE / 2;
+                    const newY = center.y + (dy / dist) * speed - (CAT_SIZE * 100 / 120) / 2;
+                    mainCat.style.left = newX + 'px';
+                    mainCat.style.top = newY + 'px';
+                }
+
+                // Yön değiştirme (scaleX ile flip)
+                if (Math.abs(dx) > 1) {
+                    const scaleX = dx > 0 ? 1 : -1;
+                    mainCat.style.transform = `scaleX(${scaleX})`;
+                }
+
+                // Koşma animasyonu sınıfı
+                if (dist > 120 && speed > 6) {
+                    mainCat.classList.add('running');
+                } else {
+                    mainCat.classList.remove('running');
+                }
+            }
+
+            function spawnBuddies() {
+                // Mevcutları temizle
                 buddies.forEach(b => b.remove());
                 buddies = [];
-            }, 500);
-        }
 
-        function resetIdleTimer() {
-            if (isIdle) {
-                isIdle = false;
-                scatterBuddies();
-            }
-            clearTimeout(idleTimer);
-            idleTimer = setTimeout(() => {
-                if (!isIdle) {
-                    isIdle = true;
-                    spawnBuddies();
+                const mainCenter = getCatCenter(mainCat);
+                const colors = ['#d4a574', '#c49a6c', '#e8b88a', '#b8956e', '#f0c090', '#dbb07c'];
+                const positions = [];
+
+                for (let i = 0; i < BUDDY_COUNT; i++) {
+                    const angle = (i / BUDDY_COUNT) * Math.PI * 2 + (Math.random() - 0.5) * 0.6;
+                    const radius = 45 + Math.random() * 50;
+                    const x = mainCenter.x + Math.cos(angle) * radius - BUDDY_SIZE / 2;
+                    const y = mainCenter.y + Math.sin(angle) * radius - (BUDDY_SIZE * 100 / 120) / 2;
+                    positions.push({ x, y });
                 }
-            }, IDLE_THRESHOLD);
-        }
 
-        function gameLoop() {
-            updateMainCatPosition();
-            animationFrame = requestAnimationFrame(gameLoop);
-        }
+                positions.forEach((pos, i) => {
+                    const buddy = createCatElement(BUDDY_SIZE, 'buddy-cat', colors[i]);
+                    buddy.style.left = pos.x + 'px';
+                    buddy.style.top = pos.y + 'px';
+                    realm.appendChild(buddy);
+                    buddies.push(buddy);
 
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            resetIdleTimer();
-        });
-
-        document.addEventListener('mouseleave', () => {
-            // Fare sayfa dışına çıkarsa kedileri dağıt
-            if (isIdle) {
-                scatterBuddies();
-                isIdle = false;
+                    requestAnimationFrame(() => {
+                        buddy.classList.add('visible');
+                    });
+                });
             }
-        });
 
-        // Sayfa yüklendiğinde başlat
-        mainCat.style.left = mouseX - CAT_SIZE / 2 + 'px';
-        mainCat.style.top = mouseY - CAT_SIZE / 2 + 'px';
-        gameLoop();
-        resetIdleTimer();
+            function scatterBuddies() {
+                buddies.forEach(buddy => {
+                    buddy.classList.add('scattering');
+                    buddy.classList.remove('visible');
+                    const center = getCatCenter(buddy);
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = 250 + Math.random() * 400;
+                    const destX = center.x + Math.cos(angle) * distance - BUDDY_SIZE / 2;
+                    const destY = center.y + Math.sin(angle) * distance - (BUDDY_SIZE * 100 / 120) / 2;
+                    buddy.style.left = Math.max(-100, Math.min(window.innerWidth + 100, destX)) + 'px';
+                    buddy.style.top = Math.max(-100, Math.min(window.innerHeight + 100, destY)) + 'px';
+                });
+
+                setTimeout(() => {
+                    buddies.forEach(b => b.remove());
+                    buddies = [];
+                }, 500);
+            }
+
+            function resetIdleTimer() {
+                if (isIdle) {
+                    isIdle = false;
+                    scatterBuddies();
+                }
+                clearTimeout(idleTimer);
+                idleTimer = setTimeout(() => {
+                    if (!isIdle) {
+                        isIdle = true;
+                        spawnBuddies();
+                    }
+                }, IDLE_TIME);
+            }
+
+            function gameLoop() {
+                updateMainCat();
+                animationFrame = requestAnimationFrame(gameLoop);
+            }
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                resetIdleTimer();
+            });
+
+            document.addEventListener('mouseleave', () => {
+                if (isIdle) {
+                    scatterBuddies();
+                    isIdle = false;
+                }
+            });
+
+            // Başlangıç pozisyonu
+            mainCat.style.left = (mouseX - CAT_SIZE / 2) + 'px';
+            mainCat.style.top = (mouseY - (CAT_SIZE * 100 / 120) / 2) + 'px';
+            gameLoop();
+            resetIdleTimer();
+        })();
 
         // ==========================================================================
         // SAYFA YÜKLENİNCE
