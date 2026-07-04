@@ -25,7 +25,7 @@
             --accent-color: #f2f2f7;
             --accent-glow: rgba(255, 255, 255, 0.15);
             --coffee-level: 72px;
-            --player-theme: 'default';
+            --viz-color: #ffffff;
         }
         html[data-theme="crimson"] { --bg-main: #0c0808; --bg-container: #161010; --bg-input: #080505; --bg-btn: #241818; --bg-btn-hover: #332222; --bg-tab-active: #332222; --text-main: #b8a0a0; --text-input: #f5eded; --text-heading: #ffffff; --text-btn: #e63946; --border-color: #402b2b; --border-container: #2e1f1f; --accent-color: #d62828; --accent-glow: rgba(214, 40, 40, 0.4); }
         html[data-theme="blue"] { --bg-main: #080c14; --bg-container: #101624; --bg-input: #05080d; --bg-btn: #182238; --bg-btn-hover: #22304f; --bg-tab-active: #22304f; --text-main: #a0b0c8; --text-input: #edf3f8; --text-heading: #ffffff; --text-btn: #4ea8de; --border-color: #2b3d61; --border-container: #1f2c47; --accent-color: #0077b6; --accent-glow: rgba(0, 119, 182, 0.4); }
@@ -273,6 +273,23 @@
         .timeline-container { flex-grow:1; height:4px; background:var(--bg-input); border-radius:2px; position:relative; cursor:pointer; }
         .timeline-progress { height:100%; width:0%; background:var(--accent-color); box-shadow:0 0 6px var(--accent-color); border-radius:2px; pointer-events:none; }
 
+        /* Visualizer */
+        .viz-wrapper {
+            width:100%;
+            display:flex;
+            justify-content:center;
+            margin:4px 0;
+            overflow:hidden;
+        }
+        #visualizer-canvas {
+            width:100%;
+            height:50px;
+            border-radius:6px;
+            background:rgba(0,0,0,0.3);
+            box-shadow:inset 0 0 20px rgba(0,0,0,0.5);
+            transition:border-color 0.3s;
+        }
+
         /* ===== 5 FARKLI MÜZİK ÇALAR TEMALARI (modal) ===== */
         .player-themes-modal .modal-content { max-width: 1100px; }
         .player-themes-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:15px; margin:15px 0; }
@@ -294,7 +311,7 @@
         .player-theme-card .theme-name { font-weight:700; font-size:13px; letter-spacing:1px; }
         .player-theme-card .theme-desc { font-size:10px; opacity:0.6; margin-top:4px; }
 
-        /* 5 tema önizleme */
+        /* 5 tema önizleme - daha gösterişli */
         .theme-fire { border-color:#e63946; background:linear-gradient(135deg,#2a0a0a,#4a1515); }
         .theme-fire .theme-icon { animation:firePulse 1.5s infinite alternate; }
         @keyframes firePulse { 0%{text-shadow:0 0 10px #ff6b6b;} 100%{text-shadow:0 0 30px #ff4500,0 0 60px #ff0000;} }
@@ -318,12 +335,12 @@
         .theme-player-wrapper .track-info .name { font-size:16px; font-weight:700; color:var(--text-heading); }
         .theme-player-wrapper .track-info .index { font-size:12px; opacity:0.6; }
 
-        /* Ana çalar tema class'ları */
-        .cyber-player.theme-fire { border-color:#e63946; background:linear-gradient(135deg,#2a0a0a,#4a1515); }
-        .cyber-player.theme-water { border-color:#0077b6; background:linear-gradient(135deg,#0a1a2a,#0a2a4a); }
-        .cyber-player.theme-space { border-color:#7209b7; background:linear-gradient(135deg,#1a0a2e,#2a0a4a); }
-        .cyber-player.theme-forest { border-color:#2d6a4f; background:linear-gradient(135deg,#0a1a0a,#1a2a1a); }
-        .cyber-player.theme-neon { border-color:#00f5d4; background:linear-gradient(135deg,#0a0a1a,#1a0a2a); }
+        /* Ana çalar tema class'ları - daha canlı */
+        .cyber-player.theme-fire { border-color:#e63946; background:linear-gradient(135deg,#2a0a0a,#4a1515); box-shadow:0 -10px 30px rgba(230,57,70,0.3); }
+        .cyber-player.theme-water { border-color:#0077b6; background:linear-gradient(135deg,#0a1a2a,#0a2a4a); box-shadow:0 -10px 30px rgba(0,119,182,0.3); }
+        .cyber-player.theme-space { border-color:#7209b7; background:linear-gradient(135deg,#1a0a2e,#2a0a4a); box-shadow:0 -10px 30px rgba(114,9,183,0.3); }
+        .cyber-player.theme-forest { border-color:#2d6a4f; background:linear-gradient(135deg,#0a1a0a,#1a2a1a); box-shadow:0 -10px 30px rgba(45,106,79,0.3); }
+        .cyber-player.theme-neon { border-color:#00f5d4; background:linear-gradient(135deg,#0a0a1a,#1a0a2a); box-shadow:0 -10px 30px rgba(0,245,212,0.3); }
 
         /* ==========================================================================
            KAHVE + BURÇ MODALLARI
@@ -614,6 +631,10 @@
                     <input type="range" min="0" max="1" step="0.05" value="1" oninput="changeVolume(this.value)" style="width:55px;accent-color:var(--accent-color);background:transparent;cursor:pointer;height:3px;border:none;outline:none;appearance:none;-webkit-appearance:none;">
                 </div>
             </div>
+        </div>
+        <!-- Visualizer -->
+        <div class="viz-wrapper">
+            <canvas id="visualizer-canvas"></canvas>
         </div>
         <div class="player-timeline-wrapper">
             <span id="current-time" class="time-display">00:00</span>
@@ -947,6 +968,7 @@
                 document.getElementById("total-duration").innerText = formatTime(audio.duration);
             });
             loadTrack(curTrack);
+            setupVisualizer();
         }
 
         function loadTrack(i) {
@@ -1036,6 +1058,70 @@
         }
 
         // ==========================================================================
+        // VISUALIZER (dalga çizgisi)
+        // ==========================================================================
+        let audioCtx, analyser, dataArray, canvas, ctx, animationId;
+
+        function setupVisualizer() {
+            canvas = document.getElementById('visualizer-canvas');
+            ctx = canvas.getContext('2d');
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+            // AudioContext oluştur
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            analyser = audioCtx.createAnalyser();
+            analyser.fftSize = 128;
+            const source = audioCtx.createMediaElementSource(audio);
+            source.connect(analyser);
+            analyser.connect(audioCtx.destination);
+            dataArray = new Uint8Array(analyser.frequencyBinCount);
+            drawVisualizer();
+        }
+
+        function resizeCanvas() {
+            const wrapper = canvas.parentElement;
+            canvas.width = wrapper.clientWidth || 300;
+            canvas.height = 50;
+        }
+
+        function drawVisualizer() {
+            if (!analyser) return;
+            analyser.getByteFrequencyData(dataArray);
+            const barCount = dataArray.length;
+            const barWidth = canvas.width / barCount;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Tema rengi (mevcut tema class'ına göre)
+            let color = '#ffffff';
+            const player = document.getElementById('cyber-audio-player');
+            if (player.classList.contains('theme-fire')) color = '#ff4500';
+            else if (player.classList.contains('theme-water')) color = '#00bfff';
+            else if (player.classList.contains('theme-space')) color = '#b5179e';
+            else if (player.classList.contains('theme-forest')) color = '#34d399';
+            else if (player.classList.contains('theme-neon')) color = '#00f5d4';
+            else color = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim() || '#ffffff';
+
+            // Gradient
+            const grad = ctx.createLinearGradient(0, 0, canvas.width, 0);
+            grad.addColorStop(0, color);
+            grad.addColorStop(0.5, color);
+            grad.addColorStop(1, color);
+
+            for (let i = 0; i < barCount; i++) {
+                const value = dataArray[i] / 255;
+                const height = value * canvas.height * 0.8;
+                const x = i * barWidth;
+                const y = canvas.height - height;
+                ctx.fillStyle = grad;
+                ctx.shadowColor = color;
+                ctx.shadowBlur = 15;
+                ctx.fillRect(x, y, barWidth - 1, height);
+            }
+            ctx.shadowBlur = 0;
+            animationId = requestAnimationFrame(drawVisualizer);
+        }
+
+        // ==========================================================================
         // 5 FARKLI MÜZİK ÇALAR (Temalar)
         // ==========================================================================
         const themePlayers = {};
@@ -1103,7 +1189,6 @@
 
             // Ana çaların temasını güncelle
             const player = document.getElementById('cyber-audio-player');
-            // Önceki tema class'larını temizle
             ['theme-fire', 'theme-water', 'theme-space', 'theme-forest', 'theme-neon'].forEach(cls => {
                 player.classList.remove(cls);
             });
@@ -1228,7 +1313,6 @@
             document.getElementById('player-themes-modal').classList.add('active');
             document.body.style.overflow = 'hidden';
             if (Object.keys(themePlayers).length === 0) initThemePlayers();
-            // Varsayılan olarak ilk tema seçili, ama modal açıldığında mevcut temayı göster
             const currentTheme = document.getElementById('cyber-audio-player').classList.contains('theme-fire') ? 'fire' :
                                   document.getElementById('cyber-audio-player').classList.contains('theme-water') ? 'water' :
                                   document.getElementById('cyber-audio-player').classList.contains('theme-space') ? 'space' :
