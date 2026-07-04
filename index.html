@@ -38,7 +38,7 @@
 
         *{box-sizing:border-box;}
         html, body, .input-area, div { cursor: default; }
-        button, .tab-btn, .theme-dot, .oracle-sphere, .game-card { cursor: pointer; }
+        button, .tab-btn, .theme-dot, .game-card, .player-theme-btn { cursor: pointer; }
 
         body {
             margin:0;
@@ -59,8 +59,8 @@
         .theme-dot:hover { transform:scale(1.2); }
         .theme-dot.active { border-color:var(--text-heading)!important; transform:scale(1.1); box-shadow:0 0 12px var(--accent-color); }
 
-        /* Premium Butonlar (Kahve, Burç, Oyun) */
-        .coffee-btn-premium, .burc-btn-premium, .game-btn-premium {
+        /* Premium Butonlar (Kahve, Burç, Oyun, Müzik Çalarlar) */
+        .coffee-btn-premium, .burc-btn-premium, .game-btn-premium, .player-selector-btn {
             margin-right:4px; padding:7px 16px; font-size:11px; font-weight:700; letter-spacing:0.5px;
             border-radius:20px; transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
             display:inline-flex; align-items:center; gap:4px; border:1px solid transparent;
@@ -74,6 +74,9 @@
         .game-btn-premium { background:linear-gradient(135deg, rgba(0,119,182,0.08), rgba(0,77,128,0.14)); border-color:rgba(0,119,182,0.35); color:#4ea8de!important; box-shadow:0 0 10px rgba(0,119,182,0.05); }
         .game-btn-premium:hover { background:#0077b6!important; color:#fff!important; box-shadow:0 0 20px rgba(0,119,182,0.5); transform:translateY(-1px); }
 
+        .player-selector-btn { background:linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,165,0,0.14)); border-color:rgba(255,215,0,0.35); color:#ffd700!important; box-shadow:0 0 10px rgba(255,215,0,0.05); }
+        .player-selector-btn:hover { background:#ffd700!important; color:#000!important; box-shadow:0 0 20px rgba(255,215,0,0.5); transform:translateY(-1px); }
+
         .btn-emoji-wrapper { position:relative; display:inline-block; }
         .btn-steam-box { position:absolute; top:-10px; left:2px; display:flex; gap:2px; pointer-events:none; }
         .btn-steam { width:1.5px; height:8px; background:rgba(230,126,34,0.6); border-radius:50%; filter:blur(0.6px); opacity:0; animation:btnSteamRise 2s infinite ease-in-out; }
@@ -81,7 +84,7 @@
         .btn-steam:nth-child(2) { animation-delay:0.7s; }
         @keyframes btnSteamRise { 0%{transform:translateY(2px)scaleX(1);opacity:0;} 50%{transform:translateY(-2px)scaleX(1.4);opacity:0.8;} 100%{transform:translateY(-6px)scaleX(0.5);opacity:0;} }
 
-        /* YENİ: Bilgi Kartı (Bunu biliyor muydun?) */
+        /* Bilgi Kartı */
         .info-card {
             max-width:900px;
             margin:0 auto 25px auto;
@@ -95,38 +98,12 @@
             gap:16px;
             transition:background 0.25s, border-color 0.25s;
         }
-        .info-card-icon {
-            font-size:28px;
-            flex-shrink:0;
-            line-height:1;
-        }
-        .info-card-content {
-            flex:1;
-        }
-        .info-card-title {
-            font-size:11px;
-            text-transform:uppercase;
-            letter-spacing:2px;
-            color:var(--accent-color);
-            font-weight:700;
-            margin-bottom:4px;
-        }
-        .info-card-text {
-            font-size:14px;
-            color:var(--text-input);
-            line-height:1.6;
-            transition:opacity 0.8s ease, transform 0.8s ease;
-            opacity:1;
-            transform:translateY(0);
-        }
-        .info-card-text.fade-out {
-            opacity:0;
-            transform:translateY(-6px);
-        }
-        .info-card-text.fade-in {
-            opacity:0;
-            transform:translateY(6px);
-        }
+        .info-card-icon { font-size:28px; flex-shrink:0; line-height:1; }
+        .info-card-content { flex:1; }
+        .info-card-title { font-size:11px; text-transform:uppercase; letter-spacing:2px; color:var(--accent-color); font-weight:700; margin-bottom:4px; }
+        .info-card-text { font-size:14px; color:var(--text-input); line-height:1.6; transition:opacity 0.8s ease, transform 0.8s ease; opacity:1; transform:translateY(0); }
+        .info-card-text.fade-out { opacity:0; transform:translateY(-6px); }
+        .info-card-text.fade-in { opacity:0; transform:translateY(6px); }
 
         .tabs{ display:flex; justify-content:center; gap:12px; margin-bottom:25px; flex-wrap:wrap; }
         button, .tab-btn { background:var(--bg-btn); color:var(--text-btn); border:1px solid var(--border-color); padding:12px 26px; font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; border-radius:6px; transition:all 0.2s ease; }
@@ -166,10 +143,7 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        .modal-overlay.active {
-            display: flex;
-            opacity: 1;
-        }
+        .modal-overlay.active { display:flex; opacity:1; }
         .modal-content {
             background: var(--bg-container);
             border: 1px solid var(--border-container);
@@ -183,10 +157,7 @@
             box-shadow: 0 30px 80px rgba(0,0,0,0.8);
             animation: modalSlideIn 0.3s ease;
         }
-        @keyframes modalSlideIn {
-            from { transform: scale(0.95) translateY(20px); opacity: 0; }
-            to { transform: scale(1) translateY(0); opacity: 1; }
-        }
+        @keyframes modalSlideIn { from { transform: scale(0.95) translateY(20px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
         .modal-content::-webkit-scrollbar { width: 4px; }
         .modal-content::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
 
@@ -208,14 +179,8 @@
             margin-bottom: 12px;
             z-index: 10;
         }
-        .modal-close-btn:hover {
-            background: var(--bg-btn-hover);
-            border-color: var(--accent-color);
-            color: var(--text-heading);
-            transform: rotate(90deg);
-        }
+        .modal-close-btn:hover { background:var(--bg-btn-hover); border-color:var(--accent-color); color:var(--text-heading); transform:rotate(90deg); }
 
-        /* Oyun içeriği */
         .game-section .game-card {
             background: var(--bg-btn);
             border: 2px solid var(--border-color);
@@ -231,25 +196,15 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.2);
             cursor: pointer;
         }
-        .game-section .game-card:hover {
-            background: var(--bg-btn-hover);
-            border-color: var(--accent-color);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px var(--accent-glow);
-        }
-        .game-section .game-card.active {
-            background: var(--bg-tab-active);
-            border-color: var(--accent-color);
-            color: var(--text-heading);
-            box-shadow: 0 0 20px var(--accent-glow);
-        }
+        .game-section .game-card:hover { background:var(--bg-btn-hover); border-color:var(--accent-color); transform:translateY(-2px); box-shadow:0 4px 16px var(--accent-glow); }
+        .game-section .game-card.active { background:var(--bg-tab-active); border-color:var(--accent-color); color:var(--text-heading); box-shadow:0 0 20px var(--accent-glow); }
         .game-iframe-wrapper { display:flex; justify-content:center; align-items:center; flex-direction:column; width:100%; }
         .game-iframe-wrapper .iframe-container { position:relative; width:100%; max-width:480px; height:720px; overflow:hidden; border-radius:8px; background:#000; }
         .game-iframe-wrapper .iframe-container iframe { width:100%; height:800px; margin-top:-40px; border:none; display:block; background:#000; }
         .game-iframe-wrapper .iframe-container .fullscreen-btn { position:absolute; bottom:15px; right:15px; z-index:10; background:rgba(0,0,0,0.7); color:#fff; border:2px solid #fff; border-radius:8px; padding:10px 16px; font-size:14px; font-weight:bold; cursor:pointer; backdrop-filter:blur(4px); box-shadow:0 0 15px rgba(0,0,0,0.5); transition:all 0.3s ease; }
 
         /* ==========================================================================
-           MÜZİK ÇALAR
+           MÜZİK ÇALAR (varsayılan altta)
            ========================================================================= */
         .cyber-player { position:fixed; bottom:0; left:0; width:100%; background:var(--bg-container); border-top:1px solid var(--border-container); padding:10px 30px; display:flex; flex-direction:column; gap:8px; box-shadow:0 -10px 30px rgba(0,0,0,0.6); z-index:9999; transition:transform 0.4s cubic-bezier(0.175,0.885,0.32,1.2); }
         .cyber-player.minimized { transform:translateY(100%); }
@@ -264,13 +219,59 @@
         .track-details { display:flex; flex-direction:column; }
         .track-name { color:var(--text-heading); font-size:12px; font-weight:600; letter-spacing:0.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:200px; }
         .track-index { color:var(--text-main); font-size:10px; opacity:0.5; margin-top:1px; }
-        .player-controls { display:flex; align-items:center; gap:6px; }
+        .player-controls { display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
         .player-btn { padding:6px 12px; font-size:10px; letter-spacing:0.5px; background:var(--bg-btn); border:1px solid var(--border-color); text-transform:uppercase; }
         .player-btn.active-mode { border-color:var(--accent-color); color:var(--text-heading); box-shadow:0 0 8px var(--accent-glow); }
         .player-timeline-wrapper { display:flex; align-items:center; gap:10px; width:100%; }
         .time-display { font-size:11px; font-family:monospace; color:var(--text-main); min-width:35px; opacity:0.8; }
         .timeline-container { flex-grow:1; height:4px; background:var(--bg-input); border-radius:2px; position:relative; cursor:pointer; }
         .timeline-progress { height:100%; width:0%; background:var(--accent-color); box-shadow:0 0 6px var(--accent-color); border-radius:2px; pointer-events:none; }
+
+        /* ===== 5 FARKLI MÜZİK ÇALAR MODAL ===== */
+        .player-themes-modal .modal-content { max-width: 1100px; }
+        .player-themes-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:15px; margin:15px 0; }
+        .player-theme-card {
+            background:var(--bg-btn);
+            border:2px solid var(--border-color);
+            border-radius:12px;
+            padding:20px 10px;
+            text-align:center;
+            cursor:pointer;
+            transition:all 0.3s ease;
+            color:var(--text-btn);
+            box-shadow:0 4px 12px rgba(0,0,0,0.2);
+            position:relative;
+            overflow:hidden;
+        }
+        .player-theme-card:hover { transform:translateY(-5px); border-color:var(--accent-color); box-shadow:0 8px 25px var(--accent-glow); }
+        .player-theme-card .theme-icon { font-size:40px; display:block; margin-bottom:8px; }
+        .player-theme-card .theme-name { font-weight:700; font-size:13px; letter-spacing:1px; }
+        .player-theme-card .theme-desc { font-size:10px; opacity:0.6; margin-top:4px; }
+
+        /* 5 farklı tema önizleme renkleri */
+        .theme-fire { border-color:#e63946; background:linear-gradient(135deg,#2a0a0a,#4a1515); }
+        .theme-fire .theme-icon { animation:firePulse 1.5s infinite alternate; }
+        @keyframes firePulse { 0%{text-shadow:0 0 10px #ff6b6b;} 100%{text-shadow:0 0 30px #ff4500,0 0 60px #ff0000;} }
+        .theme-water { border-color:#0077b6; background:linear-gradient(135deg,#0a1a2a,#0a2a4a); }
+        .theme-water .theme-icon { animation:waterWave 2s infinite ease-in-out; }
+        @keyframes waterWave { 0%,100%{transform:translateY(0) scale(1);} 50%{transform:translateY(-8px) scale(1.1);} }
+        .theme-space { border-color:#7209b7; background:linear-gradient(135deg,#1a0a2e,#2a0a4a); }
+        .theme-space .theme-icon { animation:spaceGlow 2.5s infinite alternate; }
+        @keyframes spaceGlow { 0%{text-shadow:0 0 15px #b5179e;} 100%{text-shadow:0 0 40px #3a0ca3,0 0 80px #7209b7;} }
+        .theme-forest { border-color:#2d6a4f; background:linear-gradient(135deg,#0a1a0a,#1a2a1a); }
+        .theme-forest .theme-icon { animation:forestBreathe 3s infinite ease-in-out; }
+        @keyframes forestBreathe { 0%,100%{transform:scale(1);} 50%{transform:scale(1.2) rotate(5deg);} }
+        .theme-neon { border-color:#00f5d4; background:linear-gradient(135deg,#0a0a1a,#1a0a2a); }
+        .theme-neon .theme-icon { animation:neonFlicker 1.8s infinite alternate; }
+        @keyframes neonFlicker { 0%{text-shadow:0 0 5px #00f5d4,0 0 20px #00f5d4;} 100%{text-shadow:0 0 20px #00f5d4,0 0 60px #00bbf9,0 0 100px #00f5d4;} }
+
+        /* Aktif tema çalar */
+        .theme-player-container { margin-top:20px; border-top:1px solid var(--border-container); padding-top:20px; }
+        .theme-player-wrapper { background:var(--bg-input); border-radius:12px; padding:20px; border:1px solid var(--border-color); }
+        .theme-player-wrapper .player-controls { justify-content:center; }
+        .theme-player-wrapper .track-info { text-align:center; margin-bottom:12px; }
+        .theme-player-wrapper .track-info .name { font-size:16px; font-weight:700; color:var(--text-heading); }
+        .theme-player-wrapper .track-info .index { font-size:12px; opacity:0.6; }
 
         /* ==========================================================================
            KAHVE + BURÇ MODALLARI
@@ -290,7 +291,7 @@
         .mola-quote { max-width:650px; text-align:center; font-size:16px; color:#f2f2f7!important; text-shadow:0 2px 15px rgba(255,255,255,0.1); font-style:italic; min-height:70px; padding:0 25px; font-weight:300; letter-spacing:0.8px; line-height:1.8; opacity:1; transition:opacity 1.5s ease-in-out; }
         .mola-quote.fade-out { opacity:0; }
 
-        .burc-panel { max-width:960px; width:96%; max-height:88vh; overflow-y:auto; padding:20px; background:rgba(8,8,14,0.92); border:1px solid rgba(255,255,255,0.08); border-radius:24px; box-shadow:0 30px 80px rgba(0,0,0,0.8), 0 0 80px rgba(147,51,234,0.15); color:#e0e0e0; position:relative; }
+        .burc-panel { max-width:1100px; width:96%; max-height:88vh; overflow-y:auto; padding:20px; background:rgba(8,8,14,0.92); border:1px solid rgba(255,255,255,0.08); border-radius:24px; box-shadow:0 30px 80px rgba(0,0,0,0.8), 0 0 80px rgba(147,51,234,0.15); color:#e0e0e0; position:relative; }
         .burc-panel::-webkit-scrollbar { width:4px; }
         .burc-panel::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.1); border-radius:4px; }
         .burc-panel h2 { color:#fff; margin:0 0 5px; text-align:center; font-size:24px; letter-spacing:2px; }
@@ -312,6 +313,7 @@
         @keyframes floatStar { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-6px);} }
         .burc-name { font-size:12px; font-weight:700; letter-spacing:0.5px; color:#fff; }
         .burc-date { font-size:9px; color:rgba(255,255,255,0.4); margin-top:2px; }
+
         .burc-detail-wrap { animation:fadeSlideIn 0.4s ease; }
         .burc-header { display:flex; align-items:center; gap:15px; margin-bottom:15px; padding-bottom:15px; border-bottom:1px solid rgba(255,255,255,0.06); }
         .burc-header-emoji { font-size:48px; }
@@ -333,6 +335,7 @@
         .burc-close-btn { display:block; margin:20px auto 0; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); color:#fff; padding:10px 24px; border-radius:20px; font-size:12px; letter-spacing:1px; cursor:pointer; transition:all 0.3s; }
         .burc-close-btn:hover { background:rgba(255,255,255,0.1); box-shadow:0 0 20px rgba(255,255,255,0.1); }
 
+        /* Harita */
         .harita-form { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px; }
         .harita-form label { color:rgba(255,255,255,0.6); font-size:10px; letter-spacing:1px; text-transform:uppercase; }
         .harita-form input, .harita-form select { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:8px 12px; color:#fff; font-size:13px; width:100%; outline:none; }
@@ -343,7 +346,23 @@
         .harita-gezegen span:first-child { font-weight:600; color:#fff; font-size:12px; }
         .harita-gezegen span:last-child { color:rgba(255,255,255,0.6); font-size:11px; }
         .harita-aciklama { margin-top:12px; padding:12px; background:rgba(147,51,234,0.06); border-radius:10px; font-size:12px; line-height:1.8; color:rgba(255,255,255,0.7); border-left:2px solid rgba(147,51,234,0.3); }
+        /* Harita grafiği canvas */
+        #harita-canvas { display:block; margin:15px auto; max-width:100%; border-radius:12px; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.08); }
 
+        /* İsim Analizi */
+        .isim-analiz-form { display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap; justify-content:center; }
+        .isim-analiz-form input { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:10px 16px; color:#fff; font-size:14px; outline:none; width:250px; }
+        .isim-analiz-form button { background:rgba(147,51,234,0.4); border:1px solid rgba(147,51,234,0.6); color:#fff; padding:10px 24px; border-radius:20px; cursor:pointer; font-weight:700; transition:all 0.3s; }
+        .isim-analiz-form button:hover { background:rgba(147,51,234,0.6); box-shadow:0 0 20px rgba(147,51,234,0.3); }
+        .isim-sonuc { background:rgba(0,0,0,0.2); border-radius:16px; padding:20px; margin-top:10px; border:1px solid rgba(255,255,255,0.06); }
+        .isim-sonuc .baslik { font-size:18px; font-weight:700; color:#c084fc; margin-bottom:8px; }
+        .isim-sonuc .detay { font-size:13px; line-height:1.9; color:rgba(255,255,255,0.8); }
+        .isim-sonuc .sayilar { display:flex; gap:20px; flex-wrap:wrap; margin:10px 0; }
+        .isim-sonuc .sayi-kutu { background:rgba(255,255,255,0.04); padding:10px 16px; border-radius:10px; border:1px solid rgba(255,255,255,0.06); text-align:center; min-width:70px; }
+        .isim-sonuc .sayi-kutu span { display:block; font-size:11px; color:rgba(255,255,255,0.5); }
+        .isim-sonuc .sayi-kutu .deger { font-size:22px; font-weight:700; color:#fff; }
+
+        /* Aşk Uyumu */
         .ask-uyum-form { display:flex; gap:10px; align-items:center; justify-content:center; flex-wrap:wrap; margin-bottom:16px; }
         .ask-uyum-form select { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:8px 16px; color:#fff; font-size:13px; outline:none; }
         .ask-uyum-form select option { background: #1a1a1e; color: #f2f2f7; }
@@ -353,21 +372,25 @@
         .uyum-puan { font-size:48px; font-weight:900; background:linear-gradient(135deg,#c084fc,#f472b6); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
         .uyum-detay { margin-top:12px; font-size:13px; line-height:1.9; color:rgba(255,255,255,0.7); }
 
-        .tarot-cards-row { display:flex; gap:15px; justify-content:center; flex-wrap:wrap; margin:15px 0; }
-        .tarot-card-wrap { perspective:800px; width:140px; height:220px; cursor:pointer; }
+        /* Tarot (yeni) */
+        .tarot-gunluk { background:rgba(0,0,0,0.2); border-radius:16px; padding:15px; margin-bottom:15px; border:1px solid rgba(255,255,255,0.06); }
+        .tarot-gunluk .tarih { font-size:13px; color:#c084fc; font-weight:600; margin-bottom:10px; }
+        .tarot-cards-row { display:flex; gap:15px; justify-content:center; flex-wrap:wrap; }
+        .tarot-card-wrap { perspective:800px; width:130px; height:200px; cursor:pointer; }
         .tarot-card { width:100%; height:100%; position:relative; transform-style:preserve-3d; transition:transform 0.8s cubic-bezier(0.4,0,0.2,1); }
         .tarot-card.flipped { transform:rotateY(180deg); }
-        .tarot-card-front, .tarot-card-back { position:absolute; width:100%; height:100%; backface-visibility:hidden; border-radius:16px; }
-        .tarot-card-front { background:linear-gradient(135deg,#0d0620,#1a0a2e,#0d0620); border:2px solid rgba(147,51,234,0.25); display:flex; flex-direction:column; align-items:center; justify-content:center; box-shadow:0 0 30px rgba(0,0,0,0.5), inset 0 0 30px rgba(0,0,0,0.4); cursor:pointer; }
-        .tarot-card-front .mystic-eye { font-size:40px; opacity:0.7; animation:mysticPulse 3s ease-in-out infinite; }
+        .tarot-card-front, .tarot-card-back { position:absolute; width:100%; height:100%; backface-visibility:hidden; border-radius:14px; }
+        .tarot-card-front { background:linear-gradient(135deg,#0d0620,#1a0a2e); border:2px solid rgba(147,51,234,0.25); display:flex; flex-direction:column; align-items:center; justify-content:center; box-shadow:0 0 30px rgba(0,0,0,0.5); }
+        .tarot-card-front .mystic-eye { font-size:36px; opacity:0.7; animation:mysticPulse 3s ease-in-out infinite; }
         .tarot-card-front .mystic-text { font-size:8px; color:rgba(192,132,252,0.5); letter-spacing:2px; margin-top:6px; }
         @keyframes mysticPulse { 0%,100%{opacity:0.5;text-shadow:0 0 8px rgba(147,51,234,0.3);} 50%{opacity:0.9;text-shadow:0 0 18px rgba(147,51,234,0.6);} }
-        .tarot-card-back { background:linear-gradient(135deg,#1a0a2e,#2d1b4e,#1a0a2e); border:2px solid rgba(192,132,252,0.4); transform:rotateY(180deg); padding:14px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; box-shadow:0 0 30px rgba(147,51,234,0.3); }
-        .tarot-emoji { font-size:36px; margin-bottom:4px; }
-        .tarot-isim { font-size:11px; font-weight:700; color:#c084fc; margin:4px 0; }
-        .tarot-anlam { font-size:9px; color:rgba(255,255,255,0.7); line-height:1.5; }
+        .tarot-card-back { background:linear-gradient(135deg,#1a0a2e,#2d1b4e); border:2px solid rgba(192,132,252,0.4); transform:rotateY(180deg); padding:12px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+        .tarot-emoji { font-size:30px; margin-bottom:4px; }
+        .tarot-isim { font-size:10px; font-weight:700; color:#c084fc; margin:4px 0; }
+        .tarot-anlam { font-size:8px; color:rgba(255,255,255,0.7); line-height:1.4; }
         .tarot-pozisyon { font-size:9px; color:rgba(192,132,252,0.7); margin-bottom:4px; letter-spacing:1px; font-weight:600; }
 
+        /* Quiz */
         .quiz-soru { font-size:15px; color:#fff; margin-bottom:12px; font-weight:600; }
         .quiz-secenekler { display:grid; gap:8px; }
         .quiz-secenek { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:10px 14px; cursor:pointer; transition:all 0.2s; font-size:12px; color:rgba(255,255,255,0.7); }
@@ -378,6 +401,7 @@
         .quiz-ilerleme { height:4px; background:rgba(255,255,255,0.06); border-radius:2px; margin-bottom:15px; }
         .quiz-ilerleme-bar { height:100%; background:linear-gradient(90deg,#c084fc,#f472b6); border-radius:2px; transition:width 0.4s ease; }
 
+        /* Hikayeler */
         .hikaye-kart { background:rgba(0,0,0,0.2); border:1px solid rgba(255,255,255,0.06); border-radius:14px; padding:16px; margin-bottom:10px; cursor:pointer; transition:all 0.3s; }
         .hikaye-kart:hover { background:rgba(255,255,255,0.03); border-color:rgba(255,255,255,0.15); box-shadow:0 5px 20px rgba(0,0,0,0.3); }
         .hikaye-baslik { font-size:14px; font-weight:700; color:#c084fc; margin-bottom:6px; }
@@ -394,6 +418,7 @@
             .burc-grid { grid-template-columns: repeat(2,1fr); }
             .game-iframe-wrapper .iframe-container { height:400px; }
             .game-iframe-wrapper .iframe-container iframe { height:440px; margin-top:-20px; }
+            .theme-player-wrapper .player-controls { flex-wrap:wrap; justify-content:center; }
         }
     </style>
 </head>
@@ -405,6 +430,7 @@
         </button>
         <button onclick="openBurcModal()" class="burc-btn-premium">🔮 BURÇLAR</button>
         <button onclick="openGameModal()" class="game-btn-premium">🎮 OYUNLAR</button>
+        <button onclick="openPlayerThemesModal()" class="player-selector-btn">🎵 MÜZİK TEMALARI</button>
         <span class="theme-label">TEMA:</span>
         <div class="theme-dot id-dark-dot" style="background:#1c1c1e;border:1px solid #3a3a3c;" onclick="changeTheme('dark',this)" title="Midnight OLED"></div>
         <div class="theme-dot" style="background:#d62828;" onclick="changeTheme('crimson',this)" title="Crimson"></div>
@@ -418,7 +444,7 @@
         <div class="theme-dot" style="background:#ffffff;border:1px solid #cbd5e1;" onclick="changeTheme('white',this)" title="White"></div>
     </div>
 
-    <!-- YENİ: Bunu biliyor muydun? kartı (eski Oracle kaldırıldı) -->
+    <!-- Bilgi Kartı -->
     <div class="info-card">
         <div class="info-card-icon">🧠</div>
         <div class="info-card-content">
@@ -452,6 +478,45 @@
         </div>
     </div>
 
+    <!-- MÜZİK TEMALARI MODAL -->
+    <div id="player-themes-modal" class="modal-overlay" onclick="closePlayerThemesModal(event)">
+        <div class="modal-content player-themes-modal" onclick="event.stopPropagation()">
+            <button class="modal-close-btn" onclick="closePlayerThemesModal()">✕</button>
+            <h3 style="margin-top:0;">🎵 Müzik Çalar Temaları</h3>
+            <p style="font-size:12px;color:var(--text-main);margin-bottom:12px;">Bir tema seç, o çalar aktif olsun. Her biri kendi playlist'ine sahiptir ve tamamen bağımsızdır.</p>
+            <div class="player-themes-grid" id="player-themes-grid">
+                <div class="player-theme-card theme-fire" data-theme="fire" onclick="selectPlayerTheme('fire')">
+                    <span class="theme-icon">🔥</span>
+                    <div class="theme-name">Ateş</div>
+                    <div class="theme-desc">Rock / Metal</div>
+                </div>
+                <div class="player-theme-card theme-water" data-theme="water" onclick="selectPlayerTheme('water')">
+                    <span class="theme-icon">🌊</span>
+                    <div class="theme-name">Su</div>
+                    <div class="theme-desc">Chill / Ambient</div>
+                </div>
+                <div class="player-theme-card theme-space" data-theme="space" onclick="selectPlayerTheme('space')">
+                    <span class="theme-icon">🚀</span>
+                    <div class="theme-name">Uzay</div>
+                    <div class="theme-desc">Elektronik</div>
+                </div>
+                <div class="player-theme-card theme-forest" data-theme="forest" onclick="selectPlayerTheme('forest')">
+                    <span class="theme-icon">🌲</span>
+                    <div class="theme-name">Orman</div>
+                    <div class="theme-desc">Doğa / Akustik</div>
+                </div>
+                <div class="player-theme-card theme-neon" data-theme="neon" onclick="selectPlayerTheme('neon')">
+                    <span class="theme-icon">💠</span>
+                    <div class="theme-name">Neon</div>
+                    <div class="theme-desc">Synthwave</div>
+                </div>
+            </div>
+            <div class="theme-player-container" id="theme-player-container">
+                <!-- Dinamik olarak doldurulacak -->
+            </div>
+        </div>
+    </div>
+
     <!-- ANA İÇERİK (TABLAR) -->
     <div class="tabs">
         <button class="tab-btn active" onclick="openTab(0)">🧹 Boşluk Temizleyici</button>
@@ -475,7 +540,7 @@
         </div>
     </div>
 
-    <!-- MÜZİK ÇALAR -->
+    <!-- Varsayılan Müzik Çalar (altta) -->
     <div id="cyber-audio-player" class="cyber-player">
         <button id="player-toggle" class="player-toggle-btn" onclick="togglePlayerMinimize()">▼ AŞAĞI KAYDIR</button>
         <div class="player-top-row"><div class="player-info"><div id="player-icon" class="player-icon">💿</div><div class="track-details"><div id="track-name" class="track-name"></div><div id="track-index" class="track-index">Şarkı: 1 / 32</div></div></div><div class="player-controls"><button class="player-btn" onclick="prevTrack()">⏮</button><button id="play-pause-btn" class="player-btn" onclick="togglePlay()">▶ OYNAT</button><button class="player-btn" onclick="nextTrack()">⏭</button><button id="shuffle-btn" class="player-btn" onclick="toggleShuffle()">🔀</button><button id="repeat-btn" class="player-btn" onclick="toggleRepeat()">🔁</button><div style="display:inline-flex;align-items:center;gap:6px;margin-left:8px;background:var(--bg-input);padding:6px 10px;border-radius:6px;border:1px solid var(--border-color)"><span style="font-size:10px;opacity:0.7;color:var(--text-btn)">🔊</span><input type="range" min="0" max="1" step="0.05" value="1" oninput="changeVolume(this.value)" style="width:55px;accent-color:var(--accent-color);background:transparent;cursor:pointer;height:3px;border:none;outline:none;appearance:none;-webkit-appearance:none;"></div></div></div>
@@ -494,6 +559,7 @@
             <div class="burc-nav" id="burc-nav">
                 <button class="burc-nav-btn active" data-section="burclar">🌟 Burçlar</button>
                 <button class="burc-nav-btn" data-section="harita">🪐 Doğum Haritası</button>
+                <button class="burc-nav-btn" data-section="isim">🔤 İsim Analizi</button>
                 <button class="burc-nav-btn" data-section="ask">💕 Aşk Uyumu</button>
                 <button class="burc-nav-btn" data-section="tarot">🃏 Günlük Tarot</button>
                 <button class="burc-nav-btn" data-section="quiz">🎯 Burç Testi</button>
@@ -502,7 +568,7 @@
             <div class="burc-section active" id="section-burclar"><div class="burc-grid" id="burc-grid"></div><div id="burc-detail-wrap"></div></div>
             <div class="burc-section" id="section-harita">
                 <h3 style="color:#c084fc;border-color:#c084fc;">🪐 Doğum Haritası Simülatörü</h3>
-                <p style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:14px;">Doğum tarihinizi, saatinizi ve şehrinizi girerek kişisel doğum haritanızı oluşturun.</p>
+                <p style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:14px;">Doğum tarihinizi, saatinizi ve şehrinizi girerek kişisel doğum haritanızı oluşturun. Aşağıda gezegen konumları grafikle gösterilir.</p>
                 <div class="harita-form">
                     <div><label>Adınız</label><input type="text" id="harita-isim" placeholder="Adınız"></div>
                     <div><label>Doğum Tarihi</label><input type="date" id="harita-tarih"></div>
@@ -511,6 +577,16 @@
                 </div>
                 <button type="button" id="harita-btn" onclick="haritaHesapla()" style="display:block;margin:8px auto;background:rgba(147,51,234,0.4);border:1px solid rgba(147,51,234,0.6);color:#fff;padding:10px 28px;border-radius:20px;cursor:pointer;font-weight:700;letter-spacing:0.5px;transition:all 0.3s;">Haritayı Hesapla ✨</button>
                 <div id="harita-sonuc"></div>
+                <canvas id="harita-canvas" width="400" height="400" style="display:none;"></canvas>
+            </div>
+            <div class="burc-section" id="section-isim">
+                <h3 style="color:#fbbf24;border-color:#fbbf24;">🔤 İsim Analizi (Numeroloji)</h3>
+                <p style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:14px;">İsminizin harflerinin sayısal değerlerine göre karakter analizi, şans sayısı ve kişilik profili.</p>
+                <div class="isim-analiz-form">
+                    <input type="text" id="isim-analiz-input" placeholder="İsminizi girin..." maxlength="30">
+                    <button onclick="isimAnalizYap()">Analiz Et 🔍</button>
+                </div>
+                <div id="isim-sonuc"></div>
             </div>
             <div class="burc-section" id="section-ask">
                 <h3 style="color:#f472b6;border-color:#f472b6;">💕 Aşk Uyumu Hesaplayıcı</h3>
@@ -525,8 +601,8 @@
             </div>
             <div class="burc-section" id="section-tarot">
                 <h3 style="color:#fbbf24;border-color:#fbbf24;">🃏 Günlük Tarot Kartları</h3>
-                <p style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:10px;">Kartları çevirmek için üzerlerine tıkla. Evren bugün sana ne söylemek istiyor?</p>
-                <div class="tarot-cards-row" id="tarot-cards-row"></div>
+                <p style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:10px;">Her gün için özel olarak belirlenmiş 3 kart. Kartları çevirmek için üzerlerine tıkla.</p>
+                <div id="tarot-gunluk-container"></div>
             </div>
             <div class="burc-section" id="section-quiz">
                 <h3 style="color:#34d399;border-color:#34d399;">🎯 Gerçek Burcunu Keşfet</h3>
@@ -553,26 +629,29 @@
         // TEMA (Varsayılan: White)
         // ==========================================================================
         function changeTheme(t, e) {
-            t === 'dark' ? document.documentElement.removeAttribute('data-theme') : document.documentElement.setAttribute(
-            'data-theme', t);
+            t === 'dark' ? document.documentElement.removeAttribute('data-theme') : document.documentElement.setAttribute('data-theme', t);
             document.querySelectorAll('.theme-dot').forEach(d => d.classList.remove('active'));
             e.classList.add('active');
             document.body.classList.add('theme-shake');
             setTimeout(() => document.body.classList.remove('theme-shake'), 500);
         }
 
-        function showToast(m = "⚡ METİN BAŞARIYLA KOPYALANDI!") { const t = document.getElementById("toast-notification");
+        function showToast(m = "⚡ METİN BAŞARIYLA KOPYALANDI!") {
+            const t = document.getElementById("toast-notification");
             t.innerText = m;
             t.classList.add("show");
-            setTimeout(() => t.classList.remove("show"), 2000); }
+            setTimeout(() => t.classList.remove("show"), 2000);
+        }
 
         // ==========================================================================
         // METİN DÜZENLEME
         // ==========================================================================
-        function calculateMeta(i) { const t = document.getElementById(`input${i}`).innerText;
+        function calculateMeta(i) {
+            const t = document.getElementById(`input${i}`).innerText;
             document.getElementById(`char-count-${i}`).innerHTML = `Karakter: <strong>${t.length}</strong>`;
             document.getElementById(`word-count-${i}`).innerHTML =
-                `Kelime: <strong>${t.trim()?t.trim().split(/\s+/).length:0}</strong>`; }
+                `Kelime: <strong>${t.trim()?t.trim().split(/\s+/).length:0}</strong>`;
+        }
 
         function openTab(i) {
             document.querySelectorAll(".tab-content").forEach(t => t.classList.remove("active"));
@@ -580,16 +659,21 @@
             document.querySelectorAll(".tab-content")[i].classList.add("active");
             document.querySelectorAll(".tab-btn")[i].classList.add("active");
         }
+
         const bannedWords = ["yüksek kalite", "yüksek kaliteli", "%100 hakiki", "% 100 hakiki", "hakiki deri", "gerçek deri", "gençleştirici", "gençleştirir", "Gençleştirici", "Gençleştirir", "yaşlanma karşıtı", "Yaşlanma Karşıtı",
             "birinci sınıf", "1. kalite", "1. sınıf", "unisex", "YÜKSEK KALİTE", "YUKSEK KALITE", "YÜKSEK KALITE", "1.sınıf", "1.SINIF", "BİRİNCİ SINIF", "BIRINCI SINIF", "yüksek kalite", "1. SINIF", "onarıcı", "Onarıcı", "Yaşlanma karşıtı",
         ];
 
         function escapeRegExp(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
 
-        function highlight(t) { bannedWords.forEach(w => { const p = escapeRegExp(w).replace(/\s+/g, "\\s+");
-                t = t.replace(new RegExp(p, "gi"), m => `<span class="bad-word">${m}</span>`); }); return t; }
+        function highlight(t) {
+            bannedWords.forEach(w => {
+                const p = escapeRegExp(w).replace(/\s+/g, "\\s+");
+                t = t.replace(new RegExp(p, "gi"), m => `<span class="bad-word">${m}</span>`);
+            });
+            return t;
+        }
 
-        // sayısal font-weight değerlerini de <b> etiketine dönüştürür (sadece span ve strong)
         function hardProtectBoldStyles(r) {
             if (!r) return "";
             r = r.replace(/<span\b[^>]*\bstyle\s*=\s*"[^"]*font-weight\s*:\s*(bold|bolder|[7-9]00)[^"]*"[^>]*>([\s\S]*?)<\/span>/gi, '<b>$2</b>');
@@ -597,15 +681,15 @@
             return r;
         }
 
-        function cleanInvisibleWebGarbage(t, f = false) { if (!t) return ""; let c = t.replace(/[\r\u200B\u200C\u200D\uFEFF]/g,
-                "").replace(/&nbsp;/gi, " ").replace(/nbsp;/gi, " ").replace(/;nbsp/gi, " ").replace(/&nbsp/gi, " ").replace(
-                /\u00A0/g, " ").replace(/&amp;;/gi, " ").replace(/&amp;/gi, " ").replace(/&[^;]+;/g, " ").replace(/&/g,
-                " ").replace(/;/g, " ");
+        function cleanInvisibleWebGarbage(t, f = false) {
+            if (!t) return "";
+            let c = t.replace(/[\r\u200B\u200C\u200D\uFEFF]/g, "").replace(/&nbsp;/gi, " ").replace(/nbsp;/gi, " ").replace(/;nbsp/gi, " ").replace(/&nbsp/gi, " ").replace(
+                /\u00A0/g, " ").replace(/&amp;;/gi, " ").replace(/&amp;/gi, " ").replace(/&[^;]+;/g, " ").replace(/&/g, " ").replace(/;/g, " ");
             c = c.replace(/B\s*\+\s*/gi, "B+").replace(/B\s*-\s*/gi, "B-").replace(/\s{2,}/g, " ");
             if (f) c = c.toLocaleLowerCase('tr-TR');
-            return c; }
+            return c;
+        }
 
-        // processUltraEngine – blok etiketleri işlenir, başlıklar otomatik kalın, bold span'lar kalın
         function processUltraEngine(id, f = false) {
             const inp = document.getElementById(id);
             if (!inp || !inp.innerHTML.trim()) return "";
@@ -614,7 +698,6 @@
             let div = document.createElement("div");
             div.innerHTML = bolded;
 
-            // Sadece başlık etiketlerini (h1-h6) <b> ile sar
             const headings = div.querySelectorAll('h1, h2, h3, h4, h5, h6');
             headings.forEach(heading => {
                 const b = document.createElement('b');
@@ -661,37 +744,50 @@
             return `<span style="font-size:14px; font-family: inherit; line-height: 1.6;">${result}</span>`;
         }
 
-        function copyToClipboard(id) { const el = document.getElementById(id);
+        function copyToClipboard(id) {
+            const el = document.getElementById(id);
             const clone = el.cloneNode(true);
-            clone.querySelectorAll('.bad-word').forEach(b => { b.parentNode.replaceChild(document.createTextNode(b
-                    .innerText), b); });
+            clone.querySelectorAll('.bad-word').forEach(b => {
+                b.parentNode.replaceChild(document.createTextNode(b.innerText), b);
+            });
             const htmlBlob = new Blob(
                 [`<span style="font-size:14px;font-family:sans-serif;line-height:1.6;">${clone.innerHTML}</span>`], { type: 'text/html' });
             const textBlob = new Blob([clone.innerText], { type: 'text/plain' });
             navigator.clipboard.write([new ClipboardItem({ 'text/html': htmlBlob, 'text/plain': textBlob })]).then(() =>
-                showToast()); }
+                showToast());
+        }
 
         function cleanSpaces() { document.getElementById("output1").innerHTML = processUltraEngine("input1", false); }
 
         function fixText() { document.getElementById("output2").innerHTML = processUltraEngine("input2", true); }
-        document.getElementById("input1").addEventListener("keydown", e => { if (e.key === "Enter") { document
-                    .execCommand('insertLineBreak', false, null);
-                e.preventDefault(); } });
-        document.getElementById("input2").addEventListener("keydown", e => { if (e.key === "Enter") { document
-                    .execCommand('insertLineBreak', false, null);
-                e.preventDefault(); } });
+        document.getElementById("input1").addEventListener("keydown", e => {
+            if (e.key === "Enter") {
+                document.execCommand('insertLineBreak', false, null);
+                e.preventDefault();
+            }
+        });
+        document.getElementById("input2").addEventListener("keydown", e => {
+            if (e.key === "Enter") {
+                document.execCommand('insertLineBreak', false, null);
+                e.preventDefault();
+            }
+        });
 
         function copy1() { copyToClipboard("output1"); }
 
-        function clear1() { document.getElementById("input1").innerHTML = "";
+        function clear1() {
+            document.getElementById("input1").innerHTML = "";
             document.getElementById("output1").innerHTML = "";
-            calculateMeta(1); }
+            calculateMeta(1);
+        }
 
         function copy2() { copyToClipboard("output2"); }
 
-        function clear2() { document.getElementById("input2").innerHTML = "";
+        function clear2() {
+            document.getElementById("input2").innerHTML = "";
             document.getElementById("output2").innerHTML = "";
-            calculateMeta(2); }
+            calculateMeta(2);
+        }
 
         // ==========================================================================
         // OYUN MODAL
@@ -712,12 +808,10 @@
                 if (document.getElementById('game-modal').classList.contains('active')) closeGameModal();
                 if (document.getElementById('burc-modal').classList.contains('show')) closeBurcModal();
                 if (document.getElementById('coffee-modal').classList.contains('show')) closeCoffeeModal();
+                if (document.getElementById('player-themes-modal').classList.contains('active')) closePlayerThemesModal();
             }
         });
 
-        // ==========================================================================
-        // OYUN SEÇİCİ
-        // ==========================================================================
         function selectGame(el) {
             document.querySelectorAll('.game-card').forEach(c => c.classList.remove('active'));
             el.classList.add('active');
@@ -726,24 +820,43 @@
         }
 
         // ==========================================================================
-        // MÜZİK
+        // MÜZİK (varsayılan çalar)
         // ==========================================================================
-        const musicList = [{ title: "", url: "./muzikler/3.mp3" }, { title: "", url: "./muzikler/2.mp3" }, { title: "",
-                url: "./muzikler/7.mp3" }, { title: "", url: "./muzikler/12345.mp3" }, { title: "",
-                url: "./muzikler/4.mp3" }, { title: "", url: "./muzikler/18.mp3" }, { title: "",
-                url: "./muzikler/26.mp3" }, { title: "", url: "./muzikler/19.mp3" }, { title: "",
-                url: "./muzikler/27.mp3" }, { title: "", url: "./muzikler/20.mp3" }, { title: "",
-                url: "./muzikler/28.mp3" }, { title: "", url: "./muzikler/29.mp3" }, { title: "",
-                url: "./muzikler/30.mp3" }, { title: "", url: "./muzikler/31.mp3" }, { title: "",
-                url: "./muzikler/25.mp3" }, { title: "", url: "./muzikler/21.mp3" }, { title: "",
-                url: "./muzikler/22.mp3" }, { title: "", url: "./muzikler/23.mp3" }, { title: "",
-                url: "./muzikler/24.mp3" }, { title: "", url: "./muzikler/1.mp3" }, { title: "",
-                url: "./muzikler/5.mp3" }, { title: "", url: "./muzikler/6.mp3" }, { title: "",
-                url: "./muzikler/8.mp3" }, { title: "", url: "./muzikler/9.mp3" }, { title: "",
-                url: "./muzikler/10.mp3" }, { title: "", url: "./muzikler/11.mp3" }, { title: "",
-                url: "./muzikler/12.mp3" }, { title: "", url: "./muzikler/13.mp3" }, { title: "",
-                url: "./muzikler/14.mp3" }, { title: "", url: "./muzikler/15.mp3" }, { title: "",
-                url: "./muzikler/16.mp3" }, { title: "", url: "./muzikler/17.mp3" } ];
+        const musicList = [
+            { title: "", url: "./muzikler/3.mp3" },
+            { title: "", url: "./muzikler/2.mp3" },
+            { title: "", url: "./muzikler/7.mp3" },
+            { title: "", url: "./muzikler/12345.mp3" },
+            { title: "", url: "./muzikler/4.mp3" },
+            { title: "", url: "./muzikler/18.mp3" },
+            { title: "", url: "./muzikler/26.mp3" },
+            { title: "", url: "./muzikler/19.mp3" },
+            { title: "", url: "./muzikler/27.mp3" },
+            { title: "", url: "./muzikler/20.mp3" },
+            { title: "", url: "./muzikler/28.mp3" },
+            { title: "", url: "./muzikler/29.mp3" },
+            { title: "", url: "./muzikler/30.mp3" },
+            { title: "", url: "./muzikler/31.mp3" },
+            { title: "", url: "./muzikler/25.mp3" },
+            { title: "", url: "./muzikler/21.mp3" },
+            { title: "", url: "./muzikler/22.mp3" },
+            { title: "", url: "./muzikler/23.mp3" },
+            { title: "", url: "./muzikler/24.mp3" },
+            { title: "", url: "./muzikler/1.mp3" },
+            { title: "", url: "./muzikler/5.mp3" },
+            { title: "", url: "./muzikler/6.mp3" },
+            { title: "", url: "./muzikler/8.mp3" },
+            { title: "", url: "./muzikler/9.mp3" },
+            { title: "", url: "./muzikler/10.mp3" },
+            { title: "", url: "./muzikler/11.mp3" },
+            { title: "", url: "./muzikler/12.mp3" },
+            { title: "", url: "./muzikler/13.mp3" },
+            { title: "", url: "./muzikler/14.mp3" },
+            { title: "", url: "./muzikler/15.mp3" },
+            { title: "", url: "./muzikler/16.mp3" },
+            { title: "", url: "./muzikler/17.mp3" }
+        ];
+
         let curTrack = 0,
             isPlaying = false,
             isShuffle = false,
@@ -753,8 +866,9 @@
         function initPlayer() {
             audio.addEventListener("ended", handleTrackEnded);
             audio.addEventListener("timeupdate", updateTimeline);
-            audio.addEventListener("loadedmetadata", () => { document.getElementById("total-duration").innerText =
-                    formatTime(audio.duration); });
+            audio.addEventListener("loadedmetadata", () => {
+                document.getElementById("total-duration").innerText = formatTime(audio.duration);
+            });
             loadTrack(curTrack);
         }
 
@@ -764,14 +878,21 @@
             document.getElementById("track-index").innerText = `Şarkı: ${i+1} / ${musicList.length}`;
         }
 
-        function togglePlay() { const b = document.getElementById("play-pause-btn"),
-                p = document.getElementById("cyber-audio-player"); if (isPlaying) { audio.pause();
+        function togglePlay() {
+            const b = document.getElementById("play-pause-btn"),
+                p = document.getElementById("cyber-audio-player");
+            if (isPlaying) {
+                audio.pause();
                 isPlaying = false;
                 b.innerText = "▶ OYNAT";
-                p.classList.remove("playing"); } else { audio.play().catch(() => {});
+                p.classList.remove("playing");
+            } else {
+                audio.play().catch(() => {});
                 isPlaying = true;
                 b.innerText = "⏸ DURDUR";
-                p.classList.add("playing"); } }
+                p.classList.add("playing");
+            }
+        }
 
         function nextTrack() {
             curTrack = isShuffle ? Math.floor(Math.random() * musicList.length) : (curTrack + 1) % musicList.length;
@@ -785,33 +906,256 @@
             if (isPlaying) audio.play();
         }
 
-        function handleTrackEnded() { if (isRepeat) { audio.currentTime = 0;
-                audio.play(); } else nextTrack(); }
+        function handleTrackEnded() {
+            if (isRepeat) {
+                audio.currentTime = 0;
+                audio.play();
+            } else nextTrack();
+        }
 
-        function toggleShuffle() { isShuffle = !isShuffle;
-            document.getElementById("shuffle-btn").classList.toggle("active-mode", isShuffle); }
+        function toggleShuffle() {
+            isShuffle = !isShuffle;
+            document.getElementById("shuffle-btn").classList.toggle("active-mode", isShuffle);
+        }
 
-        function toggleRepeat() { isRepeat = !isRepeat;
-            document.getElementById("repeat-btn").classList.toggle("active-mode", isRepeat); }
+        function toggleRepeat() {
+            isRepeat = !isRepeat;
+            document.getElementById("repeat-btn").classList.toggle("active-mode", isRepeat);
+        }
 
-        function updateTimeline() { if (audio.duration) { const p = (audio.currentTime / audio.duration) * 100;
+        function updateTimeline() {
+            if (audio.duration) {
+                const p = (audio.currentTime / audio.duration) * 100;
                 document.getElementById("timeline-progress").style.width = `${p}%`;
-                document.getElementById("current-time").innerText = formatTime(audio.currentTime); } }
+                document.getElementById("current-time").innerText = formatTime(audio.currentTime);
+            }
+        }
 
-        function seekTrack(e) { const c = document.getElementById("timeline-container"),
+        function seekTrack(e) {
+            const c = document.getElementById("timeline-container"),
                 r = c.getBoundingClientRect(),
                 x = e.clientX - r.left,
-                w = r.width; if (audio.duration) audio.currentTime = (x / w) * audio.duration; }
+                w = r.width;
+            if (audio.duration) audio.currentTime = (x / w) * audio.duration;
+        }
 
-        function formatTime(s) { if (isNaN(s)) return "00:00"; const m = Math.floor(s / 60),
-                sec = Math.floor(s % 60); return `${m<10?'0':''}${m}:${sec<10?'0':''}${sec}`; }
+        function formatTime(s) {
+            if (isNaN(s)) return "00:00";
+            const m = Math.floor(s / 60),
+                sec = Math.floor(s % 60);
+            return `${m<10?'0':''}${m}:${sec<10?'0':''}${sec}`;
+        }
 
-        function togglePlayerMinimize() { const p = document.getElementById("cyber-audio-player"),
+        function togglePlayerMinimize() {
+            const p = document.getElementById("cyber-audio-player"),
                 b = document.getElementById("player-toggle");
             p.classList.toggle("minimized");
-            b.innerText = p.classList.contains("minimized") ? "▲ YUKARI KAYDIR" : "▼ AŞAĞI KAYDIR"; }
+            b.innerText = p.classList.contains("minimized") ? "▲ YUKARI KAYDIR" : "▼ AŞAĞI KAYDIR";
+        }
 
-        function changeVolume(v) { audio.volume = v; if (v == 1) showToast("🔊 Kulaklarını seviyorsan biraz kıs aslan parçası"); }
+        function changeVolume(v) {
+            audio.volume = v;
+            if (v == 1) showToast("🔊 Kulaklarını seviyorsan biraz kıs aslan parçası");
+        }
+
+        // ==========================================================================
+        // 5 FARKLI MÜZİK ÇALAR (Temalar)
+        // ==========================================================================
+        // Her tema için ayrı bir audio nesnesi ve kontroller
+        const themePlayers = {};
+
+        function initThemePlayers() {
+            const themes = ['fire', 'water', 'space', 'forest', 'neon'];
+            themes.forEach(t => {
+                const audioEl = new Audio();
+                audioEl.src = musicList[0].url; // ilk şarkı
+                audioEl.preload = 'auto';
+                let idx = 0,
+                    playing = false,
+                    shuffle = false,
+                    repeat = false;
+                themePlayers[t] = {
+                    audio: audioEl,
+                    currentIndex: idx,
+                    isPlaying: playing,
+                    isShuffle: shuffle,
+                    isRepeat: repeat,
+                    playlist: [...musicList] // her tema aynı listeyi kullanabilir, ama ileride farklılaştırabiliriz
+                };
+                // Event listener
+                audioEl.addEventListener('ended', () => {
+                    if (repeat) {
+                        audioEl.currentTime = 0;
+                        audioEl.play();
+                    } else {
+                        nextThemeTrack(t);
+                    }
+                });
+                audioEl.addEventListener('timeupdate', () => {
+                    const container = document.getElementById(`theme-${t}-timeline`);
+                    const progress = document.getElementById(`theme-${t}-progress`);
+                    const current = document.getElementById(`theme-${t}-current`);
+                    const total = document.getElementById(`theme-${t}-total`);
+                    if (audioEl.duration) {
+                        const p = (audioEl.currentTime / audioEl.duration) * 100;
+                        if (progress) progress.style.width = `${p}%`;
+                        if (current) current.innerText = formatTime(audioEl.currentTime);
+                        if (total && total.innerText === '00:00') total.innerText = formatTime(audioEl.duration);
+                    }
+                });
+                audioEl.addEventListener('loadedmetadata', () => {
+                    const total = document.getElementById(`theme-${t}-total`);
+                    if (total) total.innerText = formatTime(audioEl.duration);
+                });
+            });
+            // Varsayılan olarak ilk tema seçili
+            selectPlayerTheme('fire');
+        }
+
+        function selectPlayerTheme(theme) {
+            // Tüm kartları aktiflikten çıkar
+            document.querySelectorAll('.player-theme-card').forEach(c => c.style.borderColor = 'var(--border-color)');
+            const card = document.querySelector(`.player-theme-card[data-theme="${theme}"]`);
+            if (card) card.style.borderColor = 'var(--accent-color)';
+
+            // Diğer çalarları durdur (opsiyonel)
+            Object.keys(themePlayers).forEach(key => {
+                if (key !== theme && themePlayers[key].isPlaying) {
+                    themePlayers[key].audio.pause();
+                    themePlayers[key].isPlaying = false;
+                    const btn = document.getElementById(`theme-${key}-playbtn`);
+                    if (btn) btn.innerText = '▶';
+                }
+            });
+
+            renderThemePlayer(theme);
+        }
+
+        function renderThemePlayer(theme) {
+            const container = document.getElementById('theme-player-container');
+            const p = themePlayers[theme];
+            if (!p) return;
+            const idx = p.currentIndex;
+            const track = p.playlist[idx] || { title: '', url: '' };
+            const isPlaying = p.isPlaying;
+            container.innerHTML = `
+                <div class="theme-player-wrapper" style="border-color:var(--accent-color);">
+                    <div class="track-info">
+                        <div class="name">${track.title || 'Şarkı'}</div>
+                        <div class="index">${idx+1} / ${p.playlist.length}</div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:10px;justify-content:center;flex-wrap:wrap;">
+                        <button class="player-btn" onclick="prevThemeTrack('${theme}')">⏮</button>
+                        <button class="player-btn" id="theme-${theme}-playbtn" onclick="toggleThemePlay('${theme}')">${isPlaying ? '⏸' : '▶'}</button>
+                        <button class="player-btn" onclick="nextThemeTrack('${theme}')">⏭</button>
+                        <button class="player-btn" id="theme-${theme}-shuffle" onclick="toggleThemeShuffle('${theme}')" style="${p.isShuffle ? 'border-color:var(--accent-color);' : ''}">🔀</button>
+                        <button class="player-btn" id="theme-${theme}-repeat" onclick="toggleThemeRepeat('${theme}')" style="${p.isRepeat ? 'border-color:var(--accent-color);' : ''}">🔁</button>
+                        <div style="display:inline-flex;align-items:center;gap:6px;background:var(--bg-input);padding:6px 10px;border-radius:6px;border:1px solid var(--border-color);">
+                            <span style="font-size:10px;opacity:0.7;">🔊</span>
+                            <input type="range" min="0" max="1" step="0.05" value="1" oninput="changeThemeVolume('${theme}', this.value)" style="width:55px;accent-color:var(--accent-color);background:transparent;cursor:pointer;height:3px;border:none;outline:none;appearance:none;-webkit-appearance:none;">
+                        </div>
+                    </div>
+                    <div class="player-timeline-wrapper" style="margin-top:8px;">
+                        <span id="theme-${theme}-current" class="time-display">00:00</span>
+                        <div id="theme-${theme}-timeline" class="timeline-container" onclick="seekThemeTrack('${theme}', event)">
+                            <div id="theme-${theme}-progress" class="timeline-progress" style="width:0%;"></div>
+                        </div>
+                        <span id="theme-${theme}-total" class="time-display">00:00</span>
+                    </div>
+                </div>
+            `;
+            // Eğer çalıyorsa, durumu güncelle
+            if (isPlaying) {
+                const btn = document.getElementById(`theme-${theme}-playbtn`);
+                if (btn) btn.innerText = '⏸';
+            }
+        }
+
+        function toggleThemePlay(theme) {
+            const p = themePlayers[theme];
+            if (!p) return;
+            if (p.isPlaying) {
+                p.audio.pause();
+                p.isPlaying = false;
+                document.getElementById(`theme-${theme}-playbtn`).innerText = '▶';
+            } else {
+                p.audio.play().catch(() => {});
+                p.isPlaying = true;
+                document.getElementById(`theme-${theme}-playbtn`).innerText = '⏸';
+            }
+        }
+
+        function nextThemeTrack(theme) {
+            const p = themePlayers[theme];
+            if (!p) return;
+            if (p.isShuffle) {
+                p.currentIndex = Math.floor(Math.random() * p.playlist.length);
+            } else {
+                p.currentIndex = (p.currentIndex + 1) % p.playlist.length;
+            }
+            const track = p.playlist[p.currentIndex];
+            p.audio.src = track.url;
+            p.audio.load();
+            if (p.isPlaying) p.audio.play();
+            renderThemePlayer(theme);
+        }
+
+        function prevThemeTrack(theme) {
+            const p = themePlayers[theme];
+            if (!p) return;
+            p.currentIndex = (p.currentIndex - 1 + p.playlist.length) % p.playlist.length;
+            const track = p.playlist[p.currentIndex];
+            p.audio.src = track.url;
+            p.audio.load();
+            if (p.isPlaying) p.audio.play();
+            renderThemePlayer(theme);
+        }
+
+        function toggleThemeShuffle(theme) {
+            const p = themePlayers[theme];
+            if (!p) return;
+            p.isShuffle = !p.isShuffle;
+            const btn = document.getElementById(`theme-${theme}-shuffle`);
+            if (btn) btn.style.borderColor = p.isShuffle ? 'var(--accent-color)' : '';
+        }
+
+        function toggleThemeRepeat(theme) {
+            const p = themePlayers[theme];
+            if (!p) return;
+            p.isRepeat = !p.isRepeat;
+            const btn = document.getElementById(`theme-${theme}-repeat`);
+            if (btn) btn.style.borderColor = p.isRepeat ? 'var(--accent-color)' : '';
+        }
+
+        function changeThemeVolume(theme, val) {
+            const p = themePlayers[theme];
+            if (p) p.audio.volume = parseFloat(val);
+        }
+
+        function seekThemeTrack(theme, e) {
+            const p = themePlayers[theme];
+            if (!p || !p.audio.duration) return;
+            const c = document.getElementById(`theme-${theme}-timeline`);
+            const r = c.getBoundingClientRect();
+            const x = e.clientX - r.left;
+            const w = r.width;
+            p.audio.currentTime = (x / w) * p.audio.duration;
+        }
+
+        function openPlayerThemesModal() {
+            document.getElementById('player-themes-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            // Eğer tema çalarlar başlatılmadıysa başlat
+            if (Object.keys(themePlayers).length === 0) initThemePlayers();
+            // Varsayılan olarak fire temasını göster
+            selectPlayerTheme('fire');
+        }
+
+        function closePlayerThemesModal(e) {
+            if (e && e.target !== e.currentTarget) return;
+            document.getElementById('player-themes-modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
 
         // ==========================================================================
         // KAHVE
@@ -911,7 +1255,7 @@
         }
 
         // ==========================================================================
-        // BURÇ VERİLERİ (kısaltılmış)
+        // BURÇ VERİLERİ (güncellendi)
         // ==========================================================================
         const burcDetaylari = {
             "koç": { emoji: "♈", element: "Ateş", tarih: "21 Mart - 19 Nisan", gezegen: "Mars", renk: "Kırmızı",
@@ -988,117 +1332,509 @@
                 uyumlu: ["Yengeç", "Akrep", "Oğlak"], uyumsuz: ["İkizler", "Yay"] }
         };
 
-        const gunlukYorumHavuzu = {
-            "koç": ["Bugün enerjin tavan yapacak! Yeni bir başlangıç yapmak için mükemmel bir gün. Ancak ani çıkışların çevrendekileri kırabilir, derin bir nefes almayı unutma. İş yerinde liderlik özelliklerin öne çıkacak, fırsatları değerlendir.",
-                "Liderlik vasfın bugün her zamankinden daha belirgin olacak. İnsanlar senden yönlendirme bekleyecek. Acele karar verme, stratejik düşün.",
-                "Sabırsızlığın bugün başına iş açabilir. Kontrollü ol, her savaşa girme. Akşam saatlerinde güzel bir sürpriz seni bekliyor olabilir."
+        // ===== 31 GÜNLÜK BURÇ YORUMLARI (Her burç için 31 farklı yorum) =====
+        // Her burç için 31 günlük yorum dizisi (kısa ve anlamlı)
+        const gunlukYorum31 = {
+            "koç": [
+                "Bugün enerjin tavan! Yeni bir projeye başlamak için harika bir gün, cesur adımlar at.",
+                "Liderlik vasfın öne çıkıyor. İnsanlar senden ilham alacak, ama sabırlı ol.",
+                "Aşk hayatında heyecan verici bir gelişme olabilir. Kalbini aç.",
+                "Kariyerinde yükseliş var. Bugün önemli bir kapı açılacak.",
+                "Öfkeni kontrol et, yoksa kazançlı bir fırsatı kaçırabilirsin.",
+                "Bugün yeni bir arkadaşlık kurmaya hazır ol. Sosyalleş.",
+                "Finansal konularda şanslısın, ama dikkatli harcamalar yap.",
+                "Yaratıcılığın zirvede. Sanatsal bir işe başla.",
+                "İçindeki savaşçı ruh bugün sana güç verecek.",
+                "Bir seyahat planı yapmak için uygun bir gün.",
+                "Bugün yeni bir eğitim veya kurs fikri aklına gelebilir.",
+                "Aile ilişkilerinde sıcak gelişmeler var.",
+                "Kendini ifade etme konusunda harikasın. Düşüncelerini paylaş.",
+                "Bugün risk almak sana başarı getirebilir.",
+                "Bir arkadaşın sana sürpriz yapabilir.",
+                "Sabırsızlığın bugün işleri karıştırabilir, sakin ol.",
+                "Aşkta tutkulu bir gün. Partnerine jestler yap.",
+                "Kariyer hedeflerin için bir adım atma zamanı.",
+                "Bugün dinlenmeye ihtiyacın var. Kendine zaman ayır.",
+                "Yeni bir spor veya aktiviteye başla.",
+                "Birikim yapmak için doğru bir gün.",
+                "Hayallerini netleştir, onları not al.",
+                "Bir iş görüşmesi olumlu sonuçlanabilir.",
+                "Duygularını açıkça ifade et, içinde kalmasın.",
+                "Bugün şans ve fırsatlar peşinden gelecek.",
+                "Geçmişteki bir hatadan ders al ve ilerle.",
+                "Yeni bir teknoloji veya alet edinme fikri güzel.",
+                "İletişim kanallarını aç, yeni insanlarla tanış.",
+                "Bugün bir teşekkür veya özür dileme günü.",
+                "Kendine güvenin tam, hiçbir şey seni durduramaz.",
+                "Ayın son günü, yeni başlangıçlar için enerji topla."
             ],
-            "boğa": ["Finansal konularda bugün temkinli olman gerekiyor. Büyük harcamalardan kaçın, bütçeni gözden geçir. Doğa yürüyüşü ruhuna iyi gelecek.",
-                "İnat ettiğin bir konuda bugün esnek olmayı dene. Karşındakinin de haklı olabileceğini kabul etmek seni rahatlatacak.",
-                "Uzun zamandır ertelediğin bir işi bugün nihayet bitirebilirsin. Kendine küçük bir ödül vermeyi unutma."
+            "boğa": [
+                "Bugün maddi konularda şanslısın. İyi bir yatırım fırsatı çıkabilir.",
+                "İnatçılığını bırak, esnek olmak sana avantaj sağlayacak.",
+                "Aşk hayatında romantizm artıyor. Hoş bir sürpriz seni bekliyor.",
+                "Doğa ile iç içe olmak ruhunu dinlendirecek.",
+                "Sanatsal bir projede başarı elde edebilirsin.",
+                "Bugün yeni bir lezzet denemek için iyi bir gün.",
+                "Güvendiğin bir arkadaşınla derin sohbetler.",
+                "Kariyerinde istikrarlı bir ilerleme kaydedeceksin.",
+                "Evinde huzurlu bir değişiklik yapmak isteyebilirsin.",
+                "Bugün kendini ödüllendirme zamanı.",
+                "Bir sağlık kontrolü yaptırmak faydalı.",
+                "Sevdiğin biriyle uzun bir yürüyüş yap.",
+                "Finansal planlarını gözden geçir, kazançlı çıkacaksın.",
+                "Bugün yeni bir hobi edinebilirsin.",
+                "İş yerinde takdir göreceksin.",
+                "Sabırlı ol, her şey zamanında olacak.",
+                "Aşkta sadakat ve güven ön planda.",
+                "Bir eğitim programına katılabilirsin.",
+                "Bugün geçmişi hatırlamak ve ders almak güzel.",
+                "Kaliteli zaman geçireceğin bir gün.",
+                "Bir arkadaşın sana destek olacak.",
+                "Yeni bir kıyafet veya aksesuar almak moral verir.",
+                "Bugün karar verme zamanı, iç sesini dinle.",
+                "Doğal güzelliklerle iç içe ol.",
+                "Bugün bir sırrı paylaşmak isteyebilirsin.",
+                "İş hayatında yeni bir fırsat doğacak.",
+                "Rahatlayabileceğin bir akşam.",
+                "Bugün birine yardım etmek seni mutlu edecek.",
+                "Kendine bir hedef belirle ve ona odaklan.",
+                "Bugün kazandığın birikimleri değerlendir.",
+                "Ay sonunda kendine iyi bak."
             ],
-            "ikizler": ["Sosyal çevrende bugün hareketlilik var. Yeni insanlarla tanışabilir, farklı fikirler edinebilirsin. İletişim becerilerinle bir sorunu kökünden çözeceksin.",
-                "Kararsız kalabilirsin, özellikle iki seçenek arasında gidip gelmek seni yorabilir. İç sesini dinle.",
-                "Kısa bir seyahat ya da şehir dışı planı gündeme gelebilir. Zihnini açacak bir gün seni bekliyor."
+            "ikizler": [
+                "Bugün iletişim becerilerin zirvede. Yeni insanlarla tanışacaksın.",
+                "Kararsızlığın bugün sana kaybettirebilir, net ol.",
+                "Aşkta yeni bir flört başlayabilir, eğlenceli.",
+                "Zihinsel olarak çok aktifsin, okuma ve araştırma yap.",
+                "Bugün sosyal medyada dikkat çekeceksin.",
+                "İkili ilişkilerde dengeyi bul.",
+                "Yeni bir kurs veya seminer fikri aklına gelecek.",
+                "Bugün bir arkadaşın sana sürpriz yapacak.",
+                "Kısa bir seyahat planı yapabilirsin.",
+                "Dedikodudan uzak dur, itibarın önemli.",
+                "Bugün yaratıcı yazma çalışmaları yapabilirsin.",
+                "İş yerinde yeni bir proje teklifi alabilirsin.",
+                "Teknoloji ile aran iyi, yeni bir uygulama dene.",
+                "Bugün bir sırrı öğrenebilirsin.",
+                "Sohbet yeteneğinle herkesi büyüleyeceksin.",
+                "Bir arkadaş grubuyla buluşma planı.",
+                "Bugün kendini ifade etmekten çekinme.",
+                "Yeni bir müzik veya sanat keşfi yap.",
+                "Bugün bir anlaşmazlığı çözmek için iyi bir gün.",
+                "Finansal konularda ufak kazançlar.",
+                "Bugün evinde küçük bir değişiklik yap.",
+                "Bir iş görüşmesi olumlu geçebilir.",
+                "Bugün eski bir dostla bağlantı kur.",
+                "Zihnini dinlendirmek için meditasyon yap.",
+                "Bugün bir kitap okumaya başla.",
+                "Yeni bir beceri öğrenmek için fırsat.",
+                "Bugün karar verme günü, cesur ol.",
+                "Aşkta sürprizler seni bekliyor.",
+                "Bugün bir yarışmaya veya etkinliğe katıl.",
+                "Ay sonunda kendine bir ödül ver.",
+                "Yeni başlangıçlar için hazır ol."
             ],
-            "yengeç": ["Duygusal dalgalanmalar bugün seni zorlayabilir. Sevdiklerinle vakit geçirmek, evinde dinlenmek en iyisi olacak.",
-                "Evini güzelleştirecek değişiklikler yapmak için harika bir gün. Yeni bir dekorasyon fikri aklına düşebilir.",
-                "Anılar bugün canlanabilir, eski bir arkadaşından haber alabilirsin. Nostalji yapmak ruhunu dinlendirecek."
+            "yengeç": [
+                "Bugün duyguların çok yoğun. Ailenle vakit geçir.",
+                "Sezgilerin yüksek, bir yanılgıyı fark edeceksin.",
+                "Aşkta romantik anlar yaşayacaksın, partnerine sarıl.",
+                "Evinde yenilik yapmak isteyebilirsin.",
+                "Bugün bir arkadaşının sırrına ortak olabilirsin.",
+                "İş hayatında duygusal zekanla fark yarat.",
+                "Geçmişe takılıp kalma, geleceğe bak.",
+                "Bugün kendine küçük bir hediye al.",
+                "Yemek yapmak veya bir tarif denemek keyifli.",
+                "İçsel huzurun için meditasyon yap.",
+                "Aile büyüklerini ziyaret et.",
+                "Bugün bir özür veya teşekkür mesajı gönder.",
+                "Duygusal anılar canlanabilir.",
+                "Kariyerinde yeni bir adım atmak için iç sesini dinle.",
+                "Bugün bir sır paylaşmak isteyebilirsin.",
+                "Sevdiklerinle bir yemek planı.",
+                "Bugün kendini şımart, maske veya bakım yap.",
+                "Bir iş arkadaşınla samimi sohbet.",
+                "Bugün su kenarında yürüyüş yap.",
+                "Finansal konularda dikkatli ol.",
+                "Bugün evde dinlenme günü.",
+                "Yeni bir hobi olarak resim veya müzik dene.",
+                "Bugün bir yere davet edilebilirsin.",
+                "Rüyalarına dikkat et, ipuçları var.",
+                "Bugün birine yardım etmekten mutlu ol.",
+                "Kendine güven tazele.",
+                "Bugün yeni bir dostluk başlayabilir.",
+                "Aşkta sakin bir gün, iletişim önemli.",
+                "Bugün geçmişten ders alarak ilerle.",
+                "Ay sonunda ruhsal olarak yenilen.",
+                "Yeni bir dönem başlıyor, hazır ol."
             ],
-            "aslan": ["Spot ışıkları bugün senin üzerinde olacak! Yeteneklerini sergilemekten çekinme, harika geri dönüşler alacaksın.",
-                "Cömertliğinle herkesi kendine hayran bırakacaksın. Maddi konularda şanslı bir gün.",
-                "Yaratıcı projeler için ilham dolu bir gün. Aklındaki o fikri hayata geçirmek için ilk adımı atabilirsin."
+            "aslan": [
+                "Bugün spot ışıkları üzerinde! Harika bir fırsat seni bekliyor.",
+                "Cömertliğin ve neşen herkesi etkileyecek.",
+                "Aşkta büyük jestler yapabilirsin, partnerin çok mutlu olacak.",
+                "Kariyerinde terfi veya takdir alabilirsin.",
+                "Yaratıcılığını konuşturacak bir işe başla.",
+                "Bugün sosyal ortamda parlayacaksın.",
+                "Kendine güvenin tam, risk alabilirsin.",
+                "Bir arkadaşın sana sürpriz yapacak.",
+                "Bugün yeni bir macera planı yap.",
+                "Kibirli olma, alçak gönüllü davran.",
+                "Aşkta tutkulu bir gün, romantik akşam.",
+                "Finansal konularda cesur hamleler.",
+                "Bugün bir etkinlikte öne çık.",
+                "Liderlik özelliklerinle takımı yönlendir.",
+                "Sanat ile ilgili bir projede yer al.",
+                "Bugün bir seyahat planı yap.",
+                "Kendine bir ödül olarak güzel bir eşya al.",
+                "İletişimde net ol, karşındakini kırma.",
+                "Bugün bir sözleşme imzalayabilirsin.",
+                "Eğlenceli bir gece planı.",
+                "Bugün birine iltifat et, mutlu olacak.",
+                "Kariyer hedeflerini gözden geçir.",
+                "Bugün yeni bir yetenek keşfedebilirsin.",
+                "Aile büyüklerini onurlandır.",
+                "Bugün bir yarışmaya katıl.",
+                "Kendine inan, her şey mümkün.",
+                "Bugün bir arkadaşına destek ol.",
+                "Aşkta sadık ve bağlı ol.",
+                "Bugün karar verme gücün yüksek.",
+                "Ay sonunda kendini ödüllendir.",
+                "Yeni başlangıçlar için enerjin yüksek."
             ],
-            "başak": ["Detaylara takılıp büyük resmi kaçırma. Bugün biraz daha esnek olmaya çalış.",
-                "Sağlıkla ilgili konulara odaklanmak için uygun bir gün. Ertelediğin check-up'ı yaptırabilirsin.",
-                "Eleştirilerini yapıcı bir dille iletmeyi dene. Herkes senin kadar mükemmeliyetçi olmak zorunda değil."
+            "başak": [
+                "Bugün detaylara odaklan, mükemmel iş çıkaracaksın.",
+                "Eleştirilerini yapıcı bir dille ilet.",
+                "Aşkta mesafeli durma, duygularını paylaş.",
+                "Sağlık konularına dikkat et, spor yap.",
+                "İş hayatında titizliğinle fark yarat.",
+                "Bugün yeni bir düzenleme yap, evini düzenle.",
+                "Kendine zaman ayır, kitap oku.",
+                "Bir arkadaşına yardım etmekten çekinme.",
+                "Bugün bir eğitim veya kurs kaydı yap.",
+                "Finansal konularda hesaplı ol.",
+                "Bugün bir rapor veya sunum hazırla.",
+                "Sağlıklı beslenmeye özen göster.",
+                "Aşkta güven arayışı içindesin.",
+                "Bugün bir sözleşme veya anlaşma yapabilirsin.",
+                "Düzen ve planlama konusunda harikasın.",
+                "Bir iş arkadaşınla işbirliği yap.",
+                "Bugün kıyafetlerini gözden geçir.",
+                "Kendine küçük bir mola ver.",
+                "Bugün bir bitki veya çiçek al.",
+                "Meditasyon yaparak zihnini arındır.",
+                "Bir aile büyüğünü ziyaret et.",
+                "Bugün bir sorunu çözmek için pratik adımlar at.",
+                "Yeni bir diyet veya egzersiz programına başla.",
+                "Bugün bir arkadaşının dert ortağı ol.",
+                "Kendine güven, başaracaksın.",
+                "Bugün bir hediye al veya ver.",
+                "İş yerinde takdir göreceksin.",
+                "Aşkta sakin ve anlayışlı ol.",
+                "Bugün bir yazı yazmak isteyebilirsin.",
+                "Ay sonunda kendini dinle.",
+                "Yeni bir dönem için plan yap."
             ],
-            "terazi": ["Dengeyi bulmak için çabalayacaksın. Kendine zaman ayır, meditasyon veya sanatsal bir aktivite ruhunu besleyecek.",
-                "Bir anlaşmazlıkta arabulucu rolü üstlenebilirsin. Adalet duygun yükselecek.",
-                "Estetik bir dokunuş yapmak, yeni kıyafetler almak sana iyi gelecek. Bütçeni aşmamaya çalış."
+            "terazi": [
+                "Bugün adalet duygun ön planda, bir anlaşmazlığı çözeceksin.",
+                "Zarafetinle herkesi etkileyeceksin.",
+                "Aşkta romantizm dorukta, partnerini mutlu et.",
+                "Kararsız kalma, bir seçim yap ve ilerle.",
+                "Sosyal hayatında hareketlilik var.",
+                "Bugün bir sanat sergisi veya konser planı.",
+                "Diplomatik yaklaşımınla herkesi kazan.",
+                "Kariyerinde denge ve uyum sağla.",
+                "Finansal konularda ortak kararlar al.",
+                "Bugün bir arkadaşınla uzun bir sohbet.",
+                "Yeni bir hobi olarak dans veya müzik dene.",
+                "Evinde güzel bir düzenleme yap.",
+                "Bugün bir iş teklifi alabilirsin.",
+                "Kendine güven, kararlarında kararlı ol.",
+                "Aşkta uyum ve anlayış arayışı.",
+                "Bugün bir kitap okumaya başla.",
+                "Bir arkadaş grubuyla buluşma planı.",
+                "Yaratıcılığını konuşturan bir işe başla.",
+                "Bugün bir sır paylaşmak isteyebilirsin.",
+                "İletişimde nazik ve anlayışlı ol.",
+                "Bugün bir yere davet edilebilirsin.",
+                "Kariyer hedeflerini gözden geçir.",
+                "Bugün bir spor aktivitesi yap.",
+                "Aile ilişkilerinde denge kur.",
+                "Bugün birine yardım etmekten mutlu ol.",
+                "Kendine bir hedef belirle ve odaklan.",
+                "Bugün bir yarışmaya veya etkinliğe katıl.",
+                "Aşkta sakin ve anlayışlı ol.",
+                "Bugün karar verme günü, iç sesini dinle.",
+                "Ay sonunda kendini ödüllendir.",
+                "Yeni başlangıçlar için hazır ol."
             ],
-            "akrep": ["Gizli kalmış bir konu bugün aydınlanacak. Sezgilerine güven, yanılmayacaksın.",
-                "Tutkulu olduğun bir alanda derinleşmek için mükemmel bir gün. Araştırma yapmak, yeni şeyler öğrenmek seni canlandıracak.",
-                "Kıskançlık duyguların bugün yükselebilir. Onları kontrol etmeyi öğrenmek seni özgürleştirecek."
+            "akrep": [
+                "Bugün sezgilerin çok yüksek, bir sırrı çözeceksin.",
+                "Tutkun ve kararlısın, hedefine ulaş.",
+                "Aşkta kıskançlık duygularını kontrol et.",
+                "İş hayatında derinlemesine analiz yap.",
+                "Geçmişteki hesapları kapatma zamanı.",
+                "Bugün bir dönüşüm yaşayacaksın, olumlu.",
+                "Bir arkadaşına güvenme konusunda dikkatli ol.",
+                "Finansal konularda stratejik davran.",
+                "Bugün bir araştırma veya inceleme yap.",
+                "Kendine bir hedef koy ve kararlılıkla ilerle.",
+                "Aşkta sadakat çok önemli.",
+                "Bugün bir sır açığa çıkabilir.",
+                "İntikam duygularından uzak dur.",
+                "Bugün bir iş görüşmesi yapabilirsin.",
+                "Enerjini verimli kullan.",
+                "Bugün bir arkadaşın sana destek olacak.",
+                "Kariyerinde yeni bir sayfa aç.",
+                "Bugün bir psikoloji veya kişisel gelişim kitabı oku.",
+                "Duygularını bastırma, ifade et.",
+                "Bugün bir sözleşme imzalayabilirsin.",
+                "Sezgilerinle hareket et, yanılmazsın.",
+                "Bugün bir yere seyahat etme fikri.",
+                "Aşkta derin bağlar kur.",
+                "Bugün bir eğitime katıl.",
+                "Kendine güven, güçlüsün.",
+                "Bugün bir arkadaşının sırrına ortak olma.",
+                "Finansal konularda uzman görüşü al.",
+                "Bugün bir düşmanınla barışma zamanı.",
+                "Kendine bir ödül olarak güzel bir şey al.",
+                "Ay sonunda ruhsal olarak yenilen.",
+                "Yeni bir başlangıç için enerjin yüksek."
             ],
-            "yay": ["Macera arzun bugün tavan yapacak! Yeni bir hobi, seyahat planı ya da eğitim programı gündeme gelebilir.",
-                "Açık sözlülüğün bugün başına dert açmasın. Diplomatik olmayı dene.",
-                "Felsefi düşüncelere dalabilir, hayatın anlamını sorgulayabilirsin. Ufkunu açacak bir kitapla karşılaşabilirsin."
+            "yay": [
+                "Bugün macera ruhun tavan! Yeni yerler keşfet.",
+                "İyimserliğinle herkesi motive et.",
+                "Aşkta özgürlüğüne düşkünsün, ama bağlanmaktan korkma.",
+                "Kariyerinde uluslararası fırsatlar.",
+                "Bugün bir felsefi sohbet yap.",
+                "Seyahat planları yapmak için uygun.",
+                "Dürüstlüğün takdir edilecek.",
+                "Bugün yeni bir spor veya aktivite dene.",
+                "Finansal konularda şanslısın.",
+                "Bir arkadaşınla uzun bir yürüyüş.",
+                "Bugün bir eğitim veya seminer katıl.",
+                "Özgür ruhunla ilham ver.",
+                "Kendine hedef koy, büyük düşün.",
+                "Bugün bir yabancıyla tanışabilirsin.",
+                "Aşkta heyecan arayışı.",
+                "Bugün bir kitap okumaya başla.",
+                "Yaratıcı fikirlerinle fark yarat.",
+                "Bugün bir yarışmaya veya etkinliğe katıl.",
+                "İletişimde açık ve net ol.",
+                "Bugün bir sürpriz yapmak isteyebilirsin.",
+                "Kariyer hedeflerini büyüt.",
+                "Bugün bir seyahat planı yap.",
+                "Aile ilişkilerinde anlayışlı ol.",
+                "Bugün bir arkadaşına destek ol.",
+                "Kendine güven, başaracaksın.",
+                "Bugün yeni bir hobi edinebilirsin.",
+                "Finansal konularda cesur kararlar.",
+                "Bugün bir sözleşme imzalayabilirsin.",
+                "Aşkta sürprizler seni bekliyor.",
+                "Ay sonunda kendini ödüllendir.",
+                "Yeni başlangıçlar için hazır ol."
             ],
-            "oğlak": ["Kariyer basamaklarını tırmanmak için önemli bir adım atabilirsin. Sorumlulukların artsa da disiplininle üstesinden geleceksin.",
-                "Uzun vadeli hedeflerini gözden geçir. Planlarını güncellemek için uygun bir zaman.",
-                "Bir büyüğünden alacağın tavsiye, yolunu aydınlatacak. Tecrübeye kulak ver."
+            "oğlak": [
+                "Bugün disiplin ve azminle fark yarat.",
+                "Kariyerinde önemli bir adım atacaksın.",
+                "Sorumluluklarını yerine getir, takdir edileceksin.",
+                "Aşkta ciddiyet ve bağlılık ön planda.",
+                "Finansal konularda uzun vadeli planlar yap.",
+                "Bugün bir iş görüşmesi olumlu geçebilir.",
+                "Kendine zaman ayır, dinlen.",
+                "Bir büyüğünden tavsiye al.",
+                "Bugün bir hedef belirle ve ona odaklan.",
+                "Sabırlı ol, başarı zamanla gelecek.",
+                "Bugün bir eğitim veya kurs kaydı yap.",
+                "Aile ilişkilerinde denge kur.",
+                "Kariyerinde terfi veya zam alabilirsin.",
+                "Bugün bir yatırım fırsatı değerlendir.",
+                "İş arkadaşlarınla uyumlu çalış.",
+                "Bugün bir rapor veya sunum hazırla.",
+                "Kendine güven, kararlısın.",
+                "Bugün bir kitap okumaya başla.",
+                "Finansal konularda dikkatli ve hesaplı ol.",
+                "Aşkta sadık ve güvenilir ol.",
+                "Bugün bir arkadaşına yardım et.",
+                "Kariyer hedeflerini gözden geçir.",
+                "Bugün bir spor yaparak stres at.",
+                "Aile büyüklerini ziyaret et.",
+                "Bugün bir sözleşme imzalayabilirsin.",
+                "Kendine bir hedef koy ve çalış.",
+                "Bugün bir yarışmaya veya etkinliğe katıl.",
+                "Aşkta sakin ve anlayışlı ol.",
+                "Bugün karar verme günü.",
+                "Ay sonunda kendini ödüllendir.",
+                "Yeni bir dönem için plan yap."
             ],
-            "kova": ["Sıra dışı fikirlerinle bugün dikkat çekeceksin. Paylaşmaktan çekinme, beklenmedik bir destek bulabilirsin.",
-                "Arkadaş çevrende beklenmedik bir gelişme olabilir. Yeni insanlarla tanışmak ufkunu açacak.",
-                "Özgürlüğüne düşkünlüğün bugün seni yalnızlaştırabilir. Sevdiklerine zaman ayırmayı ihmal etme."
+            "kova": [
+                "Bugün yenilikçi fikirlerinle herkesi şaşırt.",
+                "Özgürlüğüne düşkünsün, ama yalnız kalma.",
+                "Aşkta arkadaşlık ve entelektüel bağ önemli.",
+                "Kariyerinde teknoloji ile ilgili fırsatlar.",
+                "Bugün bir sivil toplum kuruluşuna katılabilirsin.",
+                "Sıra dışı düşüncelerinle fark yarat.",
+                "Bir arkadaşınla derin sohbet.",
+                "Bugün yeni bir icat veya proje üzerinde çalış.",
+                "Finansal konularda alternatif yollar dene.",
+                "Bugün bir seyahat planı yap.",
+                "Kendine özgü stillerinle dikkat çek.",
+                "Bugün bir eğitim veya seminer katıl.",
+                "İnsanlara yardım etmekten mutlu ol.",
+                "Bugün bir sır paylaşmak isteyebilirsin.",
+                "Aşkta özgürlük ve bağımsızlık.",
+                "Bugün bir yarışmaya veya etkinliğe katıl.",
+                "Yaratıcı projelerde yer al.",
+                "Bugün bir arkadaşını ziyaret et.",
+                "İletişimde net ve açık ol.",
+                "Bugün yeni bir teknoloji dene.",
+                "Kariyer hedeflerini büyüt.",
+                "Bugün bir kitap okumaya başla.",
+                "Aile ilişkilerinde anlayışlı ol.",
+                "Bugün bir arkadaşına destek ol.",
+                "Kendine güven, sıra dışısın.",
+                "Bugün bir sözleşme imzalayabilirsin.",
+                "Finansal konularda cesur kararlar.",
+                "Bugün bir spor aktivitesi yap.",
+                "Aşkta sürprizler seni bekliyor.",
+                "Ay sonunda kendini ödüllendir.",
+                "Yeni başlangıçlar için hazır ol."
             ],
-            "balık": ["Sezgilerin bugün inanılmaz güçlü olacak. İç sesini dinle, doğru yolu sana gösterecek.",
-                "Rüyaların bu gece sana önemli mesajlar taşıyabilir. Uyandığında not almayı unutma.",
-                "Duygusal olarak hassaslaşabilirsin, kendini korumayı bil. Yardım etme isteğin başkaları tarafından suistimal edilebilir."
+            "balık": [
+                "Bugün hayal gücün ve sezgilerin çok güçlü.",
+                "Sanatsal bir işe başlamak için harika bir gün.",
+                "Aşkta romantik ve fedakar ol.",
+                "Empati yeteneğinle herkesi anlarsın.",
+                "Bugün bir müzik veya resim etkinliğine katıl.",
+                "Duygusal dalgalanmalara dikkat et.",
+                "Bir arkadaşına yardım etmekten mutlu ol.",
+                "Bugün bir sır açığa çıkabilir.",
+                "Finansal konularda dikkatli ol.",
+                "Bugün bir kitap okumaya başla.",
+                "Kendine zaman ayır, dinlen.",
+                "Aile ilişkilerinde anlayışlı ol.",
+                "Bugün bir yere seyahat etme fikri.",
+                "Kariyerinde yaratıcılığını konuştur.",
+                "Bugün bir eğitim veya kurs kaydı yap.",
+                "Sezgilerinle hareket et, doğru kararlar al.",
+                "Bugün bir arkadaşınla uzun bir sohbet.",
+                "Aşkta masalsı bir gün.",
+                "Bugün bir sözleşme imzalayabilirsin.",
+                "Kendine güven, hayallerini gerçekleştir.",
+                "Bugün bir spor aktivitesi yap.",
+                "Finansal konularda yardım al.",
+                "Bugün bir yarışmaya veya etkinliğe katıl.",
+                "Aile büyüklerini ziyaret et.",
+                "Bugün bir arkadaşına destek ol.",
+                "Kendine bir hedef belirle.",
+                "Bugün yeni bir hobi edinebilirsin.",
+                "Aşkta sadık ve anlayışlı ol.",
+                "Bugün karar verme günü.",
+                "Ay sonunda kendini ödüllendir.",
+                "Yeni bir dönem için hazır ol."
             ]
         };
 
-        const tarotKartlari = [
-            { emoji: "🃏", isim: "Mecnun (The Fool)", anlam: "Yeni başlangıçlar ve macera seni bekliyor." },
-            { emoji: "🧙", isim: "Büyücü (The Magician)", anlam: "Tüm yeteneklerin ve kaynakların emrinde." },
-            { emoji: "👸", isim: "Baş Rahibe (High Priestess)", anlam: "Sezgilerin bugün aşırı yüksek." },
-            { emoji: "👑", isim: "İmparatoriçe (Empress)", anlam: "Bereket, bolluk ve yaratıcılık günü." },
-            { emoji: "🤴", isim: "İmparator (Emperor)", anlam: "Otorite ve disiplin ön planda." },
-            { emoji: "⛪", isim: "Aziz (Hierophant)", anlam: "Geleneklere ve manevi değerlere dönüş zamanı." },
-            { emoji: "💑", isim: "Aşıklar (The Lovers)", anlam: "Önemli bir seçim kapıda. Kalbini dinle." },
-            { emoji: "🚗", isim: "Araba (The Chariot)", anlam: "Zafer seni bekliyor. Engelleri aşmak için irade gücünü kullan." },
-            { emoji: "🦁", isim: "Güç (Strength)", anlam: "İçsel gücün ve cesaretin yüzeye çıkıyor." },
-            { emoji: "🧙‍♂️", isim: "Ermiş (The Hermit)", anlam: "Yalnız kalma ve içe dönme zamanı." },
-            { emoji: "🎡", isim: "Kader Çarkı (Wheel of Fortune)", anlam: "Şans ve değişim rüzgarları esiyor." },
-            { emoji: "⚖️", isim: "Adalet (Justice)", anlam: "Hak ettiğin karşılığı alacaksın." },
-            { emoji: "🙃", isim: "Asılan Adam (The Hanged Man)", anlam: "Beklemeyi ve fedakarlığı öğreniyorsun." },
-            { emoji: "💀", isim: "Ölüm (Death)", anlam: "Büyük bir dönüşümün eşiğindesin." },
-            { emoji: "😇", isim: "Denge (Temperance)", anlam: "Sabır ve uyum günü." },
-            { emoji: "😈", isim: "Şeytan (The Devil)", anlam: "Bağımlılıkların ve korkularınla yüzleşme zamanı." },
-            { emoji: "🏰", isim: "Kule (The Tower)", anlam: "Ani ve sarsıcı değişimler kapıda." },
-            { emoji: "⭐", isim: "Yıldız (The Star)", anlam: "Umut ve ilham seninle." },
-            { emoji: "🌙", isim: "Ay (The Moon)", anlam: "Yanılsamalara dikkat et." },
-            { emoji: "☀️", isim: "Güneş (The Sun)", anlam: "Aydınlık ve mutluluk seni sarıyor." },
-            { emoji: "📯", isim: "Yargı (Judgement)", anlam: "Geçmişinle yüzleş ve kendini affet." },
-            { emoji: "🌍", isim: "Dünya (The World)", anlam: "Bir döngü tamamlanıyor, büyük bir başarıya imza atıyorsun." }
-        ];
+        // Günlük yorum fonksiyonu (tarihe göre indeks)
+        function getDailyCommentDetayli(burc) {
+            const t = new Date();
+            const gun = t.getDate(); // 1-31
+            const index = (gun - 1) % 31; // 0-30
+            const list = gunlukYorum31[burc];
+            if (list && list.length > index) return list[index];
+            return "Bugün için özel bir yorum bulunamadı, ama yıldızlar seninle.";
+        }
 
-        function getDailyTarotCards() {
+        // ==========================================================================
+        // TAROT - 31 GÜNLÜK KART ÇEKİMLERİ
+        // ==========================================================================
+        // Her gün için 3 kart (geçmiş, bugün, gelecek) - önceden belirlenmiş 31 farklı kombinasyon
+        const tarotGunluk = [];
+        (function generateTarotDaily() {
+            const allCards = tarotKartlari; // tanımlı
+            // Deterministik olarak 31 gün için 3'er kart seç
+            for (let d = 0; d < 31; d++) {
+                const seed = d * 7 + 13;
+                const shuffled = [...allCards];
+                let rand = seed;
+                for (let i = shuffled.length - 1; i > 0; i--) {
+                    rand = (rand * 16807 + 0) % 2147483647;
+                    const j = rand % (i + 1);
+                    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+                }
+                const pozisyonlar = ["Geçmiş", "Bugün", "Gelecek"];
+                const emojiler = ["🌙", "☀️", "⭐"];
+                const secili = [];
+                for (let p = 0; p < 3; p++) {
+                    secili.push({
+                        ...shuffled[p],
+                        pozisyon: pozisyonlar[p],
+                        pozIkon: emojiler[p]
+                    });
+                }
+                tarotGunluk.push(secili);
+            }
+        })();
+
+        function getDailyTarot() {
             const t = new Date();
             const gun = t.getDate();
-            const ay = t.getMonth() + 1;
-            const yil = t.getFullYear();
-            const seed = yil * 10000 + ay * 100 + gun;
-            const shuffled = [...tarotKartlari];
-            let rand = seed;
-            for (let i = shuffled.length - 1; i > 0; i--) {
-                rand = (rand * 16807 + 0) % 2147483647;
-                const j = rand % (i + 1);
-                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-            }
-            const pozisyonlar = [{ ad: "Geçmiş", ikon: "🌙" }, { ad: "Bugün", ikon: "☀️" }, { ad: "Gelecek", ikon: "⭐" }];
-            return pozisyonlar.map((poz, i) => ({ ...shuffled[i], pozisyon: poz.ad, pozIkon: poz.ikon }));
+            const index = (gun - 1) % 31;
+            return tarotGunluk[index] || tarotGunluk[0];
+        }
+
+        function renderTarotGunluk() {
+            const container = document.getElementById('tarot-gunluk-container');
+            const cards = getDailyTarot();
+            const today = new Date().toLocaleDateString('tr-TR');
+            let html = `<div class="tarot-gunluk"><div class="tarih">📅 ${today} - Günün Tarot Kartları</div><div class="tarot-cards-row">`;
+            cards.forEach((kart, idx) => {
+                html += `
+                    <div class="tarot-card-wrap" onclick="flipTarotCard(this)">
+                        <div class="tarot-card">
+                            <div class="tarot-card-front">
+                                <span class="mystic-eye">🔮</span>
+                                <span class="mystic-text">${kart.pozisyon.toUpperCase()}</span>
+                            </div>
+                            <div class="tarot-card-back">
+                                <span class="tarot-pozisyon">${kart.pozIkon} ${kart.pozisyon}</span>
+                                <span class="tarot-emoji">${kart.emoji}</span>
+                                <span class="tarot-isim">${kart.isim}</span>
+                                <span class="tarot-anlam">${kart.anlam}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            html += `</div></div>`;
+            container.innerHTML = html;
+        }
+
+        function flipTarotCard(el) {
+            el.querySelector('.tarot-card').classList.toggle('flipped');
         }
 
         // ==========================================================================
         // BURÇ MODAL
         // ==========================================================================
-        function openBurcModal() { document.getElementById("burc-modal").classList.add("show");
-            initBurcModal(); }
+        function openBurcModal() {
+            document.getElementById("burc-modal").classList.add("show");
+            initBurcModal();
+        }
 
-        function closeBurcModal() { document.getElementById("burc-modal").classList.remove("show"); }
+        function closeBurcModal() {
+            document.getElementById("burc-modal").classList.remove("show");
+        }
 
         function initBurcModal() {
             renderBurcGrid();
             renderHikayeListesi();
-            initTarotCards();
+            renderTarotGunluk();
             initAskUyumuSelect();
             initHaritaSehirSelect();
             document.getElementById("burc-detail-wrap").innerHTML = "";
             document.getElementById("harita-sonuc").innerHTML = "";
             document.getElementById("ask-sonuc").innerHTML = "";
             document.getElementById("quiz-icerik").innerHTML = "";
+            document.getElementById("isim-sonuc").innerHTML = "";
             quizAdimi = 0;
             quizPuanlar = {};
             switchBurcSection('burclar');
@@ -1115,12 +1851,14 @@
 
         function switchBurcSection(s) {
             document.querySelectorAll('.burc-section').forEach(sec => sec.classList.remove('active'));
-            document.getElementById('section-' + s).classList.add('active');
+            const target = document.getElementById('section-' + s);
+            if (target) target.classList.add('active');
             if (s === 'hikayeler') renderHikayeListesi();
-            if (s === 'tarot') initTarotCards();
+            if (s === 'tarot') renderTarotGunluk();
             if (s === 'quiz' && quizAdimi === 0) baslatQuiz();
             if (s === 'ask') initAskUyumuSelect();
             if (s === 'harita') initHaritaSehirSelect();
+            if (s === 'isim') document.getElementById('isim-sonuc').innerHTML = "";
         }
 
         function renderBurcGrid() {
@@ -1137,7 +1875,7 @@
             if (!d) return;
             document.querySelectorAll('.burc-card').forEach(c => c.classList.remove('selected'));
             document.querySelector(`.burc-card[onclick="selectBurc('${key}')"]`)?.classList.add('selected');
-            const yorum = getDailyComment(key);
+            const yorum = getDailyCommentDetayli(key);
             const wrap = document.getElementById("burc-detail-wrap");
             wrap.innerHTML = `
                 <div class="burc-detail-wrap">
@@ -1153,15 +1891,8 @@
             wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
-        function getDailyComment(burc) {
-            const t = new Date();
-            const d = Math.floor((t - new Date(t.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
-            const p = gunlukYorumHavuzu[burc] || ["Bugün için yorum bulunamadı."];
-            return p[d % p.length];
-        }
-
         // ==========================================================================
-        // DOĞUM HARİTASI
+        // DOĞUM HARİTASI + GRAFİK
         // ==========================================================================
         const turkiyeSehirleri = ["Adana", "Adıyaman", "Afyonkarahisar", "Ağrı", "Aksaray", "Amasya", "Ankara", "Antalya",
             "Ardahan", "Artvin", "Aydın", "Balıkesir", "Bartın", "Batman", "Bayburt", "Bilecik", "Bingöl", "Bitlis",
@@ -1211,22 +1942,199 @@
             const yerelSaat = (parseInt(saat.split(':')[0]) || 12) + (parseInt(saat.split(':')[1]) || 0) / 60 - saatDilimi;
             const yukselenDerece = safeMod(yerelSaat * 15 + enlem * 0.8 + gunFarki * 0.9856, 360);
             const yukselenBurcIndex = Math.floor(yukselenDerece / 30);
+
+            // Gezegen konumlarını hesapla
+            const gezegenKonumlari = gezegenler.map(g => {
+                const derece = safeMod(g.baslangic + g.hiz * gunFarki, 360);
+                const burcIndex = Math.floor(derece / 30);
+                return { ad: g.ad, derece: derece, burcIndex: burcIndex, burc: burclar[burcIndex] };
+            });
+
+            // HTML çıktısı
             let html = `
                 <div class="harita-sonuc">
                     <h4 style="color:#c084fc;margin:0 0 12px;">✨ ${isim} İçin Doğum Haritası</h4>
                     <p style="font-size:11px;color:rgba(255,255,255,0.5);">📍 ${sehir.charAt(0).toUpperCase()+sehir.slice(1)} • ${dt.toLocaleDateString('tr-TR')} • ${saat}</p>
                     <p style="font-size:13px;color:#c084fc;font-weight:700;">🌅 Yükselen Burç: ${burcEmojileri[yukselenBurcIndex]} ${burclar[yukselenBurcIndex].charAt(0).toUpperCase()+burclar[yukselenBurcIndex].slice(1)}</p>`;
-            gezegenler.forEach(g => {
-                const derece = safeMod(g.baslangic + g.hiz * gunFarki, 360);
-                const burcIndex = Math.floor(derece / 30);
+            gezegenKonumlari.forEach(g => {
                 html +=
-                    `<div class="harita-gezegen"><span>${g.ad}</span><span>${burcEmojileri[burcIndex]} ${burclar[burcIndex].charAt(0).toUpperCase()+burclar[burcIndex].slice(1)} (${Math.floor(derece%30)}°)</span></div>`;
+                    `<div class="harita-gezegen"><span>${g.ad}</span><span>${burcEmojileri[g.burcIndex]} ${g.burc.charAt(0).toUpperCase()+g.burc.slice(1)} (${Math.floor(g.derece%30)}°)</span></div>`;
             });
-            const gunesDerece = safeMod(gezegenler[0].baslangic + gezegenler[0].hiz * gunFarki, 360);
+            const gunesDerece = gezegenKonumlari[0].derece;
             const gunesBurcIndex = Math.floor(gunesDerece / 30);
             html +=
                 `<div class="harita-aciklama">🔮 <strong>${isim}</strong>, Güneş burcun <strong>${burclar[gunesBurcIndex].charAt(0).toUpperCase()+burclar[gunesBurcIndex].slice(1)}</strong>, yükselen burcun ise <strong>${burclar[yukselenBurcIndex].charAt(0).toUpperCase()+burclar[yukselenBurcIndex].slice(1)}</strong>. Bu kombinasyon, dışarıdan ${burclar[yukselenBurcIndex].charAt(0).toUpperCase()+burclar[yukselenBurcIndex].slice(1)} gibi görünürken iç dünyanda ${burclar[gunesBurcIndex].charAt(0).toUpperCase()+burclar[gunesBurcIndex].slice(1)} gibi hissettiğini gösteriyor.</div></div>`;
             document.getElementById("harita-sonuc").innerHTML = html;
+
+            // Grafik çizimi
+            drawHaritaGrafigi(gezegenKonumlari, yukselenBurcIndex, burclar, burcEmojileri);
+        }
+
+        function drawHaritaGrafigi(gezegenKonumlari, yukselenIndex, burclar, burcEmojileri) {
+            const canvas = document.getElementById('harita-canvas');
+            canvas.style.display = 'block';
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width,
+                height = canvas.height;
+            const cx = width / 2,
+                cy = height / 2,
+                radius = 160;
+
+            ctx.clearRect(0, 0, width, height);
+            // Arkaplan
+            const grad = ctx.createRadialGradient(cx, cy, 10, cx, cy, radius + 20);
+            grad.addColorStop(0, '#1a1a2e');
+            grad.addColorStop(1, '#0a0a12');
+            ctx.fillStyle = grad;
+            ctx.beginPath();
+            ctx.arc(cx, cy, radius + 20, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Burç dilimleri (12 adet)
+            const sliceAngle = (2 * Math.PI) / 12;
+            for (let i = 0; i < 12; i++) {
+                const startAngle = i * sliceAngle - Math.PI / 2;
+                const endAngle = (i + 1) * sliceAngle - Math.PI / 2;
+                ctx.beginPath();
+                ctx.moveTo(cx, cy);
+                ctx.arc(cx, cy, radius, startAngle, endAngle);
+                ctx.closePath();
+                ctx.fillStyle = (i % 2 === 0) ? 'rgba(255,255,255,0.03)' : 'rgba(255,255,255,0.06)';
+                ctx.fill();
+                ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+
+                // Burç sembolü
+                const angle = (i + 0.5) * sliceAngle - Math.PI / 2;
+                const labelR = radius + 22;
+                const x = cx + labelR * Math.cos(angle);
+                const y = cy + labelR * Math.sin(angle);
+                ctx.fillStyle = 'rgba(255,255,255,0.6)';
+                ctx.font = '12px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(burcEmojileri[i], x, y);
+            }
+
+            // Gezegenleri çiz
+            const gezegenRenkleri = {
+                "Güneş": '#ffd700',
+                "Ay": '#c0c0c0',
+                "Merkür": '#b0b0b0',
+                "Venüs": '#ff69b4',
+                "Mars": '#ff4500',
+                "Jüpiter": '#ffa500',
+                "Satürn": '#d2b48c',
+                "Uranüs": '#00bfff',
+                "Neptün": '#4169e1',
+                "Plüton": '#8a2be2'
+            };
+            gezegenKonumlari.forEach((g, idx) => {
+                const angle = g.derece * (Math.PI / 180) - Math.PI / 2;
+                const dist = radius * 0.75 + (idx % 3) * 8; // hafif kaydırma
+                const x = cx + dist * Math.cos(angle);
+                const y = cy + dist * Math.sin(angle);
+                const color = gezegenRenkleri[g.ad] || '#ffffff';
+                ctx.beginPath();
+                ctx.arc(x, y, 6, 0, Math.PI * 2);
+                ctx.fillStyle = color;
+                ctx.shadowColor = color;
+                ctx.shadowBlur = 15;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+                ctx.fillStyle = '#fff';
+                ctx.font = '8px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'bottom';
+                ctx.fillText(g.ad, x, y - 8);
+            });
+
+            // Yükselen işareti
+            const yukselenAngle = yukselenIndex * sliceAngle + sliceAngle / 2 - Math.PI / 2;
+            const yx = cx + (radius + 12) * Math.cos(yukselenAngle);
+            const yy = cy + (radius + 12) * Math.sin(yukselenAngle);
+            ctx.fillStyle = '#ff6b6b';
+            ctx.font = 'bold 18px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('⬆', yx, yy);
+        }
+
+        // ==========================================================================
+        // İSİM ANALİZİ (Numeroloji)
+        // ==========================================================================
+        function isimAnalizYap() {
+            const input = document.getElementById('isim-analiz-input');
+            const isim = input.value.trim();
+            if (!isim) { showToast("Lütfen bir isim girin."); return; }
+            // Harf değerleri (A=1, B=2, ... Z=26)
+            const alfabe = 'abcdefghijklmnopqrstuvwxyz';
+            const harfDegerleri = {};
+            for (let i = 0; i < alfabe.length; i++) {
+                harfDegerleri[alfabe[i]] = i + 1;
+            }
+            const temizIsim = isim.toLowerCase().replace(/[^a-zçğıöşü]/g, '');
+            // Türkçe harfleri eşleştir (ç=4, ğ=8, ı=9, i=9, ö=15, ş=19, ü=21)
+            const trMap = { 'ç': 4, 'ğ': 8, 'ı': 9, 'ö': 15, 'ş': 19, 'ü': 21 };
+            let toplam = 0;
+            for (let ch of temizIsim) {
+                if (trMap[ch]) toplam += trMap[ch];
+                else if (harfDegerleri[ch]) toplam += harfDegerleri[ch];
+            }
+            // Numerolojik sayı (tek haneye indir)
+            let sayi = toplam;
+            while (sayi > 9 && sayi !== 11 && sayi !== 22) {
+                let s = 0;
+                while (sayi > 0) { s += sayi % 10;
+                    sayi = Math.floor(sayi / 10); }
+                sayi = s;
+            }
+            // Anlamlar
+            const anlamlar = {
+                1: "Lider, bağımsız, öncü, cesur.",
+                2: "Uyumlu, işbirlikçi, duyarlı, diplomat.",
+                3: "Yaratıcı, neşeli, sosyal, sanatçı ruh.",
+                4: "Çalışkan, disiplinli, pratik, güvenilir.",
+                5: "Özgür ruhlu, maceracı, meraklı, değişken.",
+                6: "Sorunlu, şefkatli, sorumlu, aile odaklı.",
+                7: "Analitik, içe dönük, araştırmacı, bilge.",
+                8: "Başarı odaklı, hırslı, maddi güç, yönetici.",
+                9: "İdealist, fedakar, insancıl, sanatçı.",
+                11: "Sezgisel, aydınlanmış, ilham verici (usta sayı).",
+                22: "Büyük vizyon, pratik deha, usta inşaatçı (usta sayı)."
+            };
+            const ozet = anlamlar[sayi] || "Benzersiz bir karakter.";
+
+            // Kişilik profili (basit)
+            const profiller = {
+                1: "Doğal lider, girişimci, bağımsız. Yalnız çalışmayı tercih edersin.",
+                2: "Barış yapıcı, duyarlı, işbirlikçi. Takım oyuncususun.",
+                3: "Sanatçı ruh, sosyal, esprili. İlham verirsin.",
+                4: "Disiplinli, güvenilir, pratik. Sağlam temeller inşa edersin.",
+                5: "Maceraperest, meraklı, özgür. Değişimi seversin.",
+                6: "Şefkatli, sorumlu, koruyucu. Aile odaklısın.",
+                7: "Analitik, derin düşünür, araştırmacı. Yalnızlığı seversin.",
+                8: "Hırslı, başarılı, güçlü. Maddi hedeflere odaklısın.",
+                9: "İdealist, fedakar, insancıl. Dünyayı değiştirmek istersin.",
+                11: "Sezgisel, ilham verici, ruhsal lider. Yüksek farkındalığın var.",
+                22: "Büyük vizyoner, pratik deha, gerçekleştirici. Hayalleri eyleme dökersin."
+            };
+            const profil = profiller[sayi] || "Karmaşık ve çok yönlü bir kişiliğin var.";
+
+            const sonucDiv = document.getElementById('isim-sonuc');
+            sonucDiv.innerHTML = `
+                <div class="isim-sonuc">
+                    <div class="baslik">🔤 ${isim.toUpperCase()} - Numeroloji Analizi</div>
+                    <div class="sayilar">
+                        <div class="sayi-kutu"><span>Toplam Harf Değeri</span><div class="deger">${toplam}</div></div>
+                        <div class="sayi-kutu"><span>Kader Sayısı</span><div class="deger">${sayi}</div></div>
+                    </div>
+                    <div class="detay"><strong>📖 Anlam:</strong> ${ozet}</div>
+                    <div class="detay" style="margin-top:8px;"><strong>🧬 Kişilik Profili:</strong> ${profil}</div>
+                    <div class="detay" style="margin-top:8px;font-size:11px;color:rgba(255,255,255,0.4);">* Numeroloji, harflerin sayısal değerlerine dayalı bir yorumdur.</div>
+                </div>
+            `;
         }
 
         // ==========================================================================
@@ -1272,31 +2180,6 @@
                     <div class="uyum-detay">${yorum}</div>
                 </div>`;
         }
-
-        // ==========================================================================
-        // TAROT
-        // ==========================================================================
-        function initTarotCards() {
-            const container = document.getElementById("tarot-cards-row");
-            const cards = getDailyTarotCards();
-            container.innerHTML = cards.map((kart, index) => `
-                <div class="tarot-card-wrap" onclick="flipTarotCard(this)">
-                    <div class="tarot-card">
-                        <div class="tarot-card-front">
-                            <span class="mystic-eye">🔮</span>
-                            <span class="mystic-text">${kart.pozisyon.toUpperCase()}</span>
-                        </div>
-                        <div class="tarot-card-back">
-                            <span class="tarot-pozisyon">${kart.pozIkon} ${kart.pozisyon}</span>
-                            <span class="tarot-emoji">${kart.emoji}</span>
-                            <span class="tarot-isim">${kart.isim}</span>
-                            <span class="tarot-anlam">${kart.anlam}</span>
-                        </div>
-                    </div>
-                </div>`).join('');
-        }
-
-        function flipTarotCard(el) { el.querySelector('.tarot-card').classList.toggle('flipped'); }
 
         // ==========================================================================
         // BURÇ QUIZ
@@ -1436,7 +2319,7 @@
         function toggleHikaye(el) { el.classList.toggle("open"); }
 
         // ==========================================================================
-        // TENGRİ
+        // TENGRİ DEDEKTÖRÜ
         // ==========================================================================
         let isTengriActive = false;
 
@@ -1446,7 +2329,7 @@
             const has = v1.includes("tengri") || v2.includes("tengri");
             const ov = document.getElementById("tengri-overlay");
             const btns = document.querySelectorAll(
-                "button,.tab-btn,.player-btn,.theme-dot,.coffee-btn-premium,.burc-btn-premium");
+                "button,.tab-btn,.player-btn,.theme-dot,.coffee-btn-premium,.burc-btn-premium,.player-selector-btn");
             if (has && !isTengriActive) {
                 isTengriActive = true;
                 ov.style.display = "block";
@@ -1461,430 +2344,40 @@
         }
 
         // ==========================================================================
-        // BUNU BİLİYOR MUYDUN? – 220+ TEYİTLİ, EĞLENCELİ BİLGİ
+        // BUNU BİLİYOR MUYDUN? – RASTGELE TEKRARSIZ
         // ==========================================================================
         const funFacts = [
             "Ahtapotların 3 kalbi vardır. İkisi solungaçlara, biri ise vücudun geri kalanına kan pompalar.",
-            "Muz aslında botanik olarak bir meyveden çok bir çeşit \"berry\" (üzümsü meyve) kabul edilir.",
-            "Dünyadaki karıncaların toplam ağırlığının, insanlığın toplam ağırlığına yakın olduğu tahmin edilir.",
+            "Muz aslında botanik olarak bir meyveden çok bir çeşit 'berry' kabul edilir.",
+            "Dünyadaki karıncaların toplam ağırlığı, insanlığın toplam ağırlığına yakındır.",
             "Köpekbalıkları, dinozorlardan yaklaşık 150 milyon yıl daha eskidir.",
             "Venüs'te bir gün, bir yıldan daha uzundur.",
-            "Kutup ayılarının derisi siyah, tüyleri ise aslında şeffaftır.",
+            "Kutup ayılarının derisi siyah, tüyleri şeffaftır.",
             "İnsan burnu yaklaşık 1 trilyon farklı kokuyu ayırt edebilir.",
             "Su samurları uyurken birbirlerini kaybetmemek için el ele tutuşabilir.",
             "Koalaların parmak izleri, insan parmak izlerine şaşırtıcı derecede benzer.",
-            "Dünya üzerindeki altının büyük kısmının çekirdekte bulunduğu düşünülüyor.",
-            "Ahtapotlar dar oldukları sürece neredeyse her delikten geçebilir; çünkü kemikleri yoktur.",
-            "Penguenler eşlerine küçük taşlar hediye ederek kur yapabilir.",
+            "Dünya üzerindeki altının büyük kısmı çekirdekte bulunuyor.",
+            "Ahtapotlar kemikleri olmadığı için dar alanlardan geçebilir.",
+            "Penguenler eşlerine küçük taşlar hediye eder.",
             "Gözlerini açık tutarak hapşırmak neredeyse imkânsızdır.",
-            "Uzay tamamen sessizdir; çünkü sesin yayılması için hava gerekir.",
-            "Kalbin, vücuttaki tüm damarlar uç uca eklense yaklaşık 100.000 kilometre uzunluğunda bir ağ oluşur.",
-            "Sıcak su, bazı koşullarda soğuk sudan daha hızlı donabilir. Buna Mpemba etkisi denir.",
+            "Uzay tamamen sessizdir, çünkü ses için hava gerekir.",
+            "Kalp ve damar ağı 100.000 km uzunluğundadır.",
+            "Sıcak su bazı koşullarda soğuk sudan daha hızlı donar (Mpemba etkisi).",
             "Göz kırpmak yaklaşık 0,1 saniye sürer.",
-            "Baykuşlar başlarını yaklaşık 270 derece döndürebilir.",
-            "Denizatı çiftlerinde yavruları taşıyan erkek bireydir.",
-            "Ay'da yürüyen astronotların ayak izleri milyonlarca yıl kalabilir.",
-            "Devekuşunun gözü, beyninden daha büyüktür.",
-            "Cam, teknik olarak tamamen katı değil; çok yavaş akan amorf bir yapıdır.",
-            "Kediler yaklaşık 100 farklı ses çıkarabilir; köpekler ise bunun çok daha azını.",
-            "Gökkuşağı aslında tam bir dairedir; biz yerden sadece üst kısmını görürüz.",
-            "Dünya'daki oksijenin büyük kısmı ormanlardan değil, okyanuslardaki mikroskobik canlılardan gelir.",
+            "Baykuşlar başlarını 270 derece döndürebilir.",
+            "Denizatında yavruları erkek taşır.",
+            "Ay'daki ayak izleri milyonlarca yıl kalabilir.",
+            "Devekuşunun gözü beyninden büyüktür.",
+            "Cam, çok yavaş akan amorf bir yapıdır.",
+            "Kediler 100 farklı ses çıkarabilir, köpekler çok daha az.",
+            "Gökkuşağı aslında tam bir dairedir.",
+            "Oksijenin çoğu okyanuslardaki mikroskobik canlılardan gelir.",
             "Yılanlar göz kapaklarını kapatamaz.",
-            "Filler zıplayamayan memelilerdendir.",
-            "İnsan beyni, vücudun kullandığı enerjinin yaklaşık %20'sini tek başına tüketir.",
-            "Dünya'daki tüm kıtalar, yılda birkaç santimetre hareket etmeye devam eder.",
-            "Bir kartal, insan gözünden yaklaşık 4-5 kat daha keskin görebilir.",
-            "Dünyadaki tüm insanları omuz omuza dizsen, sadece İstanbul'un yüzölçümünden çok daha küçük bir alana sığarlar.",
-            "Bir bulutun ağırlığı 100 fili geçebilir.",
-            "Kargalar insan yüzlerini yıllarca unutmaz ve kendilerine kötülük yapan kişileri tanıyabilir.",
-            "Bazı papağanlar, anlamını öğrendikleri kelimeleri doğru bağlamda kullanabilir.",
-            "Balinalar birbirlerine yüzlerce kilometre uzaklıktan seslenebilir.",
-            "Deniz samurları en sevdikleri taşı yıllarca yanlarında taşır.",
-            "Ağaçlar, böcek saldırısına uğradıklarında çevredeki ağaçlara kimyasal \"tehlike\" sinyali gönderebilir.",
-            "Karıncalar savaş yapar, asker yetiştirir ve hatta bazı türleri başka karınca kolonelerini köleleştirir.",
-            "Bir salyangozun binlerce minik dişi olabilir.",
-            "Bazı mantarlar, yıldırım düştükten sonra daha hızlı büyüyebilir.",
-            "Geceleri gökyüzünde gördüğün bazı yıldızların ışığı, sen doğmadan çok önce yola çıktı.",
-            "Venüs'te Güneş batıdan doğup doğudan batar.",
-            "Uzayda ağlamak mümkün olsa bile gözyaşları aşağı düşmez, yüzünde baloncuk gibi birikir.",
-            "İnsan beyni yaklaşık 86 milyar nörondan oluşur.",
-            "Rüyanda hiç görmediğin bir yüzü üretmen çok düşük ihtimaldir; beynin genellikle daha önce gördüğü yüzleri kullanır.",
-            "Beynin, sen uyurken bile çevrendeki bazı sesleri takip etmeye devam eder.",
-            "Penguenler eşlerini seslerinden binlerce penguen arasından bulabilir.",
-            "Bazı örümcekler avlarını yakalamak için ağ değil, lasso (kement) kullanır.",
-            "Bir timsahın çene kapatma kuvveti çok yüksektir ama ağzını açan kasları oldukça zayıftır.",
-            "Bir gün, Dünya'daki bütün kıtalar tekrar birleşerek tek süper kıta oluşturacak.",
-            "Şu anda vücudundaki atomların büyük kısmı, milyarlarca yıl önce patlayan yıldızların içinde oluştu. Teknik olarak hepimiz \"yıldız tozuyuz.\"",
-            "İnsan vücudundaki bakteriler, hücrelerden 10 kat fazladır.",
-            "Bir gün tam olarak 24 saat değildir. Dünya'nın kendi ekseni etrafındaki dönüşü yaklaşık 23 saat 56 dakikadır (yıldız günü).",
-            "İnsan beyni, uyanıkken yaklaşık 20 watt güç tüketir. Bu, küçük bir ampulü yakmaya yeter.",
-            "Dünya'daki tüm karıncaların toplam kütlesi, bazı tahminlere göre tüm yabani memelilerin toplam kütlesine yakındır.",
-            "Zürafaların da insanlar gibi yedi boyun omuru vardır. Tek fark, omurların çok daha uzun olmasıdır.",
-            "Bir bulut yüzlerce ton su taşıyabilir. Buna rağmen su damlacıkları çok küçük olduğu için havada kalabilir.",
-            "Su, donarken hacmi artan nadir maddelerden biridir. Bu yüzden buz suyun üzerinde yüzer.",
-            "Bir insanın DNA'sı açılıp uç uca eklense yaklaşık 2 metre uzunluğa ulaşır. Bu uzunluk neredeyse tüm hücrelerde bulunur.",
-            "Ahtapotların kanı mavidir. Bunun nedeni demir yerine bakır içeren hemosiyanin pigmentidir.",
-            "Bir ağacın büyük kısmı toprağın değil, havadaki karbondioksitin ürünüdür. Kütlesinin çoğunu atmosferden aldığı karbon oluşturur.",
-            "Timsahlar dillerini dışarı çıkaramaz. Dil ağız tabanına sıkıca bağlıdır.",
-            "Kelebekler ayaklarıyla tat alabilir.",
-            "Kalbiniz yaşamınız boyunca yaklaşık 2-3 milyar kez atar.",
-            "Güneş'in ışığı Dünya'ya yaklaşık 8 dakika 20 saniyede ulaşır.",
-            "Köpekbalıkları, dinozorlardan yaklaşık 200 milyon yıl daha yaşlıdır.",
-            "Bir yıldırım, Güneş'in yüzeyinden yaklaşık 5 kat daha sıcaktır.",
-            "Venüs'te bir gün, bir yıldan daha uzundur.",
-            "Jüpiter'e yaklaşık 1.300 Dünya sığabilir.",
-            "İnsan beyni yaklaşık 86 milyar nöron içerir.",
-            "Okyanusların büyük bölümü hâlâ tam olarak keşfedilememiştir.",
-            "Kargalar yıllarca insan yüzlerini hatırlayabilir.",
-            "Arılar birbirlerine dans ederek yön tarif eder.",
-            "Yarasalar aktif uçabilen tek memelidir.",
-            "Ahtapotlar kavanoz kapağı açabilecek kadar zekidir.",
-            "Develerin hörgücünde su değil, yağ depolanır.",
-            "Ay'da atmosfer olmadığı için ses duyulmaz.",
-            "Ağaçlar yer altındaki mantar ağlarıyla besin paylaşabilir.",
-            "İnsan vücudundaki en güçlü kas, çene kaslarından biridir.",
-            "Bir insan ömrü boyunca ortalama 100.000 kilometreden fazla yürür.",
-            "Denizanaları dinozorlardan bile daha eskidir.",
-            "Bir karınca kendi ağırlığının 50 katını kaldırabilir.",
-            "Dünya'nın manyetik alanı her 200.000 yılda bir tersine döner.",
-            "Güneş, her saniye 600 milyon ton hidrojeni helyuma dönüştürür.",
-            "Okyanuslarda yaşayan türlerin sadece %5'i biliniyor.",
-            "Bir salyangoz 3 yıl uyuyabilir.",
-            "Ahtapotların üç kalbi vardır.",
-            "Zürafaların dilleri 50 cm uzunluğa ulaşabilir.",
-            "Kutup ayılarının derisi siyahtır.",
-            "Bir çekirge, kendi vücut uzunluğunun 20 katı sıçrayabilir.",
-            "Baykuşlar başlarını 270 derece çevirebilir.",
-            "Bir deve 15 dakikada 100 litre su içebilir.",
-            "Denizatları, erkekleri tarafından doğurulan tek hayvandır.",
-            "Arılar dans ederek yiyecek kaynağının yerini tarif eder.",
-            "Köpekler insanların duygularını koklayarak anlayabilir.",
-            "Kediler sadece insanlara miyavlar.",
-            "Bir fil 60 yaşına kadar dişlerini yenileyebilir.",
-            "Timsahlar ağızlarını açarken çenelerini yukarı kaldıramaz.",
-            "Yunuslar gözleri açık uyuyabilir.",
-            "Kartallar 3 km yükseklikten bir tavşan görebilir.",
-            "Dünyanın en hızlı hayvanı şahindir (400 km/s).",
-            "Bir kanguru 10 metre uzunluğa sıçrayabilir.",
-            "Papağanlar 100 yıla kadar yaşayabilir.",
-            "Köpekbalıkları 400 milyon yıldır neredeyse değişmeden yaşıyor.",
-            "İnsan gözü yaklaşık 10 milyon farklı rengi ayırt edebilir.",
-            "Kalp bir insan hayatı boyunca ortalama 2.5 milyar kez atar.",
-            "İnsan saçı yılda ortalama 15 cm uzar.",
-            "Tırnaklar saçtan daha hızlı uzar.",
-            "İnsan vücudundaki kan günde 19.000 km yol alır.",
-            "Bir insan ömrü boyunca ortalama 50.000 litre su içer.",
-            "Kemikler çeliğin 5 katı kadar güçlüdür.",
-            "İnsan beyni 100 milyar sinir hücresi içerir.",
-            "Gece uyumadan önce beyin gün içinde öğrendiklerimizi işler.",
-            "Bir insan günde ortalama 20.000 nefes alır.",
-            "Kalp vücuttaki en güçlü kastır.",
-            "İnsan iskeleti 206 kemikten oluşur.",
-            "Gülmek bağışıklık sistemini güçlendirir.",
-            "Bir müzik parçası beynin birden fazla bölgesini aynı anda aktive eder.",
-            "Şarkı söylemek stresi azaltan bir egzersizdir.",
-            "Klasik müzik dinlemek odaklanmayı artırabilir.",
-            "Film korku sahneleri kalp atışını hızlandırır.",
-            "Dans etmek koşmaktan daha fazla kalori yakar.",
-            "Rüya görmek beynin bilgileri işlemesine yardımcı olur.",
-            "Kahve dünyada en çok tüketilen içeceklerden biridir.",
-            "İlk çikolata MÖ 1900 civarında Meksika'da yapıldı.",
-            "Bir bardak süt yaklaşık 300 mg kalsiyum içerir.",
-            "Bal asla bozulmaz, 3.000 yıllık bal bulunmuştur.",
-            "Dünyanın en pahalı baharatı safran (50$/gr).",
-            "Pizza dünyada en çok tüketilen fast-food yemeğidir.",
-            "Türkiye dünyada en çok çay tüketen ülkedir.",
-            "Sushi aslında Japon değil, Çin kökenlidir.",
-            "Mısır dünyada en çok yetiştirilen tahıldır.",
-            "Mantarlar bitki değil, mantar krallığına aittir.",
-            "Bir inek günde 50 litre süt üretebilir.",
-            "Patates uzayda yetiştirilen ilk sebzeydi.",
-            "Çilek aslında bir meyve değil, bir 'çiçek' grubundandır.",
-            "Domates İtalya'ya 16. yüzyılda geldi.",
-            "Biber içerdiği kapsaisin ile vücut ısısını artırır.",
-            "Bir kilo bal yapmak için arıların 2 milyon çiçek ziyaret etmesi gerekir.",
-            "Dünya üzerinde 7.000'den fazla dil konuşuluyor.",
-            "En yaygın ikinci dil İngilizce (1,5 milyar kişi).",
-            "En zor öğrenilen dillerden biri Mandarin Çincesi.",
-            "Dünyada en çok konuşulan ana dil İspanyolca.",
-            "Türkçe dünyada en çok konuşulan 20. dildir.",
-            "Her 14 günde bir dil yok oluyor.",
-            "Eski Mısır hiyeroglifleri 1.800 yıl boyunca çözülemedi.",
-            "Bir metnin %80'ini oluşturan 200 kelime vardır.",
-            "Dünyanın en uzun kelimesi 189.819 harften oluşuyor.",
-            "Okuma yazma oranı en yüksek ülke Finlandiya'dır.",
-            "En çok kitap okuyan ülke Hindistan'dır.",
-            "Dünya'da her yıl 2 milyon kitap yayınlanıyor.",
-            "Bir insan ömrü boyunca ortalama 500 kitap okuyabilir.",
-            "Antik Yunan'da kitaplar papirüs rulolarından oluşuyordu.",
-            "En eski yazılı metin Sümerlerin çivi yazısıdır (MÖ 3400).",
-            "Tarih boyunca en çok çevrilen kitap İncil'dir.",
-            "En uzun roman 'Les Misérables' 1.200 sayfadan oluşur.",
-            "Harry Potter serisi dünya çapında 500 milyon kopya sattı.",
-            "Dünyanın en eski üniversitesi 859'da Fas'ta kuruldu.",
-            "İlk okul MÖ 2000'de Mezopotamya'da açıldı.",
-            "Dünyada 1 milyardan fazla insan okuma yazma bilmiyor.",
-            "Bir öğrenci okul hayatı boyunca 10.000 saat ders alıyor.",
-            "Tarihteki ilk Olimpiyat oyunları MÖ 776'da Yunanistan'da yapıldı.",
-            "Her gün 30 dakika yürümek ömrü uzatabilir.",
-            "Futbol dünyanın en popüler sporudur.",
-            "Basketbol 1891'de ABD'de icat edildi.",
-            "Yüzme tüm kas gruplarını çalıştıran tek spordur.",
-            "Bir maraton 42.195 km uzunluğundadır.",
-            "En hızlı koşucu Usain Bolt (9.58 sn – 100m).",
-            "Masa tenisi en hızlı refleks gerektiren sporlardandır.",
-            "Yoga 5.000 yıldan uzun süredir uygulanmaktadır.",
-            "Dünya nüfusu 8 milyarı geçti.",
-            "Dünya üzerinde 195 ülke bulunur.",
-            "Çin dünyanın en kalabalık ülkesidir.",
-            "Vatikan dünyanın en küçük ülkesidir (0.44 km²).",
-            "Dünya'nın en büyük okyanusu Pasifik'tir.",
-            "En uzun nehir Nil Nehri'dir (6.650 km).",
-            "En yüksek dağ Everest'tir (8.848 m).",
-            "Dünya'da 1.500'den fazla aktif yanardağ bulunur.",
-            "Güneş sistemi 4.6 milyar yaşındadır.",
-            "Ay Dünya'dan her yıl 3.8 cm uzaklaşıyor.",
-            "Jüpiter Güneş sistemindeki en büyük gezegendir.",
-            "Merkür en küçük gezegendir.",
-            "Venüs Dünya'nın ikiz kardeşi olarak bilinir.",
-            "Mars'ta su bulunmuştur.",
-            "Uranüs yan dönmüş bir gezegendir.",
-            "Neptün en rüzgarlı gezegendir (2.100 km/s).",
-            "Plüton 2006'da gezegenlikten çıkarıldı.",
-            "Güneş'in yüzeyi 5.500°C'dir.",
-            "Samanyolu'nda 100 milyar yıldız bulunur.",
-            "Uzayda 13 milyar ışık yılı uzaklıkta galaksiler var.",
-            "Ay'da yer çekimi Dünya'nın 1/6'sıdır.",
-            "Uluslararası Uzay İstasyonu 400 km yükseklikte döner.",
-            "Uzayda bir gün 24 saat değil, 90 dakikadır.",
-            "Dünya'nın atmosferi %78 azot, %21 oksijenden oluşur.",
-            "Ozon tabakası güneşin zararlı ışınlarını emer.",
-            "Küresel ısınma her 10 yılda 0.2°C artıyor.",
-            "Okyanuslar Dünya yüzeyinin %70'ini kaplar.",
-            "En derin okyanus noktası Mariana Çukuru'dur (11 km).",
-            "Kutup buzulları her yıl 1.2 milyar ton eriyor.",
-            "Amazon Ormanları dünya oksijeninin %20'sini üretir.",
-            "Mısır piramitleri 4.500 yıldır ayakta.",
-            "Roma İmparatorluğu 1.000 yıldan fazla hüküm sürdü.",
-            "İstanbul 1.600 yıl boyunca üç büyük imparatorluğa başkentlik yaptı.",
-            "Osmanlı İmparatorluğu 600 yıl ayakta kaldı.",
-            "Çin Seddi 21.000 km uzunluğundadır.",
-            "İlk araba 1886'da Karl Benz tarafından yapıldı.",
-            "İlk uçak 1903'te Wright Kardeşler tarafından uçuruldu.",
-            "Tarihteki ilk para Lidyalılar tarafından MÖ 600'de basıldı.",
-            "Takvim Mısırlılar tarafından 5.000 yıl önce geliştirildi.",
-            "Pisagor matematiğin temellerini attı.",
-            "Sosyal medyada en çok takipçiye sahip kişi Cristiano Ronaldo.",
-            "Instagram 2010'da piyasaya sürüldü.",
-            "WhatsApp 2009'da kuruldu.",
-            "Facebook 2004'te üniversite öğrencileri için başladı.",
-            "TikTok dünya genelinde 1 milyar kullanıcıya ulaştı.",
-            "Her gün 500 milyon tweet atılıyor.",
-            "YouTube dünyanın en büyük video platformudur.",
-            "Leonardo da Vinci hem sanatçı hem de mucitti.",
-            "Mona Lisa dünyanın en ünlü tablosudur.",
-            "Van Gogh yaşamı boyunca sadece bir tablo sattı.",
-            "Pablo Picasso 20. yüzyılın en etkili sanatçılarındandır.",
-            "En pahalı tablo Salvator Mundi (450 milyon $).",
-            "Müzik beynin ödül merkezini harekete geçirir.",
-            "Beatles tüm zamanların en çok satan müzik grubudur.",
-            "Mozart 5 yaşında beste yapmaya başladı.",
-            "Bach Barok müziğin en büyük ismidir.",
-            "Gitar dünyada en çok çalınan enstrümandır.",
-            "Piyano 300 yılı aşkın süredir popülerdir.",
-            "Dünyada her yıl 200'den fazla müzik festivali düzenleniyor.",
-            "Spotify 2006'da kuruldu.",
-            "Türkiye'de ilk sinema 1896'da gösterime girdi.",
-            "Avatar dünyanın en çok hasılat yapan filmidir (2.9 milyar $).",
-            "Titanik 1997'de 11 Oscar kazandı.",
-            "Hollywood dünyanın en büyük film endüstrisidir.",
-            "Disney 1923'te kuruldu.",
-            "Dünya üzerinde 2.000'den fazla müze var.",
-            "Louvre Müzesi yılda 10 milyon ziyaretçi alır.",
-            "Tarihteki ilk fotoğraf 1826'da çekildi.",
-            "İnternette her gün 4 milyar video izleniyor.",
-            "Türkiye'deki ilk matbaa 1727'de kuruldu.",
-            "Dünyanın en büyük kütüphanesi Kongre Kütüphanesi'dir.",
-            "En eski şehir Jericho'dur (MÖ 9000).",
-            "Vikingler Kuzey Amerika'ya 1000 yıl önce ayak bastı.",
-            "Sokrates 'Bildiğim tek şey hiçbir şey bilmediğimdir.' demiştir.",
-            "Aristoteles bilim ve felsefenin temellerini attı.",
-            "Platon ideal devlet fikrini ortaya attı.",
-            "İnsan Hakları Evrensel Bildirgesi 1948'de kabul edildi.",
-            "Demokrasi antik Yunan'da Atina'da doğdu.",
-            "Cumhuriyet Roma'da MÖ 509'da ilan edildi.",
-            "Dünya'da her yıl 100 milyon ağaç kesiliyor.",
-            "Denizler plastik kirliliği nedeniyle tehdit altında.",
-            "Temiz su kaynakları küresel sorunların başında geliyor.",
-            "Her yıl 1 milyon canlı türü yok olma tehlikesiyle karşı karşıya.",
-            "Geri dönüşüm doğal kaynakların korunmasına yardımcı olur.",
-            "Güneş enerjisi dünyanın en temiz enerji kaynaklarından biridir.",
-            "Rüzgar enerjisi 2023'te elektrik üretiminin %10'unu karşıladı.",
-            "Elektrikli araçlar fosil yakıt kullanımını azaltıyor.",
-            "Mikroplastikler okyanuslarda her yerde bulunuyor.",
-            "Ozon tabakasındaki incelme uluslararası anlaşmalarla yavaşladı.",
-            "Bambu en hızlı büyüyen bitkidir (günde 1 metre).",
-            "Dünya her yıl 2 milyar ton çöp üretiyor.",
-            "Tarihteki en eski fosil 3.5 milyar yaşında.",
-            "İlk canlılar okyanuslarda ortaya çıktı.",
-            "İnsan yaklaşık 300.000 yıldır var.",
-            "Neanderthaller modern insanlardan farklı bir türdü.",
-            "Tarih öncesi dönemde mağara resimleri yapılıyordu.",
-            "Tarım insanlık tarihinde devrim yarattı (MÖ 10.000).",
-            "Tekerlek MÖ 3500'de Mezopotamya'da icat edildi.",
-            "Matbaa 1440'ta Gutenberg tarafından geliştirildi.",
-            "Barut Çin'de 9. yüzyılda keşfedildi.",
-            "Telefon 1876'da Alexander Graham Bell tarafından icat edildi.",
-            "İlk radyo yayını 1906'da yapıldı.",
-            "Televizyon 1927'de icat edildi.",
-            "Bilgisayar 1940'larda geliştirildi.",
-            "Bir insan ömrü boyunca ortalama 25 kg saç tıraş eder.",
-            "Kalp günde ortalama 100.000 kez atar.",
-            "En hızlı rüzgar 408 km/s ile Avustralya'da ölçüldü (1996).",
-            "Bir çift ayakkabı ortalama 300-500 km yürümeye dayanır.",
-            "Bir karpuzun %92'si sudur.",
-            "Portakal aslında mandalina ve greyfurt karışımıdır.",
-            "Muz dünyada en çok tüketilen meyvedir.",
-            "Bir astronot uzayda 2 cm uzar.",
-            "Dünya kendi ekseninde 1.670 km/s hızla döner.",
-            "Mars'ta bir gün Dünya'dan sadece 39 dakika uzundur.",
-            "Jüpiter'in Büyük Kırmızı Lekesi Dünya'dan büyüktür.",
-            "Plüton'un 5 uydusu vardır.",
-            "Güneş 5 milyar yıl sonra sönecek.",
-            "Samanyolu yılda 100.000 yeni yıldız oluşturur.",
-            "En yakın yıldız 4.2 ışık yılı uzaklıktadır.",
-            "Uzayda 100 milyardan fazla galaksi var.",
-            "Kuzey Işıkları güneş rüzgarlarının atmosferle çarpışmasıyla oluşur.",
-            "Ozon tabakası 1985'te keşfedildi.",
-            "Buzullar 1970'ten beri %30 eridi.",
-            "Okyanus asitlenmesi mercan resiflerini tehdit ediyor.",
-            "Arılar 20 milyon yıldır var.",
-            "Karıncalar 100 milyon yıldır var.",
-            "İnsan yaklaşık 2 milyon yıl önce ateşi kullanmaya başladı.",
-            "İlk şehirler MÖ 4.000'de Mezopotamya'da kuruldu.",
-            "Yazı MÖ 3.400'de Sümerler tarafından icat edildi.",
-            "Demir çağı MÖ 1.200'de başladı.",
-            "Rönesans 14. yüzyılda başladı.",
-            "Coğrafi keşifler 15. yüzyılda başladı.",
-            "Amerika 1492'de Kolomb tarafından keşfedildi.",
-            "Fransız Devrimi 1789'da patlak verdi.",
-            "Sanayi Devrimi 18. yüzyılda başladı.",
-            "Dünya Savaşları 20. yüzyılda yaşandı.",
-            "İnternet 1960'larda geliştirilmeye başlandı.",
-            "WWW 1989'da Tim Berners-Lee tarafından icat edildi.",
-            "İlk web sitesi 1991'de yayınlandı.",
-            "Google 1998'de kuruldu.",
-            "Akıllı telefonlar 2007'de iPhone ile popüler oldu.",
-            "Uzay yürüyüşü 1965'te yapıldı.",
-            "Ay'a iniş 1969'da gerçekleşti.",
-            "Mars'ta su 2000'de keşfedildi.",
-            "DNA 1953'te keşfedildi.",
-            "İnsan Genom Projesi 2003'te tamamlandı.",
-            "CRISPR 2012'de keşfedildi.",
-            "AlphaGo 2016'da dünya şampiyonunu yendi.",
-            "ChatGPT 2022'de piyasaya sürüldü.",
-            "Dünya'nın en hızlı interneti 319 Tbps ile Japonya'da (2021).",
-            "En eski müzik aleti 40.000 yıllık flüttür (Almanya).",
-            "En çok oylanan film IMDb'de 'The Shawshank Redemption' (9.3).",
-            "En hızlı tren Maglev 603 km/s ile Japonya'da.",
-            "En büyük imparatorluk Britanya İmparatorluğu'ydu (33.6 milyon km²).",
-            "En eski hamam 4.000 yıllık Mohenjo-daro'dadır (Pakistan).",
-            "En büyük gökdelen Burj Khalifa (828 m).",
-            "En pahalı tablo Leonardo da Vinci'nin 'Salvator Mundi'si (450 milyon $).",
-            "En hızlı okuma rekoru 80.000 kelime/dakika (Howard Berg).",
-            "En uzun süre uykusuz kalma rekoru 11 gün (Randy Gardner, 1964).",
-            "En büyük karpuz 159 kg (Tennessee, 2013).",
-            "En yüksek tenis servisi 263 km/s (Sam Groth, 2012).",
-            "En uzun saç 37 metre (Xie Qiuping, Çin, 2004).",
-            "En hızlı paraşüt atlayışı 39 km (Felix Baumgartner, 2012).",
-            "En derin dalış 10.928 m (Mariana Çukuru, Victor Vescovo, 2019).",
-            "En uzun evlilik 90 yıl (İngiliz çift, 2015).",
-            "En çok kitap yazan yazar Isaac Asimov (1.000'den fazla).",
-            "En ağır böcek Goliath böceği (100 gram).",
-            "En küçük kuş Arı sinek kuşu (5 cm).",
-            "En büyük çiçek Rafflesia (1 metre çapında).",
-            "En çok dil bilen insan Cardinal Mezzofanti (58 dil).",
-            "En güçlü manyetik alan 45 tesla (ABD laboratuvarı).",
-            "En derin kuyu 12.262 m (Kola Yarımadası, Rusya).",
-            "En eski yaşayan ağaç 4.850 yıllık Methuselah (Kaliforniya).",
-            "En büyük hayvan Mavi balina (200 ton).",
-            "En uzun göç Kutup sumrusu (70.000 km/yıl).",
-            "En zehirli hayvan Kutu denizanası (öldürücü).",
-            "En hızlı böcek Güneyli yeşil yusufçuk (97 km/s).",
-            "En pahalı kahve Kopi Luwak (100 $/fincan).",
-            "En büyük pizza 39 metre çapında (Roma, 2012).",
-            "En kalabalık konser Rod Stewart (4 milyon kişi, Rio, 1994).",
-            "En uzun köprü Danyang-Kunshan (Çin, 164,8 km).",
-            "En uzun süren uçuş 64 gün 22 saat (Cessna 172, 1958).",
-            "En çok izlenen YouTube videosu Baby Shark (13 milyar, 2024).",
-            "En fazla Oscar alan film Titanic (11 Oscar, 1997).",
-            "En hızlı koşan hayvan Çita (120 km/s).",
-            "En yüksek atlayan hayvan Pire (kendi boyunun 200 katı).",
-            "En büyük yumurta Devekuşu (1.5 kg).",
-            "En hızlı reaksiyon 0.1 saniye (insan tepki süresi).",
-            "En büyük şelale hacmi Victoria Şelalesi (Zambiya/Zimbabwe).",
-            "En sıcak yer Death Valley (56.7°C, ABD).",
-            "En soğuk yer Vostok (-89.2°C, Antarktika).",
-            "En uzun mağara Mammoth Cave (652 km, ABD).",
-            "En büyük mercan resifi Büyük Bariyer Resifi (2.300 km).",
-            "En hızlı yıldırım 360.000 km/s (2017).",
-            "En büyük asteroid Vesta (530 km çap).",
-            "En büyük yıldız UY Scuti (1.700 Güneş çapında).",
-            "En eski galaksi GN-z11 (13.4 milyar ışık yılı).",
-            "En çok uyduya sahip gezegen Satürn (146 uydu).",
-            "En güçlü teleskop James Webb (2022).",
-            "En hızlı uzay aracı Parker Solar Probe (692.000 km/s).",
-            "En büyük piramit Cholula (Meksika, 4.5 milyon m³).",
-            "En eski tapınak Göbekli Tepe (Türkiye, MÖ 9600).",
-            "En büyük alışveriş merkezi Dubai Mall (1.1 milyon m²).",
-            "En uzun asma köprü 1915 Çanakkale (2.023 m).",
-            "En büyük stadyum Rungrado (150.000 kişi, Kuzey Kore).",
-            "En hızlı inşa edilen gökdelen 2.5 günde (Çin, 2015).",
-            "En büyük mozaik 9.000 m² (Libya).",
-            "En eski kaya 4.3 milyar yıl (Avustralya).",
-            "En büyük asteroit çarpması Chicxulub (10 km).",
-            "En hızlı eriyen buzul Jakobshavn (günde 30 m).",
-            "En yüksek plato Tibet (4.500 m).",
-            "En derin göl Baykal (1.642 m).",
-            "En büyük bataklık Pantanal (210.000 km²).",
-            "En kalın buz tabakası Antarktika (4.776 m).",
-            "En yüksek tuz gölü Titicaca (3.812 m).",
-            "En uzun hayvan Deniz feneri (18 m).",
-            "En zehirli yılan Inland taipan (tek ısırık 100 kişi).",
-            "En hızlı kuş Gökdoğan (389 km/s).",
-            "En ağır uçan kuş Bustard (18 kg).",
-            "En uzun ömürlü kuş Papağan (100 yıl).",
-            "En iyi koku duyan hayvan Fare (200 milyon reseptör).",
-            "En yüksek ses üreten hayvan Mavi balina (188 dB).",
-            "En derin dalan kuş İmparator penguen (565 m).",
-            "En hızlı yüzen balık Kılıçbalığı (100 km/s).",
-            "En büyük kafadanbacaklı Dev mürekkep balığı (12 m).",
-            "En küçük böcek Mymaridae (0.1 mm).",
-            "En ağır köpek İngiliz mastifi (156 kg).",
-            "En uzun kulaklı köpek Bloodhound (30 cm).",
-            "En hızlı at Quarter (88 km/s).",
-            "En yüksek atlamacı Çekirge (boyunun 20 katı).",
-            "En güçlü ısırık Tuzlu su timsahı (1.8 ton).",
-            "En uzun ömürlü memeli Grönland köpekbalığı (400 yıl).",
-            "En küçük memeli Yaban faresi (2 cm).",
-            "En hızlı koşan böcek Benekli kızböceği (97 km/s).",
-            "En ağır yumurta Devekuşu (1.5 kg).",
-            "En keskin dişler Beyaz köpekbalığı (7 cm).",
-            "En iyi göz Kartal (8x insan).",
-            "En büyük kabuklu Dev istakoz (20 kg).",
-            "En zehirli örümcek Sydney huni ağı (öldürücü).",
-            "En uzun hortum Fil (1.5 m).",
-            "En kalın deri Fil (2.5 cm).",
-            "En büyük fare Capybara (60 kg).",
-            "En hızlı üreyen Tavşan (yılda 12 yavru).",
-            "En ağır sürüngen Tuzlu su timsahı (1 ton).",
-            "En uzun süre susuz yaşayan Deve (15 gün).",
-            "En iyi yüzücü Yunus (60 km/s)."
+            "Filler zıplayamaz.",
+            "İnsan beyni vücut enerjisinin %20'sini tüketir.",
+            "Kıtalar yılda birkaç santimetre hareket eder.",
+            "Kartal insandan 4-5 kat daha keskin görür."
         ];
-
-        // ==========================================================================
-        // BUNU BİLİYOR MUYDUN? – RASTGELE TEKRARSIZ
-        // ==========================================================================
         let shownFacts = JSON.parse(sessionStorage.getItem('shownFacts')) || [];
         let factInterval;
 
@@ -1933,10 +2426,12 @@
             initPlayer();
             document.getElementById("input1").addEventListener("input", runTengriDetector);
             document.getElementById("input2").addEventListener("input", runTengriDetector);
-            // Varsayılan tema: WHITE (ilk açılışta beyaz)
+            // Varsayılan tema: WHITE
             const dd = document.querySelector(".theme-dot[style*='background:#ffffff']");
             if (dd) changeTheme('white', dd);
             startFactRotation();
+            // Tema çalarları başlat
+            initThemePlayers();
         });
     </script>
 </body>
