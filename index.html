@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tengri3</title>
+    <title>Tengri</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
         /* ==========================================================================
@@ -370,243 +370,6 @@
             .game-iframe-wrapper .iframe-container { height:400px; }
             .game-iframe-wrapper .iframe-container iframe { height:440px; margin-top:-20px; }
         }
-
-        /* ==========================================================================
-           GERÇEKÇİ KEDİ TAKİP SİSTEMİ - AYAKLI, GÖZ TAKİPLİ, KUYRUKLU
-           ========================================================================== */
-        #kitty-realm {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 999998;
-        }
-
-        .cat-sprite {
-            position: absolute;
-            pointer-events: none;
-            will-change: left, top, transform;
-        }
-
-        /* Ana kedi boyutlandırma */
-        .main-cat {
-            width: 80px;
-            height: 56px;
-            z-index: 20;
-        }
-
-        .buddy-cat {
-            z-index: 15;
-            opacity: 0;
-            transform: scale(0.3);
-            transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
-            pointer-events: none;
-        }
-
-        .buddy-cat.visible {
-            opacity: 1;
-            transform: scale(0.8);
-        }
-
-        .buddy-cat.scattering {
-            opacity: 0;
-            transform: scale(0.5);
-            transition: left 0.45s ease-out, top 0.45s ease-out, opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        /* Kedi anatomisi */
-        .cat-body {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .cat-gövde {
-            position: absolute;
-            width: 60px;
-            height: 30px;
-            background: #f4a460;
-            border-radius: 30px 30px 20px 20px;
-            bottom: 14px;
-            left: 10px;
-            box-shadow: inset 0 -4px 8px rgba(0,0,0,0.2), 0 4px 6px rgba(0,0,0,0.3);
-        }
-
-        .cat-kafa {
-            position: absolute;
-            width: 36px;
-            height: 32px;
-            background: #f4a460;
-            border-radius: 50%;
-            bottom: 32px;
-            left: 22px;
-            box-shadow: inset -2px -4px 6px rgba(0,0,0,0.15);
-            z-index: 2;
-        }
-
-        .cat-kulak {
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            border-bottom: 16px solid #f4a460;
-            z-index: 1;
-        }
-        .cat-kulak.left {
-            bottom: 56px;
-            left: 24px;
-            transform: rotate(-20deg);
-        }
-        .cat-kulak.right {
-            bottom: 56px;
-            left: 46px;
-            transform: rotate(20deg);
-        }
-        .cat-kulak::after {
-            content: '';
-            position: absolute;
-            top: 6px;
-            left: -4px;
-            width: 0;
-            height: 0;
-            border-left: 4px solid transparent;
-            border-right: 4px solid transparent;
-            border-bottom: 10px solid #f8c8d0;
-        }
-
-        .cat-goz {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: white;
-            border-radius: 50%;
-            bottom: 42px;
-            z-index: 3;
-            overflow: hidden;
-        }
-        .cat-goz.left { left: 28px; }
-        .cat-goz.right { left: 42px; }
-
-        .cat-iris {
-            position: absolute;
-            width: 7px;
-            height: 7px;
-            background: #3b2a1a;
-            border-radius: 50%;
-            top: 1.5px;
-            left: 1.5px;
-            transition: transform 0.05s linear;
-        }
-        .cat-iris::after {
-            content: '';
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: black;
-            border-radius: 50%;
-            top: 2px;
-            left: 2px;
-        }
-
-        .cat-burun {
-            position: absolute;
-            width: 8px;
-            height: 6px;
-            background: #ff7b9c;
-            border-radius: 50%;
-            bottom: 36px;
-            left: 36px;
-            z-index: 3;
-        }
-
-        .cat-biyik {
-            position: absolute;
-            background: #555;
-            height: 1.5px;
-            z-index: 3;
-            transform-origin: right center;
-        }
-
-        .cat-kuyruk {
-            position: absolute;
-            width: 32px;
-            height: 12px;
-            background: #f4a460;
-            border-radius: 0 20px 20px 0;
-            bottom: 18px;
-            left: 62px;
-            transform-origin: left center;
-            animation: tailWag 0.8s ease-in-out infinite;
-        }
-        @keyframes tailWag {
-            0%,100% { transform: rotate(5deg); }
-            50% { transform: rotate(-15deg); }
-        }
-
-        .cat-bacak {
-            position: absolute;
-            width: 10px;
-            height: 20px;
-            background: #f4a460;
-            border-radius: 5px 5px 6px 6px;
-            bottom: 2px;
-            transform-origin: top center;
-        }
-        .cat-bacak.on-sol { left: 20px; }
-        .cat-bacak.on-sag { left: 46px; }
-        .cat-bacak.arka-sol { left: 8px; height: 18px; bottom: 2px; }
-        .cat-bacak.arka-sag { left: 56px; height: 18px; bottom: 2px; }
-
-        .cat-pati {
-            position: absolute;
-            width: 12px;
-            height: 8px;
-            background: #e89b5c;
-            border-radius: 6px 6px 4px 4px;
-            bottom: -2px;
-            left: -1px;
-        }
-
-        /* Yürüme animasyonu */
-        .cat-bacak.yuruyor {
-            animation: yuruAnim 0.6s ease-in-out infinite;
-        }
-        .cat-bacak.kosuyor {
-            animation: kosAnim 0.3s ease-in-out infinite;
-        }
-        @keyframes yuruAnim {
-            0%,100% { transform: rotate(0deg); }
-            25% { transform: rotate(15deg); }
-            75% { transform: rotate(-15deg); }
-        }
-        @keyframes kosAnim {
-            0%,100% { transform: rotate(0deg); }
-            25% { transform: rotate(25deg); }
-            75% { transform: rotate(-25deg); }
-        }
-
-        /* Arkadaş kedi (küçültülmüş) */
-        .buddy-cat .cat-gövde { width: 45px; height: 22px; bottom: 10px; left: 5px; }
-        .buddy-cat .cat-kafa { width: 28px; height: 24px; bottom: 24px; left: 14px; }
-        .buddy-cat .cat-kulak { border-left-width: 6px; border-right-width: 6px; border-bottom-width: 12px; }
-        .buddy-cat .cat-kulak.left { bottom: 42px; left: 16px; }
-        .buddy-cat .cat-kulak.right { bottom: 42px; left: 32px; }
-        .buddy-cat .cat-goz { width: 7px; height: 7px; bottom: 32px; }
-        .buddy-cat .cat-goz.left { left: 20px; }
-        .buddy-cat .cat-goz.right { left: 30px; }
-        .buddy-cat .cat-iris { width: 5px; height: 5px; }
-        .buddy-cat .cat-burun { width: 6px; height: 4px; bottom: 28px; left: 26px; }
-        .buddy-cat .cat-bacak { width: 7px; height: 14px; bottom: 0; }
-        .buddy-cat .cat-bacak.on-sol { left: 12px; }
-        .buddy-cat .cat-bacak.on-sag { left: 32px; }
-        .buddy-cat .cat-bacak.arka-sol { left: 4px; height: 12px; }
-        .buddy-cat .cat-bacak.arka-sag { left: 40px; height: 12px; }
-        .buddy-cat .cat-kuyruk { width: 22px; height: 8px; bottom: 12px; left: 46px; }
     </style>
 </head>
 <body>
@@ -767,16 +530,139 @@
         <img src="tengri.jpg" alt="Tengri" style="max-width:85vw;max-height:75vh;border-radius:12px;box-shadow:0 0 100px rgba(255,255,255,0.6);border:3px solid #fff;opacity:1!important;">
     </div>
 
-    <!-- KEDİ DÜNYASI -->
-    <div id="kitty-realm"></div>
-
     <script>
         // ==========================================================================
         // ORACLE & TEMA
         // ==========================================================================
         const oracleQuotes = [
+            "Aura analizine göre içinde büyük bir CEO enerjisi var. Ama yarın sabah yine kart basıp içeri giriyorsun.",
+            "Evren sana 'Hayır' demeyi öğren diyor. Sen ise fazla mesaiye 'Olur.' yazmışsın bile.",
+            "Bugün özgürlüğüne kavuşacağın görünüyor. Yıllık izin onaylanırsa tabii.",
+            "Kaderin çok yakında değişecek. İnsan kaynakları da aynı fikirdeyse.",
+            "Falında büyük bir seyahat görünüyor. Muhtemelen mutfaktan çalışma masasına.",
+            "Evren sana yeni kapılar açacak. Umarım o kapının arkasında toplantı yoktur.",
+            "Bugün şans senden yana. Kasada önündeki kişi bozuk para saymazsa.",
+            "Bugün büyük bir karar vereceksin. '5 dakika daha' mı, 'Kalkıyorum' mu?",
+            "Bugün risk alabilirsin. Ama kredi kartı limiti aynı fikirde değil.",
+            "Ruhsal olarak çok güçlüsün. Fiziksel olarak ise öğle yemeğini bekliyorsun.",
+            "Falında büyük bir kutlama var. İade sürecin onaylandı galiba.",
             "Bugün metinlerden sileceğin gereksiz boşluklar gibi, hayatındaki gereksiz insanları da şak diye sileceksin. Temiz ferah gün yakın.",
             "Yakın gelecekte senin için çok büyük bir başarı ve zenginlik görüyorum. Tabii 'yakın gelecek' siber evrende 40-50 yıl anlamına gelebilir, o yüzden sen şimdilik şu metne odaklan.",
+            "Küre diyor ki: O çok gitmek istediğin tatile daha çok var ama önündeki şu metni bitirirsen en azından masandan kalkıp tuvalete gitme hakkı kazanacaksın.",
+            "Bugün her şeyi bırakıp Ege'ye yerleşme isteğin tavan yapacak. Ama zeytin yetiştirmek de emek ister aslan parçası, gel biz önce şu metindeki çift boşlukları yetiştirelim.",
+            "Küre parlıyor! Seni çok yakında hawaii gömleğinle sahilde buzlu bir kahve içerken görüyorum... Gözümü biraz kırpınca meğer masanda klimasız çalışıyormuşsun, neyse şu işi bitirelim.",
+            "Hayatındaki karmaşayı tıpkı bir gün her şeyi geride bırakıp gidecekmiş gibi boşveriyorsun ama cüzdanın 'O metin buraya kopyalanacak' diye fısıldıyor.",
+            "Yıldız haritana göre bugün istifa dilekçeni yazmak için harika bir gün. Ama ev kiranın haritası pek öyle demiyor, gel şu metni pırıl pırıl temizleyelim.",
+            "Gezegenlerin konumuna bakılırsa bugün tam bir 'Masaya istifayı vurma' günü. Fakat doğalgaz faturanın konumuna bakılırsa bugün daha çok 'Müdüre kahve götürme' günü. Dosyayı açıyorum?",
+            "Bugün Merkür retrosu bitiyor, yani radikal kararlar almak için harika bir gün! Tabii sonraki ay taş kemirmek istemiyorsan, o radikal kararı şimdilik sadece şu metni sadeleştirerek uygulayalım.",
+            "Evren sana 'Sen çok daha iyilerine layıksın' mesajı gönderiyor ama insan kaynakları henüz o mesajı onaylamadı. Gel biz şu Excel tablosunu pırıl pırıl yapalım.",
+            "Bugün tam 'Ceketimi alır çıkarım' havası var dışarıda. Ama o ceketin taksitleri henüz bitmediği için, gel ceketimizi sandalyenin arkasına asıp şu kodları düzeltelim.",
+            "Astrologlar 'Bugün kariyerinde köklü bir değişim zamanı' diyor. Gel bu değişimi şimdilik sadece yazı tipini Arial'dan Times New Roman'a çevirerek başlatalım, riske girmeyelim.",
+            "Yükselen burcun bugün sana 'Özgürlük' vadediyor ama cüzdanındaki o tek haneli bakiye 'Esaretin bedeli'ni hatırlatıyor. Metni düzenlemeye ne dersin?",
+            "İçindeki o gizli dahi 'Bu iş senin dehanı köreltiyor' diyor ama market sepetinin toplam tutarı 'Körelmeye devam et' diye fısıldıyor. Şu raporu temize çekelim.",
+            "Bugün o 'Hayallerinin peşinden koş' günlerinden biri... Eğer hayalin bir sonraki ay kirayı geciktirmek değilse, gel şu grafiklerin üzerinden bir daha geçelim.",
+            "Doğum haritana göre bugün otorite figürleriyle yüzleşme günün. Ama cüzdanının haritasına göre müdürün her dediğine 'Çok haklısınız' deme günün. Metni pürüzsüz yapalım.",
+            "Şu an istifa etsen evren sana yeni kapılar açar elbet, ama o kapılardan içeri ev sahibi de girebilir. Gel risk almayalım, şu taslağı bir güzel toparlayalım.",
+            "Bugün tam 'Kendi hikayeni yazma' günü. Ama o hikayenin ilk bölümü 'İşsizlik Maaşı Sırasında Bir Gün' olsun istemiyorsak, gel şu metni kusursuz hale getirelim.",
+            "Şu an klavyeye çok sert basarak mail yazıyorsun, hıncını anlıyorum. Ama mekanik klavye fiyatları uçtu, tuş fırlarsa yenisini alamayız. Sakince o parmağını geri çek ve şu metni yumuşatarak düzenle.",
+            "Bugün tam patronun odasının kapısını çarparak çıkma günü! Ama o kapı hidrolikli, yavaşça kapanıp karizmanı çizecek, hiç gerek yok. Gel biz şu Excel tablosunu pürüzsüz hale getirelim.",
+            "Bugün tam şirket telefonunu sessize alıp ortadan kaybolma günü. Ama telefon şirket malı, kaybedersen maaşından keserler, durduk yere borçlanma. Gel şu metni cilalayalım.",
+            "Şu an müdüre 'Sizinle çalışmak bir kabustu' diye bağırmak istiyorsun. Ama sesin detone olur, ciddiyetin kaybolur, arkandan gülerler. Hiç o riske girmeyelim, gel şu raporu pürüzsüz yapalım.",
+            "Bugün 'Bıktım sizin vizyonunuzdan' deyip sandalyeyi tekmelemek için harika bir enerji var üstünde. Ama sandalye tekerlekli, kayar odanın öbür ucundaki çöp kovasına çarpar, durduk yere iş çıkar. Boşver, metni temizle geç.",
+            "İçinden 'Şu masadaki her şeyi yere fırlatıp istifa edeceğim' hissi geçiyor. Ama yerleri daha yeni sildiler, temizlik görevlisi ablayla arayı bozmaya değmez. Gel biz şu dosyayı toparlayalım.",
+            "Bugün tam patrona 'Ben bu şirketin kölesi değilim' diye rest çekme günü. Ama şirketin kliması çok güzel soğutuyor, dışarısı 40 derece, evde klima yok. Serin serin şu metni düzenleyelim biz.",
+            "Şu an müdürün yüzüne bakıp 'Siz ne anlarsınız bu işten' diye haykırmak istiyorsun. Ama adamın arkasında klima kumandası duruyor, kapatırsa sıcaktan pişersin. Alttan al, şu analizi bitirelim.",
+            "İçindeki o asi ruh 'Kapat laptopun kapağını çat diye, çık git' diyor. Ama kapağın arasına kalem sıkışır, ekranı patlatırsın, durduk yere 3 maaşın tamire gider. Yavaşça açık bırak o ekranı, metne odaklanalım.",
+            "Hayatındaki bazı insanlar tıpkı Ctrl + Z yapınca geri gelmeyen o 3 saatlik emek gibiler; yoklukları büyük bir travma yaratmıyor ama boşa harcanan zamana insan kahroluyor.",
+            "Bazı insanlar hayatında tıpkı Adobe programlarının o bitmek bilmeyen güncelleme uyarıları gibi; sürekli dikkatini dağıtıyorlar, vakit çalıyorlar ama açıp baksan hayatına en ufak bir yenilik katmıyorlar.",
+            "Hayatındaki bazı insanlar tıpkı masaüstünde unuttuğun 'yeni_klasör_2' gibiler; neden açtığını hatırlamazsn, içi tamamen boştur ama öylece durup arka plan resmini kapatırlar.",
+            "Bazı insanlar tıpkı her web sitesinde karşına çıkan 'Çerezleri Kabul Et' butonu gibiler; hayatına hiçbir derinlik katmıyorlar, sadece gitmek istediğin yolda sürekli önüne çıkıp duruyorlar.",
+            "Hayatındaki bazı insanlar tıpkı o 128 GB'lık flash belleğin içindeki 'Kısayol' dosyası gibiler; dışarıdan bakınca devasa bir veri taşıyor gibi görünürler, tıklarsın bomboş bir hata ekranı verirler.",
+            "Bazı insanlar tıpkı e-ticaret sitelerindeki 'Tükendi' yazan ürünler gibiler; orada durmalarının dünyaya hiçbir faydası yoktur, sadece 'Keşke zamanında baksaydım' diye insana pişmanlık verirler.",
+            "Bazı insanlar tıpkı telefonun arkasında biriken o anlamsız önbellek (cache) dosyaları gibiler; hayatında hiçbir fonksiyonları yoktur, sadece durduk yere ruhunda ağırlık yapıp enerjini tüketirler.",
+            "Hayatındaki bazı insanlar tıpkı eski sevgilinin Spotify'da hala seni takip eden gizli hesabı gibiler; orada bir yerde bir '1' rakamı olarak dururlar ama hayatına ne bir ritim katarlar ne bir melodi.",
+            "Bazı insanlar tıpkı bedava diye indirdiğin o mobil uygulamanın içindeki reklamlar gibiler; her 5 saniyede bir karşına çıkıp 'Hadi beni premium yap' diye ısrar edenler ama kendilerinde hiç premium kumaş yoktur.",
+            "Günün özlü sözü: Yanlış kod satırı Ctrl + Z ile silinir, yanlış insan hayatından Ctrl + Alt + Delete yapsan da kolay kolay temizlenmez.",
+            "Günün özlü sözü: Metindeki eksik harf hemen fark edilir and tamamlanır; insanın içindeki eksik karakteri ise yıllarca fark edemezsin.",
+            "Günün özlü sözü: Tasarımdaki pikselleri büyütüp düzeltebilirsin ama vizyonu küçük insanı ne kadar büyütürsen büyüt, sadece görüntüsü bulanıklaşır.",
+            "Günün özlü sözü: Bozuk dosya formatı dönüştürücüyle kurtarılır, bozuk karakterli insanı hangi kalıba sokarsan sok yine hata verir.",
+            "Günün özlü sözü: Yazım hatası gözden kaçar, görmezden gelinir; ama insanın hatası bir kez göze battı mı bir daha asla unutturulmaz.",
+            "Günün özlü sözü: Word belgesindeki boşluklar tek tıkla silinir; bazı insanların içindeki o devasa boşluğu ise ne yapsan dolduramazsin.",
+            "Günün özlü sözü: Fazla yazılan kelime metinden kolayca ayıklanır; hayatına fazla gelen insanı ayıklamak ise ömründen ömür alır.",
+            "Günün özlü sözü: Kötü tasarlanmış bir sayfa sıfırdan çizilir; kötü niyetli bir insanla yola çıktıysan o yolu kaç kere sıfırlarsan sıfırla hep çıkmaza girersin.",
+            "Günün özlü sözü: Yazının fontunu değiştirmek bir saniyeni alır; insanın rengini değiştirmesi ise sadece bir menfaatine bakar.",
+            "Günün özlü sözü: Formüldeki hata Excel uyarısıyla çözülür; insanın hayatına kattığı hata ise ancak yıllar sonra tecrübeyle anlaşılır.",
+            "Günün özlü sözü: Kaydedilmeyen veri için canın sıkılır ama unutulur; değer görmeyen emek için sızlayan kalbin sızısı ise kolay geçmez.",
+            "Senin emeğinin üzerine konmaya çalışanların mikrofonu toplantıda açık kalsın da evde arkadan gelen o dedikodu sesleri tüm şirkete yayınlansın. Amin.",
+            "Bugün işi sana kitleyip erken çıkanların bindiği metrobüs ters yöne gitsin, üstüne bir de telefonlarının şarjı yüzde 1'ken şarj aletlerini ofiste unuttuklarını fark etsinler. Amin.",
+            "Bugün sana durduk yere revizyon üstüne revizyon verenlerin klavyesindeki Space tuşu bozulsun, tüm mailleri bitişik yazıp rezil olsunlar. Amin.",
+            "İş yapıyormuş gibi görünüp bütün gün sosyal medyada gezenlerin, yanlışlıkla şirket sahibinin 5 yıl önceki tatil fotoğrafını beğenmesine sebep olacak bir parmak kayması nasip et ya Rabbim. Amin.",
+            "Toplantıda seni zor durumda bırakmak için pusuya yatanların, tam konuşmaya başladıkları an boğazına gıcık otursun da sesleri helyum gazı çekmiş gibi çıksın. Amin.",
+            "Senin başarılarını görmezden gelenlerin en sevdikleri döküman, tam 'Kaydet' tuşuna basacakken elektrik kesintisiyle uçup gitsin. Amin.",
+            "Sana sürekli 'Biz bir aileyiz' deyip mesai ücretini vermeyenlerin şirket arabasının lastiği tam da sanayiye en uzak mesafede patlasın. Amin.",
+            "Bugün 'Seni çok iyi anlıyorum' diyenlerin aslında 'Şu an seni hiç dinlemiyorum, sadece kendi konuşma sıramın gelmesini bekliyorum' demek istediğini bir kez daha anlayacaksın.",
+            "Bugün müdürün 'Bu projede senin vizyonuna güveniyorum' demesinin aslında 'Hata çıkarsa faturayı tamamen sana keseceğim' demek olduğunu acı bir tebessümle fark edeceksin.",
+            "Bugün 'Önceliğimiz çalışan mutluluğu' sloganının aslında 'Ofise langırt koyduk ama oynarsan gözümüz üstünde olur' demek olduğunu anlayacaksın.",
+            "Bugün 'Aramızda çok güzel bir sinerji oluştu' iltifatının aslında 'Sen ne desen onaylıyorum, işleri de sessizce yapıyorsun, tam aradığımız kölesin' anlamına geldiğini anlayacaksın.",
+            "Bugün 'Biz burada bir aileyiz' söyleminin aslında 'Haklarını ararken fazla profesyonel düşünme, fedakarlık yaparken de sınır tanıma' anlamına geldiğini bir kez daha anlayacaksın.",
+            "İçindeki ses 'Yeter artık, fırlat klavyeyi çık git' diyor ama bankanın mobil uygulamasından gelen 'Kredi taksitiniz yaklaşmaktadır' bildirimi elini usulca klavyeye geri koyduruyor. Devam şampiyon.",
+            "Bugün istifa edip dünyayı gezecek o cesur kararı alacaksın... Tam o sırada gözün masadaki yarım kalmış sodaya takılacak, 'Neyse bunu bari bitireyim' derken mesai bitecek.",
+            "Bugün LinkedIn profilini 'Open to Work' yapasın var. Ama piyasanın durumunu hatırlayınca profili 'Gerekirse 24 Saat Çalışırım' yapmaktan son anda dönüyorsun. Kopyala butonuna bas ve sakinleş.",
+            "Evren sana fısıldıyor: 'Sen daha iyilerine layıksın.' Doğru, layıksın ama kredi kartı ekstrem de diyor ki: 'Şu an tam olarak bu masaya ve bu metinlere layıksın.' Hadi aslan parçası.",
+            "Bugün toplantıda masaya vurup 'Ben gidiyorum' demek için harika bir energy var üstünde. Ama masaya vurursan laptop ekranı kırılır, masraf çıkar. Boşver, temizle metni geç.",
+            "Kaderinde bugün çok radikal bir kariyer değişikliği görüyorum. Mesela 'Boşluk Temizleyici' sekmesinden 'Yazım Düzenleyici' sekmesine geçeceksin. Büyük devrim.",
+            "Küre diyor ki: İstifa edip bir sahil kasabasında domates yetiştirmek harika bir fikir. Ama domates tohumu fiyatlarına bakınca bu panelin siyahlığı gözüne bir tık daha güzel geliyor, değil mi?",
+            "Bugün bir delilik yapıp Slack'ten 'Ben çıkıyorum, ne haliniz varsa görün' yazasın gelecek. Ama enter tuşuna basmadan önce kıdem tazminatını hesaplayıp yerine 'Harika bir feedback, hemen ilgileniyorum' yazacaksınız.",
+            "Yıldız haritana göre bugün kurumsal kölelik zincirlerini kırma günün! Ama Akbank, Garanti and Yapı Kredi el ele tutuşup kapıda seni bekleyebilir. Zincirler kalsın, biz metindeki çift boşlukları kıralım.",
+            "Küre diyor ki: İstifa et, her şeyi sat, Hindistan'a git ve ruhunu arındır. Ama uçak bileti fiyatlarına baktıktan sonra bu paneldeki 'Temizle' butonu gözüne Ganj Nehri'nden daha arındırıcı gelecek.",
+            "Küre diyor ki: Sen bu dünyaya her sabah 8'de uyanıp elalemin excel tablosunu, word metnini düzeltmek için gelmedin. Sen çok daha büyük şeyler için yaratıldın... Şaka şaka, tam olarak bunun için geldin. Hadi yapıştır metni, mesai akıyor.",
+            "Bugün istifa edip dünyayı gezen o cool gezginlerden olma hayalin tavan yapacak. Ama sırt çantanı hazırlarken içine koyacak lüksün sadece şirket logolu polar ve promosyon termos olduğunu fark edip masana geri çökeceksiniz. Kopyala butonuna bas ve hayalleri serbest bırak.",
+            "Evren bugün sana çok net bir vizyon gösteriyor: Kendi işinin patronu olmuşsun, altındaki lüks araba, arkanda korumalar... Ama vizyonun çözünürlüğü biraz artınca fark ediyorsun ki altındaki araba şirket arabası, arkandakiler de 'Şu iş ne oldu?' diye bekleyen yöneticiler. Uyan aslanım, metin temizlenecek.",
+            "İçindeki o çılgın girişimci ruh 'Hemen bu akşam şirketi kuruyoruz' diye bağırıyor. Ama muhasebecinin isteyeceği stopajı, bağkuru, damga vergisini hesaplayınca, buradaki bedava, reklamsız, vergisiz mat siyah panel gözüne bir anda İsviçre Merkez Bankası gibi güvenli gelecek.",
+            "Bugün şirketinin ortak platformunda yanlışlıkla 'Yetti be, ne bitmez revizyonmuş!' yazacaksın... diye korkup soğuk terler dökeceksiniz ama yerine saniyede 120 kelime hızla 'Tabii ki hemen revize edip en memnun haliyle iletiyorum, sevgiler' yazarak hayatta kalacaksın.",
+            "Gelenizde inanılmaz bir zenginlik, malikaneler, uşaklar görüyorum... Ama rüya tabirlerine göre bu rüya 'Çok yakında mesaiye kalacaksın ve akşam yemeğinde sana sadece soğuk bir dürüm ısmarlayacaklar' anlamına geliyor. Dürümün tuzu bol olsun, devam.",
+            "Bugün ani bir cinnetle yöneticine Slack'ten 'Ben gidiyorum, vizyonsuz ekibiniz ve bitmeyen revizyonlarınız size kalsın' yazacaksınız. Tam gönder tuşuna basacakken kalbin sıkışacak, gözün kararacak, metni silip yerine 'Elinize sağlık, çok ufak bir sorum olacaktı :)'* yazıp arkaya gizlice ağlamaya gideceksiniz.",
+            "Küre parlıyor! Seni çok yakında business class uçuşunda şampanyanı yudumlarken görüyorum... Ama uçak modunu kapatınca uyanıyorsun ki metrobüste bir teyzenin pazar çantasıyla sol böbreğin arasında sıkışmışsın ve işe geç kalıyorsun. Yapıştır şu metni de bari primin kesilmesin.",
+            "Bugün istifa dilekçeni yazıp tam patronun masasına fırlatacakken, telefonuna bankadan 'Sayın müşterimiz, 120 ay vadeli konut kredinizin 3. taksiti tahsil edilememiştir' bildirimi düşecek. O fırlattığın kağıdı masadan 'Yere çöp düşmüş de efendim' diye yerleri siler gibi geri toplayacaksın.",
+            "Büyük bir kurumsal kriz kapıda ama sakin ol, seninle alakası yok. Kahvenden bir yudum al ve izle.",
+            "Gözüm metnindeki gizli 'Yüksek Kalite' ibarelerini arıyor... Yapma öyle şeyler, Tengri görüyor.",
+            "Bugün copy-paste yaparken elin hiç titremeyecek. Kusursuz bir CTRL+C performansı seziyorum.",
+            "O beklediğin mail veya mesaj bugün gelecek. Gelmezse de karşı tarafın vizyonsuzluğudur, boşver.",
+            "Yapay zeka senin işini elinden almayacak ama o kahveyi şimdi tazelemezsen uykun kesin alacak.",
+            "Yakın zamanda bir revizyon yiyeceksin ama öyle bir düzelteceksin ki isteyen utancından istifa edecek.",
+            "Hayatındaki bazı insanlar tıpkı '&nbsp;' gibi; varlar ama hiçbir işe yaramıyorlar, sadece yer kaplıyorlar.",
+            "Bugün şanslı günündesin. Yapıştırdığın metin tek seferde dümdüz olacak, uğraştırmayacak.",
+            "Plaza dilencilerinin attığı o anlamsız 'As per our discussion' maillerine karşı bağışıklık kazanacağın bir gün.",
+            "Bugün birisi sana 'Bakar mısın?' diyecek. Duymamazlıktan gel, iş yıkmaya çalışıyorlar.",
+            "Kaderinde yakın zamanda bir zam, terfi veya en kötü ihtimalle çok tatlı bir öğle yemeği ısmarlanması yok.",
+            "Metnini temizledin, peki ya zihnini? Bir ara arkana yaslan ve derin bir nefes al şampiyon.",
+            "Bugün kurumsal dünyayı dize getirebilecek bir energye sahipsin ama canın istemiyor, çok haklısın.",
+            "Gelecekte harika bir tatil görüyorum. Ama o geleceğe daha çok var, şimdi şu metni hallet.",
+            "Siber evren sana mesaj gönderiyor: 'Bugün o klavyeye biraz daha yumuşak bas, o da bir can.'",
+            "Seni çekemeyenlerin algoritması çöksün, tarayıcıları kapansın, ramleri yansın. Sen devam et.",
+            "Bugün yapacağın en büyük hata, biten işi teslim ettikten sonra 'Başka bir şey var mıydı?' diye sormak olur. Sorma.",
+            "Bugün karşına çıkacak saçmalıklara karşı sabrın, bu panelin siyahlığı kadar derin ve sınırsız olsun.",
+            "Metindeki çift boşlukları avladığın gibi hayattaki iki yüzlüleri de avlayacağın keskin bir gün.",
+            "Günün tavsiyesi: O sekmeyi kapat. Hangi sekme olduğunu biliyorsun. Kapat gitsin.",
+            "Küre fısıldıyor: Akşama güzel bir dizi/film patlat, bütün günün yükünü silsin süpürsün.",
+            "Yazım hatalarını düzelttiğin gibi hayatına da ince bir ayar çekiyorsun. Doğru yoldasın.",
+            "Bugün müşteriden gelen 'Elinize sağlık çok güzel olmuş' mesajını göreceksiniz. (Şaka şaka, revizyon var).",
+            "İçinden bir ses 'Bırak git' diyor ama cüzdanın 'Dur yolcu' diye fısıldıyor. Çalışmaya devam.",
+            "Birazdan kopyalayacağın metin, gideceği yerde büyük bir hayranlıkla okunacak. Gurur duy.",
+            "Bugün tarayıcında 40'tan fazla sekme açılacak. Bilgisayarına iyi davran, o senin yoldaşın.",
+            "Günün kehaneti: Bugün klavyene dökülmeyen her kahve, senin için büyük bir zaferdir.",
+            "Metninde hiç yasakli kelime çıkmadı mı? İşte profesyonelliğin saf ve temiz hali. Helal olsun.",
+            "Bugün 'Bakarız' denen her şeyin aslında 'Asla yapmayacağız' anlamına geldiğini bir kez daha anlayacaksın.",
+            "Siber kaderinde büyük bir kahve molası var. Hak ettin, hadi git doldur gel.",
+            "Hayat bazen hatalı kodlar gibi karmaşıktır, ama unutmaman gereken şey: Her zaman bir geri al (CTRL+Z) tuşu vardır.",
+            "Küreye göre bugün alacağın en iyi karar, işi tam zamanında bırakıp bilgisayarı kapatmak olacak.",
+            "Metindeki tüm pislikleri temizledin. Artık tertemiz bir sayfan var. Hayatın da böyle ferah olsun.",
+            "Kafandaki düşünceler şu an temizlenmemiş bir HTML metni gibi karmakarışık. Bi' dur, sakinleş.",
+            "Bugün arkandan konuşanların tarayıcı geçmişi yanlışlıkla patronlarına mail gitsin. Amin.",
+            "Küre parlıyor: Bugün yapacağın işler gelecekteki rahatının temel taşları olacak. Sık dişini.",
+            "Bugün kulaklığını tak ve dünyayı sessize al. Sadece sen, müziğin ve bu asil siyah panel.",
+            "Günün özlü sözü: Hatalı metin düzeltilir, hatalı insan zor. Metinlerle uğraşmaya devam.",
+            "Tengri Oracle görevini tamamladı. Şimdi o 'Kopyala' butonuna bas ve şovunu yap aslan parçası!"
         ];
 
         function getTengriOracle() { const d = document.getElementById("oracle-display");
@@ -1053,6 +939,50 @@
         const coffeeQuotes = [
             "Derin bir nefes al. Şu an her şey kontrolün altında olmasa bile, bu senin değerini eksiltmez.",
             "Zor dökümanlar biter, bitmeyen revizyonlar son bulur ama senin iç huzurun kalıcı olmalıdır.",
+            "Elindeki fincanın sıcaklığını hisset ve sadece derin bir nefes al. Şu an o yorucu dünyanın tamamen dışındasın.",
+            "Yetişmen gereken hiçbir yer, kanıtlaman gereken hiçbir şey yok. Bu an sadece senin ve hakkın olan sessizliğin.",
+            "Bırak dışarıdaki dünya kendi telaşıyla dönsün; senin şu anki tek görevin sakince kahveni yudumlamak.",
+            "Hayat bir koşturmaca değil; durduğun, nefes aldığın ve kendine döndüğün bu küçük anların toplamıdır.",
+            "Fincanından yükselen dumanı izle; tıpkı onun gibi, zihnindeki tüm o ağır düşüncelerin de uçup gitmesine izin ver.",
+            "Hak ettiğin o iç huzuru hiçbir iş, hiçbir insan senden çalamaz. Kendini o güvenli, sakin limana bırak.",
+            "Sırtındaki o görünmez yükleri biraz olsun yere bırak. Bu birkaç dakika, sadece senin ruhunu beslemen için var.",
+            "Her şey üst üste geldiyse, durup sakince geri çekilmek pes etmek değil, en asil dinlenme şeklidir.",
+            "Ruhunun pillerini şarj etmesine izin ver. Dinlenmek de en az çalışmak kadar kutsal bir çabadır.",
+            "Başkalarının ne düşündüğü ya da ne kadar hızlı koştuğu önemli değil; sen kendi yolunda, asil bir sakinlikle ilerliyorsun.",
+            "Kahvenin kokusu ruhuna sızarken, içindeki o bitmeyen savaşı durdur. Hak ettiğin barış tam olarak bu anda saklı.",
+            "Büyük başarılar, pes etmek yerine sadece küçük bir kahve molası verenler tarafından inşa edildi.",
+            "Bugün gösterdiğin sabır, yarın kuracağın o özgür dünyanın en sağlam temel taşı olacak.",
+            "Kendine haksızlık etmeyi bırak. Bugün elinden gelenin en iyisini yapıyorsun ve bu tamamen yeterli.",
+            "Yavaşla. Dünya seni bekleyebilir. Bu kahvenin tadı, önündeki tüm işlerden daha önemli.",
+            "Unutma: En karmaşık kodlar bile tek bir düzeltmeyle çözülür. Hayatındaki karmaşa da öyle.",
+            "Sen bir iş unvanından, bir excel tablosundan ya da revizyon raporundan çok daha fazlasısın.",
+            "Zor zamanlar güçlü insanlar yaratır. Şu an vizyonunu genişleten harika bir olgunlaşma dönemindesin.",
+            "Bugünün stresi yarının tecrübesidir. Sakince kahveni yudumla ve zihnini serbest bırak.",
+            "Şu an tam olarak olman gereken yerdesin. Adım adım, acele etmeden hedefine ilerliyorsun.",
+            "Zihnindeki gürültüyü kapat. Sadece kahvenin kokusuna ve aura ritmine odaklan.",
+            "Dünyanın hızı seni ilgilendirmiyor. Sen kendi asil ritminde, kahvenden aldığın o ilk yudumla ilerliyorsun.",
+            "Zihnindeki bildirimleri kapat. Kahvenin sıcaklığına ve şu anın dinginliğine teslim ol.",
+            "Başkalarının acelesi onların sınırıdır. Sen sakince kahveni yudumla ve kendi aura alanını koru.",
+            "Gözlerini kapat, kahvenin kokusunu içine çek ve evrenin senin için fısıldadığı o sakin ritmi dinle.",
+            "Yavaşla. Dünya sen durdun diye dönmekten vazgeçmeyecek. Kahvenin tadını çıkar, gerisi hallolur.",
+            "Geçmişin stresini, geleceğin kaygısını sil at. Şu an sadece sen ve kahvenin o kusursuz dengesi varsınız.",
+            "Başarmak kadar dinlenmek de bir sanattır. Şimdi arkana yaslan ve kahvenin kokusuyla zihnini özgür bırak.",
+            "Harika şeyler zaman alır. Kendine zaman tanı, acele kurulan hayaller çabuk yıkılır.",
+            "Her şey üst üste geliyorsa, belki de yön değiştirme vaktin gelmiştir. Bu mola sana rehberlik etsin.",
+            "Sen durdurulamaz bir güçsün, sadece şu an pillerini şarj etmen gerekiyor. Dinlenmek de işin parçası.",
+            "Başarı bir varış noktası değil, bu zorlu ama öğretici yolculuğun ta kendisidir. Yolun tadını çıkar.",
+            "Bugün karşına çıkan engeller, seni durdurmak için değil, stratejini güçlendirmen için varlar.",
+            "Gelecekteki halin sana bakıp teşekkür edecek. Sırf bugün pes etmediğin ve akıllıca dinlendiğin için.",
+            "İçindeki ışığı kimsenin söndürmesine izin verme. Onlar sadece kendi karanlıklarını yansıtıyorlar.",
+            "Fırtınalar ağaçların köklerini derinleştirir. Yaşadığın kurumsal krizler de senin profesyonelliğini.",
+            "Biraz durup dinlenmek, pes etmek demek değildir. Daha güçlü koşmak için stratejik bir geri çekilmedir.",
+            "Zorlu bir sabahı geride bıraktın, harika bir öğleden sonrasına hazırsın. Kahven sana güç versin.",
+            "Her şey bittiğinde arkana yaslanıp bu günleri tatlı bir tebessümle hatırlayacaksın. İnan bana.",
+            "Zihnini temizle, gereksiz beklentileri tıpkı metindeki çift boşluklar gibi hayatından ayıkla.",
+            "Bugün kendin için küçük bir iyilik yap ve sadece bu ana odaklan. Huzur tam olarak burada saklı.",
+            "Başkalarının ne düşündüğü onların sınırıdır, senin potansiyelinin sınırı ise gökyüzüdür.",
+            "Sakin ol. Hayat bir yarış değil. Kendi ritminde, pürüzsüz ve asil bir şekilde ilerliyorsun.",
+            "Bulutlar dağılır, güneş elbet doğar. Siber evrenin bu geçici yoğunluğu seni asla yıldırmasın."
         ];
         let coffeeInterval, coffeeDrainInterval, coffeeLevel = 72;
 
@@ -1654,9 +1584,422 @@
         // BUNU BİLİYOR MUYDUN? – 220+ TEYİTLİ, EĞLENCELİ BİLGİ
         // ==========================================================================
         const funFacts = [
+            "Ahtapotların 3 kalbi vardır. İkisi solungaçlara, biri ise vücudun geri kalanına kan pompalar.",
+            "Muz aslında botanik olarak bir meyveden çok bir çeşit "berry" (üzümsü meyve) kabul edilir.",
+            "Dünyadaki karıncaların toplam ağırlığının, insanlığın toplam ağırlığına yakın olduğu tahmin edilir.",
+            "Köpekbalıkları, dinozorlardan yaklaşık 150 milyon yıl daha eskidir.",
+            "Venüs'te bir gün, bir yıldan daha uzundur.",
+            "Kutup ayılarının derisi siyah, tüyleri ise aslında şeffaftır.",
+            "İnsan burnu yaklaşık 1 trilyon farklı kokuyu ayırt edebilir.",
+            "Su samurları uyurken birbirlerini kaybetmemek için el ele tutuşabilir.",
+            "Koalaların parmak izleri, insan parmak izlerine şaşırtıcı derecede benzer.",
+            "Dünya üzerindeki altının büyük kısmının çekirdekte bulunduğu düşünülüyor.",
+            "Ahtapotlar dar oldukları sürece neredeyse her delikten geçebilir; çünkü kemikleri yoktur.",
+            "Penguenler eşlerine küçük taşlar hediye ederek kur yapabilir.",
+            "Gözlerini açık tutarak hapşırmak neredeyse imkânsızdır.",
+            "Uzay tamamen sessizdir; çünkü sesin yayılması için hava gerekir.",
+            "Kalbin, vücuttaki tüm damarlar uç uca eklense yaklaşık 100.000 kilometre uzunluğunda bir ağ oluşur.",
+            "Sıcak su, bazı koşullarda soğuk sudan daha hızlı donabilir. Buna Mpemba etkisi denir.",
+            "Göz kırpmak yaklaşık 0,1 saniye sürer.",
+            "Baykuşlar başlarını yaklaşık 270 derece döndürebilir.",
+            "Denizatı çiftlerinde yavruları taşıyan erkek bireydir.",
+            "Ay'da yürüyen astronotların ayak izleri milyonlarca yıl kalabilir.",
+            "Devekuşunun gözü, beyninden daha büyüktür.",
+            "Cam, teknik olarak tamamen katı değil; çok yavaş akan amorf bir yapıdır.",
+            "Kediler yaklaşık 100 farklı ses çıkarabilir; köpekler ise bunun çok daha azını.",
+            "Gökkuşağı aslında tam bir dairedir; biz yerden sadece üst kısmını görürüz.",
+            "Dünya'daki oksijenin büyük kısmı ormanlardan değil, okyanuslardaki mikroskobik canlılardan gelir.",
+            "Yılanlar göz kapaklarını kapatamaz.",
+            "Filler zıplayamayan memelilerdendir.",
+            "İnsan beyni, vücudun kullandığı enerjinin yaklaşık %20'sini tek başına tüketir.",
+            "Dünya'daki tüm kıtalar, yılda birkaç santimetre hareket etmeye devam eder.",
+            "Bir kartal, insan gözünden yaklaşık 4-5 kat daha keskin görebilir.",
+            "Dünyadaki tüm insanları omuz omuza dizsen, sadece İstanbul'un yüzölçümünden çok daha küçük bir alana sığarlar.",
+            "Bir bulutun ağırlığı 100 fili geçebilir.",
+            "Kargalar insan yüzlerini yıllarca unutmaz ve kendilerine kötülük yapan kişileri tanıyabilir.",
+            "Bazı papağanlar, anlamını öğrendikleri kelimeleri doğru bağlamda kullanabilir.",
+            "Balinalar birbirlerine yüzlerce kilometre uzaklıktan seslenebilir.",
+            "Deniz samurları en sevdikleri taşı yıllarca yanlarında taşır.",
+            "Ağaçlar, böcek saldırısına uğradıklarında çevredeki ağaçlara kimyasal "tehlike" sinyali gönderebilir.",
+            "Karıncalar savaş yapar, asker yetiştirir ve hatta bazı türleri başka karınca kolonelerini köleleştirir.",
+            "Bir salyangozun binlerce minik dişi olabilir.",
+            "Bazı mantarlar, yıldırım düştükten sonra daha hızlı büyüyebilir.",
+            "Geceleri gökyüzünde gördüğün bazı yıldızların ışığı, sen doğmadan çok önce yola çıktı.",
+            "Venüs'te Güneş batıdan doğup doğudan batar.",
+            "Uzayda ağlamak mümkün olsa bile gözyaşları aşağı düşmez, yüzünde baloncuk gibi birikir.",
+            "İnsan beyni yaklaşık 86 milyar nörondan oluşur.",
+            "Rüyanda hiç görmediğin bir yüzü üretmen çok düşük ihtimaldir; beynin genellikle daha önce gördüğü yüzleri kullanır.",
+            "Beynin, sen uyurken bile çevrendeki bazı sesleri takip etmeye devam eder.",
+            "Penguenler eşlerini seslerinden binlerce penguen arasından bulabilir.",
+            "Bazı örümcekler avlarını yakalamak için ağ değil, lasso (kement) kullanır.",
+            "Bir timsahın çene kapatma kuvveti çok yüksektir ama ağzını açan kasları oldukça zayıftır.",
+            "Bir gün, Dünya'daki bütün kıtalar tekrar birleşerek tek süper kıta oluşturacak.",
+            "Şu anda vücudundaki atomların büyük kısmı, milyarlarca yıl önce patlayan yıldızların içinde oluştu. Teknik olarak hepimiz "yıldız tozuyuz.",
             "İnsan vücudundaki bakteriler, hücrelerden 10 kat fazladır.",
             "Bir gün tam olarak 24 saat değildir. Dünya'nın kendi ekseni etrafındaki dönüşü yaklaşık 23 saat 56 dakikadır (yıldız günü).",
             "İnsan beyni, uyanıkken yaklaşık 20 watt güç tüketir. Bu, küçük bir ampulü yakmaya yeter.",
+            "Dünya'daki tüm karıncaların toplam kütlesi, bazı tahminlere göre tüm yabani memelilerin toplam kütlesine yakındır.",
+            "Zürafaların da insanlar gibi yedi boyun omuru vardır. Tek fark, omurların çok daha uzun olmasıdır.",
+            "Bir bulut yüzlerce ton su taşıyabilir. Buna rağmen su damlacıkları çok küçük olduğu için havada kalabilir.",
+            "Su, donarken hacmi artan nadir maddelerden biridir. Bu yüzden buz suyun üzerinde yüzer.",
+            "Bir insanın DNA'sı açılıp uç uca eklense yaklaşık 2 metre uzunluğa ulaşır. Bu uzunluk neredeyse tüm hücrelerde bulunur.",
+            "Ahtapotların kanı mavidir. Bunun nedeni demir yerine bakır içeren hemosiyanin pigmentidir.",
+            "Bir ağacın büyük kısmı toprağın değil, havadaki karbondioksitin ürünüdür. Kütlesinin çoğunu atmosferden aldığı karbon oluşturur.",
+            "Timsahlar dillerini dışarı çıkaramaz. Dil ağız tabanına sıkıca bağlıdır.",
+            "Kelebekler ayaklarıyla tat alabilir.",
+            "Kalbiniz yaşamınız boyunca yaklaşık 2-3 milyar kez atar.",
+            "Güneş'in ışığı Dünya'ya yaklaşık 8 dakika 20 saniyede ulaşır.",
+            "Köpekbalıkları, dinozorlardan yaklaşık 200 milyon yıl daha yaşlıdır.",
+            "Bir yıldırım, Güneş'in yüzeyinden yaklaşık 5 kat daha sıcaktır.",
+            "Venüs'te bir gün, bir yıldan daha uzundur.",
+            "Jüpiter'e yaklaşık 1.300 Dünya sığabilir.",
+            "İnsan beyni yaklaşık 86 milyar nöron içerir.",
+            "Okyanusların büyük bölümü hâlâ tam olarak keşfedilememiştir.",
+            "Kargalar yıllarca insan yüzlerini hatırlayabilir.",
+            "Arılar birbirlerine dans ederek yön tarif eder.",
+            "Yarasalar aktif uçabilen tek memelidir.",
+            "Ahtapotlar kavanoz kapağı açabilecek kadar zekidir.",
+            "Develerin hörgücünde su değil, yağ depolanır.",
+            "Ay'da atmosfer olmadığı için ses duyulmaz.",
+            "Ağaçlar yer altındaki mantar ağlarıyla besin paylaşabilir.",
+            "İnsan vücudundaki en güçlü kas, çene kaslarından biridir.",
+            "Bir insan ömrü boyunca ortalama 100.000 kilometreden fazla yürür.",
+            "Denizanaları dinozorlardan bile daha eskidir.",
+            "Bir karınca kendi ağırlığının 50 katını kaldırabilir.",
+            "Dünya'nın manyetik alanı her 200.000 yılda bir tersine döner.",
+            "Güneş, her saniye 600 milyon ton hidrojeni helyuma dönüştürür.",
+            "Okyanuslarda yaşayan türlerin sadece %5'i biliniyor.",
+            "Bir salyangoz 3 yıl uyuyabilir.",
+            "Ahtapotların üç kalbi vardır.",
+            "Zürafaların dilleri 50 cm uzunluğa ulaşabilir.",
+            "Kutup ayılarının derisi siyahtır.",
+            "Bir çekirge, kendi vücut uzunluğunun 20 katı sıçrayabilir.",
+            "Baykuşlar başlarını 270 derece çevirebilir.",
+            "Bir deve 15 dakikada 100 litre su içebilir.",
+            "Denizatları, erkekleri tarafından doğurulan tek hayvandır.",
+            "Arılar dans ederek yiyecek kaynağının yerini tarif eder.",
+            "Köpekler insanların duygularını koklayarak anlayabilir.",
+            "Kediler sadece insanlara miyavlar.",
+            "Bir fil 60 yaşına kadar dişlerini yenileyebilir.",
+            "Timsahlar ağızlarını açarken çenelerini yukarı kaldıramaz.",
+            "Yunuslar gözleri açık uyuyabilir.",
+            "Kartallar 3 km yükseklikten bir tavşan görebilir.",
+            "Dünyanın en hızlı hayvanı şahindir (400 km/s).",
+            "Bir kanguru 10 metre uzunluğa sıçrayabilir.",
+            "Papağanlar 100 yıla kadar yaşayabilir.",
+            "Köpekbalıkları 400 milyon yıldır neredeyse değişmeden yaşıyor.",
+            "İnsan gözü yaklaşık 10 milyon farklı rengi ayırt edebilir.",
+            "Kalp bir insan hayatı boyunca ortalama 2.5 milyar kez atar.",
+            "İnsan saçı yılda ortalama 15 cm uzar.",
+            "Tırnaklar saçtan daha hızlı uzar.",
+            "İnsan vücudundaki kan günde 19.000 km yol alır.",
+            "Bir insan ömrü boyunca ortalama 50.000 litre su içer.",
+            "Kemikler çeliğin 5 katı kadar güçlüdür.",
+            "İnsan beyni 100 milyar sinir hücresi içerir.",
+            "Gece uyumadan önce beyin gün içinde öğrendiklerimizi işler.",
+            "Bir insan günde ortalama 20.000 nefes alır.",
+            "Kalp vücuttaki en güçlü kastır.",
+            "İnsan iskeleti 206 kemikten oluşur.",
+            "Gülmek bağışıklık sistemini güçlendirir.",
+            "Bir müzik parçası beynin birden fazla bölgesini aynı anda aktive eder.",
+            "Şarkı söylemek stresi azaltan bir egzersizdir.",
+            "Klasik müzik dinlemek odaklanmayı artırabilir.",
+            "Film korku sahneleri kalp atışını hızlandırır.",
+            "Dans etmek koşmaktan daha fazla kalori yakar.",
+            "Rüya görmek beynin bilgileri işlemesine yardımcı olur.",
+            "Kahve dünyada en çok tüketilen içeceklerden biridir.",
+            "İlk çikolata MÖ 1900 civarında Meksika'da yapıldı.",
+            "Bir bardak süt yaklaşık 300 mg kalsiyum içerir.",
+            "Bal asla bozulmaz, 3.000 yıllık bal bulunmuştur.",
+            "Dünyanın en pahalı baharatı safran (50$/gr).",
+            "Pizza dünyada en çok tüketilen fast-food yemeğidir.",
+            "Türkiye dünyada en çok çay tüketen ülkedir.",
+            "Sushi aslında Japon değil, Çin kökenlidir.",
+            "Mısır dünyada en çok yetiştirilen tahıldır.",
+            "Mantarlar bitki değil, mantar krallığına aittir.",
+            "Bir inek günde 50 litre süt üretebilir.",
+            "Patates uzayda yetiştirilen ilk sebzeydi.",
+            "Çilek aslında bir meyve değil, bir 'çiçek' grubundandır.",
+            "Domates İtalya'ya 16. yüzyılda geldi.",
+            "Biber içerdiği kapsaisin ile vücut ısısını artırır.",
+            "Bir kilo bal yapmak için arıların 2 milyon çiçek ziyaret etmesi gerekir.",
+            "Dünya üzerinde 7.000'den fazla dil konuşuluyor.",
+            "En yaygın ikinci dil İngilizce (1,5 milyar kişi).",
+            "En zor öğrenilen dillerden biri Mandarin Çincesi.",
+            "Dünyada en çok konuşulan ana dil İspanyolca.",
+            "Türkçe dünyada en çok konuşulan 20. dildir.",
+            "Her 14 günde bir dil yok oluyor.",
+            "Eski Mısır hiyeroglifleri 1.800 yıl boyunca çözülemedi.",
+            "Bir metnin %80'ini oluşturan 200 kelime vardır.",
+            "Dünyanın en uzun kelimesi 189.819 harften oluşuyor.",
+            "Okuma yazma oranı en yüksek ülke Finlandiya'dır.",
+            "En çok kitap okuyan ülke Hindistan'dır.",
+            "Dünya'da her yıl 2 milyon kitap yayınlanıyor.",
+            "Bir insan ömrü boyunca ortalama 500 kitap okuyabilir.",
+            "Antik Yunan'da kitaplar papirüs rulolarından oluşuyordu.",
+            "En eski yazılı metin Sümerlerin çivi yazısıdır (MÖ 3400).",
+            "Tarih boyunca en çok çevrilen kitap İncil'dir.",
+            "En uzun roman 'Les Misérables' 1.200 sayfadan oluşur.",
+            "Harry Potter serisi dünya çapında 500 milyon kopya sattı.",
+            "Dünyanın en eski üniversitesi 859'da Fas'ta kuruldu.",
+            "İlk okul MÖ 2000'de Mezopotamya'da açıldı.",
+            "Dünyada 1 milyardan fazla insan okuma yazma bilmiyor.",
+            "Bir öğrenci okul hayatı boyunca 10.000 saat ders alıyor.",
+            "Tarihteki ilk Olimpiyat oyunları MÖ 776'da Yunanistan'da yapıldı.",
+            "Her gün 30 dakika yürümek ömrü uzatabilir.",
+            "Futbol dünyanın en popüler sporudur.",
+            "Basketbol 1891'de ABD'de icat edildi.",
+            "Yüzme tüm kas gruplarını çalıştıran tek spordur.",
+            "Bir maraton 42.195 km uzunluğundadır.",
+            "En hızlı koşucu Usain Bolt (9.58 sn – 100m).",
+            "Masa tenisi en hızlı refleks gerektiren sporlardandır.",
+            "Yoga 5.000 yıldan uzun süredir uygulanmaktadır.",
+            "Dünya nüfusu 8 milyarı geçti.",
+            "Dünya üzerinde 195 ülke bulunur.",
+            "Çin dünyanın en kalabalık ülkesidir.",
+            "Vatikan dünyanın en küçük ülkesidir (0.44 km²).",
+            "Dünya'nın en büyük okyanusu Pasifik'tir.",
+            "En uzun nehir Nil Nehri'dir (6.650 km).",
+            "En yüksek dağ Everest'tir (8.848 m).",
+            "Dünya'da 1.500'den fazla aktif yanardağ bulunur.",
+            "Güneş sistemi 4.6 milyar yaşındadır.",
+            "Ay Dünya'dan her yıl 3.8 cm uzaklaşıyor.",
+            "Jüpiter Güneş sistemindeki en büyük gezegendir.",
+            "Merkür en küçük gezegendir.",
+            "Venüs Dünya'nın ikiz kardeşi olarak bilinir.",
+            "Mars'ta su bulunmuştur.",
+            "Uranüs yan dönmüş bir gezegendir.",
+            "Neptün en rüzgarlı gezegendir (2.100 km/s).",
+            "Plüton 2006'da gezegenlikten çıkarıldı.",
+            "Güneş'in yüzeyi 5.500°C'dir.",
+            "Samanyolu'nda 100 milyar yıldız bulunur.",
+            "Uzayda 13 milyar ışık yılı uzaklıkta galaksiler var.",
+            "Ay'da yer çekimi Dünya'nın 1/6'sıdır.",
+            "Uluslararası Uzay İstasyonu 400 km yükseklikte döner.",
+            "Uzayda bir gün 24 saat değil, 90 dakikadır.",
+            "Dünya'nın atmosferi %78 azot, %21 oksijenden oluşur.",
+            "Ozon tabakası güneşin zararlı ışınlarını emer.",
+            "Küresel ısınma her 10 yılda 0.2°C artıyor.",
+            "Okyanuslar Dünya yüzeyinin %70'ini kaplar.",
+            "En derin okyanus noktası Mariana Çukuru'dur (11 km).",
+            "Kutup buzulları her yıl 1.2 milyar ton eriyor.",
+            "Amazon Ormanları dünya oksijeninin %20'sini üretir.",
+            "Mısır piramitleri 4.500 yıldır ayakta.",
+            "Roma İmparatorluğu 1.000 yıldan fazla hüküm sürdü.",
+            "İstanbul 1.600 yıl boyunca üç büyük imparatorluğa başkentlik yaptı.",
+            "Osmanlı İmparatorluğu 600 yıl ayakta kaldı.",
+            "Çin Seddi 21.000 km uzunluğundadır.",
+            "İlk araba 1886'da Karl Benz tarafından yapıldı.",
+            "İlk uçak 1903'te Wright Kardeşler tarafından uçuruldu.",
+            "Tarihteki ilk para Lidyalılar tarafından MÖ 600'de basıldı.",
+            "Takvim Mısırlılar tarafından 5.000 yıl önce geliştirildi.",
+            "Pisagor matematiğin temellerini attı.",
+            "Sosyal medyada en çok takipçiye sahip kişi Cristiano Ronaldo.",
+            "Instagram 2010'da piyasaya sürüldü.",
+            "WhatsApp 2009'da kuruldu.",
+            "Facebook 2004'te üniversite öğrencileri için başladı.",
+            "TikTok dünya genelinde 1 milyar kullanıcıya ulaştı.",
+            "Her gün 500 milyon tweet atılıyor.",
+            "YouTube dünyanın en büyük video platformudur.",
+            "Leonardo da Vinci hem sanatçı hem de mucitti.",
+            "Mona Lisa dünyanın en ünlü tablosudur.",
+            "Van Gogh yaşamı boyunca sadece bir tablo sattı.",
+            "Pablo Picasso 20. yüzyılın en etkili sanatçılarındandır.",
+            "En pahalı tablo Salvator Mundi (450 milyon $).",
+            "Müzik beynin ödül merkezini harekete geçirir.",
+            "Beatles tüm zamanların en çok satan müzik grubudur.",
+            "Mozart 5 yaşında beste yapmaya başladı.",
+            "Bach Barok müziğin en büyük ismidir.",
+            "Gitar dünyada en çok çalınan enstrümandır.",
+            "Piyano 300 yılı aşkın süredir popülerdir.",
+            "Dünyada her yıl 200'den fazla müzik festivali düzenleniyor.",
+            "Spotify 2006'da kuruldu.",
+            "Türkiye'de ilk sinema 1896'da gösterime girdi.",
+            "Avatar dünyanın en çok hasılat yapan filmidir (2.9 milyar $).",
+            "Titanik 1997'de 11 Oscar kazandı.",
+            "Hollywood dünyanın en büyük film endüstrisidir.",
+            "Disney 1923'te kuruldu.",
+            "Dünya üzerinde 2.000'den fazla müze var.",
+            "Louvre Müzesi yılda 10 milyon ziyaretçi alır.",
+            "Tarihteki ilk fotoğraf 1826'da çekildi.",
+            "İnternette her gün 4 milyar video izleniyor.",
+            "Türkiye'deki ilk matbaa 1727'de kuruldu.",
+            "Dünyanın en büyük kütüphanesi Kongre Kütüphanesi'dir.",
+            "En eski şehir Jericho'dur (MÖ 9000).",
+            "Vikingler Kuzey Amerika'ya 1000 yıl önce ayak bastı.",
+            "Sokrates 'Bildiğim tek şey hiçbir şey bilmediğimdir.' demiştir.",
+            "Aristoteles bilim ve felsefenin temellerini attı.",
+            "Platon ideal devlet fikrini ortaya attı.",
+            "İnsan Hakları Evrensel Bildirgesi 1948'de kabul edildi.",
+            "Demokrasi antik Yunan'da Atina'da doğdu.",
+            "Cumhuriyet Roma'da MÖ 509'da ilan edildi.",
+            "Dünya'da her yıl 100 milyon ağaç kesiliyor.",
+            "Denizler plastik kirliliği nedeniyle tehdit altında.",
+            "Temiz su kaynakları küresel sorunların başında geliyor.",
+            "Her yıl 1 milyon canlı türü yok olma tehlikesiyle karşı karşıya.",
+            "Geri dönüşüm doğal kaynakların korunmasına yardımcı olur.",
+            "Güneş enerjisi dünyanın en temiz enerji kaynaklarından biridir.",
+            "Rüzgar enerjisi 2023'te elektrik üretiminin %10'unu karşıladı.",
+            "Elektrikli araçlar fosil yakıt kullanımını azaltıyor.",
+            "Mikroplastikler okyanuslarda her yerde bulunuyor.",
+            "Ozon tabakasındaki incelme uluslararası anlaşmalarla yavaşladı.",
+            "Bambu en hızlı büyüyen bitkidir (günde 1 metre).",
+            "Dünya her yıl 2 milyar ton çöp üretiyor.",
+            "Tarihteki en eski fosil 3.5 milyar yaşında.",
+            "İlk canlılar okyanuslarda ortaya çıktı.",
+            "İnsan yaklaşık 300.000 yıldır var.",
+            "Neanderthaller modern insanlardan farklı bir türdü.",
+            "Tarih öncesi dönemde mağara resimleri yapılıyordu.",
+            "Tarım insanlık tarihinde devrim yarattı (MÖ 10.000).",
+            "Tekerlek MÖ 3500'de Mezopotamya'da icat edildi.",
+            "Matbaa 1440'ta Gutenberg tarafından geliştirildi.",
+            "Barut Çin'de 9. yüzyılda keşfedildi.",
+            "Telefon 1876'da Alexander Graham Bell tarafından icat edildi.",
+            "İlk radyo yayını 1906'da yapıldı.",
+            "Televizyon 1927'de icat edildi.",
+            "Bilgisayar 1940'larda geliştirildi.",
+            "Bir insan ömrü boyunca ortalama 25 kg saç tıraş eder.",
+            "Kalp günde ortalama 100.000 kez atar.",
+            "En hızlı rüzgar 408 km/s ile Avustralya'da ölçüldü (1996).",
+            "Bir çift ayakkabı ortalama 300-500 km yürümeye dayanır.",
+            "Bir karpuzun %92'si sudur.",
+            "Portakal aslında mandalina ve greyfurt karışımıdır.",
+            "Muz dünyada en çok tüketilen meyvedir.",
+            "Bir astronot uzayda 2 cm uzar.",
+            "Dünya kendi ekseninde 1.670 km/s hızla döner.",
+            "Mars'ta bir gün Dünya'dan sadece 39 dakika uzundur.",
+            "Jüpiter'in Büyük Kırmızı Lekesi Dünya'dan büyüktür.",
+            "Plüton'un 5 uydusu vardır.",
+            "Güneş 5 milyar yıl sonra sönecek.",
+            "Samanyolu yılda 100.000 yeni yıldız oluşturur.",
+            "En yakın yıldız 4.2 ışık yılı uzaklıktadır.",
+            "Uzayda 100 milyardan fazla galaksi var.",
+            "Kuzey Işıkları güneş rüzgarlarının atmosferle çarpışmasıyla oluşur.",
+            "Ozon tabakası 1985'te keşfedildi.",
+            "Buzullar 1970'ten beri %30 eridi.",
+            "Okyanus asitlenmesi mercan resiflerini tehdit ediyor.",
+            "Arılar 20 milyon yıldır var.",
+            "Karıncalar 100 milyon yıldır var.",
+            "İnsan yaklaşık 2 milyon yıl önce ateşi kullanmaya başladı.",
+            "İlk şehirler MÖ 4.000'de Mezopotamya'da kuruldu.",
+            "Yazı MÖ 3.400'de Sümerler tarafından icat edildi.",
+            "Demir çağı MÖ 1.200'de başladı.",
+            "Rönesans 14. yüzyılda başladı.",
+            "Coğrafi keşifler 15. yüzyılda başladı.",
+            "Amerika 1492'de Kolomb tarafından keşfedildi.",
+            "Fransız Devrimi 1789'da patlak verdi.",
+            "Sanayi Devrimi 18. yüzyılda başladı.",
+            "Dünya Savaşları 20. yüzyılda yaşandı.",
+            "İnternet 1960'larda geliştirilmeye başlandı.",
+            "WWW 1989'da Tim Berners-Lee tarafından icat edildi.",
+            "İlk web sitesi 1991'de yayınlandı.",
+            "Google 1998'de kuruldu.",
+            "Akıllı telefonlar 2007'de iPhone ile popüler oldu.",
+            "Uzay yürüyüşü 1965'te yapıldı.",
+            "Ay'a iniş 1969'da gerçekleşti.",
+            "Mars'ta su 2000'de keşfedildi.",
+            "DNA 1953'te keşfedildi.",
+            "İnsan Genom Projesi 2003'te tamamlandı.",
+            "CRISPR 2012'de keşfedildi.",
+            "AlphaGo 2016'da dünya şampiyonunu yendi.",
+            "ChatGPT 2022'de piyasaya sürüldü.",
+            "Dünya'nın en hızlı interneti 319 Tbps ile Japonya'da (2021).",
+            "En eski müzik aleti 40.000 yıllık flüttür (Almanya).",
+            "En çok oylanan film IMDb'de 'The Shawshank Redemption' (9.3).",
+            "En hızlı tren Maglev 603 km/s ile Japonya'da.",
+            "En büyük imparatorluk Britanya İmparatorluğu'ydu (33.6 milyon km²).",
+            "En eski hamam 4.000 yıllık Mohenjo-daro'dadır (Pakistan).",
+            "En büyük gökdelen Burj Khalifa (828 m).",
+            "En pahalı tablo Leonardo da Vinci'nin 'Salvator Mundi'si (450 milyon $).",
+            "En hızlı okuma rekoru 80.000 kelime/dakika (Howard Berg).",
+            "En uzun süre uykusuz kalma rekoru 11 gün (Randy Gardner, 1964).",
+            "En büyük karpuz 159 kg (Tennessee, 2013).",
+            "En yüksek tenis servisi 263 km/s (Sam Groth, 2012).",
+            "En uzun saç 37 metre (Xie Qiuping, Çin, 2004).",
+            "En hızlı paraşüt atlayışı 39 km (Felix Baumgartner, 2012).",
+            "En derin dalış 10.928 m (Mariana Çukuru, Victor Vescovo, 2019).",
+            "En uzun evlilik 90 yıl (İngiliz çift, 2015).",
+            "En çok kitap yazan yazar Isaac Asimov (1.000'den fazla).",
+            "En ağır böcek Goliath böceği (100 gram).",
+            "En küçük kuş Arı sinek kuşu (5 cm).",
+            "En büyük çiçek Rafflesia (1 metre çapında).",
+            "En çok dil bilen insan Cardinal Mezzofanti (58 dil).",
+            "En güçlü manyetik alan 45 tesla (ABD laboratuvarı).",
+            "En derin kuyu 12.262 m (Kola Yarımadası, Rusya).",
+            "En eski yaşayan ağaç 4.850 yıllık Methuselah (Kaliforniya).",
+            "En büyük hayvan Mavi balina (200 ton).",
+            "En uzun göç Kutup sumrusu (70.000 km/yıl).",
+            "En zehirli hayvan Kutu denizanası (öldürücü).",
+            "En hızlı böcek Güneyli yeşil yusufçuk (97 km/s).",
+            "En pahalı kahve Kopi Luwak (100 $/fincan).",
+            "En büyük pizza 39 metre çapında (Roma, 2012).",
+            "En kalabalık konser Rod Stewart (4 milyon kişi, Rio, 1994).",
+            "En uzun köprü Danyang-Kunshan (Çin, 164,8 km).",
+            "En uzun süren uçuş 64 gün 22 saat (Cessna 172, 1958).",
+            "En çok izlenen YouTube videosu Baby Shark (13 milyar, 2024).",
+            "En fazla Oscar alan film Titanic (11 Oscar, 1997).",
+            "En hızlı koşan hayvan Çita (120 km/s).",
+            "En yüksek atlayan hayvan Pire (kendi boyunun 200 katı).",
+            "En büyük yumurta Devekuşu (1.5 kg).",
+            "En hızlı reaksiyon 0.1 saniye (insan tepki süresi).",
+            "En büyük şelale hacmi Victoria Şelalesi (Zambiya/Zimbabwe).",
+            "En sıcak yer Death Valley (56.7°C, ABD).",
+            "En soğuk yer Vostok (-89.2°C, Antarktika).",
+            "En uzun mağara Mammoth Cave (652 km, ABD).",
+            "En büyük mercan resifi Büyük Bariyer Resifi (2.300 km).",
+            "En hızlı yıldırım 360.000 km/s (2017).",
+            "En büyük asteroid Vesta (530 km çap).",
+            "En büyük yıldız UY Scuti (1.700 Güneş çapında).",
+            "En eski galaksi GN-z11 (13.4 milyar ışık yılı).",
+            "En çok uyduya sahip gezegen Satürn (146 uydu).",
+            "En güçlü teleskop James Webb (2022).",
+            "En hızlı uzay aracı Parker Solar Probe (692.000 km/s).",
+            "En büyük piramit Cholula (Meksika, 4.5 milyon m³).",
+            "En eski tapınak Göbekli Tepe (Türkiye, MÖ 9600).",
+            "En büyük alışveriş merkezi Dubai Mall (1.1 milyon m²).",
+            "En uzun asma köprü 1915 Çanakkale (2.023 m).",
+            "En büyük stadyum Rungrado (150.000 kişi, Kuzey Kore).",
+            "En hızlı inşa edilen gökdelen 2.5 günde (Çin, 2015).",
+            "En büyük mozaik 9.000 m² (Libya).",
+            "En eski kaya 4.3 milyar yıl (Avustralya).",
+            "En büyük asteroit çarpması Chicxulub (10 km).",
+            "En hızlı eriyen buzul Jakobshavn (günde 30 m).",
+            "En yüksek plato Tibet (4.500 m).",
+            "En derin göl Baykal (1.642 m).",
+            "En büyük bataklık Pantanal (210.000 km²).",
+            "En kalın buz tabakası Antarktika (4.776 m).",
+            "En yüksek tuz gölü Titicaca (3.812 m).",
+            "En uzun hayvan Deniz feneri (18 m).",
+            "En zehirli yılan Inland taipan (tek ısırık 100 kişi).",
+            "En hızlı kuş Gökdoğan (389 km/s).",
+            "En ağır uçan kuş Bustard (18 kg).",
+            "En uzun ömürlü kuş Papağan (100 yıl).",
+            "En iyi koku duyan hayvan Fare (200 milyon reseptör).",
+            "En yüksek ses üreten hayvan Mavi balina (188 dB).",
+            "En derin dalan kuş İmparator penguen (565 m).",
+            "En hızlı yüzen balık Kılıçbalığı (100 km/s).",
+            "En büyük kafadanbacaklı Dev mürekkep balığı (12 m).",
+            "En küçük böcek Mymaridae (0.1 mm).",
+            "En ağır köpek İngiliz mastifi (156 kg).",
+            "En uzun kulaklı köpek Bloodhound (30 cm).",
+            "En hızlı at Quarter (88 km/s).",
+            "En yüksek atlamacı Çekirge (boyunun 20 katı).",
+            "En güçlü ısırık Tuzlu su timsahı (1.8 ton).",
+            "En uzun ömürlü memeli Grönland köpekbalığı (400 yıl).",
+            "En küçük memeli Yaban faresi (2 cm).",
+            "En hızlı koşan böcek Benekli kızböceği (97 km/s).",
+            "En ağır yumurta Devekuşu (1.5 kg).",
+            "En keskin dişler Beyaz köpekbalığı (7 cm).",
+            "En iyi göz Kartal (8x insan).",
+            "En büyük kabuklu Dev istakoz (20 kg).",
+            "En zehirli örümcek Sydney huni ağı (öldürücü).",
+            "En uzun hortum Fil (1.5 m).",
+            "En kalın deri Fil (2.5 cm).",
+            "En büyük fare Capybara (60 kg).",
+            "En hızlı üreyen Tavşan (yılda 12 yavru).",
+            "En ağır sürüngen Tuzlu su timsahı (1 ton).",
+            "En uzun süre susuz yaşayan Deve (15 gün).",
+            "En iyi yüzücü Yunus (60 km/s)."
         ];
 
         // ==========================================================================
@@ -1702,176 +2045,6 @@
                 }, 800);
             }, 7000);
         }
-
-        // ==========================================================================
-        // GERÇEKÇİ KEDİ TAKİP SİSTEMİ - ANA KOD
-        // ==========================================================================
-        (function() {
-            const realm = document.getElementById('kitty-realm');
-            const BUDDY_COUNT = 6;
-            const IDLE_TIME = 1500;
-
-            let mouseX = window.innerWidth / 2;
-            let mouseY = window.innerHeight / 2;
-            let isIdle = false;
-            let idleTimer = null;
-            let animationFrame = null;
-            let buddies = [];
-
-            // Kedi HTML yapısı oluşturucu
-            function buildCatHTML(isMain = true) {
-                const div = document.createElement('div');
-                div.className = isMain ? 'cat-sprite main-cat' : 'cat-sprite buddy-cat';
-                div.innerHTML = `
-                    <div class="cat-body">
-                        <div class="cat-gövde"></div>
-                        <div class="cat-kafa"></div>
-                        <div class="cat-kulak left"></div>
-                        <div class="cat-kulak right"></div>
-                        <div class="cat-goz left"><div class="cat-iris"></div></div>
-                        <div class="cat-goz right"><div class="cat-iris"></div></div>
-                        <div class="cat-burun"></div>
-                        <div class="cat-kuyruk"></div>
-                        <div class="cat-bacak on-sol"><div class="cat-pati"></div></div>
-                        <div class="cat-bacak on-sag"><div class="cat-pati"></div></div>
-                        <div class="cat-bacak arka-sol"><div class="cat-pati"></div></div>
-                        <div class="cat-bacak arka-sag"><div class="cat-pati"></div></div>
-                    </div>`;
-                return div;
-            }
-
-            const mainCat = buildCatHTML(true);
-            realm.appendChild(mainCat);
-
-            function getCatCenter(el) {
-                const rect = el.getBoundingClientRect();
-                return {
-                    x: rect.left + rect.width / 2,
-                    y: rect.top + rect.height / 2
-                };
-            }
-
-            function updateMainCat() {
-                const center = getCatCenter(mainCat);
-                const dx = mouseX - center.x;
-                const dy = mouseY - center.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-
-                let speed = 3;
-                if (dist > 200) speed = 14;
-                else if (dist > 80) speed = 7;
-                else if (dist < 20) speed = 0.5;
-
-                if (dist > 1.5) {
-                    const newX = center.x + (dx / dist) * speed - 40;
-                    const newY = center.y + (dy / dist) * speed - 28;
-                    mainCat.style.left = newX + 'px';
-                    mainCat.style.top = newY + 'px';
-                }
-
-                // Yön çevirme
-                if (Math.abs(dx) > 1) {
-                    mainCat.style.transform = `scaleX(${dx > 0 ? 1 : -1})`;
-                }
-
-                // Bacak animasyonu
-                const legs = mainCat.querySelectorAll('.cat-bacak');
-                legs.forEach(leg => {
-                    leg.classList.remove('yuruyor', 'kosuyor');
-                    if (dist > 10) {
-                        leg.classList.add(dist > 120 ? 'kosuyor' : 'yuruyor');
-                    }
-                });
-
-                // Göz takibi
-                const eyes = mainCat.querySelectorAll('.cat-goz');
-                eyes.forEach(eye => {
-                    const iris = eye.querySelector('.cat-iris');
-                    const eyeRect = eye.getBoundingClientRect();
-                    const eyeCenterX = eyeRect.left + eyeRect.width / 2;
-                    const eyeCenterY = eyeRect.top + eyeRect.height / 2;
-                    const angle = Math.atan2(mouseY - eyeCenterY, mouseX - eyeCenterX);
-                    const maxDist = 2.5;
-                    const moveX = Math.cos(angle) * maxDist;
-                    const moveY = Math.sin(angle) * maxDist;
-                    iris.style.transform = `translate(${moveX}px, ${moveY}px)`;
-                });
-            }
-
-            function spawnBuddies() {
-                buddies.forEach(b => b.remove());
-                buddies = [];
-
-                const mainCenter = getCatCenter(mainCat);
-                for (let i = 0; i < BUDDY_COUNT; i++) {
-                    const buddy = buildCatHTML(false);
-                    const angle = (i / BUDDY_COUNT) * Math.PI * 2 + (Math.random() - 0.5) * 0.6;
-                    const radius = 60 + Math.random() * 40;
-                    const x = mainCenter.x + Math.cos(angle) * radius - 25;
-                    const y = mainCenter.y + Math.sin(angle) * radius - 18;
-                    buddy.style.left = x + 'px';
-                    buddy.style.top = y + 'px';
-                    realm.appendChild(buddy);
-                    buddies.push(buddy);
-                    requestAnimationFrame(() => buddy.classList.add('visible'));
-                }
-            }
-
-            function scatterBuddies() {
-                buddies.forEach(buddy => {
-                    buddy.classList.add('scattering');
-                    buddy.classList.remove('visible');
-                    const center = getCatCenter(buddy);
-                    const angle = Math.random() * Math.PI * 2;
-                    const distance = 250 + Math.random() * 400;
-                    const destX = center.x + Math.cos(angle) * distance - 25;
-                    const destY = center.y + Math.sin(angle) * distance - 18;
-                    buddy.style.left = Math.max(-100, Math.min(window.innerWidth + 100, destX)) + 'px';
-                    buddy.style.top = Math.max(-100, Math.min(window.innerHeight + 100, destY)) + 'px';
-                });
-                setTimeout(() => {
-                    buddies.forEach(b => b.remove());
-                    buddies = [];
-                }, 500);
-            }
-
-            function resetIdleTimer() {
-                if (isIdle) {
-                    isIdle = false;
-                    scatterBuddies();
-                }
-                clearTimeout(idleTimer);
-                idleTimer = setTimeout(() => {
-                    if (!isIdle) {
-                        isIdle = true;
-                        spawnBuddies();
-                    }
-                }, IDLE_TIME);
-            }
-
-            function gameLoop() {
-                updateMainCat();
-                animationFrame = requestAnimationFrame(gameLoop);
-            }
-
-            document.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-                resetIdleTimer();
-            });
-
-            document.addEventListener('mouseleave', () => {
-                if (isIdle) {
-                    scatterBuddies();
-                    isIdle = false;
-                }
-            });
-
-            mainCat.style.left = (mouseX - 40) + 'px';
-            mainCat.style.top = (mouseY - 28) + 'px';
-            gameLoop();
-            resetIdleTimer();
-        })();
 
         // ==========================================================================
         // SAYFA YÜKLENİNCE
