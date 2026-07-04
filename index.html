@@ -81,27 +81,52 @@
         .btn-steam:nth-child(2) { animation-delay:0.7s; }
         @keyframes btnSteamRise { 0%{transform:translateY(2px)scaleX(1);opacity:0;} 50%{transform:translateY(-2px)scaleX(1.4);opacity:0.8;} 100%{transform:translateY(-6px)scaleX(0.5);opacity:0;} }
 
-        /* ORACLE */
-        .oracle-box { max-width:900px; margin:0 auto 25px auto; background:var(--bg-container); border:1px solid var(--border-container); border-radius:10px; padding:20px; display:flex; align-items:center; gap:20px; box-shadow:0 10px 30px rgba(0,0,0,0.3); position:relative; overflow:hidden; }
-        .oracle-sphere-wrapper { position:relative; flex-shrink:0; }
-        .oracle-sphere { width:60px; height:60px; border-radius:50%; background:radial-gradient(circle at 30% 30%, var(--text-heading), var(--accent-color)); box-shadow:0 0 20px var(--accent-glow), inset -5px -5px 15px rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; font-size:24px; transition:all 0.3s cubic-bezier(0.175,0.885,0.32,1.275); user-select:none; }
-        .oracle-sphere:hover { transform:scale(1.1) rotate(15deg); box-shadow:0 0 30px var(--accent-color), inset -2px -2px 10px rgba(0,0,0,0.4); }
-        .oracle-sphere:active { transform:scale(0.95); }
-        .oracle-text-area { flex-grow:1; }
-        .oracle-title { font-size:11px; text-transform:uppercase; letter-spacing:2px; color:var(--accent-color); font-weight:700; margin-bottom:4px; }
-        .oracle-quote { font-size:14px; color:var(--text-input); font-style:italic; line-height:1.5; transition:opacity 0.2s ease; }
-        .pulse-glow { position:absolute; width:100%; height:100%; border-radius:50%; background:var(--accent-color); opacity:0.15; animation:spherePulse 2s infinite ease-in-out; top:0; left:0; pointer-events:none; }
-        @keyframes spherePulse { 0%{transform:scale(1);opacity:0.2;} 50%{transform:scale(1.3);opacity:0;} 100%{transform:scale(1);opacity:0.2;} }
-        .glitch-effect { animation:textGlitch 0.2s linear 2; }
-        @keyframes textGlitch { 0%{transform:translate(2px,1px);opacity:0.7;} 50%{transform:translate(-1px,-1px);opacity:0.9;} 100%{transform:translate(0,0);opacity:1;} }
-
-        /* Bunu biliyor muydun? */
-        .oracle-fact-box { flex-shrink:0; width:190px; text-align:right; border-left:1px solid var(--border-color); padding-left:16px; margin-left:4px; min-height:70px; display:flex; flex-direction:column; justify-content:center; }
-        .oracle-fact-label { font-size:9px; text-transform:uppercase; letter-spacing:1.8px; color:var(--text-main); opacity:0.5; margin-bottom:4px; font-weight:600; }
-        .oracle-fact-text { font-size:12px; color:var(--text-input); line-height:1.5; transition:opacity 0.8s ease, transform 0.8s ease; opacity:1; transform:translateY(0); }
-        .oracle-fact-text.fade-out { opacity:0; transform:translateY(-6px); }
-        .oracle-fact-text.fade-in { opacity:0; transform:translateY(6px); }
-        @media (max-width:700px){ .oracle-fact-box{ display:none; } }
+        /* YENİ: Bilgi Kartı (Bunu biliyor muydun?) */
+        .info-card {
+            max-width:900px;
+            margin:0 auto 25px auto;
+            background:var(--bg-container);
+            border:1px solid var(--border-container);
+            border-radius:10px;
+            padding:18px 24px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.2);
+            display:flex;
+            align-items:center;
+            gap:16px;
+            transition:background 0.25s, border-color 0.25s;
+        }
+        .info-card-icon {
+            font-size:28px;
+            flex-shrink:0;
+            line-height:1;
+        }
+        .info-card-content {
+            flex:1;
+        }
+        .info-card-title {
+            font-size:11px;
+            text-transform:uppercase;
+            letter-spacing:2px;
+            color:var(--accent-color);
+            font-weight:700;
+            margin-bottom:4px;
+        }
+        .info-card-text {
+            font-size:14px;
+            color:var(--text-input);
+            line-height:1.6;
+            transition:opacity 0.8s ease, transform 0.8s ease;
+            opacity:1;
+            transform:translateY(0);
+        }
+        .info-card-text.fade-out {
+            opacity:0;
+            transform:translateY(-6px);
+        }
+        .info-card-text.fade-in {
+            opacity:0;
+            transform:translateY(6px);
+        }
 
         .tabs{ display:flex; justify-content:center; gap:12px; margin-bottom:25px; flex-wrap:wrap; }
         button, .tab-btn { background:var(--bg-btn); color:var(--text-btn); border:1px solid var(--border-color); padding:12px 26px; font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; border-radius:6px; transition:all 0.2s ease; }
@@ -381,7 +406,7 @@
         <button onclick="openBurcModal()" class="burc-btn-premium">🔮 BURÇLAR</button>
         <button onclick="openGameModal()" class="game-btn-premium">🎮 OYUNLAR</button>
         <span class="theme-label">TEMA:</span>
-        <div class="theme-dot id-dark-dot active" style="background:#1c1c1e;border:1px solid #3a3a3c;" onclick="changeTheme('dark',this)" title="Midnight OLED"></div>
+        <div class="theme-dot id-dark-dot" style="background:#1c1c1e;border:1px solid #3a3a3c;" onclick="changeTheme('dark',this)" title="Midnight OLED"></div>
         <div class="theme-dot" style="background:#d62828;" onclick="changeTheme('crimson',this)" title="Crimson"></div>
         <div class="theme-dot" style="background:#0077b6;" onclick="changeTheme('blue',this)" title="Blue"></div>
         <div class="theme-dot" style="background:#2d6a4f;" onclick="changeTheme('green',this)" title="Green"></div>
@@ -393,19 +418,12 @@
         <div class="theme-dot" style="background:#ffffff;border:1px solid #cbd5e1;" onclick="changeTheme('white',this)" title="White"></div>
     </div>
 
-    <!-- ORACLE -->
-    <div class="oracle-box">
-        <div class="oracle-sphere-wrapper">
-            <div class="pulse-glow"></div>
-            <div class="oracle-sphere" onclick="getTengriOracle()">🔮</div>
-        </div>
-        <div class="oracle-text-area">
-            <div class="oracle-title">⚡ ORACLE / GÜNÜN SİBER KEHANETİ</div>
-            <div id="oracle-display" class="oracle-quote">Küreye tıkla ve siber kaderinle yüzleş...</div>
-        </div>
-        <div class="oracle-fact-box">
-            <div class="oracle-fact-label">🧠 Bunu biliyor muydun?</div>
-            <div id="oracle-fact-text" class="oracle-fact-text">Yükleniyor...</div>
+    <!-- YENİ: Bunu biliyor muydun? kartı (eski Oracle kaldırıldı) -->
+    <div class="info-card">
+        <div class="info-card-icon">🧠</div>
+        <div class="info-card-content">
+            <div class="info-card-title">⚡ BUNU BİLİYOR MUYDUN?</div>
+            <div id="info-fact-text" class="info-card-text">Yükleniyor...</div>
         </div>
     </div>
 
@@ -532,146 +550,8 @@
 
     <script>
         // ==========================================================================
-        // ORACLE & TEMA
+        // TEMA (Varsayılan: White)
         // ==========================================================================
-        const oracleQuotes = [
-            "Aura analizine göre içinde büyük bir CEO enerjisi var. Ama yarın sabah yine kart basıp içeri giriyorsun.",
-            "Evren sana 'Hayır' demeyi öğren diyor. Sen ise fazla mesaiye 'Olur.' yazmışsın bile.",
-            "Bugün özgürlüğüne kavuşacağın görünüyor. Yıllık izin onaylanırsa tabii.",
-            "Kaderin çok yakında değişecek. İnsan kaynakları da aynı fikirdeyse.",
-            "Falında büyük bir seyahat görünüyor. Muhtemelen mutfaktan çalışma masasına.",
-            "Evren sana yeni kapılar açacak. Umarım o kapının arkasında toplantı yoktur.",
-            "Bugün şans senden yana. Kasada önündeki kişi bozuk para saymazsa.",
-            "Bugün büyük bir karar vereceksin. '5 dakika daha' mı, 'Kalkıyorum' mu?",
-            "Bugün risk alabilirsin. Ama kredi kartı limiti aynı fikirde değil.",
-            "Ruhsal olarak çok güçlüsün. Fiziksel olarak ise öğle yemeğini bekliyorsun.",
-            "Falında büyük bir kutlama var. İade sürecin onaylandı galiba.",
-            "Bugün metinlerden sileceğin gereksiz boşluklar gibi, hayatındaki gereksiz insanları da şak diye sileceksin. Temiz ferah gün yakın.",
-            "Yakın gelecekte senin için çok büyük bir başarı ve zenginlik görüyorum. Tabii 'yakın gelecek' siber evrende 40-50 yıl anlamına gelebilir, o yüzden sen şimdilik şu metne odaklan.",
-            "Küre diyor ki: O çok gitmek istediğin tatile daha çok var ama önündeki şu metni bitirirsen en azından masandan kalkıp tuvalete gitme hakkı kazanacaksın.",
-            "Bugün her şeyi bırakıp Ege'ye yerleşme isteğin tavan yapacak. Ama zeytin yetiştirmek de emek ister aslan parçası, gel biz önce şu metindeki çift boşlukları yetiştirelim.",
-            "Küre parlıyor! Seni çok yakında hawaii gömleğinle sahilde buzlu bir kahve içerken görüyorum... Gözümü biraz kırpınca meğer masanda klimasız çalışıyormuşsun, neyse şu işi bitirelim.",
-            "Hayatındaki karmaşayı tıpkı bir gün her şeyi geride bırakıp gidecekmiş gibi boşveriyorsun ama cüzdanın 'O metin buraya kopyalanacak' diye fısıldıyor.",
-            "Yıldız haritana göre bugün istifa dilekçeni yazmak için harika bir gün. Ama ev kiranın haritası pek öyle demiyor, gel şu metni pırıl pırıl temizleyelim.",
-            "Gezegenlerin konumuna bakılırsa bugün tam bir 'Masaya istifayı vurma' günü. Fakat doğalgaz faturanın konumuna bakılırsa bugün daha çok 'Müdüre kahve götürme' günü. Dosyayı açıyorum?",
-            "Bugün Merkür retrosu bitiyor, yani radikal kararlar almak için harika bir gün! Tabii sonraki ay taş kemirmek istemiyorsan, o radikal kararı şimdilik sadece şu metni sadeleştirerek uygulayalım.",
-            "Evren sana 'Sen çok daha iyilerine layıksın' mesajı gönderiyor ama insan kaynakları henüz o mesajı onaylamadı. Gel biz şu Excel tablosunu pırıl pırıl yapalım.",
-            "Bugün tam 'Ceketimi alır çıkarım' havası var dışarıda. Ama o ceketin taksitleri henüz bitmediği için, gel ceketimizi sandalyenin arkasına asıp şu kodları düzeltelim.",
-            "Astrologlar 'Bugün kariyerinde köklü bir değişim zamanı' diyor. Gel bu değişimi şimdilik sadece yazı tipini Arial'dan Times New Roman'a çevirerek başlatalım, riske girmeyelim.",
-            "Yükselen burcun bugün sana 'Özgürlük' vadediyor ama cüzdanındaki o tek haneli bakiye 'Esaretin bedeli'ni hatırlatıyor. Metni düzenlemeye ne dersin?",
-            "İçindeki o gizli dahi 'Bu iş senin dehanı köreltiyor' diyor ama market sepetinin toplam tutarı 'Körelmeye devam et' diye fısıldıyor. Şu raporu temize çekelim.",
-            "Bugün o 'Hayallerinin peşinden koş' günlerinden biri... Eğer hayalin bir sonraki ay kirayı geciktirmek değilse, gel şu grafiklerin üzerinden bir daha geçelim.",
-            "Doğum haritana göre bugün otorite figürleriyle yüzleşme günün. Ama cüzdanının haritasına göre müdürün her dediğine 'Çok haklısınız' deme günün. Metni pürüzsüz yapalım.",
-            "Şu an istifa etsen evren sana yeni kapılar açar elbet, ama o kapılardan içeri ev sahibi de girebilir. Gel risk almayalım, şu taslağı bir güzel toparlayalım.",
-            "Bugün tam 'Kendi hikayeni yazma' günü. Ama o hikayenin ilk bölümü 'İşsizlik Maaşı Sırasında Bir Gün' olsun istemiyorsak, gel şu metni kusursuz hale getirelim.",
-            "Şu an klavyeye çok sert basarak mail yazıyorsun, hıncını anlıyorum. Ama mekanik klavye fiyatları uçtu, tuş fırlarsa yenisini alamayız. Sakince o parmağını geri çek ve şu metni yumuşatarak düzenle.",
-            "Bugün tam patronun odasının kapısını çarparak çıkma günü! Ama o kapı hidrolikli, yavaşça kapanıp karizmanı çizecek, hiç gerek yok. Gel biz şu Excel tablosunu pürüzsüz hale getirelim.",
-            "Bugün tam şirket telefonunu sessize alıp ortadan kaybolma günü. Ama telefon şirket malı, kaybedersen maaşından keserler, durduk yere borçlanma. Gel şu metni cilalayalım.",
-            "Şu an müdüre 'Sizinle çalışmak bir kabustu' diye bağırmak istiyorsun. Ama sesin detone olur, ciddiyetin kaybolur, arkandan gülerler. Hiç o riske girmeyelim, gel şu raporu pürüzsüz yapalım.",
-            "Bugün 'Bıktım sizin vizyonunuzdan' deyip sandalyeyi tekmelemek için harika bir enerji var üstünde. Ama sandalye tekerlekli, kayar odanın öbür ucundaki çöp kovasına çarpar, durduk yere iş çıkar. Boşver, metni temizle geç.",
-            "İçinden 'Şu masadaki her şeyi yere fırlatıp istifa edeceğim' hissi geçiyor. Ama yerleri daha yeni sildiler, temizlik görevlisi ablayla arayı bozmaya değmez. Gel biz şu dosyayı toparlayalım.",
-            "Bugün tam patrona 'Ben bu şirketin kölesi değilim' diye rest çekme günü. Ama şirketin kliması çok güzel soğutuyor, dışarısı 40 derece, evde klima yok. Serin serin şu metni düzenleyelim biz.",
-            "Şu an müdürün yüzüne bakıp 'Siz ne anlarsınız bu işten' diye haykırmak istiyorsun. Ama adamın arkasında klima kumandası duruyor, kapatırsa sıcaktan pişersin. Alttan al, şu analizi bitirelim.",
-            "İçindeki o asi ruh 'Kapat laptopun kapağını çat diye, çık git' diyor. Ama kapağın arasına kalem sıkışır, ekranı patlatırsın, durduk yere 3 maaşın tamire gider. Yavaşça açık bırak o ekranı, metne odaklanalım.",
-            "Hayatındaki bazı insanlar tıpkı Ctrl + Z yapınca geri gelmeyen o 3 saatlik emek gibiler; yoklukları büyük bir travma yaratmıyor ama boşa harcanan zamana insan kahroluyor.",
-            "Bazı insanlar hayatında tıpkı Adobe programlarının o bitmek bilmeyen güncelleme uyarıları gibi; sürekli dikkatini dağıtıyorlar, vakit çalıyorlar ama açıp baksan hayatına en ufak bir yenilik katmıyorlar.",
-            "Hayatındaki bazı insanlar tıpkı masaüstünde unuttuğun 'yeni_klasör_2' gibiler; neden açtığını hatırlamazsn, içi tamamen boştur ama öylece durup arka plan resmini kapatırlar.",
-            "Bazı insanlar tıpkı her web sitesinde karşına çıkan 'Çerezleri Kabul Et' butonu gibiler; hayatına hiçbir derinlik katmıyorlar, sadece gitmek istediğin yolda sürekli önüne çıkıp duruyorlar.",
-            "Hayatındaki bazı insanlar tıpkı o 128 GB'lık flash belleğin içindeki 'Kısayol' dosyası gibiler; dışarıdan bakınca devasa bir veri taşıyor gibi görünürler, tıklarsın bomboş bir hata ekranı verirler.",
-            "Bazı insanlar tıpkı e-ticaret sitelerindeki 'Tükendi' yazan ürünler gibiler; orada durmalarının dünyaya hiçbir faydası yoktur, sadece 'Keşke zamanında baksaydım' diye insana pişmanlık verirler.",
-            "Bazı insanlar tıpkı telefonun arkasında biriken o anlamsız önbellek (cache) dosyaları gibiler; hayatında hiçbir fonksiyonları yoktur, sadece durduk yere ruhunda ağırlık yapıp enerjini tüketirler.",
-            "Hayatındaki bazı insanlar tıpkı eski sevgilinin Spotify'da hala seni takip eden gizli hesabı gibiler; orada bir yerde bir '1' rakamı olarak dururlar ama hayatına ne bir ritim katarlar ne bir melodi.",
-            "Bazı insanlar tıpkı bedava diye indirdiğin o mobil uygulamanın içindeki reklamlar gibiler; her 5 saniyede bir karşına çıkıp 'Hadi beni premium yap' diye ısrar edenler ama kendilerinde hiç premium kumaş yoktur.",
-            "Günün özlü sözü: Yanlış kod satırı Ctrl + Z ile silinir, yanlış insan hayatından Ctrl + Alt + Delete yapsan da kolay kolay temizlenmez.",
-            "Günün özlü sözü: Metindeki eksik harf hemen fark edilir and tamamlanır; insanın içindeki eksik karakteri ise yıllarca fark edemezsin.",
-            "Günün özlü sözü: Tasarımdaki pikselleri büyütüp düzeltebilirsin ama vizyonu küçük insanı ne kadar büyütürsen büyüt, sadece görüntüsü bulanıklaşır.",
-            "Günün özlü sözü: Bozuk dosya formatı dönüştürücüyle kurtarılır, bozuk karakterli insanı hangi kalıba sokarsan sok yine hata verir.",
-            "Günün özlü sözü: Yazım hatası gözden kaçar, görmezden gelinir; ama insanın hatası bir kez göze battı mı bir daha asla unutturulmaz.",
-            "Günün özlü sözü: Word belgesindeki boşluklar tek tıkla silinir; bazı insanların içindeki o devasa boşluğu ise ne yapsan dolduramazsin.",
-            "Günün özlü sözü: Fazla yazılan kelime metinden kolayca ayıklanır; hayatına fazla gelen insanı ayıklamak ise ömründen ömür alır.",
-            "Günün özlü sözü: Kötü tasarlanmış bir sayfa sıfırdan çizilir; kötü niyetli bir insanla yola çıktıysan o yolu kaç kere sıfırlarsan sıfırla hep çıkmaza girersin.",
-            "Günün özlü sözü: Yazının fontunu değiştirmek bir saniyeni alır; insanın rengini değiştirmesi ise sadece bir menfaatine bakar.",
-            "Günün özlü sözü: Formüldeki hata Excel uyarısıyla çözülür; insanın hayatına kattığı hata ise ancak yıllar sonra tecrübeyle anlaşılır.",
-            "Günün özlü sözü: Kaydedilmeyen veri için canın sıkılır ama unutulur; değer görmeyen emek için sızlayan kalbin sızısı ise kolay geçmez.",
-            "Senin emeğinin üzerine konmaya çalışanların mikrofonu toplantıda açık kalsın da evde arkadan gelen o dedikodu sesleri tüm şirkete yayınlansın. Amin.",
-            "Bugün işi sana kitleyip erken çıkanların bindiği metrobüs ters yöne gitsin, üstüne bir de telefonlarının şarjı yüzde 1'ken şarj aletlerini ofiste unuttuklarını fark etsinler. Amin.",
-            "Bugün sana durduk yere revizyon üstüne revizyon verenlerin klavyesindeki Space tuşu bozulsun, tüm mailleri bitişik yazıp rezil olsunlar. Amin.",
-            "İş yapıyormuş gibi görünüp bütün gün sosyal medyada gezenlerin, yanlışlıkla şirket sahibinin 5 yıl önceki tatil fotoğrafını beğenmesine sebep olacak bir parmak kayması nasip et ya Rabbim. Amin.",
-            "Toplantıda seni zor durumda bırakmak için pusuya yatanların, tam konuşmaya başladıkları an boğazına gıcık otursun da sesleri helyum gazı çekmiş gibi çıksın. Amin.",
-            "Senin başarılarını görmezden gelenlerin en sevdikleri döküman, tam 'Kaydet' tuşuna basacakken elektrik kesintisiyle uçup gitsin. Amin.",
-            "Sana sürekli 'Biz bir aileyiz' deyip mesai ücretini vermeyenlerin şirket arabasının lastiği tam da sanayiye en uzak mesafede patlasın. Amin.",
-            "Bugün 'Seni çok iyi anlıyorum' diyenlerin aslında 'Şu an seni hiç dinlemiyorum, sadece kendi konuşma sıramın gelmesini bekliyorum' demek istediğini bir kez daha anlayacaksın.",
-            "Bugün müdürün 'Bu projede senin vizyonuna güveniyorum' demesinin aslında 'Hata çıkarsa faturayı tamamen sana keseceğim' demek olduğunu acı bir tebessümle fark edeceksin.",
-            "Bugün 'Önceliğimiz çalışan mutluluğu' sloganının aslında 'Ofise langırt koyduk ama oynarsan gözümüz üstünde olur' demek olduğunu anlayacaksın.",
-            "Bugün 'Aramızda çok güzel bir sinerji oluştu' iltifatının aslında 'Sen ne desen onaylıyorum, işleri de sessizce yapıyorsun, tam aradığımız kölesin' anlamına geldiğini anlayacaksın.",
-            "Bugün 'Biz burada bir aileyiz' söyleminin aslında 'Haklarını ararken fazla profesyonel düşünme, fedakarlık yaparken de sınır tanıma' anlamına geldiğini bir kez daha anlayacaksın.",
-            "İçindeki ses 'Yeter artık, fırlat klavyeyi çık git' diyor ama bankanın mobil uygulamasından gelen 'Kredi taksitiniz yaklaşmaktadır' bildirimi elini usulca klavyeye geri koyduruyor. Devam şampiyon.",
-            "Bugün istifa edip dünyayı gezecek o cesur kararı alacaksın... Tam o sırada gözün masadaki yarım kalmış sodaya takılacak, 'Neyse bunu bari bitireyim' derken mesai bitecek.",
-            "Bugün LinkedIn profilini 'Open to Work' yapasın var. Ama piyasanın durumunu hatırlayınca profili 'Gerekirse 24 Saat Çalışırım' yapmaktan son anda dönüyorsun. Kopyala butonuna bas ve sakinleş.",
-            "Evren sana fısıldıyor: 'Sen daha iyilerine layıksın.' Doğru, layıksın ama kredi kartı ekstrem de diyor ki: 'Şu an tam olarak bu masaya ve bu metinlere layıksın.' Hadi aslan parçası.",
-            "Bugün toplantıda masaya vurup 'Ben gidiyorum' demek için harika bir energy var üstünde. Ama masaya vurursan laptop ekranı kırılır, masraf çıkar. Boşver, temizle metni geç.",
-            "Kaderinde bugün çok radikal bir kariyer değişikliği görüyorum. Mesela 'Boşluk Temizleyici' sekmesinden 'Yazım Düzenleyici' sekmesine geçeceksin. Büyük devrim.",
-            "Küre diyor ki: İstifa edip bir sahil kasabasında domates yetiştirmek harika bir fikir. Ama domates tohumu fiyatlarına bakınca bu panelin siyahlığı gözüne bir tık daha güzel geliyor, değil mi?",
-            "Bugün bir delilik yapıp Slack'ten 'Ben çıkıyorum, ne haliniz varsa görün' yazasın gelecek. Ama enter tuşuna basmadan önce kıdem tazminatını hesaplayıp yerine 'Harika bir feedback, hemen ilgileniyorum' yazacaksınız.",
-            "Yıldız haritana göre bugün kurumsal kölelik zincirlerini kırma günün! Ama Akbank, Garanti and Yapı Kredi el ele tutuşup kapıda seni bekleyebilir. Zincirler kalsın, biz metindeki çift boşlukları kıralım.",
-            "Küre diyor ki: İstifa et, her şeyi sat, Hindistan'a git ve ruhunu arındır. Ama uçak bileti fiyatlarına baktıktan sonra bu paneldeki 'Temizle' butonu gözüne Ganj Nehri'nden daha arındırıcı gelecek.",
-            "Küre diyor ki: Sen bu dünyaya her sabah 8'de uyanıp elalemin excel tablosunu, word metnini düzeltmek için gelmedin. Sen çok daha büyük şeyler için yaratıldın... Şaka şaka, tam olarak bunun için geldin. Hadi yapıştır metni, mesai akıyor.",
-            "Bugün istifa edip dünyayı gezen o cool gezginlerden olma hayalin tavan yapacak. Ama sırt çantanı hazırlarken içine koyacak lüksün sadece şirket logolu polar ve promosyon termos olduğunu fark edip masana geri çökeceksiniz. Kopyala butonuna bas ve hayalleri serbest bırak.",
-            "Evren bugün sana çok net bir vizyon gösteriyor: Kendi işinin patronu olmuşsun, altındaki lüks araba, arkanda korumalar... Ama vizyonun çözünürlüğü biraz artınca fark ediyorsun ki altındaki araba şirket arabası, arkandakiler de 'Şu iş ne oldu?' diye bekleyen yöneticiler. Uyan aslanım, metin temizlenecek.",
-            "İçindeki o çılgın girişimci ruh 'Hemen bu akşam şirketi kuruyoruz' diye bağırıyor. Ama muhasebecinin isteyeceği stopajı, bağkuru, damga vergisini hesaplayınca, buradaki bedava, reklamsız, vergisiz mat siyah panel gözüne bir anda İsviçre Merkez Bankası gibi güvenli gelecek.",
-            "Bugün şirketinin ortak platformunda yanlışlıkla 'Yetti be, ne bitmez revizyonmuş!' yazacaksın... diye korkup soğuk terler dökeceksiniz ama yerine saniyede 120 kelime hızla 'Tabii ki hemen revize edip en memnun haliyle iletiyorum, sevgiler' yazarak hayatta kalacaksın.",
-            "Gelenizde inanılmaz bir zenginlik, malikaneler, uşaklar görüyorum... Ama rüya tabirlerine göre bu rüya 'Çok yakında mesaiye kalacaksın ve akşam yemeğinde sana sadece soğuk bir dürüm ısmarlayacaklar' anlamına geliyor. Dürümün tuzu bol olsun, devam.",
-            "Bugün ani bir cinnetle yöneticine Slack'ten 'Ben gidiyorum, vizyonsuz ekibiniz ve bitmeyen revizyonlarınız size kalsın' yazacaksınız. Tam gönder tuşuna basacakken kalbin sıkışacak, gözün kararacak, metni silip yerine 'Elinize sağlık, çok ufak bir sorum olacaktı :)'* yazıp arkaya gizlice ağlamaya gideceksiniz.",
-            "Küre parlıyor! Seni çok yakında business class uçuşunda şampanyanı yudumlarken görüyorum... Ama uçak modunu kapatınca uyanıyorsun ki metrobüste bir teyzenin pazar çantasıyla sol böbreğin arasında sıkışmışsın ve işe geç kalıyorsun. Yapıştır şu metni de bari primin kesilmesin.",
-            "Bugün istifa dilekçeni yazıp tam patronun masasına fırlatacakken, telefonuna bankadan 'Sayın müşterimiz, 120 ay vadeli konut kredinizin 3. taksiti tahsil edilememiştir' bildirimi düşecek. O fırlattığın kağıdı masadan 'Yere çöp düşmüş de efendim' diye yerleri siler gibi geri toplayacaksın.",
-            "Büyük bir kurumsal kriz kapıda ama sakin ol, seninle alakası yok. Kahvenden bir yudum al ve izle.",
-            "Gözüm metnindeki gizli 'Yüksek Kalite' ibarelerini arıyor... Yapma öyle şeyler, Tengri görüyor.",
-            "Bugün copy-paste yaparken elin hiç titremeyecek. Kusursuz bir CTRL+C performansı seziyorum.",
-            "O beklediğin mail veya mesaj bugün gelecek. Gelmezse de karşı tarafın vizyonsuzluğudur, boşver.",
-            "Yapay zeka senin işini elinden almayacak ama o kahveyi şimdi tazelemezsen uykun kesin alacak.",
-            "Yakın zamanda bir revizyon yiyeceksin ama öyle bir düzelteceksin ki isteyen utancından istifa edecek.",
-            "Hayatındaki bazı insanlar tıpkı '&nbsp;' gibi; varlar ama hiçbir işe yaramıyorlar, sadece yer kaplıyorlar.",
-            "Bugün şanslı günündesin. Yapıştırdığın metin tek seferde dümdüz olacak, uğraştırmayacak.",
-            "Plaza dilencilerinin attığı o anlamsız 'As per our discussion' maillerine karşı bağışıklık kazanacağın bir gün.",
-            "Bugün birisi sana 'Bakar mısın?' diyecek. Duymamazlıktan gel, iş yıkmaya çalışıyorlar.",
-            "Kaderinde yakın zamanda bir zam, terfi veya en kötü ihtimalle çok tatlı bir öğle yemeği ısmarlanması yok.",
-            "Metnini temizledin, peki ya zihnini? Bir ara arkana yaslan ve derin bir nefes al şampiyon.",
-            "Bugün kurumsal dünyayı dize getirebilecek bir energye sahipsin ama canın istemiyor, çok haklısın.",
-            "Gelecekte harika bir tatil görüyorum. Ama o geleceğe daha çok var, şimdi şu metni hallet.",
-            "Siber evren sana mesaj gönderiyor: 'Bugün o klavyeye biraz daha yumuşak bas, o da bir can.'",
-            "Seni çekemeyenlerin algoritması çöksün, tarayıcıları kapansın, ramleri yansın. Sen devam et.",
-            "Bugün yapacağın en büyük hata, biten işi teslim ettikten sonra 'Başka bir şey var mıydı?' diye sormak olur. Sorma.",
-            "Bugün karşına çıkacak saçmalıklara karşı sabrın, bu panelin siyahlığı kadar derin ve sınırsız olsun.",
-            "Metindeki çift boşlukları avladığın gibi hayattaki iki yüzlüleri de avlayacağın keskin bir gün.",
-            "Günün tavsiyesi: O sekmeyi kapat. Hangi sekme olduğunu biliyorsun. Kapat gitsin.",
-            "Küre fısıldıyor: Akşama güzel bir dizi/film patlat, bütün günün yükünü silsin süpürsün.",
-            "Yazım hatalarını düzelttiğin gibi hayatına da ince bir ayar çekiyorsun. Doğru yoldasın.",
-            "Bugün müşteriden gelen 'Elinize sağlık çok güzel olmuş' mesajını göreceksiniz. (Şaka şaka, revizyon var).",
-            "İçinden bir ses 'Bırak git' diyor ama cüzdanın 'Dur yolcu' diye fısıldıyor. Çalışmaya devam.",
-            "Birazdan kopyalayacağın metin, gideceği yerde büyük bir hayranlıkla okunacak. Gurur duy.",
-            "Bugün tarayıcında 40'tan fazla sekme açılacak. Bilgisayarına iyi davran, o senin yoldaşın.",
-            "Günün kehaneti: Bugün klavyene dökülmeyen her kahve, senin için büyük bir zaferdir.",
-            "Metninde hiç yasakli kelime çıkmadı mı? İşte profesyonelliğin saf ve temiz hali. Helal olsun.",
-            "Bugün 'Bakarız' denen her şeyin aslında 'Asla yapmayacağız' anlamına geldiğini bir kez daha anlayacaksın.",
-            "Siber kaderinde büyük bir kahve molası var. Hak ettin, hadi git doldur gel.",
-            "Hayat bazen hatalı kodlar gibi karmaşıktır, ama unutmaman gereken şey: Her zaman bir geri al (CTRL+Z) tuşu vardır.",
-            "Küreye göre bugün alacağın en iyi karar, işi tam zamanında bırakıp bilgisayarı kapatmak olacak.",
-            "Metindeki tüm pislikleri temizledin. Artık tertemiz bir sayfan var. Hayatın da böyle ferah olsun.",
-            "Kafandaki düşünceler şu an temizlenmemiş bir HTML metni gibi karmakarışık. Bi' dur, sakinleş.",
-            "Bugün arkandan konuşanların tarayıcı geçmişi yanlışlıkla patronlarına mail gitsin. Amin.",
-            "Küre parlıyor: Bugün yapacağın işler gelecekteki rahatının temel taşları olacak. Sık dişini.",
-            "Bugün kulaklığını tak ve dünyayı sessize al. Sadece sen, müziğin ve bu asil siyah panel.",
-            "Günün özlü sözü: Hatalı metin düzeltilir, hatalı insan zor. Metinlerle uğraşmaya devam.",
-            "Tengri Oracle görevini tamamladı. Şimdi o 'Kopyala' butonuna bas ve şovunu yap aslan parçası!"
-        ];
-
-        function getTengriOracle() { const d = document.getElementById("oracle-display");
-            d.classList.add("glitch-effect");
-            d.style.opacity = 0.3;
-            setTimeout(() => { d.innerText = oracleQuotes[Math.floor(Math.random() * oracleQuotes.length)];
-                d.style.opacity = 1;
-                setTimeout(() => d.classList.remove("glitch-effect"), 200); }, 200); }
-
         function changeTheme(t, e) {
             t === 'dark' ? document.documentElement.removeAttribute('data-theme') : document.documentElement.setAttribute(
             'data-theme', t);
@@ -1566,7 +1446,7 @@
             const has = v1.includes("tengri") || v2.includes("tengri");
             const ov = document.getElementById("tengri-overlay");
             const btns = document.querySelectorAll(
-                "button,.tab-btn,.player-btn,.theme-dot,.oracle-sphere,.coffee-btn-premium,.burc-btn-premium");
+                "button,.tab-btn,.player-btn,.theme-dot,.coffee-btn-premium,.burc-btn-premium");
             if (has && !isTengriActive) {
                 isTengriActive = true;
                 ov.style.display = "block";
@@ -1585,7 +1465,7 @@
         // ==========================================================================
         const funFacts = [
             "Ahtapotların 3 kalbi vardır. İkisi solungaçlara, biri ise vücudun geri kalanına kan pompalar.",
-            "Muz aslında botanik olarak bir meyveden çok bir çeşit "berry" (üzümsü meyve) kabul edilir.",
+            "Muz aslında botanik olarak bir meyveden çok bir çeşit \"berry\" (üzümsü meyve) kabul edilir.",
             "Dünyadaki karıncaların toplam ağırlığının, insanlığın toplam ağırlığına yakın olduğu tahmin edilir.",
             "Köpekbalıkları, dinozorlardan yaklaşık 150 milyon yıl daha eskidir.",
             "Venüs'te bir gün, bir yıldan daha uzundur.",
@@ -1620,7 +1500,7 @@
             "Bazı papağanlar, anlamını öğrendikleri kelimeleri doğru bağlamda kullanabilir.",
             "Balinalar birbirlerine yüzlerce kilometre uzaklıktan seslenebilir.",
             "Deniz samurları en sevdikleri taşı yıllarca yanlarında taşır.",
-            "Ağaçlar, böcek saldırısına uğradıklarında çevredeki ağaçlara kimyasal "tehlike" sinyali gönderebilir.",
+            "Ağaçlar, böcek saldırısına uğradıklarında çevredeki ağaçlara kimyasal \"tehlike\" sinyali gönderebilir.",
             "Karıncalar savaş yapar, asker yetiştirir ve hatta bazı türleri başka karınca kolonelerini köleleştirir.",
             "Bir salyangozun binlerce minik dişi olabilir.",
             "Bazı mantarlar, yıldırım düştükten sonra daha hızlı büyüyebilir.",
@@ -1634,7 +1514,7 @@
             "Bazı örümcekler avlarını yakalamak için ağ değil, lasso (kement) kullanır.",
             "Bir timsahın çene kapatma kuvveti çok yüksektir ama ağzını açan kasları oldukça zayıftır.",
             "Bir gün, Dünya'daki bütün kıtalar tekrar birleşerek tek süper kıta oluşturacak.",
-            "Şu anda vücudundaki atomların büyük kısmı, milyarlarca yıl önce patlayan yıldızların içinde oluştu. Teknik olarak hepimiz "yıldız tozuyuz."",
+            "Şu anda vücudundaki atomların büyük kısmı, milyarlarca yıl önce patlayan yıldızların içinde oluştu. Teknik olarak hepimiz \"yıldız tozuyuz.\"",
             "İnsan vücudundaki bakteriler, hücrelerden 10 kat fazladır.",
             "Bir gün tam olarak 24 saat değildir. Dünya'nın kendi ekseni etrafındaki dönüşü yaklaşık 23 saat 56 dakikadır (yıldız günü).",
             "İnsan beyni, uyanıkken yaklaşık 20 watt güç tüketir. Bu, küçük bir ampulü yakmaya yeter.",
@@ -2028,20 +1908,20 @@
         }
 
         function startFactRotation() {
-            const el = document.getElementById('oracle-fact-text');
+            const el = document.getElementById('info-fact-text');
             if (!el) return;
             const firstFact = getRandomFact();
             el.textContent = firstFact;
-            el.className = 'oracle-fact-text fade-in';
-            setTimeout(() => el.className = 'oracle-fact-text', 50);
+            el.className = 'info-card-text fade-in';
+            setTimeout(() => el.className = 'info-card-text', 50);
 
             factInterval = setInterval(() => {
-                el.className = 'oracle-fact-text fade-out';
+                el.className = 'info-card-text fade-out';
                 setTimeout(() => {
                     const newFact = getRandomFact();
                     el.textContent = newFact;
-                    el.className = 'oracle-fact-text fade-in';
-                    setTimeout(() => el.className = 'oracle-fact-text', 80);
+                    el.className = 'info-card-text fade-in';
+                    setTimeout(() => el.className = 'info-card-text', 80);
                 }, 800);
             }, 7000);
         }
@@ -2053,8 +1933,9 @@
             initPlayer();
             document.getElementById("input1").addEventListener("input", runTengriDetector);
             document.getElementById("input2").addEventListener("input", runTengriDetector);
-            const dd = document.querySelector(".id-dark-dot");
-            if (dd) changeTheme('dark', dd);
+            // Varsayılan tema: WHITE (ilk açılışta beyaz)
+            const dd = document.querySelector(".theme-dot[style*='background:#ffffff']");
+            if (dd) changeTheme('white', dd);
             startFactRotation();
         });
     </script>
