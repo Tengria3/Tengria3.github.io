@@ -25,6 +25,7 @@
             --accent-color: #f2f2f7;
             --accent-glow: rgba(255, 255, 255, 0.15);
             --coffee-level: 72px;
+            --player-theme: 'default';
         }
         html[data-theme="crimson"] { --bg-main: #0c0808; --bg-container: #161010; --bg-input: #080505; --bg-btn: #241818; --bg-btn-hover: #332222; --bg-tab-active: #332222; --text-main: #b8a0a0; --text-input: #f5eded; --text-heading: #ffffff; --text-btn: #e63946; --border-color: #402b2b; --border-container: #2e1f1f; --accent-color: #d62828; --accent-glow: rgba(214, 40, 40, 0.4); }
         html[data-theme="blue"] { --bg-main: #080c14; --bg-container: #101624; --bg-input: #05080d; --bg-btn: #182238; --bg-btn-hover: #22304f; --bg-tab-active: #22304f; --text-main: #a0b0c8; --text-input: #edf3f8; --text-heading: #ffffff; --text-btn: #4ea8de; --border-color: #2b3d61; --border-container: #1f2c47; --accent-color: #0077b6; --accent-glow: rgba(0, 119, 182, 0.4); }
@@ -53,7 +54,19 @@
         body.theme-shake { animation: themeShake 0.5s ease-in-out; }
         @keyframes themeShake { 0%,100%{transform:translate(0,0);}10%{transform:translate(-4px,-2px);}20%{transform:translate(4px,2px);}30%{transform:translate(-3px,1px);}40%{transform:translate(3px,-1px);}50%{transform:translate(-2px,2px);}60%{transform:translate(2px,-2px);}70%{transform:translate(-1px,1px);}80%{transform:translate(1px,-1px);}90%{transform:translate(0,0);} }
 
-        .theme-selector { display:flex; justify-content:flex-end; gap:12px; max-width:900px; margin:0 auto 20px auto; align-items:center; background:var(--bg-container); padding:12px 18px; border-radius:8px; border:1px solid var(--border-container); flex-wrap:wrap; }
+        .theme-selector {
+            display:flex;
+            justify-content:flex-start;
+            gap:12px;
+            max-width:900px;
+            margin:0 auto 20px auto;
+            align-items:center;
+            background:var(--bg-container);
+            padding:12px 18px;
+            border-radius:8px;
+            border:1px solid var(--border-container);
+            flex-wrap:wrap;
+        }
         .theme-label { font-size:11px; text-transform:uppercase; letter-spacing:1.5px; font-weight:600; color:var(--text-main); opacity:0.8; }
         .theme-dot { width:22px; height:22px; border-radius:50%; border:2px solid transparent; transition:all 0.2s cubic-bezier(0.4,0,0.2,1); box-shadow:0 2px 5px rgba(0,0,0,0.5); }
         .theme-dot:hover { transform:scale(1.2); }
@@ -216,16 +229,13 @@
             gap:8px;
             box-shadow:0 -10px 30px rgba(0,0,0,0.6);
             z-index:9999;
-            transition:transform 0.4s cubic-bezier(0.175,0.885,0.32,1.2);
+            transition:transform 0.4s cubic-bezier(0.175,0.885,0.32,1.2), border-color 0.3s, background 0.3s;
         }
         .cyber-player.minimized { transform:translateY(100%); }
-        .player-toggle-area {
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            margin-bottom:4px;
-        }
-        .player-toggle-btn {
+        .player-toggle-btn, .player-theme-toggle-btn {
+            position:absolute;
+            right:30px;
+            top:-24px;
             background:var(--bg-container);
             border:1px solid var(--border-container);
             border-bottom:none;
@@ -238,33 +248,14 @@
             transition:all 0.2s;
             cursor:pointer;
         }
-        .player-toggle-btn:hover { color:var(--text-heading); background:var(--bg-btn-hover); }
-        .player-theme-toggle-btn {
-            background:var(--bg-container);
-            border:1px solid var(--border-container);
-            border-bottom:none;
-            padding:4px 14px;
-            font-size:10px;
-            font-weight:bold;
-            letter-spacing:1px;
-            border-radius:6px 6px 0 0;
-            color:var(--text-main);
-            transition:all 0.2s;
-            cursor:pointer;
-            margin-right:4px;
-        }
-        .player-theme-toggle-btn:hover { color:var(--text-heading); background:var(--bg-btn-hover); }
-
-        .cyber-player.minimized .player-toggle-area { position:relative; }
+        .player-theme-toggle-btn { right:100px; }
+        .player-toggle-btn:hover, .player-theme-toggle-btn:hover { color:var(--text-heading); background:var(--bg-btn-hover); }
         .cyber-player.minimized .player-toggle-btn,
         .cyber-player.minimized .player-theme-toggle-btn {
             top:-24px;
-            position:absolute;
             border:1px solid var(--border-container);
             box-shadow:0 -5px 15px rgba(0,0,0,0.3);
         }
-        .cyber-player.minimized .player-toggle-btn { right:30px; }
-        .cyber-player.minimized .player-theme-toggle-btn { right:115px; }
 
         .player-top-row { display:flex; align-items:center; justify-content:space-between; width:100%; }
         .player-info { display:flex; align-items:center; gap:12px; width:30%; }
@@ -326,6 +317,13 @@
         .theme-player-wrapper .track-info { text-align:center; margin-bottom:12px; }
         .theme-player-wrapper .track-info .name { font-size:16px; font-weight:700; color:var(--text-heading); }
         .theme-player-wrapper .track-info .index { font-size:12px; opacity:0.6; }
+
+        /* Ana çalar tema class'ları */
+        .cyber-player.theme-fire { border-color:#e63946; background:linear-gradient(135deg,#2a0a0a,#4a1515); }
+        .cyber-player.theme-water { border-color:#0077b6; background:linear-gradient(135deg,#0a1a2a,#0a2a4a); }
+        .cyber-player.theme-space { border-color:#7209b7; background:linear-gradient(135deg,#1a0a2e,#2a0a4a); }
+        .cyber-player.theme-forest { border-color:#2d6a4f; background:linear-gradient(135deg,#0a1a0a,#1a2a1a); }
+        .cyber-player.theme-neon { border-color:#00f5d4; background:linear-gradient(135deg,#0a0a1a,#1a0a2a); }
 
         /* ==========================================================================
            KAHVE + BURÇ MODALLARI
@@ -472,7 +470,7 @@
             .game-iframe-wrapper .iframe-container { height:400px; }
             .game-iframe-wrapper .iframe-container iframe { height:440px; margin-top:-20px; }
             .theme-player-wrapper .player-controls { flex-wrap:wrap; justify-content:center; }
-            .cyber-player.minimized .player-theme-toggle-btn { right:95px; }
+            .player-theme-toggle-btn { right:85px; }
         }
     </style>
 </head>
@@ -595,13 +593,8 @@
 
     <!-- MÜZİK ÇALAR (altyapı) -->
     <div id="cyber-audio-player" class="cyber-player">
-        <div class="player-toggle-area">
-            <div style="display:flex; gap:6px;">
-                <button id="player-toggle" class="player-toggle-btn" onclick="togglePlayerMinimize()">▼ AŞAĞI KAYDIR</button>
-                <button id="player-theme-toggle" class="player-theme-toggle-btn" onclick="openPlayerThemesModal()">🎵 TEMA</button>
-            </div>
-            <span style="font-size:10px;color:var(--text-main);opacity:0.5;">Mevcut Tema: Varsayılan</span>
-        </div>
+        <button id="player-toggle" class="player-toggle-btn" onclick="togglePlayerMinimize()">▼ AŞAĞI KAYDIR</button>
+        <button id="player-theme-toggle" class="player-theme-toggle-btn" onclick="openPlayerThemesModal()">🎵 TEMA</button>
         <div class="player-top-row">
             <div class="player-info">
                 <div id="player-icon" class="player-icon">💿</div>
@@ -1098,6 +1091,7 @@
             const card = document.querySelector(`.player-theme-card[data-theme="${theme}"]`);
             if (card) card.style.borderColor = 'var(--accent-color)';
 
+            // Diğer tema çalarları durdur
             Object.keys(themePlayers).forEach(key => {
                 if (key !== theme && themePlayers[key].isPlaying) {
                     themePlayers[key].audio.pause();
@@ -1106,6 +1100,17 @@
                     if (btn) btn.innerText = '▶';
                 }
             });
+
+            // Ana çaların temasını güncelle
+            const player = document.getElementById('cyber-audio-player');
+            // Önceki tema class'larını temizle
+            ['theme-fire', 'theme-water', 'theme-space', 'theme-forest', 'theme-neon'].forEach(cls => {
+                player.classList.remove(cls);
+            });
+            if (theme !== 'default') {
+                player.classList.add('theme-' + theme);
+            }
+
             renderThemePlayer(theme);
         }
 
@@ -1223,7 +1228,13 @@
             document.getElementById('player-themes-modal').classList.add('active');
             document.body.style.overflow = 'hidden';
             if (Object.keys(themePlayers).length === 0) initThemePlayers();
-            selectPlayerTheme('fire');
+            // Varsayılan olarak ilk tema seçili, ama modal açıldığında mevcut temayı göster
+            const currentTheme = document.getElementById('cyber-audio-player').classList.contains('theme-fire') ? 'fire' :
+                                  document.getElementById('cyber-audio-player').classList.contains('theme-water') ? 'water' :
+                                  document.getElementById('cyber-audio-player').classList.contains('theme-space') ? 'space' :
+                                  document.getElementById('cyber-audio-player').classList.contains('theme-forest') ? 'forest' :
+                                  document.getElementById('cyber-audio-player').classList.contains('theme-neon') ? 'neon' : 'fire';
+            selectPlayerTheme(currentTheme);
         }
 
         function closePlayerThemesModal(e) {
