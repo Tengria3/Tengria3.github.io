@@ -629,92 +629,12 @@
         function highlight(t) { bannedWords.forEach(w => { const p = escapeRegExp(w).replace(/\s+/g, "\\s+");
                 t = t.replace(new RegExp(p, "gi"), m => `<span class="bad-word">${m}</span>`); }); return t; }
 
-        // ==========================================================================
-        // KALIN (BOLD) TESPİTİ – TARAYICININ GERÇEK RENDER'INA GÖRE
-        // Önceki yöntem etiket ismine (h1-h6, strong, b) veya style özniteliğine
-        // bakıyordu. Ama tarayıcı, yapıştırılan zengin içeriği kendi içinde
-        // normalize edebiliyor (örn. bir başlık farklı bir etiket/öznitelikle
-        // gelebiliyor). Bunu tahmin etmek yerine, tarayıcıya doğrudan soruyoruz:
-        // "bu metin GERÇEKTEN ekranda kalın mı gösteriliyor?" (getComputedStyle).
-        // Bu yüzden kaynak hangi etiketi/yöntemi kullanırsa kullansın, ekranda
-        // kalın görünen her şey kalın kalır; görünmeyen hiçbir şey kalınlaştırılmaz.
-        // ==========================================================================
-        const BLOCK_TAGS = new Set([
-            'P', 'DIV', 'LI', 'TR', 'UL', 'OL', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'TABLE', 'TBODY',
-            'TD', 'TH', 'PRE', 'BLOCKQUOTE', 'SECTION', 'ARTICLE', 'HEADER', 'FOOTER', 'MAIN',
-            'ASIDE', 'FIGURE', 'FIGCAPTION', 'ADDRESS', 'DL', 'DT', 'DD', 'FORM', 'FIELDSET', 'LEGEND'
-        ]);
-
-        function isElementReallyBold(el) {
-            if (!el || el.nodeType !== 1) return false;
-            try {
-                const fw = window.getComputedStyle(el).fontWeight;
-                const num = parseInt(fw, 10);
-                if (!isNaN(num)) return num >= 600;
-                return fw === 'bold' || fw === 'bolder';
-            } catch (e) {
-                return false;
-            }
-        }
-
-        function escapeAngles(s) {
-            return s.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        }
-
-        // Bazı kaynaklarda kalın metin gerçek kalınlıkla değil, düz metin içine
-        // yazılmış **iki yıldız** işaretiyle geliyor (markdown biçimi). Bu
-        // fonksiyon böyle bir metin parçasını işler: **...** görülen yeri
-        // yıldızları kaldırıp gerçek kalına çevirir, geri kalanını tarayıcının
-        // gerçek render durumuna (boldState) göre bırakır.
-        function appendTextRespectingMarkdownBold(text, boldState) {
-            let result = "";
-            let lastIndex = 0;
-            const re = /\*\*(.+?)\*\*/g;
-            let m;
-            while ((m = re.exec(text)) !== null) {
-                if (m.index > lastIndex) {
-                    const plain = text.slice(lastIndex, m.index);
-                    result += boldState ? `<b>${escapeAngles(plain)}</b>` : escapeAngles(plain);
-                }
-                result += `<b>${escapeAngles(m[1])}</b>`;
-                lastIndex = re.lastIndex;
-            }
-            if (lastIndex < text.length) {
-                const rest = text.slice(lastIndex);
-                result += boldState ? `<b>${escapeAngles(rest)}</b>` : escapeAngles(rest);
-            }
-            return result;
-        }
-
-        // Kök düğümü (SAYFAYA BAĞLI, gerçek input elemanını) gezip kalın olan
-        // kısımları <b> ile sarar, blok elemanlarını satır sonlarıyla ayırarak
-        // tek bir metin üretir. Kopya/ayrık bir div değil, doğrudan canlı
-        // elemanın üzerinde çalışır ki getComputedStyle doğru sonuç versin.
-        function buildLinesPreservingBold(root) {
-            let out = "";
-
-            function walk(node) {
-                if (node.nodeType === Node.TEXT_NODE) {
-                    const text = node.nodeValue;
-                    if (!text) return;
-                    const bold = isElementReallyBold(node.parentElement);
-                    out += appendTextRespectingMarkdownBold(text, bold);
-                    return;
-                }
-                if (node.nodeType !== Node.ELEMENT_NODE) return;
-
-                const tag = node.tagName;
-                if (tag === 'SCRIPT' || tag === 'STYLE') return;
-                if (tag === 'BR') { out += "\n"; return; }
-
-                const isBlock = BLOCK_TAGS.has(tag);
-                if (isBlock) out += "\n";
-                node.childNodes.forEach(walk);
-                if (isBlock) out += "\n";
-            }
-
-            root.childNodes.forEach(walk);
-            return out;
+        // sayısal font-weight değerlerini de <b> etiketine dönüştürür (sadece span ve strong)
+        function hardProtectBoldStyles(r) {
+            if (!r) return "";
+            r = r.replace(/<span\b[^>]*\bstyle\s*=\s*"[^"]*font-weight\s*:\s*(bold|bolder|[7-9]00)[^"]*"[^>]*>([\s\S]*?)<\/span>/gi, '<b>$2</b>');
+            r = r.replace(/<strong\b[^>]*>([\s\S]*?)<\/strong>/gi, '<b>$1</b>');
+            return r;
         }
 
         function cleanInvisibleWebGarbage(t, f = false) { if (!t) return ""; let c = t.replace(/[\r\u200B\u200C\u200D\uFEFF]/g,
@@ -725,19 +645,48 @@
             if (f) c = c.toLocaleLowerCase('tr-TR');
             return c; }
 
-        // processUltraEngine – blok etiketleri satır satır ayrılır, tarayıcının
-        // GERÇEKTEN kalın gösterdiği yerler kalın kalır, göstermediği hiçbir
-        // yer kalınlaştırılmaz. Sadece fazla boşluklar temizlenir.
+        // processUltraEngine – blok etiketleri işlenir, başlıklar otomatik kalın, bold span'lar kalın
         function processUltraEngine(id, f = false) {
             const inp = document.getElementById(id);
             if (!inp || !inp.innerHTML.trim()) return "";
+            let raw = inp.innerHTML;
+            let bolded = hardProtectBoldStyles(raw);
+            let div = document.createElement("div");
+            div.innerHTML = bolded;
 
-            // NOT: Kopya/ayrık bir div değil, doğrudan sayfadaki canlı "inp"
-            // elemanı gezilir; böylece getComputedStyle tarayıcının ekranda
-            // gerçekten gösterdiği font-weight'i doğru okur.
-            const rawWithBreaks = buildLinesPreservingBold(inp);
+            // Sadece başlık etiketlerini (h1-h6) <b> ile sar
+            const headings = div.querySelectorAll('h1, h2, h3, h4, h5, h6');
+            headings.forEach(heading => {
+                const b = document.createElement('b');
+                while (heading.firstChild) {
+                    b.appendChild(heading.firstChild);
+                }
+                heading.appendChild(b);
+            });
 
-            let lines = rawWithBreaks.split('\n');
+            const blockSelectors = 'p,div,br,li,tr,ul,ol,h1,h2,h3,h4,h5,h6,table,tbody,td,th,pre,blockquote,section,article,header,footer,main,aside,figure,figcaption,address,dl,dt,dd,form,fieldset,legend';
+            div.querySelectorAll(blockSelectors).forEach(el => {
+                if (el.tagName.toLowerCase() === 'br') {
+                    el.before(document.createTextNode('\n'));
+                } else {
+                    el.before(document.createTextNode('\n'));
+                    el.after(document.createTextNode('\n'));
+                }
+            });
+
+            let all = div.getElementsByTagName("*");
+            for (let i = all.length - 1; i >= 0; i--) {
+                let el = all[i];
+                if (el.tagName.toLowerCase() !== 'b') {
+                    el.outerHTML = el.innerHTML;
+                } else {
+                    el.removeAttribute('style');
+                    el.removeAttribute('class');
+                    el.removeAttribute('id');
+                }
+            }
+
+            let lines = div.innerHTML.split('\n');
             let res = [];
             lines.forEach(line => {
                 let cl = cleanInvisibleWebGarbage(line, f);
