@@ -540,7 +540,22 @@
                 <button class="burc-nav-btn" data-section="quiz">🎯 Burç Testi</button>
                 <button class="burc-nav-btn" data-section="hikayeler">📖 Burç Hikayeleri</button>
             </div>
-            <div class="burc-section active" id="section-burclar"><div class="burc-grid" id="burc-grid"></div><div id="burc-detail-wrap"></div></div>
+            <div class="burc-section active" id="section-burclar">
+
+                <!-- ===== GÖKTÜRKÇE İSİM ÇEVİRİSİ (YENİ) ===== -->
+                <div style="margin-bottom:20px;background:rgba(255,255,255,0.03);border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,0.06);">
+                    <label style="color:rgba(255,255,255,0.6);font-size:11px;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:8px;">👤 Adınızı Girin, Göktürkçe Karşılığını Görün</label>
+                    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+                        <input type="text" id="gokturkce-input" placeholder="Adınız..." style="flex:1;min-width:150px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 12px;color:#fff;font-size:14px;outline:none;">
+                        <button onclick="gokturkceCevir()" style="background:rgba(147,51,234,0.3);border:1px solid rgba(147,51,234,0.5);color:#fff;padding:8px 20px;border-radius:20px;cursor:pointer;font-weight:700;letter-spacing:0.5px;transition:all 0.3s;">🪄 Çevir</button>
+                    </div>
+                    <div id="gokturkce-sonuc" style="margin-top:12px;font-size:22px;font-weight:bold;color:#c084fc;letter-spacing:2px;min-height:40px;display:flex;align-items:center;gap:8px;"></div>
+                </div>
+                <!-- ===== GÖKTÜRKÇE BİTİŞ ===== -->
+
+                <div class="burc-grid" id="burc-grid"></div>
+                <div id="burc-detail-wrap"></div>
+            </div>
             <div class="burc-section" id="section-harita">
                 <h3 style="color:#c084fc;border-color:#c084fc;">🪐 Doğum Haritası Simülatörü</h3>
                 <p style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:14px;">Doğum tarihinizi, saatinizi ve şehrinizi girerek kişisel doğum haritanızı oluşturun.</p>
@@ -1964,6 +1979,59 @@
                     setTimeout(() => el.className = 'info-card-text', 80);
                 }, 800);
             }, 7000);
+        }
+
+        // ==========================================================================
+        // GÖKTÜRKÇE İSİM ÇEVİRİSİ (YENİ EKLENDİ)
+        // ==========================================================================
+        function gokturkceCevir() {
+            const input = document.getElementById('gokturkce-input');
+            const ad = input.value.trim();
+            if (!ad) {
+                document.getElementById('gokturkce-sonuc').innerHTML = '<span style="font-size:12px;color:rgba(255,255,255,0.4);">Lütfen bir ad girin.</span>';
+                return;
+            }
+            // Harf dönüşüm tablosu
+            const harfMap = {
+                'a': '𐰀', 'A': '𐰀',
+                'b': '𐰋', 'B': '𐰋',
+                'c': '𐰲', 'C': '𐰲',
+                'ç': '𐰲', 'Ç': '𐰲',
+                'd': '𐰓', 'D': '𐰓',
+                'e': '𐰅', 'E': '𐰅',
+                'f': '𐰋', 'F': '𐰋',
+                'g': '𐰏', 'G': '𐰏',
+                'ğ': '𐰏', 'Ğ': '𐰏',
+                'h': '𐰴', 'H': '𐰴',
+                'ı': '𐰃', 'I': '𐰃',
+                'i': '𐰄', 'İ': '𐰄',
+                'j': '𐰔', 'J': '𐰔',
+                'k': '𐰚', 'K': '𐰚',
+                'l': '𐰞', 'L': '𐰞',
+                'm': '𐰢', 'M': '𐰢',
+                'n': '𐰤', 'N': '𐰤',
+                'o': '𐰆', 'O': '𐰆',
+                'ö': '𐰇', 'Ö': '𐰇',
+                'p': '𐰯', 'P': '𐰯',
+                'r': '𐰺', 'R': '𐰺',
+                's': '𐰽', 'S': '𐰽',
+                'ş': '𐰾', 'Ş': '𐰾',
+                't': '𐱃', 'T': '𐱃',
+                'u': '𐰆', 'U': '𐰆',
+                'ü': '𐰈', 'Ü': '𐰈',
+                'v': '𐰋', 'V': '𐰋',
+                'y': '𐰘', 'Y': '𐰘',
+                'z': '𐰔', 'Z': '𐰔'
+            };
+            let sonuc = '';
+            for (let ch of ad) {
+                if (ch === ' ') {
+                    sonuc += ' ';
+                } else {
+                    sonuc += harfMap[ch] || ch;
+                }
+            }
+            document.getElementById('gokturkce-sonuc').innerHTML = `<span>${ad}</span> <span style="color:rgba(255,255,255,0.3);">→</span> <span style="font-size:28px;">${sonuc}</span>`;
         }
 
         // ==========================================================================
