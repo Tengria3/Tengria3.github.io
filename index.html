@@ -443,6 +443,9 @@
         </button>
         <button onclick="openBurcModal()" class="burc-btn-premium">🔮 BURÇLAR</button>
         <button onclick="openGameModal()" class="game-btn-premium">🎮 OYUNLAR</button>
+        <button onclick="openRadioModal()" class="game-btn-premium" style="background:linear-gradient(135deg, rgba(255,107,53,0.08), rgba(200,70,20,0.14)); border-color:rgba(255,107,53,0.35); color:#ff6b35!important;">
+            📻 RADYO
+        </button>
         <span class="theme-label">TEMA:</span>
         <!-- Antrasit (eski siyah kaldırıldı, yerine bu) -->
         <div class="theme-dot id-dark-dot" style="background:#26262c;border:1px solid #3a3a42;" onclick="changeTheme('dark',this)" title="Antrasit"></div>
@@ -490,6 +493,24 @@
                     <button class="fullscreen-btn" onclick="document.getElementById('mario-game-iframe').requestFullscreen();">⛶ FULL EKRAN</button>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- RADYO MODAL -->
+    <div id="radio-modal" class="modal-overlay" onclick="closeRadioModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()" style="max-width: 960px;">
+            <button class="modal-close-btn" onclick="closeRadioModal()">✕</button>
+            <h3 style="margin-top:0;">📻 Turkuvaz Radyolar</h3>
+            <div style="position:relative; width:100%; height:600px; overflow:hidden; border-radius:8px; background:#000;">
+                <iframe 
+                    src="https://www.turkuvazradyolar.com/" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:none;" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p style="font-size:11px; color:var(--text-main); text-align:center; margin-top:12px;">🔊 Radyoyu dinlemek için yukarıdaki oynatıcıyı kullanabilirsin.</p>
         </div>
     </div>
 
@@ -547,7 +568,7 @@
                     <label style="color:rgba(255,255,255,0.6);font-size:11px;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:8px;">👤 Adınızı Girin, Göktürkçe Karşılığını Görün</label>
                     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
                         <input type="text" id="gokturkce-input" placeholder="Adınız..." style="flex:1;min-width:150px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 12px;color:#fff;font-size:14px;outline:none;">
-                        <button onclick="gokturkceCevir()" style="background:rgba(147,51,234,0.3);border:1px solid rgba(147,51,234,0.5);color:#fff;padding:8px 20px;border-radius:20px;cursor:pointer;font-weight:700;letter-spacing:0.5px;transition:all 0.3s;">🐺 Çevir</button>
+                        <button onclick="gokturkceCevir()" style="background:rgba(147,51,234,0.3);border:1px solid rgba(147,51,234,0.5);color:#fff;padding:8px 20px;border-radius:20px;cursor:pointer;font-weight:700;letter-spacing:0.5px;transition:all 0.3s;">🪄 Çevir</button>
                     </div>
                     <div id="gokturkce-sonuc" style="margin-top:12px;font-size:22px;font-weight:bold;color:#c084fc;letter-spacing:2px;min-height:40px;display:flex;align-items:center;gap:8px;"></div>
                 </div>
@@ -762,9 +783,24 @@
             document.body.style.overflow = '';
         }
 
+        // ==========================================================================
+        // RADYO MODAL
+        // ==========================================================================
+        function openRadioModal() {
+            document.getElementById('radio-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeRadioModal(e) {
+            if (e && e.target !== e.currentTarget) return;
+            document.getElementById('radio-modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 if (document.getElementById('game-modal').classList.contains('active')) closeGameModal();
+                if (document.getElementById('radio-modal').classList.contains('active')) closeRadioModal();
                 if (document.getElementById('burc-modal').classList.contains('show')) closeBurcModal();
                 if (document.getElementById('coffee-modal').classList.contains('show')) closeCoffeeModal();
             }
