@@ -477,22 +477,18 @@
             margin-bottom: 4px;
             font-weight: 600;
         }
-        .gokturkce-anlam-box {
+        .gokturkce-analiz-box {
             background: rgba(255,255,255,0.02);
             border-left: 2px solid rgba(147,51,234,0.3);
-            padding: 10px 16px;
+            padding: 12px 16px;
             border-radius: 6px;
             margin-bottom: 14px;
-            font-size: 15px;
-            color: rgba(255,255,255,0.8);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
+            font-size: 14px;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.7;
         }
-        .gokturkce-anlam-box strong {
+        .gokturkce-analiz-box strong {
             color: #c084fc;
-            font-weight: 600;
         }
         .gokturkce-analiz-grid {
             display: grid;
@@ -537,35 +533,6 @@
             background: rgba(255,255,255,0.04);
             padding: 2px 8px;
             border-radius: 10px;
-        }
-        .gokturkce-tarih-box {
-            background: rgba(0,0,0,0.25);
-            border-radius: 10px;
-            padding: 12px 16px;
-            margin: 12px 0;
-            border: 1px solid rgba(255,255,255,0.04);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .gokturkce-tarih-box .tarih-etiket {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: rgba(255,255,255,0.3);
-        }
-        .gokturkce-tarih-box .tarih-deger {
-            font-size: 18px;
-            font-weight: 600;
-            color: #c084fc;
-            letter-spacing: 2px;
-            font-family: 'Times New Roman', serif;
-        }
-        .gokturkce-tarih-box .tarih-normal {
-            font-size: 12px;
-            color: rgba(255,255,255,0.4);
         }
         .gokturkce-atasozu-box {
             background: linear-gradient(135deg, rgba(147,51,234,0.06), rgba(0,0,0,0.2));
@@ -616,7 +583,6 @@
             .game-iframe-wrapper .iframe-container iframe { height:440px; margin-top:-20px; }
             .gokturkce-oyuk { font-size: 28px; letter-spacing: 6px; padding: 12px 16px; }
             .gokturkce-analiz-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
-            .gokturkce-tarih-box .tarih-deger { font-size: 14px; }
         }
     </style>
 </head>
@@ -747,35 +713,26 @@
                 <div class="gokturkce-container">
                     <div class="gokturkce-input-row">
                         <input type="text" id="gokturkce-input" placeholder="Adınızı girin...">
-                        <button onclick="gokturkceCevir()">🪄 Çevir</button>
-                        <button onclick="gokturkceRastgele()">🎲 Rastgele</button>
+                        <button onclick="gokturkceCevir()">🪄 Çevir ve Analiz Et</button>
                     </div>
 
                     <div id="gokturkce-sonuclar">
                         <!-- 1. Çeviri (oyuk efekt) -->
                         <div id="gokturkce-ceviri" class="gokturkce-oyuk">𐱅𐰭𐰼𐰃</div>
 
-                        <!-- 2. Anlam -->
-                        <div id="gokturkce-anlam" class="gokturkce-anlam-box">
-                            <span style="color:rgba(255,255,255,0.3);">📖</span>
-                            <span><strong>Anlamı:</strong> <span id="gokturkce-anlam-text">Tengri, Gök Tanrı</span></span>
+                        <!-- 2. İsim Analizi (dinamik yorum) -->
+                        <div id="gokturkce-analiz-yorum" class="gokturkce-analiz-box">
+                            <strong>📜 İsim Analizi:</strong> <span id="gokturkce-yorum-text">Bir isim girin, harflerin Göktürkçedeki anlamlarını keşfedin.</span>
                         </div>
 
-                        <!-- 3. Analiz -->
-                        <div class="gokturkce-alt-baslik">🔍 İsim Analizi</div>
+                        <!-- 3. Harf detayları -->
+                        <div class="gokturkce-alt-baslik">🔍 Harf Detayları</div>
                         <div id="gokturkce-analiz" class="gokturkce-analiz-grid"></div>
 
-                        <!-- 4. Tarih -->
-                        <div id="gokturkce-tarih" class="gokturkce-tarih-box">
-                            <span class="tarih-etiket">📅 Bugünün Göktürkçesi</span>
-                            <span class="tarih-deger" id="gokturkce-tarih-deger">𐰲𐰃𐰴𐰣</span>
-                            <span class="tarih-normal" id="gokturkce-tarih-normal">(2026-07-10)</span>
-                        </div>
-
-                        <!-- 5. Atasözü -->
+                        <!-- 4. Atasözü (tekrar etmeyen) -->
                         <div id="gokturkce-atasozu" class="gokturkce-atasozu-box">Türk oğlu Türk'tür.</div>
 
-                        <!-- 6. Bilgi kartı -->
+                        <!-- 5. Bilgi kartı -->
                         <div id="gokturkce-bilgi" class="gokturkce-bilgi-kart">
                             <span class="bilgi-icon">📜</span>
                             <span class="bilgi-metin"><strong>Göktürk Alfabesi:</strong> 38 harften oluşur ve sağdan sola yazılır. Orhun Nehri kıyısında bulunan yazıtlarla günümüze ulaşmıştır.</span>
@@ -1405,7 +1362,7 @@
                 }
             };
             // Göktürkçe bölümünü başlat
-            gokturkceRastgele();
+            gokturkceBaslangic();
         }
 
         function switchBurcSection(s) {
@@ -2218,79 +2175,9 @@
         }
 
         // ==========================================================================
-        // GÖKTÜRKÇE İSİM ÇEVİRİSİ – GELİŞMİŞ SÜRÜM
+        // GÖKTÜRKÇE İSİM ANALİZİ – GELİŞMİŞ SÜRÜM (Anlam sözlüğü yok, dinamik yorum)
         // ==========================================================================
-        const isimAnlamlari = {
-            "ayşe": "Yaşam, hayat",
-            "ali": "Yüce, ulu",
-            "mehmet": "Övülmüş, hamd edilmiş",
-            "ahmet": "Övülmeye değer",
-            "mustafa": "Seçilmiş",
-            "fatma": "Sütten kesilmiş, yetişkin",
-            "zeynep": "Süslü, değerli taş",
-            "elif": "İnce, zarif",
-            "emre": "Dost, arkadaş",
-            "can": "Ruh, hayat",
-            "alp": "Kahraman, yiğit",
-            "eren": "Olgun, ermiş",
-            "barış": "Huzur, sulh",
-            "demir": "Sağlam, dayanıklı",
-            "kaya": "Sert, sağlam",
-            "aslan": "Cesur, güçlü",
-            "kaplan": "Güçlü, yırtıcı",
-            "kurt": "Kurallara uymayan, özgür",
-            "bozkurt": "Özgür ruhlu",
-            "bilge": "Bilgili, akıllı",
-            "kül": "Savaşçı, güçlü",
-            "tunga": "Aslan, kahraman",
-            "börü": "Kurt",
-            "çağrı": "Davet, sesleniş",
-            "ege": "Deniz",
-            "deniz": "Deniz",
-            "ufuk": "Ufuk, sınır",
-            "kaan": "Hakan, hükümdar",
-            "tunç": "Sağlam, güçlü",
-            "okan": "Anlayışlı, zeki",
-            "erkan": "Erkek, yiğit",
-            "hakan": "Hükümdar",
-            "tarkan": "Kahraman, komutan",
-            "metin": "Sağlam, güçlü",
-            "cengiz": "Büyük, güçlü",
-            "timur": "Demir",
-            "bayram": "Neşe, sevinç",
-            "taner": "Gün doğumu",
-            "aydın": "Aydınlık, parlak",
-            "gökhan": "Gök hakanı",
-            "efe": "Yiğit, cesur",
-            "tengri": "Gök Tanrı",
-            "türk": "Güçlü, asil",
-            "alp er": "Yiğit asker",
-            "kutlu": "Kutsal, uğurlu",
-            "umut": "Umud",
-            "berk": "Sert, sağlam",
-            "bora": "Fırtına",
-            "yeliz": "Rüzgarlı, esen",
-            "damla": "Su damlası",
-            "sarp": "Sert, zorlu",
-            "özge": "Özel, farklı",
-            "türkan": "Türk soyundan",
-            "sevgi": "Sevgi",
-            "duru": "Temiz, berrak",
-            "ses": "Ses, ün",
-            "şan": "Şan, ün",
-            "yıldız": "Yıldız, parlak",
-            "güneş": "Güneş",
-            "ay": "Ay",
-            "bulut": "Bulut",
-            "rüzgar": "Rüzgar",
-            "kar": "Kar",
-            "dağ": "Dağ",
-            "deniz": "Deniz",
-            "ışık": "Işık",
-            "ateş": "Ateş",
-            "su": "Su"
-        };
-
+        // 50 atasözü
         const gokturkAtasozleri = [
             "Türk oğlu Türk'tür.",
             "Tengri güç versin.",
@@ -2309,9 +2196,71 @@
             "Türk budun, ilin işin güçin bilgisiz kalmasın.",
             "Bilge Kağan: Ben kendim bilge, ben kendim kağan.",
             "Türk budun, ülkeni, töreni kim bozarsa, onu helak et.",
-            "Tengri'den kut, Türk'ten güç."
+            "Tengri'den kut, Türk'ten güç.",
+            "Türk budun, töreni unutma.",
+            "Türk ili, töre ili.",
+            "Kutlu Türk, kutlu olsun.",
+            "Türk'ün gücü, dağları deler.",
+            "Türk'ün yolu, gökyüzüne çıkar.",
+            "Türk'ün sözü, demirden sağlam.",
+            "Türk'ün atı, yel gibi koşar.",
+            "Türk'ün oku, düşmanı vurur.",
+            "Türk'ün kılıcı, zalimi keser.",
+            "Türk'ün kalkanı, mertliktir.",
+            "Türk'ün yurdu, cennet bahçesi.",
+            "Türk'ün eli, açık ve cömerttir.",
+            "Türk'ün gözü, yıldızlarla dolu.",
+            "Türk'ün kalbi, aslan yüreğidir.",
+            "Türk'ün aklı, bilgedir.",
+            "Türk'ün nefesi, özgürlüktür.",
+            "Türk'ün duası, Türk'e duadır.",
+            "Türk'ün şarkısı, destandır.",
+            "Türk'ün savaşı, hak içindir.",
+            "Türk'ün barışı, adalettir.",
+            "Türk'ün töresi, bozulmaz.",
+            "Türk'ün kültürü, derindir.",
+            "Türk'ün tarihi, şerefle yazılır.",
+            "Türk'ün geleceği, parlaktır.",
+            "Türk'ün birliği, kurtuluştur.",
+            "Türk'ün sevgisi, engindir.",
+            "Türk'ün dostluğu, ömürlüktür.",
+            "Türk'ün düşmanı, kendini bilmez.",
+            "Türk'ün sabrı, taşı deler.",
+            "Türk'ün hiddeti, sel gibidir.",
+            "Türk'ün merhameti, yağmur gibidir.",
+            "Türk'ün aşkı, ebedidir.",
+            "Türk'ün adı, ölümsüzdür."
         ];
 
+        // Daha önce gösterilen atasözü indekslerini tut
+        let gokturkAtasozuIndeksleri = JSON.parse(sessionStorage.getItem('gokturkAtasozuIndeksleri')) || [];
+        let gokturkAtasozuMevcutIndeks = -1;
+
+        function gokturkceAtasozuGetir() {
+            // Tüm atasözleri gösterildiyse listeyi sıfırla
+            if (gokturkAtasozuIndeksleri.length >= gokturkAtasozleri.length) {
+                gokturkAtasozuIndeksleri = [];
+                sessionStorage.setItem('gokturkAtasozuIndeksleri', JSON.stringify(gokturkAtasozuIndeksleri));
+            }
+            // Gösterilmeyenlerden rastgele seç
+            let available = [];
+            for (let i = 0; i < gokturkAtasozleri.length; i++) {
+                if (!gokturkAtasozuIndeksleri.includes(i)) available.push(i);
+            }
+            if (available.length === 0) {
+                // Tümü gösterilmiş, sıfırla ve tekrar dene
+                gokturkAtasozuIndeksleri = [];
+                sessionStorage.setItem('gokturkAtasozuIndeksleri', JSON.stringify(gokturkAtasozuIndeksleri));
+                return gokturkceAtasozuGetir();
+            }
+            const rast = available[Math.floor(Math.random() * available.length)];
+            gokturkAtasozuIndeksleri.push(rast);
+            sessionStorage.setItem('gokturkAtasozuIndeksleri', JSON.stringify(gokturkAtasozuIndeksleri));
+            gokturkAtasozuMevcutIndeks = rast;
+            return gokturkAtasozleri[rast];
+        }
+
+        // Harf analizi verisi
         const harfAnalizi = {
             'a': { runik: '𐰀', anlam: 'Başlangıç, doğum, yeni başlangıç', deger: 1 },
             'b': { runik: '𐰋', anlam: 'Güç, kuvvet, dayanıklılık', deger: 2 },
@@ -2376,22 +2325,20 @@
                 else ceviri += harfMap[ch] || ch;
             }
 
-            // Oyuk efekli gösterim
+            // Oyuk efektli gösterim
             document.getElementById('gokturkce-ceviri').textContent = ceviri;
 
-            // Anlam
-            const anlam = isimAnlamlari[ad] || 'Bu ismin anlamı henüz kayıtlarda değil.';
-            document.getElementById('gokturkce-anlam-text').textContent = anlam;
-
-            // Analiz
+            // ---- Analiz ----
             const analizDiv = document.getElementById('gokturkce-analiz');
             analizDiv.innerHTML = '';
             const harfler = ad.split('');
             let toplamDeger = 0;
+            const anlamListesi = [];
             harfler.forEach(h => {
                 const bilgi = harfAnalizi[h];
                 if (bilgi) {
                     toplamDeger += bilgi.deger;
+                    anlamListesi.push(bilgi.anlam);
                     const item = document.createElement('div');
                     item.className = 'gokturkce-analiz-item';
                     item.innerHTML = `
@@ -2424,21 +2371,18 @@
                 analizDiv.appendChild(item);
             }
 
-            // Tarih
-            const simdi = new Date();
-            const gun = simdi.getDate().toString();
-            const ay = (simdi.getMonth() + 1).toString();
-            const yil = simdi.getFullYear().toString();
-            const tarihGokturk = gun.split('').map(d => harfMap[d] || d).join('') + ' ' +
-                ay.split('').map(d => harfMap[d] || d).join('') + ' ' +
-                yil.split('').map(d => harfMap[d] || d).join('');
-            document.getElementById('gokturkce-tarih-deger').textContent = tarihGokturk;
-            document.getElementById('gokturkce-tarih-normal').textContent =
-                `(${simdi.getFullYear()}-${String(simdi.getMonth()+1).padStart(2,'0')}-${String(simdi.getDate()).padStart(2,'0')})`;
+            // Dinamik yorum oluştur
+            let yorum = '';
+            if (anlamListesi.length > 0) {
+                const ozellikler = anlamListesi.join(', ');
+                yorum = `"${ad.toUpperCase()}" ismi, Göktürk harflerine göre şu özellikleri taşıyor: ${ozellikler}. Toplam enerji değeri ${toplamDeger} olan bu isim, ${anlamListesi[0].toLowerCase()} ve ${anlamListesi[anlamListesi.length-1].toLowerCase()} gibi güçlü kavramları birleştiriyor. Bu isim, sahibine ${anlamListesi.slice(0,3).join(' ve ')} gibi nitelikler kazandırıyor.`;
+            } else {
+                yorum = 'Bu ismin Göktürk alfabesinde karşılığı bulunamadı. Lütfen Türkçe karakterler kullanmayı deneyin.';
+            }
+            document.getElementById('gokturkce-yorum-text').textContent = yorum;
 
-            // Atasözü
-            const soz = gokturkAtasozleri[Math.floor(Math.random() * gokturkAtasozleri.length)];
-            document.getElementById('gokturkce-atasozu').innerHTML = soz;
+            // Atasözü (tekrarsız)
+            document.getElementById('gokturkce-atasozu').innerHTML = gokturkceAtasozuGetir();
 
             // Bilgi kartı
             const bilgi = gokturkBilgileri[Math.floor(Math.random() * gokturkBilgileri.length)];
@@ -2450,29 +2394,10 @@
 
         function gokturkceBosGoster() {
             document.getElementById('gokturkce-ceviri').textContent = '𐱅𐰭𐰼𐰃';
-            document.getElementById('gokturkce-anlam-text').textContent = 'Tengri, Gök Tanrı';
+            document.getElementById('gokturkce-yorum-text').textContent = 'Bir isim girin, harflerin Göktürkçedeki anlamlarını keşfedin.';
             document.getElementById('gokturkce-analiz').innerHTML = `<div class="gokturkce-analiz-item" style="justify-content:center;color:rgba(255,255,255,0.3);font-size:12px;">Bir isim girerek analiz edin.</div>`;
-            // Tarih güncellenir
-            const simdi = new Date();
-            const gun = simdi.getDate().toString();
-            const ay = (simdi.getMonth() + 1).toString();
-            const yil = simdi.getFullYear().toString();
-            const harfMap = {
-                'a': '𐰀', 'b': '𐰋', 'c': '𐰲', 'ç': '𐰲', 'd': '𐰓', 'e': '𐰅', 'f': '𐰋',
-                'g': '𐰏', 'ğ': '𐰏', 'h': '𐰴', 'ı': '𐰃', 'i': '𐰄', 'j': '𐰔', 'k': '𐰚',
-                'l': '𐰞', 'm': '𐰢', 'n': '𐰤', 'o': '𐰆', 'ö': '𐰇', 'p': '𐰯', 'r': '𐰺',
-                's': '𐰽', 'ş': '𐰾', 't': '𐱃', 'u': '𐰆', 'ü': '𐰈', 'v': '𐰋', 'y': '𐰘',
-                'z': '𐰔'
-            };
-            const tarihGokturk = gun.split('').map(d => harfMap[d] || d).join('') + ' ' +
-                ay.split('').map(d => harfMap[d] || d).join('') + ' ' +
-                yil.split('').map(d => harfMap[d] || d).join('');
-            document.getElementById('gokturkce-tarih-deger').textContent = tarihGokturk;
-            document.getElementById('gokturkce-tarih-normal').textContent =
-                `(${simdi.getFullYear()}-${String(simdi.getMonth()+1).padStart(2,'0')}-${String(simdi.getDate()).padStart(2,'0')})`;
-            // Rastgele atasözü ve bilgi
-            const soz = gokturkAtasozleri[Math.floor(Math.random() * gokturkAtasozleri.length)];
-            document.getElementById('gokturkce-atasozu').innerHTML = soz;
+            // Atasözü
+            document.getElementById('gokturkce-atasozu').innerHTML = gokturkceAtasozuGetir();
             const bilgi = gokturkBilgileri[Math.floor(Math.random() * gokturkBilgileri.length)];
             document.getElementById('gokturkce-bilgi').innerHTML = `
                 <span class="bilgi-icon">📜</span>
@@ -2480,11 +2405,16 @@
             `;
         }
 
-        function gokturkceRastgele() {
-            const isimler = Object.keys(isimAnlamlari);
-            const rastgeleIsim = isimler[Math.floor(Math.random() * isimler.length)];
-            document.getElementById('gokturkce-input').value = rastgeleIsim.charAt(0).toUpperCase() + rastgeleIsim.slice(1);
-            gokturkceCevir();
+        function gokturkceBaslangic() {
+            // İlk açılışta boş göster
+            gokturkceBosGoster();
+            // Enter tuşu ile gönderme
+            document.getElementById('gokturkce-input').addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    gokturkceCevir();
+                }
+            });
         }
 
         // ==========================================================================
@@ -2497,8 +2427,7 @@
             const dd = document.querySelector(".theme-dot.id-dark-dot");
             if (dd) changeTheme('dark', dd);
             startFactRotation();
-            // Göktürkçe bölümü başlangıç
-            gokturkceBosGoster();
+            // Göktürkçe bölümü zaten initBurcModal içinde başlatılıyor
         });
     </script>
 </body>
