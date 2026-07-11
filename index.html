@@ -357,10 +357,7 @@
         .burc-tag.good { border-color:rgba(52,211,153,0.3); color:#34d399; }
         .burc-tag.bad { border-color:rgba(248,113,113,0.3); color:#f87171; }
         .burc-tag:hover { background:rgba(255,255,255,0.06); }
-        .gunluk-yorum-box { background:rgba(147,51,234,0.06); border:1px solid rgba(147,51,234,0.2); border-radius:14px; padding:18px; margin-top:10px; position:relative; }
-        .gunluk-yorum-box::before { content:'📆'; position:absolute; top:-12px; left:16px; font-size:20px; }
-        .gunluk-yorum-box strong { color:#c084fc; display:block; margin-bottom:6px; font-size:13px; }
-        .gunluk-yorum-box p { margin:0; font-size:14px; line-height:1.8; color:rgba(255,255,255,0.8); font-style:italic; }
+
         .burc-close-btn { display:block; margin:20px auto 0; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); color:#fff; padding:10px 24px; border-radius:20px; font-size:12px; letter-spacing:1px; cursor:pointer; transition:all 0.3s; }
         .burc-close-btn:hover { background:rgba(255,255,255,0.1); box-shadow:0 0 20px rgba(255,255,255,0.1); }
 
@@ -370,10 +367,16 @@
         .harita-form select option { background: #1a1a1e; color: #f2f2f7; }
         .harita-form input:focus, .harita-form select:focus { border-color:rgba(147,51,234,0.5); box-shadow:0 0 10px rgba(147,51,234,0.15); }
         .harita-sonuc { background:rgba(0,0,0,0.3); border-radius:16px; padding:18px; margin-top:12px; border:1px solid rgba(255,255,255,0.06); }
-        .harita-gezegen { display:flex; align-items:center; justify-content:space-between; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.04); }
+        .harita-gezegen { display:flex; align-items:center; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.04); }
         .harita-gezegen span:first-child { font-weight:600; color:#fff; font-size:12px; }
         .harita-gezegen span:last-child { color:rgba(255,255,255,0.6); font-size:11px; }
         .harita-aciklama { margin-top:12px; padding:12px; background:rgba(147,51,234,0.06); border-radius:10px; font-size:12px; line-height:1.8; color:rgba(255,255,255,0.7); border-left:2px solid rgba(147,51,234,0.3); }
+        .harita-aspect { display:inline-block; padding:2px 8px; border-radius:10px; font-size:9px; margin:2px; }
+        .harita-aspect.conjunction { background:rgba(255,215,0,0.2); border:1px solid rgba(255,215,0,0.3); color:#ffd700; }
+        .harita-aspect.trine { background:rgba(52,211,153,0.2); border:1px solid rgba(52,211,153,0.3); color:#34d399; }
+        .harita-aspect.square { background:rgba(248,113,113,0.2); border:1px solid rgba(248,113,113,0.3); color:#f87171; }
+        .harita-aspect.opposition { background:rgba(251,146,60,0.2); border:1px solid rgba(251,146,60,0.3); color:#fb923c; }
+        .harita-aspect.sextile { background:rgba(96,165,250,0.2); border:1px solid rgba(96,165,250,0.3); color:#60a5fa; }
 
         .ask-uyum-form { display:flex; gap:10px; align-items:center; justify-content:center; flex-wrap:wrap; margin-bottom:16px; }
         .ask-uyum-form select { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:8px 16px; color:#fff; font-size:13px; outline:none; }
@@ -383,6 +386,9 @@
         .uyum-sonuc { text-align:center; padding:20px; background:rgba(0,0,0,0.2); border-radius:16px; margin-top:10px; }
         .uyum-puan { font-size:48px; font-weight:900; background:linear-gradient(135deg,#c084fc,#f472b6); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
         .uyum-detay { margin-top:12px; font-size:13px; line-height:1.9; color:rgba(255,255,255,0.7); }
+        .uyum-ozellik-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:10px 0; text-align:left; }
+        .uyum-ozellik-item { background:rgba(255,255,255,0.03); border-radius:8px; padding:8px 12px; font-size:11px; color:rgba(255,255,255,0.6); border-left:2px solid rgba(147,51,234,0.2); }
+        .uyum-ozellik-item strong { color:#f0e8d8; display:block; font-size:9px; text-transform:uppercase; letter-spacing:0.5px; }
 
         .tarot-cards-row { display:flex; gap:15px; justify-content:center; flex-wrap:wrap; margin:15px 0; }
         .tarot-card-wrap { perspective:800px; width:140px; height:220px; cursor:pointer; }
@@ -567,7 +573,7 @@
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 8px;
             margin: 12px 0 16px 0;
-            display: none; /* başlangıçta gizli */
+            display: none;
         }
         .gokturk-analiz-item {
             background: rgba(255,255,255,0.04);
@@ -607,7 +613,6 @@
             padding: 2px 8px;
             border-radius: 10px;
         }
-        /* Enerji ve mitoloji yan yana – başlangıçta gizli */
         .gokturk-alt-row {
             display: none;
             flex-wrap: wrap;
@@ -1368,6 +1373,8 @@
             .sozluk-detay-modal { padding: 20px 16px; }
             .takvim-detay-ozellik-grid { grid-template-columns: 1fr; }
             .takvim-dashboard { grid-template-columns: 1fr 1fr; }
+            .uyum-ozellik-grid { grid-template-columns: 1fr; }
+            .burc-grid-info { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -1489,7 +1496,6 @@
                     <button class="burc-nav-btn" data-section="burclar">🌟 Burçlar</button>
                     <button class="burc-nav-btn" data-section="harita">🪐 Doğum Haritası</button>
                     <button class="burc-nav-btn" data-section="ask">💕 Aşk Uyumu</button>
-                    <button class="burc-nav-btn" data-section="tarot">🃏 Günlük Tarot</button>
                     <button class="burc-nav-btn" data-section="quiz">🎯 Burç Testi</button>
                     <button class="burc-nav-btn" data-section="hikayeler">📖 Burç Hikayeleri</button>
                 </div>
@@ -1589,13 +1595,6 @@
                     <button onclick="askUyumuHesapla()">Hesapla</button>
                 </div>
                 <div id="ask-sonuc"></div>
-            </div>
-
-            <!-- TAROT -->
-            <div class="burc-section" id="section-tarot">
-                <h3 style="color:#fbbf24;border-color:#fbbf24;">🃏 Günlük Tarot Kartları</h3>
-                <p style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:10px;">Kartları çevirmek için üzerlerine tıkla. Evren bugün sana ne söylemek istiyor?</p>
-                <div class="tarot-cards-row" id="tarot-cards-row"></div>
             </div>
 
             <!-- QUIZ -->
@@ -2593,7 +2592,6 @@
         ];
 
         function hayvanIndeks(yil) {
-            // Miladi yıldan 4 çıkar, mod 12 (2024 -> Ejderha, indeks 4)
             return ((yil - 4) % 12 + 12) % 12;
         }
 
@@ -2636,8 +2634,7 @@
             const simdi = new Date();
             const yil = simdi.getFullYear();
             grid.innerHTML = hayvanlar.map((h, i) => {
-                // Her hayvanın yıl aralığı (örnek 2024 Ejderha için 2024+12n)
-                const ilkYil = 4 + i; // Fare: 4, Sığır:5...
+                const ilkYil = 4 + i;
                 const yillar = [];
                 for (let y = ilkYil; y <= yil + 20; y += 12) {
                     if (y >= 1900) yillar.push(y);
@@ -2668,7 +2665,6 @@
                 <span><strong>${h.ad}</strong> (${h.runik}) – ${h.element} grubu</span>
                 <span style="font-size:11px;color:rgba(255,255,255,0.4);margin-left:8px;">${h.ozellik.substring(0,60)}…</span>
             `;
-            // Aynı zamanda kartı vurgula
             document.querySelectorAll('.takvim-hayvan-card').forEach(c => c.style.borderColor = 'rgba(255,255,255,0.06)');
             const kart = document.querySelector(`.takvim-hayvan-card[onclick*="${h.id}"]`);
             if (kart) kart.style.borderColor = 'rgba(192,132,252,0.6)';
@@ -2718,7 +2714,7 @@
         }
 
         // ==========================================================================
-        // SÖZLÜK İŞLEVLERİ (mevcut)
+        // SÖZLÜK İŞLEVLERİ
         // ==========================================================================
         let sozlukFavlar = JSON.parse(localStorage.getItem('sozlukFavlar')) || [];
         let sozlukAktifKategori = 'tum';
@@ -2814,7 +2810,7 @@
         }
 
         // ==========================================================================
-        // GÖKTÜRK ÇEVİRİ (mevcut)
+        // GÖKTÜRK ÇEVİRİ
         // ==========================================================================
         let mitolojikIndeks = parseInt(sessionStorage.getItem('mitolojikIndeks')) || -1;
         const mitolojikMetinler = sozlukVerisi.map(m => m.detay);
@@ -2885,7 +2881,7 @@
         }
 
         // ==========================================================================
-        // BURÇ MODAL (mevcut)
+        // BURÇ MODAL
         // ==========================================================================
         function openBurcModal() {
             document.getElementById('burc-modal').classList.add('show');
@@ -2899,7 +2895,6 @@
         function initBurcModal() {
             renderBurcGrid();
             renderHikayeListesi();
-            initTarotCards();
             initAskUyumuSelect();
             initHaritaSehirSelect();
             document.getElementById("burc-detail-wrap").innerHTML = "";
@@ -2908,24 +2903,19 @@
             document.getElementById("quiz-icerik").innerHTML = "";
             quizAdimi = 0;
             quizPuanlar = {};
-            // Göktürk sekmesi aktif
             document.querySelectorAll('.burc-nav-btn').forEach(b => b.classList.remove('active'));
             document.querySelector('[data-section="gokturk"]').classList.add('active');
             document.querySelectorAll('.burc-section').forEach(sec => sec.classList.remove('active'));
             document.getElementById('section-gokturk').classList.add('active');
-            // Mitolojik bilgi ilk
             if (mitolojikIndeks === -1) {
                 mitolojikIndeks = 0;
                 sessionStorage.setItem('mitolojikIndeks', mitolojikIndeks);
             }
             document.getElementById('gokturkce-mitolojik').innerHTML = mitolojikMetinler[mitolojikIndeks] || mitolojikMetinler[0];
-            // Sözlüğü başlat
             sozlukFilterBtnOlustur();
             sozlukFiltrele();
-            // Takvimi başlat
             takvimDashboardOlustur();
             takvimGridOlustur();
-            // Navigasyon tıklama
             document.getElementById("burc-nav").onclick = function(e) {
                 if (e.target.classList.contains("burc-nav-btn")) {
                     document.querySelectorAll('.burc-nav-btn').forEach(b => b.classList.remove('active'));
@@ -2934,7 +2924,6 @@
                     document.querySelectorAll('.burc-section').forEach(s => s.classList.remove('active'));
                     document.getElementById('section-' + sec).classList.add('active');
                     if (sec === 'hikayeler') renderHikayeListesi();
-                    if (sec === 'tarot') initTarotCards();
                     if (sec === 'quiz' && quizAdimi === 0) baslatQuiz();
                     if (sec === 'ask') initAskUyumuSelect();
                     if (sec === 'harita') initHaritaSehirSelect();
@@ -2949,175 +2938,178 @@
         }
 
         // ==========================================================================
-        // BURÇ GRİDİ (mevcut)
+        // BURÇ GRİDİ – DETAYLI VE UZUN AÇIKLAMALAR
         // ==========================================================================
         const burcDetaylari = {
-            "koç": { emoji: "♈", element: "Ateş", tarih: "21 Mart - 19 Nisan", gezegen: "Mars", renk: "Kırmızı",
-                tas: "Yakut, Elmas", ugurluGun: "Salı",
-                ozellik: "Koç burcu, zodyağın ilk burcu olarak cesur, öncü ve dinamik bir yapıya sahiptir. Yönetici gezegeni Mars'ın etkisiyle savaşçı ruhlu, rekabetçi ve hırslıdır. Yeni başlangıçlara bayılır, neredeyse hiçbir şeyden korkmaz. Ancak sabırsızlığı ve düşünmeden hareket etmesi başını belaya sokabilir. Doğal bir liderdir; nereye gitse öne çıkar ve insanları peşinden sürükler. Çabuk öfkelenir ama öfkesi çabuk geçer, kin tutmaz. Macera ve heyecan onun için hayatın tuzu biberidir. Aşk hayatında tutkulu ama bir o kadar da bağımsızlığına düşkündür. Kariyerde girişimci ruhuyla kendi işini kurmaya yatkındır.",
-                pozitif: "Cesur, kararlı, lider ruhlu, enerjik, tutkulu, girişimci, bağımsız, iyimser, rekabetçi, doğrudan.",
-                negatif: "Sabırsız, fevri, bencil olabilir, çabuk öfkelenir, düşünmeden hareket eder, dominant, kaba.",
-                uyumlu: ["Aslan", "Yay", "İkizler"], uyumsuz: ["Yengeç", "Oğlak"] },
-            "boğa": { emoji: "♉", element: "Toprak", tarih: "20 Nisan - 20 Mayıs", gezegen: "Venüs", renk: "Yeşil, Pembe",
-                tas: "Zümrüt, Pembe Kuvars", ugurluGun: "Cuma",
-                ozellik: "Boğa burcu, zodyağın en güvenilir ve istikrarlı burcudur. Venüs'ün yönettiği bu burç, güzelliğe, konfora ve kaliteli yaşama düşkündür. Değişimden hoşlanmaz, rutinlerine bağlıdır. Son derece sabırlıdır ancak sabrı taştığında öfkesi şiddetli olur. Maddi güvence onun için çok önemlidir, bu yüzden iyi bir birikimci ve yatırımcı olabilir. Sanat, müzik ve lezzetli yemekler onun ruhunu besler. İnatçılığıyla ünlüdür; bir kere karar verdiyse onu döndürmek neredeyse imkansızdır. Aşkta sadık, romantik ve sahiplenicidir. Kariyerde istikrarlı tırmanışı sever.",
-                pozitif: "Güvenilir, sadık, pratik, estetik zevkleri yüksek, istikrarlı, sabırlı, şefkatli, kararlı.",
+            "koç": {
+                emoji: "♈",
+                element: "Ateş",
+                tarih: "21 Mart - 19 Nisan",
+                gezegen: "Mars",
+                renk: "Kırmızı",
+                tas: "Yakut, Elmas",
+                ugurluGun: "Salı",
+                ozellik: "Koç burcu, zodyağın ilk burcu olarak cesur, öncü ve dinamik bir yapıya sahiptir. Yönetici gezegeni Mars'ın etkisiyle savaşçı ruhlu, rekabetçi ve hırslıdır. Yeni başlangıçlara bayılır, neredeyse hiçbir şeyden korkmaz. Ancak sabırsızlığı ve düşünmeden hareket etmesi başını belaya sokabilir. Doğal bir liderdir; nereye gitse öne çıkar ve insanları peşinden sürükler. Çabuk öfkelenir ama öfkesi çabuk geçer, kin tutmaz. Macera ve heyecan onun için hayatın tuzu biberidir. Aşk hayatında tutkulu ama bir o kadar da bağımsızlığına düşkündür. Kariyerde girişimci ruhuyla kendi işini kurmaya yatkındır. Koç burcu insanı, zorluklar karşısında yıkılmaz ve her zaman mücadeleye devam eder. Hayat onun için bir yarıştır ve her günü zaferle taçlandırmak ister. Sağlığında ise baş bölgesi hassastır, ani baş ağrılarına dikkat etmelidir. Koç, yıldız haritasında 1. evi temsil eder ve bu onun kendini ifade etme biçimini güçlendirir.",
+                pozitif: "Cesur, kararlı, lider ruhlu, enerjik, tutkulu, girişimci, bağımsız, iyimser, rekabetçi, doğrudan, öncü.",
+                negatif: "Sabırsız, fevri, bencil olabilir, çabuk öfkelenir, düşünmeden hareket eder, dominant, kaba, tahammülsüz.",
+                uyumlu: ["Aslan", "Yay", "İkizler"],
+                uyumsuz: ["Yengeç", "Oğlak"]
+            },
+            "boğa": {
+                emoji: "♉",
+                element: "Toprak",
+                tarih: "20 Nisan - 20 Mayıs",
+                gezegen: "Venüs",
+                renk: "Yeşil, Pembe",
+                tas: "Zümrüt, Pembe Kuvars",
+                ugurluGun: "Cuma",
+                ozellik: "Boğa burcu, zodyağın en güvenilir ve istikrarlı burcudur. Venüs'ün yönettiği bu burç, güzelliğe, konfora ve kaliteli yaşama düşkündür. Değişimden hoşlanmaz, rutinlerine bağlıdır. Son derece sabırlıdır ancak sabrı taştığında öfkesi şiddetli olur. Maddi güvence onun için çok önemlidir, bu yüzden iyi bir birikimci ve yatırımcı olabilir. Sanat, müzik ve lezzetli yemekler onun ruhunu besler. İnatçılığıyla ünlüdür; bir kere karar verdiyse onu döndürmek neredeyse imkânsızdır. Aşkta sadık, romantik ve sahiplenicidir. Kariyerde istikrarlı tırmanışı sever, hızlı yükselmektense sağlam adımlarla ilerlemeyi tercih eder. Boğa, doğayla iç içe olmaktan keyif alır ve toprakla uğraşmak onu huzurlu kılar. Sağlık açısından boğaz ve boyun bölgesine dikkat etmelidir. Boğa burcu, 2. evi temsil eder, bu da onun maddi değerlere olan bağlılığını açıklar.",
+                pozitif: "Güvenilir, sadık, pratik, estetik zevkleri yüksek, istikrarlı, sabırlı, şefkatli, kararlı, cömert.",
                 negatif: "İnatçı, materyalist, değişime kapalı, kıskanç, sahiplenici, tembel olabilir, aşırı rahatına düşkün.",
-                uyumlu: ["Başak", "Oğlak", "Yengeç"], uyumsuz: ["Kova", "Aslan"] },
-            "ikizler": { emoji: "♊", element: "Hava", tarih: "21 Mayıs - 20 Haziran", gezegen: "Merkür", renk: "Sarı",
-                tas: "Akuamarin, Kaplan Gözü", ugurluGun: "Çarşamba",
-                ozellik: "İkizler burcu, zodyağın en meraklı ve sosyal burcudur. Merkür'ün yönettiği bu burç, iletişim konusunda doğuştan yeteneklidir. Aynı anda birden fazla işle uğraşabilir, zihni sürekli yeni bilgiler arar. Esprili, zeki ve sohbetleriyle herkesi kendine hayran bırakabilir. Ancak kararsızlığı ve yüzeyselliği en büyük handikapıdır. Değişken ruh hali onu bir güneşli bir yağmurlu yapar. Yeni insanlar tanımaya, yeni yerler görmeye bayılır. Aşkta entelektüel uyum arar, sıkılmaya asla gelemez. Kariyerde medya, yazarlık, pazarlama gibi alanlar idealdir.",
-                pozitif: "Zeki, esprili, iletişimci, meraklı, uyumlu, hızlı düşünür, çok yönlü, girişken.",
+                uyumlu: ["Başak", "Oğlak", "Yengeç"],
+                uyumsuz: ["Kova", "Aslan"]
+            },
+            "ikizler": {
+                emoji: "♊",
+                element: "Hava",
+                tarih: "21 Mayıs - 20 Haziran",
+                gezegen: "Merkür",
+                renk: "Sarı",
+                tas: "Akuamarin, Kaplan Gözü",
+                ugurluGun: "Çarşamba",
+                ozellik: "İkizler burcu, zodyağın en meraklı ve sosyal burcudur. Merkür'ün yönettiği bu burç, iletişim konusunda doğuştan yeteneklidir. Aynı anda birden fazla işle uğraşabilir, zihni sürekli yeni bilgiler arar. Esprili, zeki ve sohbetleriyle herkesi kendine hayran bırakabilir. Ancak kararsızlığı ve yüzeyselliği en büyük handikapıdır. Değişken ruh hali onu bir güneşli bir yağmurlu yapar. Yeni insanlar tanımaya, yeni yerler görmeye bayılır. Aşkta entelektüel uyum arar, sıkılmaya asla gelemez. Kariyerde medya, yazarlık, pazarlama gibi alanlar idealdir. İkizler burcu, zihinsel uyarılmaya ihtiyaç duyar, aksi halde depresyona girebilir. Elleri ve solunum sistemi hassastır, sigara ve aşırı yorgunluktan kaçınmalıdır. 3. evin temsilcisi olan İkizler, iletişim ve öğrenme konularında doğuştan yeteneklidir.",
+                pozitif: "Zeki, esprili, iletişimci, meraklı, uyumlu, hızlı düşünür, çok yönlü, girişken, neşeli.",
                 negatif: "Kararsız, yüzeysel, güvenilmez olabilir, dedikoducu, dağınık, huzursuz, çabuk sıkılır.",
-                uyumlu: ["Terazi", "Kova", "Koç"], uyumsuz: ["Balık", "Başak"] },
-            "yengeç": { emoji: "♋", element: "Su", tarih: "21 Haziran - 22 Temmuz", gezegen: "Ay", renk: "Beyaz, Gümüş",
-                tas: "İnci, Aytaşı", ugurluGun: "Pazartesi",
-                ozellik: "Yengeç burcu, zodyağın en duygusal ve koruyucu burcudur. Ay'ın yönettiği bu burç, tıpkı Ay'ın evreleri gibi inişli çıkışlı duygulara sahiptir. Aile ve yuva kavramları onun için her şeyden önce gelir. Sadık, şefkatli ve anaç bir yapıya sahiptir. Sezgileri o kadar güçlüdür ki, karşısındakinin ne düşündüğünü anında hissedebilir. Geçmişe bağlıdır, anılar ve nostalji onun ruhunu besler. Kabuğuna çekilmeyi sever, duygusal yaralarını içinde saklar. Aşkta romantik ve hayalperesttir. Kariyerde hizmet, bakım ve yaratıcılık alanları idealdir.",
-                pozitif: "Duygusal, koruyucu, sadık, sezgileri güçlü, şefkatli, anaç, yaratıcı, vefalı.",
-                negatif: "Alıngan, huysuz, aşırı duygusal, kin tutar, pasif agresif, aşırı korumacı.",
-                uyumlu: ["Akrep", "Balık", "Boğa"], uyumsuz: ["Koç", "Terazi"] },
-            "aslan": { emoji: "♌", element: "Ateş", tarih: "23 Temmuz - 22 Ağustos", gezegen: "Güneş",
-                renk: "Altın Sarısı", tas: "Yakut, Sitrin", ugurluGun: "Pazar",
-                ozellik: "Aslan burcu, zodyağın tartışmasız kralıdır. Güneş tarafından yönetilmesi onu doğal bir ışık kaynağı yapar; girdiği her ortamda dikkatleri üzerine çeker. Cömert, sıcakkanlı ve neşelidir. Yaratıcı enerjisi ve sahne karizmasıyla sanatın her dalında parlayabilir. Liderlik onun kanında vardır, ancak bu liderlik bazen kibir ve dominantlığa dönüşebilir. İltifat duymaya bayılır, takdir edilmediğinde söner. Aşkta görkemli jestler yapar, sadakat bekler. Kariyerde yönetici, sanatçı veya girişimci olarak zirveyi hedefler.",
-                pozitif: "Cömert, neşeli, yaratıcı, lider, kendine güvenir, sadık, sıcakkanlı, cesur.",
+                uyumlu: ["Terazi", "Kova", "Koç"],
+                uyumsuz: ["Balık", "Başak"]
+            },
+            "yengeç": {
+                emoji: "♋",
+                element: "Su",
+                tarih: "21 Haziran - 22 Temmuz",
+                gezegen: "Ay",
+                renk: "Beyaz, Gümüş",
+                tas: "İnci, Aytaşı",
+                ugurluGun: "Pazartesi",
+                ozellik: "Yengeç burcu, zodyağın en duygusal ve koruyucu burcudur. Ay'ın yönettiği bu burç, tıpkı Ay'ın evreleri gibi inişli çıkışlı duygulara sahiptir. Aile ve yuva kavramları onun için her şeyden önce gelir. Sadık, şefkatli ve anaç bir yapıya sahiptir. Sezgileri o kadar güçlüdür ki, karşısındakinin ne düşündüğünü anında hissedebilir. Geçmişe bağlıdır, anılar ve nostalji onun ruhunu besler. Kabuğuna çekilmeyi sever, duygusal yaralarını içinde saklar. Aşkta romantik ve hayalperesttir. Kariyerde hizmet, bakım ve yaratıcılık alanları idealdir. Yengeç, başkalarının duygularını kendi duygularından daha önemli görebilir, bu yüzden kendini ihmal edebilir. Sağlık açısından mide ve sindirim sistemi hassastır, düzenli beslenmeye özen göstermelidir. 4. evi temsil eden Yengeç, aile ve köklerle derin bir bağa sahiptir.",
+                pozitif: "Duygusal, koruyucu, sadık, sezgileri güçlü, şefkatli, anaç, yaratıcı, vefalı, anlayışlı.",
+                negatif: "Alıngan, huysuz, aşırı duygusal, kin tutar, pasif agresif, aşırı korumacı, karamsar.",
+                uyumlu: ["Akrep", "Balık", "Boğa"],
+                uyumsuz: ["Koç", "Terazi"]
+            },
+            "aslan": {
+                emoji: "♌",
+                element: "Ateş",
+                tarih: "23 Temmuz - 22 Ağustos",
+                gezegen: "Güneş",
+                renk: "Altın Sarısı",
+                tas: "Yakut, Sitrin",
+                ugurluGun: "Pazar",
+                ozellik: "Aslan burcu, zodyağın tartışmasız kralıdır. Güneş tarafından yönetilmesi onu doğal bir ışık kaynağı yapar; girdiği her ortamda dikkatleri üzerine çeker. Cömert, sıcakkanlı ve neşelidir. Yaratıcı enerjisi ve sahne karizmasıyla sanatın her dalında parlayabilir. Liderlik onun kanında vardır, ancak bu liderlik bazen kibir ve dominantlığa dönüşebilir. İltifat duymaya bayılır, takdir edilmediğinde söner. Aşkta görkemli jestler yapar, sadakat bekler. Kariyerde yönetici, sanatçı veya girişimci olarak zirveyi hedefler. Aslan, cömertliğiyle tanınır ama karşılık beklemeden vermeyi öğrenmelidir. Sağlık açısından sırt ve kalp bölgesi hassastır, düzenli egzersiz önemlidir. 5. evin temsilcisi olan Aslan, yaratıcılık ve eğlence konularında doğal bir yeteneğe sahiptir.",
+                pozitif: "Cömert, neşeli, yaratıcı, lider, kendine güvenir, sadık, sıcakkanlı, cesur, karizmatik.",
                 negatif: "Kibirli, dominant, ilgi bağımlısı, abartılı, kıskanç, inatçı, gösteriş meraklısı.",
-                uyumlu: ["Koç", "Yay", "Terazi"], uyumsuz: ["Boğa", "Akrep"] },
-            "başak": { emoji: "♍", element: "Toprak", tarih: "23 Ağustos - 22 Eylül", gezegen: "Merkür",
-                renk: "Lacivert, Gri", tas: "Safir, Yeşim", ugurluGun: "Çarşamba",
-                ozellik: "Başak burcu, zodyağın en analitik ve mükemmeliyetçi burcudur. Merkür'ün yönettiği bu burç, detaylara inanılmaz derecede hakimdir. Düzen, temizlik ve organizasyon onun olmazsa olmazıdır. Çalışkandır, iş ahlakına büyük saygı duyar. Yardımseverliğiyle tanınır ama eleştirel bakışı bazen insanları kırabilir. Sağlık konusunda takıntılı olabilir. Aklı sürekli bir şeyleri iyileştirmekle meşguldür. Aşkta mesafeli başlar ama güvenince son derece sadık olur. Kariyerde sağlık, mühendislik, editörlük gibi detay odaklı alanlarda mükemmeldir.",
-                pozitif: "Analitik, çalışkan, düzenli, yardımsever, mütevazı, pratik, güvenilir, titiz.",
+                uyumlu: ["Koç", "Yay", "Terazi"],
+                uyumsuz: ["Boğa", "Akrep"]
+            },
+            "başak": {
+                emoji: "♍",
+                element: "Toprak",
+                tarih: "23 Ağustos - 22 Eylül",
+                gezegen: "Merkür",
+                renk: "Lacivert, Gri",
+                tas: "Safir, Yeşim",
+                ugurluGun: "Çarşamba",
+                ozellik: "Başak burcu, zodyağın en analitik ve mükemmeliyetçi burcudur. Merkür'ün yönettiği bu burç, detaylara inanılmaz derecede hakimdir. Düzen, temizlik ve organizasyon onun olmazsa olmazıdır. Çalışkandır, iş ahlakına büyük saygı duyar. Yardımseverliğiyle tanınır ama eleştirel bakışı bazen insanları kırabilir. Sağlık konusunda takıntılı olabilir. Aklı sürekli bir şeyleri iyileştirmekle meşguldür. Aşkta mesafeli başlar ama güvenince son derece sadık olur. Kariyerde sağlık, mühendislik, editörlük gibi detay odaklı alanlarda mükemmeldir. Başak, hizmet etmeyi sever ve başkalarının ihtiyaçlarını karşılamak onu mutlu eder. Sağlık açısından bağırsaklar ve sinir sistemi hassastır, sağlıklı beslenmeye özen göstermelidir. 6. evin temsilcisi olan Başak, iş ve hizmet konularında en yetkin burçtur.",
+                pozitif: "Analitik, çalışkan, düzenli, yardımsever, mütevazı, pratik, güvenilir, titiz, zeki.",
                 negatif: "Eleştirel, mükemmeliyetçi, endişeli, soğuk görünebilir, takıntılı, esnek olamaz.",
-                uyumlu: ["Boğa", "Oğlak", "Yengeç"], uyumsuz: ["İkizler", "Yay"] },
-            "terazi": { emoji: "♎", element: "Hava", tarih: "23 Eylül - 22 Ekim", gezegen: "Venüs",
-                renk: "Pembe, Mint Yeşili", tas: "Opal, Pembe Turmalin", ugurluGun: "Cuma",
-                ozellik: "Terazi burcu, zodyağın en zarif ve diplomatik burcudur. Venüs tarafından yönetilmesi ona estetik bir bakış açısı ve güzelliğe düşkünlük verir. Adalet duygusu çok gelişmiştir; her zaman her iki tarafı da dinlemeden karar vermez. Uyum ve denge onun hayat felsefesidir, bu yüzden çatışmadan nefret eder. Karar vermekte zorlanır çünkü her seçeneğin artısını eksisini uzun uzun tartar. Sosyal ortamlarda parlaktır, herkesle iyi geçinir. Aşkta romantizmin dibine vurur. Kariyerde hukuk, sanat, danışmanlık gibi alanlarda başarılıdır.",
-                pozitif: "Adil, zarif, diplomatik, sosyal, estetik, işbirlikçi, romantik.",
+                uyumlu: ["Boğa", "Oğlak", "Yengeç"],
+                uyumsuz: ["İkizler", "Yay"]
+            },
+            "terazi": {
+                emoji: "♎",
+                element: "Hava",
+                tarih: "23 Eylül - 22 Ekim",
+                gezegen: "Venüs",
+                renk: "Pembe, Mint Yeşili",
+                tas: "Opal, Pembe Turmalin",
+                ugurluGun: "Cuma",
+                ozellik: "Terazi burcu, zodyağın en zarif ve diplomatik burcudur. Venüs tarafından yönetilmesi ona estetik bir bakış açısı ve güzelliğe düşkünlük verir. Adalet duygusu çok gelişmiştir; her zaman her iki tarafı da dinlemeden karar vermez. Uyum ve denge onun hayat felsefesidir, bu yüzden çatışmadan nefret eder. Karar vermekte zorlanır çünkü her seçeneğin artısını eksisini uzun uzun tartar. Sosyal ortamlarda parlaktır, herkesle iyi geçinir. Aşkta romantizmin dibine vurur. Kariyerde hukuk, sanat, danışmanlık gibi alanlarda başarılıdır. Terazi, adaleti ve eşitliği hayatının her alanında uygulamaya çalışır. Sağlık açısından böbrekler ve bel bölgesi hassastır, bol su tüketmelidir. 7. evi temsil eden Terazi, ikili ilişkiler ve ortaklıklar konusunda ustadır.",
+                pozitif: "Adil, zarif, diplomatik, sosyal, estetik, işbirlikçi, romantik, anlayışlı.",
                 negatif: "Kararsız, yapmacık, çatışmadan kaçar, bağımlı, yüzeysel olabilir, kolay etkilenir.",
-                uyumlu: ["İkizler", "Kova", "Aslan"], uyumsuz: ["Yengeç", "Oğlak"] },
-            "akrep": { emoji: "♏", element: "Su", tarih: "23 Ekim - 21 Kasım", gezegen: "Plüton", renk: "Bordo, Siyah",
-                tas: "Obsidyen, Lal Taşı", ugurluGun: "Salı",
-                ozellik: "Akrep burcu, zodyağın en tutkulu ve gizemli burcudur. Plüton'un yönettiği bu burç, ölüm ve yeniden doğuşun enerjisini taşır. Son derece kararlıdır; bir şeyi kafasına koydu mu asla vazgeçmez. Sezgileri o kadar keskindir ki, yalanı anında hisseder. Sadakat onun için kutsaldır, ihaneti asla affetmez. Duygularını derinde yaşar, herkesin içinde göstermez. Kıskançlık ve sahiplenme duyguları güçlüdür. Aşkta her şeyin en yoğununu ister; ya hep ya hiç. Kariyerde araştırmacı, dedektif, cerrah gibi derinlik gerektiren işlerde parlaktır.",
-                pozitif: "Tutkulu, sadık, sezgili, güçlü, cesur, kararlı, dönüştürücü.",
-                negatif: "Kıskanç, kindar, gizemli, manipülatif, aşırı sahiplenici, öfkeli.",
-                uyumlu: ["Yengeç", "Balık", "Başak"], uyumsuz: ["Aslan", "Kova"] },
-            "yay": { emoji: "♐", element: "Ateş", tarih: "22 Kasım - 21 Aralık", gezegen: "Jüpiter", renk: "Mor, Turkuaz",
-                tas: "Ametist, Turkuaz", ugurluGun: "Perşembe",
-                ozellik: "Yay burcu, zodyağın en iyimser ve maceracı burcudur. Jüpiter'in yönettiği bu burç, şans ve büyüme enerjisini taşır. Özgürlüğüne aşırı düşkündür; kısıtlandığını hissettiği an kaçıp gider. Felsefe, din, yabancı kültürler ve seyahat onun ruhunu besler. Dürüstlüğü bazen patavatsızlığa varır. İyimserliği sayesinde her kötü durumdan bir ders çıkarır. Bağlanmaktan korkar, uzun süreli ilişkilerde özgürlüğünü kaybetme endişesi yaşar. Kariyerde akademisyen, gezgin rehber, yayıncı gibi ufuk açıcı işler idealdir.",
-                pozitif: "İyimser, maceracı, bağımsız, esprili, açık sözlü, cömert, bilge.",
-                negatif: "Patavatsız, sorumsuz, bağlanmaktan kaçar, aşırı iyimser, dağınık.",
-                uyumlu: ["Koç", "Aslan", "Kova"], uyumsuz: ["Başak", "Balık"] },
-            "oğlak": { emoji: "♑", element: "Toprak", tarih: "22 Aralık - 19 Ocak", gezegen: "Satürn",
-                renk: "Kahverengi, Siyah", tas: "Granat, Oniks", ugurluGun: "Cumartesi",
-                ozellik: "Oğlak burcu, zodyağın en disiplinli ve hırslı burcudur. Satürn'ün yönettiği bu burç, zaman ve sabır kavramlarını en iyi bilendir. Başarı onun için bir maratondur; adım adım, emin adımlarla zirveye tırmanır. Sorumluluk sahibidir, verilen görevi eksiksiz yerine getirir. Dışarıdan soğuk ve mesafeli görünebilir ancak içinde derin bir duygusal dünya saklıdır. Geleneğe ve aile değerlerine bağlıdır. Zorluklar karşısında yılmaz, aksine güçlenir. Aşkta ciddidir, uzun vadeli düşünür. Kariyerde yönetici, mimar, mühendis gibi prestijli mesleklerde zirveye oynar.",
-                pozitif: "Disiplinli, azimli, sorumlu, güvenilir, başarı odaklı, olgun, kararlı.",
-                negatif: "Soğuk, mesafeli, işkolik, karamsar, katı, aşırı ciddi.",
-                uyumlu: ["Boğa", "Başak", "Balık"], uyumsuz: ["Koç", "Terazi"] },
-            "kova": { emoji: "♒", element: "Hava", tarih: "20 Ocak - 18 Şubat", gezegen: "Uranüs",
-                renk: "Elektrik Mavisi, Gümüş", tas: "Ametist, Labradorit", ugurluGun: "Cumartesi",
-                ozellik: "Kova burcu, zodyağın en yenilikçi ve sıra dışı burcudur. Uranüs'ün yönettiği bu burç, devrimci fikirler ve gelecek vizyonuyla doludur. Geleneksel kalıplara sığmaz, kendi yolunu çizer. İnsancıldır, toplumsal eşitliğe inanır. Entelektüel sohbetlerden keyif alır, arkadaşlık onun için aşktan daha önemli olabilir. Ancak duygularını ifade etmekte zorlanır. Bağımsızlığına düşkündür. Aşkta arkadaşça bir yakınlık arar. Kariyerde teknoloji, bilim, sosyal girişimcilik gibi alanlarda öncüdür.",
-                pozitif: "Yenilikçi, özgür, insancıl, entelektüel, arkadaş canlısı, ilerici, orijinal.",
-                negatif: "Duygusuz, asi, tahmin edilemez, inatçı, kopuk, aşırı bağımsız.",
-                uyumlu: ["İkizler", "Terazi", "Yay"], uyumsuz: ["Boğa", "Akrep"] },
-            "balık": { emoji: "♓", element: "Su", tarih: "19 Şubat - 20 Mart", gezegen: "Neptün",
-                renk: "Deniz Mavisi, Lavanta", tas: "Akuamarin, Ametist", ugurluGun: "Perşembe",
-                ozellik: "Balık burcu, zodyağın en hayalperest ve fedakar burcudur. Neptün'ün yönettiği bu burç, sezgi ve ilhamın doruk noktasıdır. Empati yeteneği inanılmazdır; karşısındakinin duygularını kendi duygularıymış gibi yaşar. Sanatsal yaratıcılığı olağanüstüdür; müzik, resim, şiir onun ifade alanlarıdır. Gerçeklerden kaçma eğilimi vardır, hayal dünyasına sığınır. Fedakarlığı bazen kendini ihmal etmesine yol açar. Rüyaları ve sezgileri ona rehberlik eder. Aşkta sonsuz bir romantizm arar, masallara inanır. Kariyerde sanatçı, terapist olarak parlar.",
-                pozitif: "Şefkatli, yaratıcı, sezgili, fedakar, uyumlu, romantik, hoşgörülü.",
-                negatif: "Kaçak, bağımlı, aşırı duygusal, gerçeklerden kopuk, kararsız, etkilenmeye açık.",
-                uyumlu: ["Yengeç", "Akrep", "Oğlak"], uyumsuz: ["İkizler", "Yay"] }
-        };
-
-        const gunlukYorumHavuzu = {
-            "koç": ["Bugün enerjin tavan yapacak! Yeni bir başlangıç yapmak için mükemmel bir gün. Ancak ani çıkışların çevrendekileri kırabilir, derin bir nefes almayı unutma. İş yerinde liderlik özelliklerin öne çıkacak, fırsatları değerlendir.",
-                "Liderlik vasfın bugün her zamankinden daha belirgin olacak. İnsanlar senden yönlendirme bekleyecek. Acele karar verme, stratejik düşün.",
-                "Sabırsızlığın bugün başına iş açabilir. Kontrollü ol, her savaşa girme. Akşam saatlerinde güzel bir sürpriz seni bekliyor olabilir."
-            ],
-            "boğa": ["Finansal konularda bugün temkinli olman gerekiyor. Büyük harcamalardan kaçın, bütçeni gözden geçir. Doğa yürüyüşü ruhuna iyi gelecek.",
-                "İnat ettiğin bir konuda bugün esnek olmayı dene. Karşındakinin de haklı olabileceğini kabul etmek seni rahatlatacak.",
-                "Uzun zamandır ertelediğin bir işi bugün nihayet bitirebilirsin. Kendine küçük bir ödül vermeyi unutma."
-            ],
-            "ikizler": ["Sosyal çevrende bugün hareketlilik var. Yeni insanlarla tanışabilir, farklı fikirler edinebilirsin. İletişim becerilerinle bir sorunu kökünden çözeceksin.",
-                "Kararsız kalabilirsin, özellikle iki seçenek arasında gidip gelmek seni yorabilir. İç sesini dinle.",
-                "Kısa bir seyahat ya da şehir dışı planı gündeme gelebilir. Zihnini açacak bir gün seni bekliyor."
-            ],
-            "yengeç": ["Duygusal dalgalanmalar bugün seni zorlayabilir. Sevdiklerinle vakit geçirmek, evinde dinlenmek en iyisi olacak.",
-                "Evini güzelleştirecek değişiklikler yapmak için harika bir gün. Yeni bir dekorasyon fikri aklına düşebilir.",
-                "Anılar bugün canlanabilir, eski bir arkadaşından haber alabilirsin. Nostalji yapmak ruhunu dinlendirecek."
-            ],
-            "aslan": ["Spot ışıkları bugün senin üzerinde olacak! Yeteneklerini sergilemekten çekinme, harika geri dönüşler alacaksın.",
-                "Cömertliğinle herkesi kendine hayran bırakacaksın. Maddi konularda şanslı bir gün.",
-                "Yaratıcı projeler için ilham dolu bir gün. Aklındaki o fikri hayata geçirmek için ilk adımı atabilirsin."
-            ],
-            "başak": ["Detaylara takılıp büyük resmi kaçırma. Bugün biraz daha esnek olmaya çalış.",
-                "Sağlıkla ilgili konulara odaklanmak için uygun bir gün. Ertelediğin check-up'ı yaptırabilirsin.",
-                "Eleştirilerini yapıcı bir dille iletmeyi dene. Herkes senin kadar mükemmeliyetçi olmak zorunda değil."
-            ],
-            "terazi": ["Dengeyi bulmak için çabalayacaksın. Kendine zaman ayır, meditasyon veya sanatsal bir aktivite ruhunu besleyecek.",
-                "Bir anlaşmazlıkta arabulucu rolü üstlenebilirsin. Adalet duygun yükselecek.",
-                "Estetik bir dokunuş yapmak, yeni kıyafetler almak sana iyi gelecek. Bütçeni aşmamaya çalış."
-            ],
-            "akrep": ["Gizli kalmış bir konu bugün aydınlanacak. Sezgilerine güven, yanılmayacaksın.",
-                "Tutkulu olduğun bir alanda derinleşmek için mükemmel bir gün. Araştırma yapmak, yeni şeyler öğrenmek seni canlandıracak.",
-                "Kıskançlık duyguların bugün yükselebilir. Onları kontrol etmeyi öğrenmek seni özgürleştirecek."
-            ],
-            "yay": ["Macera arzun bugün tavan yapacak! Yeni bir hobi, seyahat planı ya da eğitim programı gündeme gelebilir.",
-                "Açık sözlülüğün bugün başına dert açmasın. Diplomatik olmayı dene.",
-                "Felsefi düşüncelere dalabilir, hayatın anlamını sorgulayabilirsin. Ufkunu açacak bir kitapla karşılaşabilirsin."
-            ],
-            "oğlak": ["Kariyer basamaklarını tırmanmak için önemli bir adım atabilirsin. Sorumlulukların artsa da disiplininle üstesinden geleceksin.",
-                "Uzun vadeli hedeflerini gözden geçir. Planlarını güncellemek için uygun bir zaman.",
-                "Bir büyüğünden alacağın tavsiye, yolunu aydınlatacak. Tecrübeye kulak ver."
-            ],
-            "kova": ["Sıra dışı fikirlerinle bugün dikkat çekeceksin. Paylaşmaktan çekinme, beklenmedik bir destek bulabilirsin.",
-                "Arkadaş çevrende beklenmedik bir gelişme olabilir. Yeni insanlarla tanışmak ufkunu açacak.",
-                "Özgürlüğüne düşkünlüğün bugün seni yalnızlaştırabilir. Sevdiklerine zaman ayırmayı ihmal etme."
-            ],
-            "balık": ["Sezgilerin bugün inanılmaz güçlü olacak. İç sesini dinle, doğru yolu sana gösterecek.",
-                "Rüyaların bu gece sana önemli mesajlar taşıyabilir. Uyandığında not almayı unutma.",
-                "Duygusal olarak hassaslaşabilirsin, kendini korumayı bil. Yardım etme isteğin başkaları tarafından suistimal edilebilir."
-            ]
-        };
-
-        const tarotKartlari = [
-            { emoji: "🃏", isim: "Mecnun (The Fool)", anlam: "Yeni başlangıçlar ve macera seni bekliyor." },
-            { emoji: "🧙", isim: "Büyücü (The Magician)", anlam: "Tüm yeteneklerin ve kaynakların emrinde." },
-            { emoji: "👸", isim: "Baş Rahibe (High Priestess)", anlam: "Sezgilerin bugün aşırı yüksek." },
-            { emoji: "👑", isim: "İmparatoriçe (Empress)", anlam: "Bereket, bolluk ve yaratıcılık günü." },
-            { emoji: "🤴", isim: "İmparator (Emperor)", anlam: "Otorite ve disiplin ön planda." },
-            { emoji: "⛪", isim: "Aziz (Hierophant)", anlam: "Geleneklere ve manevi değerlere dönüş zamanı." },
-            { emoji: "💑", isim: "Aşıklar (The Lovers)", anlam: "Önemli bir seçim kapıda. Kalbini dinle." },
-            { emoji: "🚗", isim: "Araba (The Chariot)", anlam: "Zafer seni bekliyor. Engelleri aşmak için irade gücünü kullan." },
-            { emoji: "🦁", isim: "Güç (Strength)", anlam: "İçsel gücün ve cesaretin yüzeye çıkıyor." },
-            { emoji: "🧙‍♂️", isim: "Ermiş (The Hermit)", anlam: "Yalnız kalma ve içe dönme zamanı." },
-            { emoji: "🎡", isim: "Kader Çarkı (Wheel of Fortune)", anlam: "Şans ve değişim rüzgarları esiyor." },
-            { emoji: "⚖️", isim: "Adalet (Justice)", anlam: "Hak ettiğin karşılığı alacaksın." },
-            { emoji: "🙃", isim: "Asılan Adam (The Hanged Man)", anlam: "Beklemeyi ve fedakarlığı öğreniyorsun." },
-            { emoji: "💀", isim: "Ölüm (Death)", anlam: "Büyük bir dönüşümün eşiğindesin." },
-            { emoji: "😇", isim: "Denge (Temperance)", anlam: "Sabır ve uyum günü." },
-            { emoji: "😈", isim: "Şeytan (The Devil)", anlam: "Bağımlılıkların ve korkularınla yüzleşme zamanı." },
-            { emoji: "🏰", isim: "Kule (The Tower)", anlam: "Ani ve sarsıcı değişimler kapıda." },
-            { emoji: "⭐", isim: "Yıldız (The Star)", anlam: "Umut ve ilham seninle." },
-            { emoji: "🌙", isim: "Ay (The Moon)", anlam: "Yanılsamalara dikkat et." },
-            { emoji: "☀️", isim: "Güneş (The Sun)", anlam: "Aydınlık ve mutluluk seni sarıyor." },
-            { emoji: "📯", isim: "Yargı (Judgement)", anlam: "Geçmişinle yüzleş ve kendini affet." },
-            { emoji: "🌍", isim: "Dünya (The World)", anlam: "Bir döngü tamamlanıyor, büyük bir başarıya imza atıyorsun." }
-        ];
-
-        function getDailyTarotCards() {
-            const t = new Date();
-            const gun = t.getDate();
-            const ay = t.getMonth() + 1;
-            const yil = t.getFullYear();
-            const seed = yil * 10000 + ay * 100 + gun;
-            const shuffled = [...tarotKartlari];
-            let rand = seed;
-            for (let i = shuffled.length - 1; i > 0; i--) {
-                rand = (rand * 16807 + 0) % 2147483647;
-                const j = rand % (i + 1);
-                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+                uyumlu: ["İkizler", "Kova", "Aslan"],
+                uyumsuz: ["Yengeç", "Oğlak"]
+            },
+            "akrep": {
+                emoji: "♏",
+                element: "Su",
+                tarih: "23 Ekim - 21 Kasım",
+                gezegen: "Plüton",
+                renk: "Bordo, Siyah",
+                tas: "Obsidyen, Lal Taşı",
+                ugurluGun: "Salı",
+                ozellik: "Akrep burcu, zodyağın en tutkulu ve gizemli burcudur. Plüton'un yönettiği bu burç, ölüm ve yeniden doğuşun enerjisini taşır. Son derece kararlıdır; bir şeyi kafasına koydu mu asla vazgeçmez. Sezgileri o kadar keskindir ki, yalanı anında hisseder. Sadakat onun için kutsaldır, ihaneti asla affetmez. Duygularını derinde yaşar, herkesin içinde göstermez. Kıskançlık ve sahiplenme duyguları güçlüdür. Aşkta her şeyin en yoğununu ister; ya hep ya hiç. Kariyerde araştırmacı, dedektif, cerrah gibi derinlik gerektiren işlerde parlaktır. Akrep, dönüşümü ve yenilenmeyi hayatının merkezine koyar. Sağlık açısından üreme organları ve boşaltım sistemi hassastır. 8. evi temsil eden Akrep, gizem, ölüm ve yeniden doğuş temalarıyla ilişkilidir.",
+                pozitif: "Tutkulu, sadık, sezgili, güçlü, cesur, kararlı, dönüştürücü, derin.",
+                negatif: "Kıskanç, kindar, gizemli, manipülatif, aşırı sahiplenici, öfkeli, yıkıcı.",
+                uyumlu: ["Yengeç", "Balık", "Başak"],
+                uyumsuz: ["Aslan", "Kova"]
+            },
+            "yay": {
+                emoji: "♐",
+                element: "Ateş",
+                tarih: "22 Kasım - 21 Aralık",
+                gezegen: "Jüpiter",
+                renk: "Mor, Turkuaz",
+                tas: "Ametist, Turkuaz",
+                ugurluGun: "Perşembe",
+                ozellik: "Yay burcu, zodyağın en iyimser ve maceracı burcudur. Jüpiter'in yönettiği bu burç, şans ve büyüme enerjisini taşır. Özgürlüğüne aşırı düşkündür; kısıtlandığını hissettiği an kaçıp gider. Felsefe, din, yabancı kültürler ve seyahat onun ruhunu besler. Dürüstlüğü bazen patavatsızlığa varır. İyimserliği sayesinde her kötü durumdan bir ders çıkarır. Bağlanmaktan korkar, uzun süreli ilişkilerde özgürlüğünü kaybetme endişesi yaşar. Kariyerde akademisyen, gezgin rehber, yayıncı gibi ufuk açıcı işler idealdir. Yay, hayatı bir okul olarak görür ve her an yeni bir şey öğrenmeye açıktır. Sağlık açısından karaciğer ve kalça bölgesi hassastır, spor onun için hayati önem taşır. 9. evi temsil eden Yay, yüksek öğrenim, seyahat ve felsefe konularında öncüdür.",
+                pozitif: "İyimser, maceracı, bağımsız, esprili, açık sözlü, cömert, bilge, neşeli.",
+                negatif: "Patavatsız, sorumsuz, bağlanmaktan kaçar, aşırı iyimser, dağınık, sabırsız.",
+                uyumlu: ["Koç", "Aslan", "Kova"],
+                uyumsuz: ["Başak", "Balık"]
+            },
+            "oğlak": {
+                emoji: "♑",
+                element: "Toprak",
+                tarih: "22 Aralık - 19 Ocak",
+                gezegen: "Satürn",
+                renk: "Kahverengi, Siyah",
+                tas: "Granat, Oniks",
+                ugurluGun: "Cumartesi",
+                ozellik: "Oğlak burcu, zodyağın en disiplinli ve hırslı burcudur. Satürn'ün yönettiği bu burç, zaman ve sabır kavramlarını en iyi bilendir. Başarı onun için bir maratondur; adım adım, emin adımlarla zirveye tırmanır. Sorumluluk sahibidir, verilen görevi eksiksiz yerine getirir. Dışarıdan soğuk ve mesafeli görünebilir ancak içinde derin bir duygusal dünya saklıdır. Geleneğe ve aile değerlerine bağlıdır. Zorluklar karşısında yılmaz, aksine güçlenir. Aşkta ciddidir, uzun vadeli düşünür. Kariyerde yönetici, mimar, mühendis gibi prestijli mesleklerde zirveye oynar. Oğlak, hayatı planlı ve programlı yaşar, en küçük detayı bile önceden düşünür. Sağlık açısından kemikler ve diz bölgesi hassastır, kalsiyum alımına özen göstermelidir. 10. evi temsil eden Oğlak, kariyer ve toplumsal statü konularında en hırslı burçtur.",
+                pozitif: "Disiplinli, azimli, sorumlu, güvenilir, başarı odaklı, olgun, kararlı, sabırlı.",
+                negatif: "Soğuk, mesafeli, işkolik, karamsar, katı, aşırı ciddi, duygularını bastırır.",
+                uyumlu: ["Boğa", "Başak", "Balık"],
+                uyumsuz: ["Koç", "Terazi"]
+            },
+            "kova": {
+                emoji: "♒",
+                element: "Hava",
+                tarih: "20 Ocak - 18 Şubat",
+                gezegen: "Uranüs",
+                renk: "Elektrik Mavisi, Gümüş",
+                tas: "Ametist, Labradorit",
+                ugurluGun: "Cumartesi",
+                ozellik: "Kova burcu, zodyağın en yenilikçi ve sıra dışı burcudur. Uranüs'ün yönettiği bu burç, devrimci fikirler ve gelecek vizyonuyla doludur. Geleneksel kalıplara sığmaz, kendi yolunu çizer. İnsancıldır, toplumsal eşitliğe inanır. Entelektüel sohbetlerden keyif alır, arkadaşlık onun için aşktan daha önemli olabilir. Ancak duygularını ifade etmekte zorlanır. Bağımsızlığına düşkündür. Aşkta arkadaşça bir yakınlık arar. Kariyerde teknoloji, bilim, sosyal girişimcilik gibi alanlarda öncüdür. Kova, geleceği bugünden görür ve insanlığı daha iyi bir yarın için çalışır. Sağlık açısından dolaşım sistemi ve ayak bilekleri hassastır, hareketli bir yaşam tarzı benimsemelidir. 11. evi temsil eden Kova, arkadaşlıklar, umutlar ve gelecek vizyonu konularında uzmandır.",
+                pozitif: "Yenilikçi, özgür, insancıl, entelektüel, arkadaş canlısı, ilerici, orijinal, zeki.",
+                negatif: "Duygusuz, asi, tahmin edilemez, inatçı, kopuk, aşırı bağımsız, mesafeli.",
+                uyumlu: ["İkizler", "Terazi", "Yay"],
+                uyumsuz: ["Boğa", "Akrep"]
+            },
+            "balık": {
+                emoji: "♓",
+                element: "Su",
+                tarih: "19 Şubat - 20 Mart",
+                gezegen: "Neptün",
+                renk: "Deniz Mavisi, Lavanta",
+                tas: "Akuamarin, Ametist",
+                ugurluGun: "Perşembe",
+                ozellik: "Balık burcu, zodyağın en hayalperest ve fedakar burcudur. Neptün'ün yönettiği bu burç, sezgi ve ilhamın doruk noktasıdır. Empati yeteneği inanılmazdır; karşısındakinin duygularını kendi duygularıymış gibi yaşar. Sanatsal yaratıcılığı olağanüstüdür; müzik, resim, şiir onun ifade alanlarıdır. Gerçeklerden kaçma eğilimi vardır, hayal dünyasına sığınır. Fedakarlığı bazen kendini ihmal etmesine yol açar. Rüyaları ve sezgileri ona rehberlik eder. Aşkta sonsuz bir romantizm arar, masallara inanır. Kariyerde sanatçı, terapist olarak parlar. Balık, evrenle ve ruhsal alemlere derin bir bağa sahiptir, meditasyon ve sanat onun ilaçlarıdır. Sağlık açısından ayaklar ve lenf sistemi hassastır, dinlenmeye özen göstermelidir. 12. evi temsil eden Balık, bilinçaltı, rüyalar ve maneviyat konularında en derin burçtur.",
+                pozitif: "Şefkatli, yaratıcı, sezgili, fedakar, uyumlu, romantik, hoşgörülü, merhametli.",
+                negatif: "Kaçak, bağımlı, aşırı duygusal, gerçeklerden kopuk, kararsız, etkilenmeye açık, kurbandır.",
+                uyumlu: ["Yengeç", "Akrep", "Oğlak"],
+                uyumsuz: ["İkizler", "Yay"]
             }
-            const pozisyonlar = [{ ad: "Geçmiş", ikon: "🌙" }, { ad: "Bugün", ikon: "☀️" }, { ad: "Gelecek", ikon: "⭐" }];
-            return pozisyonlar.map((poz, i) => ({ ...shuffled[i], pozisyon: poz.ad, pozIkon: poz.ikon }));
-        }
+        };
 
         function renderBurcGrid() {
             const g = document.getElementById("burc-grid");
@@ -3133,33 +3125,132 @@
             if (!d) return;
             document.querySelectorAll('.burc-card').forEach(c => c.classList.remove('selected'));
             document.querySelector(`.burc-card[onclick="selectBurc('${key}')"]`)?.classList.add('selected');
-            const yorum = getDailyComment(key);
             const wrap = document.getElementById("burc-detail-wrap");
+            // Günlük yorum kaldırıldı, sadece detaylı özellikler gösteriliyor.
             wrap.innerHTML = `
                 <div class="burc-detail-wrap">
                     <div class="burc-header"><span class="burc-header-emoji">${d.emoji}</span><div class="burc-header-info"><h3>${key.charAt(0).toUpperCase()+key.slice(1)} Burcu</h3><span>${d.tarih} • ${d.element} Grubu • Gezegen: ${d.gezegen}</span></div></div>
                     <div class="burc-grid-info">
-                        <div class="burc-info-box"><h4>🌟 Detaylı Özellikler</h4><p>${d.ozellik}</p></div>
-                        <div class="burc-info-box"><h4>✨ Pozitif Yönler</h4><p>${d.pozitif}</p><h4 style="margin-top:12px;">⚠️ Negatif Yönler</h4><p>${d.negatif}</p></div>
+                        <div class="burc-info-box"><h4>🌟 Detaylı Kişilik Analizi</h4><p>${d.ozellik}</p></div>
+                        <div class="burc-info-box"><h4>✨ Güçlü Yönler</h4><p>${d.pozitif}</p><h4 style="margin-top:12px;">⚠️ Zayıf Yönler</h4><p>${d.negatif}</p></div>
                     </div>
                     <div class="burc-tags"><span class="burc-tag">🎨 Renk: ${d.renk}</span><span class="burc-tag">💎 Taş: ${d.tas}</span><span class="burc-tag">📅 Uğurlu Gün: ${d.ugurluGun}</span></div>
-                    <div class="burc-tags">${d.uyumlu.map(u=>`<span class="burc-tag good">💚 ${u}</span>`).join('')}${d.uyumsuz.map(u=>`<span class="burc-tag bad">💔 ${u}</span>`).join('')}</div>
-                    <div class="gunluk-yorum-box"><strong>📆 Günlük Burç Yorumu (${new Date().toLocaleDateString('tr-TR')})</strong><p style="margin-top:8px;">${yorum}</p></div>
+                    <div class="burc-tags">${d.uyumlu.map(u=>`<span class="burc-tag good">💚 Uyumlu: ${u}</span>`).join('')}${d.uyumsuz.map(u=>`<span class="burc-tag bad">💔 Zıt: ${u}</span>`).join('')}</div>
                 </div>`;
             wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
-        function getDailyComment(burc) {
-            const t = new Date();
-            const d = Math.floor((t - new Date(t.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
-            const p = gunlukYorumHavuzu[burc] || ["Bugün için yorum bulunamadı."];
-            return p[d % p.length];
+        // ==========================================================================
+        // DOĞUM HARİTASI – DETAYLI VE GERÇEKÇİ
+        // ==========================================================================
+        function initHaritaSehirSelect() {
+            const sel = document.getElementById('harita-sehir');
+            const sehirler = ['İstanbul', 'Ankara', 'İzmir', 'Bursa', 'Antalya', 'Adana', 'Konya', 'Gaziantep', 'Diyarbakır',
+                'Samsun', 'Erzurum', 'Trabzon', 'Van', 'Şanlıurfa', 'Kayseri', 'Eskişehir', 'Denizli', 'Mersin', 'Kocaeli',
+                'Konya'
+            ];
+            sel.innerHTML = sehirler.map(s => `<option value="${s}">${s}</option>`).join('');
+        }
+
+        function haritaHesapla() {
+            const isim = document.getElementById('harita-isim').value || 'İsimsiz';
+            const tarih = document.getElementById('harita-tarih').value;
+            const saat = document.getElementById('harita-saat').value || '12:00';
+            const sehir = document.getElementById('harita-sehir').value || 'Bilinmiyor';
+            const sonuc = document.getElementById('harita-sonuc');
+            if (!tarih) {
+                sonuc.innerHTML = '<p style="color:rgba(255,255,255,0.5);">Lütfen doğum tarihinizi girin.</p>';
+                return;
+            }
+            const dt = new Date(tarih + 'T' + (saat || '12:00'));
+            const burcIndex = dt.getMonth() + (dt.getDate() >= 21 ? 1 : 0);
+            const burcKeys = Object.keys(burcDetaylari);
+            const burcKey = burcKeys[burcIndex % 12] || 'koç';
+            const d = burcDetaylari[burcKey];
+            const yukselen = burcKeys[(burcIndex + 4) % 12] || 'aslan';
+
+            // Gezegen pozisyonları simülasyonu
+            const gezegenler = [
+                { ad: 'Güneş', burc: burcKey, derece: Math.floor(Math.random() * 30) + 1, ev: Math.floor(Math.random() * 12) + 1 },
+                { ad: 'Ay', burc: burcKeys[(burcIndex + 2) % 12], derece: Math.floor(Math.random() * 30) + 1,
+                ev: Math.floor(Math.random() * 12) + 1 },
+                { ad: 'Merkür', burc: burcKeys[(burcIndex + 1) % 12], derece: Math.floor(Math.random() * 30) + 1,
+                    ev: Math.floor(Math.random() * 12) + 1 },
+                { ad: 'Venüs', burc: burcKeys[(burcIndex + 3) % 12], derece: Math.floor(Math.random() * 30) + 1,
+                    ev: Math.floor(Math.random() * 12) + 1 },
+                { ad: 'Mars', burc: burcKeys[(burcIndex + 5) % 12], derece: Math.floor(Math.random() * 30) + 1,
+                    ev: Math.floor(Math.random() * 12) + 1 },
+                { ad: 'Jüpiter', burc: burcKeys[(burcIndex + 7) % 12], derece: Math.floor(Math.random() * 30) + 1,
+                    ev: Math.floor(Math.random() * 12) + 1 },
+                { ad: 'Satürn', burc: burcKeys[(burcIndex + 9) % 12], derece: Math.floor(Math.random() * 30) + 1,
+                    ev: Math.floor(Math.random() * 12) + 1 }
+            ];
+
+            // Açılar (aspects) simülasyonu
+            const aspectTypes = [
+                { name: 'Kavuşum', emoji: '☌', cls: 'conjunction' },
+                { name: 'Üçgen', emoji: '△', cls: 'trine' },
+                { name: 'Kare', emoji: '□', cls: 'square' },
+                { name: 'Karşıt', emoji: '☍', cls: 'opposition' },
+                { name: 'Altmışlık', emoji: '⚹', cls: 'sextile' }
+            ];
+            const aspects = [];
+            for (let i = 0; i < gezegenler.length; i++) {
+                for (let j = i + 1; j < gezegenler.length; j++) {
+                    if (Math.random() > 0.6) {
+                        const a = aspectTypes[Math.floor(Math.random() * aspectTypes.length)];
+                        aspects.push({
+                            p1: gezegenler[i].ad,
+                            p2: gezegenler[j].ad,
+                            tip: a.name,
+                            emoji: a.emoji,
+                            cls: a.cls
+                        });
+                    }
+                }
+            }
+            if (aspects.length === 0) {
+                aspects.push({ p1: 'Güneş', p2: 'Ay', tip: 'Üçgen', emoji: '△', cls: 'trine' });
+                aspects.push({ p1: 'Venüs', p2: 'Mars', tip: 'Kavuşum', emoji: '☌', cls: 'conjunction' });
+            }
+
+            // Yorum
+            const yorumlar = [
+                `${isim}, ${burcKey} burcunun öncü ve cesur enerjisini taşıyor. Yükselen ${yukselen} burcu ise dış dünyaya nasıl göründüğünü belirliyor. ${d.element} grubunun etkisiyle hayata karşı ${d.pozitif.split(',')[0].toLowerCase()} bir yaklaşımın var.`,
+                `${isim}, doğum haritan ${burcKey} burcunun derinliklerini ve ${yukselen} burcunun yüzeyini gösteriyor. ${d.gezegen} gezegeninin etkisiyle ${d.ozellik.substring(0,60)}… Aşk hayatında ${d.uyumlu[0]} ve ${d.uyumlu[1]} burçlarıyla daha uyumlu olabilirsin.`,
+                `Haritana göre ${isim}, senin içsel dünyan ${burcKey} burcunun ${d.element} elementinin etkisiyle şekillenmiş. ${d.gezegen} gezegeni burada güçlü bir konumda. Kariyerinde ${d.uyumlu[2] || 'liderlik'} yönünde ilerlemen önerilir.`
+            ];
+
+            sonuc.innerHTML = `
+                <div class="harita-sonuc">
+                    <h4 style="color:#c084fc;margin:0 0 8px;">${isim}’in Doğum Haritası</h4>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:12px;">
+                        <div><strong>🌞 Güneş Burcu:</strong> ${d.emoji} ${burcKey.charAt(0).toUpperCase()+burcKey.slice(1)}</div>
+                        <div><strong>🌙 Yükselen (ASC):</strong> ${burcDetaylari[yukselen].emoji} ${yukselen.charAt(0).toUpperCase()+yukselen.slice(1)}</div>
+                        <div><strong>🪐 Yönetici Gezegen:</strong> ${d.gezegen}</div>
+                        <div><strong>📍 Doğum Yeri:</strong> ${sehir}</div>
+                        <div><strong>⏰ Doğum Saati:</strong> ${saat}</div>
+                        <div><strong>📅 Tarih:</strong> ${new Date(tarih).toLocaleDateString('tr-TR')}</div>
+                    </div>
+                    <div style="margin:12px 0;border-top:1px solid rgba(255,255,255,0.06);padding-top:10px;">
+                        <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px;">🪐 Gezegen Konumları (Simüle)</div>
+                        ${gezegenler.map(g => `<div class="harita-gezegen"><span>${g.ad}</span><span>${burcDetaylari[g.burc].emoji} ${g.burc.charAt(0).toUpperCase()+g.burc.slice(1)} ${g.derece}° • ${g.ev}. Ev</span></div>`).join('')}
+                    </div>
+                    <div style="margin:10px 0;border-top:1px solid rgba(255,255,255,0.06);padding-top:10px;">
+                        <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px;">🔮 Gezegen Açıları (Aspect)</div>
+                        ${aspects.map(a => `<span class="harita-aspect ${a.cls}">${a.emoji} ${a.p1} ${a.tip} ${a.p2}</span>`).join(' ')}
+                    </div>
+                    <div class="harita-aciklama">
+                        <strong>📖 Yorum:</strong> ${yorumlar[burcIndex % yorumlar.length]}
+                        <br><span style="font-size:11px;color:rgba(255,255,255,0.3);">Bu harita simülasyon amaçlıdır, gerçek bir doğum haritası için profesyonel astroloğa danışın.</span>
+                    </div>
+                </div>
+            `;
         }
 
         // ==========================================================================
-        // BURÇ MODALININ DİĞER FONKSİYONLARI (harita, aşk, tarot, quiz, hikayeler) – mevcut
+        // AŞK UYUMU – DETAYLI ANALİZ
         // ==========================================================================
-        // AŞK UYUMU
         function initAskUyumuSelect() {
             const s1 = document.getElementById('burc1');
             const s2 = document.getElementById('burc2');
@@ -3180,66 +3271,104 @@
                 return;
             }
             if (b1 === b2) {
-                sonuc.innerHTML = '<p style="color:#f472b6;">Aynı burçlar arası uyum ilginçtir, ama gelin farklı bir kombinasyon deneyelim.</p>';
+                sonuc.innerHTML =
+                    '<p style="color:#f472b6;">Aynı burçlar arası uyum ilginçtir, ama gelin farklı bir kombinasyon deneyelim.</p>';
                 return;
             }
             const d1 = burcDetaylari[b1],
                 d2 = burcDetaylari[b2];
             let puan = 50;
-            if (d1.element === d2.element) puan += 20;
-            else if ((d1.element === 'Ateş' && d2.element === 'Hava') || (d1.element === 'Hava' && d2.element === 'Ateş')) puan
-                += 15;
-            else if ((d1.element === 'Toprak' && d2.element === 'Su') || (d1.element === 'Su' && d2.element === 'Toprak')) puan
-                += 15;
-            else puan += 5;
-            if (d1.uyumlu.includes(b2) || d2.uyumlu.includes(b1)) puan += 20;
-            if (d1.uyumsuz.includes(b2) || d2.uyumsuz.includes(b1)) puan -= 15;
+            let detaylar = [];
+
+            // Element uyumu
+            if (d1.element === d2.element) {
+                puan += 18;
+                detaylar.push('✅ Aynı element grubu: derin bir anlayış ve uyum.');
+            } else if ((d1.element === 'Ateş' && d2.element === 'Hava') || (d1.element === 'Hava' && d2.element === 'Ateş')) {
+                puan += 14;
+                detaylar.push('🔥 Ateş-Hava: enerji ve fikir alışverişi mükemmel.');
+            } else if ((d1.element === 'Toprak' && d2.element === 'Su') || (d1.element === 'Su' && d2.element === 'Toprak')) {
+                puan += 14;
+                detaylar.push('🌍 Toprak-Su: duygusal derinlik ve güvenlik harika.');
+            } else if ((d1.element === 'Ateş' && d2.element === 'Toprak') || (d1.element === 'Toprak' && d2.element === 'Ateş')) {
+                puan += 6;
+                detaylar.push('🔥🌍 Ateş-Toprak: zıt kutuplar, denge gerektirir.');
+            } else if ((d1.element === 'Hava' && d2.element === 'Su') || (d1.element === 'Su' && d2.element === 'Hava')) {
+                puan += 6;
+                detaylar.push('💧🌊 Hava-Su: duygular ve zihin arasında köprü kurar.');
+            } else {
+                puan += 2;
+                detaylar.push('⚡ Zıt elementler: heyecanlı ama zorlu.');
+            }
+
+            // Uyumlu burç listesi
+            if (d1.uyumlu.includes(b2) || d2.uyumlu.includes(b1)) {
+                puan += 20;
+                detaylar.push('💞 Geleneksel olarak uyumlu burçlar!');
+            }
+            if (d1.uyumsuz.includes(b2) || d2.uyumsuz.includes(b1)) {
+                puan -= 12;
+                detaylar.push('⚠️ Geleneksel olarak zıt burçlar, çaba gerekir.');
+            }
+
+            // Gezegen uyumu
+            if (d1.gezegen === d2.gezegen) {
+                puan += 8;
+                detaylar.push(`🌟 Aynı gezegen (${d1.gezegen}) tarafından yönetiliyorsunuz.`);
+            }
+
             puan = Math.min(100, Math.max(0, puan));
+
             let yorum = '';
-            if (puan >= 80) yorum = '💖 Harika! Bu çok uyumlu bir çift. İletişim ve tutku üst düzeyde.';
-            else if (puan >= 60) yorum = '💕 İyi bir uyum var, bazı farklılıkları kabul ederek mükemmel olabilirsiniz.';
-            else if (puan >= 40) yorum = '🧐 Zıt kutuplar birbirini çeker, ama çaba gerekir.';
-            else yorum = '💔 Zorlu bir eşleşme, ama her ilişki emek ister.';
+            let tavsiye = '';
+            if (puan >= 85) {
+                yorum = '💖 Harika! Bu çok uyumlu bir çift. İletişim, tutku ve anlayış üst düzeyde.';
+                tavsiye = 'Birlikte uzun vadeli planlar yapmaktan çekinmeyin, evren sizi destekliyor.';
+            } else if (puan >= 70) {
+                yorum = '💕 İyi bir uyum var, bazı farklılıkları kabul ederek mükemmel olabilirsiniz.';
+                tavsiye = 'Birbirinizin zayıf yönlerini tamamlayarak güçlü bir ekip olabilirsiniz.';
+            } else if (puan >= 50) {
+                yorum = '🧐 Zıt kutuplar birbirini çeker, ama anlayış ve sabır çok önemli.';
+                tavsiye = 'İletişime yatırım yapın, duygularınızı açıkça ifade edin.';
+            } else if (puan >= 30) {
+                yorum = '💔 Zorlu bir eşleşme, ama her ilişki emek ister.';
+                tavsiye = 'Ortak ilgi alanları bulun ve birbirinize alan tanıyın.';
+            } else {
+                yorum = '🌪️ Çok zıt kutuplar, büyük bir çaba ve fedakarlık gerektirir.';
+                tavsiye = 'Eğer bu ilişkiyi istiyorsanız, profesyonel bir danışmandan destek alın.';
+            }
+
+            const elementEmoji = {
+                'Ateş': '🔥',
+                'Toprak': '🌍',
+                'Hava': '💨',
+                'Su': '💧'
+            };
+
             sonuc.innerHTML = `
                 <div class="uyum-sonuc">
-                    <div>${d1.emoji} ${b1.charAt(0).toUpperCase()+b1.slice(1)} & ${d2.emoji} ${b2.charAt(0).toUpperCase()+b2.slice(1)}</div>
+                    <div style="font-size:18px;font-weight:700;color:#fff;">${d1.emoji} ${b1.charAt(0).toUpperCase()+b1.slice(1)} & ${d2.emoji} ${b2.charAt(0).toUpperCase()+b2.slice(1)}</div>
                     <div class="uyum-puan">${puan}%</div>
                     <div class="uyum-detay">${yorum}</div>
-                    <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:6px;">Element: ${d1.element} / ${d2.element}</div>
+                    <div class="uyum-ozellik-grid">
+                        <div class="uyum-ozellik-item"><strong>🔥 Element</strong>${elementEmoji[d1.element] || ''} ${d1.element} / ${elementEmoji[d2.element] || ''} ${d2.element}</div>
+                        <div class="uyum-ozellik-item"><strong>🪐 Gezegen</strong>${d1.gezegen} / ${d2.gezegen}</div>
+                        <div class="uyum-ozellik-item"><strong>💬 İletişim</strong>${d1.element === d2.element ? 'Doğal akıcı' : 'Anlayış gerektirir'}</div>
+                        <div class="uyum-ozellik-item"><strong>💞 Duygusal Bağ</strong>${['Su','Toprak'].includes(d1.element) && ['Su','Toprak'].includes(d2.element) ? 'Derin ve güçlü' : 'Heyecanlı ama yüzeysel olabilir'}</div>
+                    </div>
+                    <div style="margin:10px 0;text-align:left;font-size:11px;color:rgba(255,255,255,0.5);border-top:1px solid rgba(255,255,255,0.05);padding-top:10px;">
+                        ${detaylar.map(d => `<div style="margin-bottom:3px;">${d}</div>`).join('')}
+                    </div>
+                    <div style="font-size:12px;color:rgba(255,255,255,0.6);border-top:1px solid rgba(255,255,255,0.05);padding-top:10px;">
+                        💡 ${tavsiye}
+                    </div>
                 </div>
             `;
         }
 
-        // TAROT
-        function initTarotCards() {
-            const row = document.getElementById('tarot-cards-row');
-            const cards = getDailyTarotCards();
-            row.innerHTML = cards.map((c, i) => `
-                <div class="tarot-card-wrap" onclick="flipTarot(this, ${i})">
-                    <div class="tarot-card">
-                        <div class="tarot-card-front">
-                            <div class="mystic-eye">👁️</div>
-                            <div class="mystic-text">${c.pozisyon}</div>
-                        </div>
-                        <div class="tarot-card-back">
-                            <div class="tarot-pozisyon">${c.pozIkon} ${c.pozisyon}</div>
-                            <div class="tarot-emoji">${c.emoji}</div>
-                            <div class="tarot-isim">${c.isim}</div>
-                            <div class="tarot-anlam">${c.anlam}</div>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function flipTarot(el, i) {
-            const card = el.querySelector('.tarot-card');
-            const isFlipped = card.classList.contains('flipped');
-            document.querySelectorAll('.tarot-card').forEach(c => c.classList.remove('flipped'));
-            if (!isFlipped) card.classList.add('flipped');
-        }
-
+        // ==========================================================================
         // QUIZ
+        // ==========================================================================
         let quizAdimi = 0,
             quizPuanlar = {};
         const quizSorulari = [{
@@ -3300,7 +3429,6 @@
         function quizGosterSoru() {
             const container = document.getElementById('quiz-icerik');
             if (quizAdimi >= quizSorulari.length) {
-                // sonuç
                 const enYuksek = Object.keys(quizPuanlar).reduce((a, b) => quizPuanlar[a] > quizPuanlar[b] ? a : b);
                 const burcKey = enYuksek || 'koç';
                 const d = burcDetaylari[burcKey];
@@ -3333,21 +3461,44 @@
             quizGosterSoru();
         }
 
-        // HİKAYELER
+        // ==========================================================================
+        // HİKAYELER – DETAYLI VE UZUN
+        // ==========================================================================
         function renderHikayeListesi() {
             const container = document.getElementById('hikaye-listesi');
-            const hikayeler = [
-                { baslik: '🦁 Aslan & 🏹 Yay – Ateşin Dansı', ozet: 'İki ateş burcu, tutku ve macera dolu bir ilişki.',
-                tam: 'Aslan ve Yay, ateş elementinde buluşan iki burçtur. İkisi de özgür ruhlu, maceracı ve iyimserdir. Birlikte dünyayı keşfetmek, yeni yerler görmek ve hayatı dolu dolu yaşamak onların ortak tutkusudur. Aslan\'ın liderliği, Yay\'ın öğretmen ruhuyla birleşince harika bir ikili oluştururlar. Çatışma nadirdir, ama ikisi de inatçı olabilir. Birlikte geçirdikleri her an bir macera filmi gibidir.' },
-                { baslik: '🐂 Boğa & 🌙 Yengeç – Duygusal Liman', ozet: 'Toprak ve suyun buluştuğu huzurlu bir aşk.',
-                tam: 'Boğa ve Yengeç, istikrar ve duygusallığın mükemmel dengesidir. Boğa\'nın sağlamlığı, Yengeç\'in koruyucu ve anaç yapısıyla birleşince güvenli bir liman oluştururlar. Ev hayatına düşkündürler, birlikte yemek yapmak, evlerini güzelleştirmek onlara keyif verir. Zaman zaman Yengeç\'in duygusal dalgalanmaları Boğa\'yı zorlayabilir, ama sabır ve sadakat her şeyin üstesinden gelir.' },
-                { baslik: '💨 İkizler & ⚖️ Terazi – Entelektüel Aşk', ozet: 'Hava burçlarının zihin uyumu.',
-                tam: 'İkizler ve Terazi, hava elementinin iki temsilcisi olarak iletişimde zirve yaparlar. Sohbet, tartışma, fikir alışverişi onların vazgeçilmezidir. Birlikte uzun saatler konuşabilir, kitaplar, filmler ve sanat üzerine derin sohbetler edebilirler. İkizler\'in değişkenliği, Terazi\'nin denge arayışıyla dengelenir. Bu ilişki, zihinsel bir bağın fiziksel çekimden daha güçlü olduğunun kanıtıdır.' },
-                { baslik: '🦂 Akrep & 🐟 Balık – Ruh Eşi Bağı', ozet: 'Su burçlarının en derin ve tutkulu aşkı.',
-                tam: 'Akrep ve Balık, su elementinin en duygusal ve derin iki burcudur. Birbirlerini anlama konusunda eşsiz bir yetenekleri vardır. Akrep\'in tutkusu ve yoğunluğu, Balık\'ın hayal gücü ve şefkatiyle birleşince ruh eşi bağı oluşur. Birlikte sanat, müzik ve manevi konulara düşkündürler. Zor anlarda birbirlerine sonsuz destek olurlar. Bu ilişki, kelimelerin ötesine geçen bir bağdır.' },
-                { baslik: '🐐 Oğlak & 🌾 Başak – Mükemmel Uyum', ozet: 'Toprak burçları arasında en istikrarlı birliktelik.',
-                tam: 'Oğlak ve Başak, disiplin ve mükemmeliyetçiliğin kesiştiği noktadır. İkisi de çalışkan, planlı ve sorumluluk sahibidir. Birlikte hayatlarını sistemli bir şekilde inşa ederler, ortak hedefler belirler ve bu hedeflere adım adım ilerlerler. Eleştirel bakış açıları zaman zaman çatışma yaratabilir, ama ikisi de ilişkinin değerini bilir ve uzun vadeli düşünür. Bu, hayat boyu sürecek bir sadakat hikâyesidir.' }
-            ];
+            const hikayeler = [{
+                baslik: '🦁 Aslan & 🏹 Yay – Ateşin Dansı',
+                ozet: 'İki ateş burcu, tutku ve macera dolu bir ilişki.',
+                tam: 'Aslan ve Yay, ateş elementinde buluşan iki burçtur. İkisi de özgür ruhlu, maceracı ve iyimserdir. Birlikte dünyayı keşfetmek, yeni yerler görmek ve hayatı dolu dolu yaşamak onların ortak tutkusudur. Aslan\'ın liderliği, Yay\'ın öğretmen ruhuyla birleşince harika bir ikili oluştururlar. Çatışma nadirdir, ama ikisi de inatçı olabilir. Birlikte geçirdikleri her an bir macera filmi gibidir. Bu ilişki, her ikisinin de enerjisini besler ve birbirlerini daha iyi bir versiyonlarına dönüştürür. Aslan, Yay\'ın iyimserliğinden ilham alırken, Yay, Aslan\'ın karizmasından güç alır. Birlikte seyahat ettiklerinde, dünyanın en renkli ikilisi olurlar.'
+            }, {
+                baslik: '🐂 Boğa & 🌙 Yengeç – Duygusal Liman',
+                ozet: 'Toprak ve suyun buluştuğu huzurlu bir aşk.',
+                tam: 'Boğa ve Yengeç, istikrar ve duygusallığın mükemmel dengesidir. Boğa\'nın sağlamlığı, Yengeç\'in koruyucu ve anaç yapısıyla birleşince güvenli bir liman oluştururlar. Ev hayatına düşkündürler, birlikte yemek yapmak, evlerini güzelleştirmek onlara keyif verir. Zaman zaman Yengeç\'in duygusal dalgalanmaları Boğa\'yı zorlayabilir, ama sabır ve sadakat her şeyin üstesinden gelir. Bu çift, birbirlerine duydukları güvenle tanınır. Boğa, Yengeç\'in yuvacı ruhunu beslerken, Yengeç, Boğa\'nın duygusal derinliğini açığa çıkarır. Birlikte geçirdikleri her akşam yemeği, küçük bir kutlamaya dönüşür.'
+            }, {
+                baslik: '💨 İkizler & ⚖️ Terazi – Entelektüel Aşk',
+                ozet: 'Hava burçlarının zihin uyumu.',
+                tam: 'İkizler ve Terazi, hava elementinin iki temsilcisi olarak iletişimde zirve yaparlar. Sohbet, tartışma, fikir alışverişi onların vazgeçilmezidir. Birlikte uzun saatler konuşabilir, kitaplar, filmler ve sanat üzerine derin sohbetler edebilirler. İkizler\'in değişkenliği, Terazi\'nin denge arayışıyla dengelenir. Bu ilişki, zihinsel bir bağın fiziksel çekimden daha güçlü olduğunun kanıtıdır. Birlikte entelektüel olarak sürekli gelişirler, birbirlerine yeni ufuklar açarlar. İkizler, Terazi\'nin estetik zevkine hayran kalırken, Terazi, İkizler\'in esprili zekasına aşık olur. Bu çift, bir partideki en ilgi çekici ikili olarak bilinir.'
+            }, {
+                baslik: '🦂 Akrep & 🐟 Balık – Ruh Eşi Bağı',
+                ozet: 'Su burçlarının en derin ve tutkulu aşkı.',
+                tam: 'Akrep ve Balık, su elementinin en duygusal ve derin iki burcudur. Birbirlerini anlama konusunda eşsiz bir yetenekleri vardır. Akrep\'in tutkusu ve yoğunluğu, Balık\'ın hayal gücü ve şefkatiyle birleşince ruh eşi bağı oluşur. Birlikte sanat, müzik ve manevi konulara düşkündürler. Zor anlarda birbirlerine sonsuz destek olurlar. Bu ilişki, kelimelerin ötesine geçen bir bağdır. Akrep, Balık\'ın saf duygusallığına hayran kalırken, Balık, Akrep\'in derinliğinden ve kararlılığından güç alır. Birlikte fırtınaları atlatırlar ve her seferinde daha güçlü çıkarlar.'
+            }, {
+                baslik: '🐐 Oğlak & 🌾 Başak – Mükemmel Uyum',
+                ozet: 'Toprak burçları arasında en istikrarlı birliktelik.',
+                tam: 'Oğlak ve Başak, disiplin ve mükemmeliyetçiliğin kesiştiği noktadır. İkisi de çalışkan, planlı ve sorumluluk sahibidir. Birlikte hayatlarını sistemli bir şekilde inşa ederler, ortak hedefler belirler ve bu hedeflere adım adım ilerlerler. Eleştirel bakış açıları zaman zaman çatışma yaratabilir, ama ikisi de ilişkinin değerini bilir ve uzun vadeli düşünür. Bu, hayat boyu sürecek bir sadakat hikâyesidir. Oğlak, Başak\'ın detaycılığına güvenirken, Başak, Oğlak\'ın kararlılığından ilham alır. Birlikte inşa ettikleri hayat, sağlam temeller üzerinde yükselir.'
+            }, {
+                baslik: '♈ Koç & ♒ Kova – Asi Ruhlar',
+                ozet: 'Ateş ve havanın özgürlükçü dansı.',
+                tam: 'Koç ve Kova, her ikisi de bağımsızlığına düşkün, asi ruhlu burçlardır. Koç\'un öncü enerjisi, Kova\'nın yenilikçi vizyonuyla birleşince dünyayı değiştirebilecek bir güç oluştururlar. Birlikte sıradışı projelere imza atarlar, geleneksel kalıpları yıkarlar. Zaman zaman inatlaşabilirler, ama birbirlerine duydukları saygı her şeyi çözer. Bu ilişki, asla sıkıcı olmayan, sürekli hareket halindeki bir maceradır. Koç, Kova\'nın vizyonundan etkilenirken, Kova, Koç\'un cesaretinden güç alır. Birlikte hayatı dolu dolu yaşarlar.'
+            }, {
+                baslik: '♉ Boğa & ♍ Başak – Dünya Düzeni',
+                ozet: 'Toprak burçlarının en uyumlu ikilisi.',
+                tam: 'Boğa ve Başak, toprak elementinin en pratik ve çalışkan iki burcudur. İkisi de güvenlik, istikrar ve düzen arar. Birlikte hayatlarını titizlikle planlarlar, her detayı düşünürler. Boğa\'nın sakin ve sabırlı yapısı, Başak\'ın analitik zekasıyla birleşince mükemmel bir ekip oluştururlar. Birbirlerinin eksiklerini tamamlarlar, zorluklar karşısında sağlam dururlar. Bu ilişki, sadakat ve karşılıklı güven üzerine inşa edilmiştir. Boğa, Başak\'ın pratikliğine hayran kalırken, Başak, Boğa\'nın sıcaklığından ve cömertliğinden etkilenir.'
+            }, {
+                baslik: '♊ İkizler & ♐ Yay – Fikir Avcıları',
+                ozet: 'Hava ve ateşin zihin açıcı birlikteliği.',
+                tam: 'İkizler ve Yay, zodyağın en meraklı ve öğrenmeye açık iki burcudur. Birlikte dünyayı keşfeder, yeni fikirler üretirler. İkizler\'in hızlı zekası, Yay\'ın felsefi bakış açısıyla birleşince sınır tanımayan bir ikili oluştururlar. Seyahat etmeyi, yeni kültürler tanımayı ve entelektüel sohbetleri çok severler. Zaman zaman sabırsızlık ve dikkatsizlik sorun yaşatabilir, ama ikisi de hayatı ciddiye almamayı bilir. Bu ilişki, her gün yeni bir şey öğrenmek demektir. İkizler, Yay\'ın macera ruhuna hayran kalırken, Yay, İkizler\'in zihinsel esnekliğinden keyif alır.'
+            }];
             container.innerHTML = hikayeler.map((h, i) => `
                 <div class="hikaye-kart" onclick="this.classList.toggle('open')">
                     <div class="hikaye-baslik">${h.baslik}</div>
@@ -3357,55 +3508,8 @@
             `).join('');
         }
 
-        // DOĞUM HARİTASI
-        function initHaritaSehirSelect() {
-            const sel = document.getElementById('harita-sehir');
-            const sehirler = ['İstanbul', 'Ankara', 'İzmir', 'Bursa', 'Antalya', 'Adana', 'Konya', 'Gaziantep', 'Diyarbakır',
-                'Samsun', 'Erzurum', 'Trabzon', 'Van', 'Şanlıurfa', 'Kayseri', 'Eskişehir', 'Denizli', 'Mersin', 'Kocaeli',
-                'Konya'
-            ];
-            sel.innerHTML = sehirler.map(s => `<option value="${s}">${s}</option>`).join('');
-        }
-
-        function haritaHesapla() {
-            const isim = document.getElementById('harita-isim').value || 'İsimsiz';
-            const tarih = document.getElementById('harita-tarih').value;
-            const saat = document.getElementById('harita-saat').value;
-            const sehir = document.getElementById('harita-sehir').value || 'Bilinmiyor';
-            const sonuc = document.getElementById('harita-sonuc');
-            if (!tarih) {
-                sonuc.innerHTML = '<p style="color:rgba(255,255,255,0.5);">Lütfen doğum tarihinizi girin.</p>';
-                return;
-            }
-            const dt = new Date(tarih + 'T' + (saat || '12:00'));
-            const burcIndex = dt.getMonth() + (dt.getDate() >= 21 ? 1 : 0);
-            const burcKeys = Object.keys(burcDetaylari);
-            const burcKey = burcKeys[burcIndex % 12] || 'koç';
-            const d = burcDetaylari[burcKey];
-            const yukselen = burcKeys[(burcIndex + 4) % 12] || 'aslan';
-            const ay = d.element === 'Ateş' ? 'Mars' : d.element === 'Toprak' ? 'Satürn' : d.element === 'Hava' ? 'Merkür' :
-                'Neptün';
-            sonuc.innerHTML = `
-                <div class="harita-sonuc">
-                    <h4 style="color:#c084fc;margin:0 0 8px;">${isim}’in Doğum Haritası</h4>
-                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:13px;">
-                        <div><strong>🌞 Güneş Burcu:</strong> ${d.emoji} ${burcKey.charAt(0).toUpperCase()+burcKey.slice(1)}</div>
-                        <div><strong>🌙 Ay Burcu:</strong> ${burcDetaylari[yukselen].emoji} ${yukselen.charAt(0).toUpperCase()+yukselen.slice(1)} (Yükselen)</div>
-                        <div><strong>🪐 Yönetici Gezegen:</strong> ${ay}</div>
-                        <div><strong>📍 Doğum Yeri:</strong> ${sehir}</div>
-                        <div><strong>⏰ Doğum Saati:</strong> ${saat || 'Belirtilmemiş'}</div>
-                        <div><strong>📅 Tarih:</strong> ${new Date(tarih).toLocaleDateString('tr-TR')}</div>
-                    </div>
-                    <div class="harita-aciklama">
-                        <strong>📖 Yorum:</strong> ${isim}, ${burcKey} burcunun özelliklerini taşıyor. Yükselen ${yukselen} ise dış dünyaya yansıttığın kişiliği gösteriyor. ${d.element} grubunun etkisiyle ${d.ozellik.substring(0,80)}…
-                    </div>
-                    <div style="margin-top:10px;font-size:10px;color:rgba(255,255,255,0.2);">🪄 Bu harita simülasyon amaçlıdır.</div>
-                </div>
-            `;
-        }
-
         // ==========================================================================
-        // MÜZİK ÇALAR (mevcut)
+        // MÜZİK ÇALAR
         // ==========================================================================
         const musicList = [{ title: "", url: "./muzikler/32.mp3" }, { title: "", url: "./muzikler/12345.mp3" }, { title: "", url: "./muzikler/3.mp3" }, { title: "", url: "./muzikler/2.mp3" }, { title: "",
                 url: "./muzikler/7.mp3" }, { title: "", url: "./muzikler/15.mp3" }, { title: "",
@@ -3493,7 +3597,7 @@
         function changeVolume(v) { audio.volume = v; if (v == 1) showToast("🔊 Kulaklarını seviyorsan biraz kıs aslan parçası"); }
 
         // ==========================================================================
-        // KAHVE (mevcut)
+        // KAHVE
         // ==========================================================================
         const coffeeQuotes = [
             "Derin bir nefes al. Şu an her şey kontrolün altında olmasa bile, bu senin değerini eksiltmez.",
@@ -3590,7 +3694,7 @@
         }
 
         // ==========================================================================
-        // TENGRİ DEDEKTÖRÜ (mevcut)
+        // TENGRİ DEDEKTÖRÜ
         // ==========================================================================
         let isTengriActive = false;
 
@@ -3615,7 +3719,7 @@
         }
 
         // ==========================================================================
-        // BUNU BİLİYOR MUYDUN? (mevcut)
+        // BUNU BİLİYOR MUYDUN?
         // ==========================================================================
         const funFacts = [
             "Ahtapotların 3 kalbi vardır. İkisi solungaçlara, biri ise vücudun geri kalanına kan pompalar.",
@@ -4077,7 +4181,7 @@
         }
 
         // ==========================================================================
-        // OYUN İÇİ SEÇİM (mevcut)
+        // OYUN İÇİ SEÇİM
         // ==========================================================================
         function selectGame(el) {
             document.querySelectorAll('.game-card').forEach(c => c.classList.remove('active'));
@@ -4096,7 +4200,6 @@
             const dd = document.querySelector(".theme-dot.id-dark-dot");
             if (dd) changeTheme('dark', dd);
             startFactRotation();
-            // Takvim başlangıç
             takvimDashboardOlustur();
             takvimGridOlustur();
         });
