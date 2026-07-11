@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
         /* ==========================================================================
-           TÜM STİLLER (MEVCUT, HİÇBİR DEĞİŞİKLİK YOK)
+           EPIC PREMIUM COLOR THEMES (MAT, AĞIRBAŞLI VE LÜKS)
            ========================================================================== */
         :root {
             --bg-main: #0c0c0e;
@@ -567,7 +567,7 @@
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 8px;
             margin: 12px 0 16px 0;
-            display: none;
+            display: none; /* başlangıçta gizli */
         }
         .gokturk-analiz-item {
             background: rgba(255,255,255,0.04);
@@ -607,7 +607,7 @@
             padding: 2px 8px;
             border-radius: 10px;
         }
-
+        /* Enerji ve mitoloji yan yana – başlangıçta gizli */
         .gokturk-alt-row {
             display: none;
             flex-wrap: wrap;
@@ -679,213 +679,6 @@
         .gokturk-mitolojik-box::before {
             content: '🏹 ';
             font-size: 18px;
-        }
-
-        /* ==========================================================================
-           ORHUN GÜNÜN MESAJI – AŞIRI DETAYLI
-           ========================================================================== */
-        .orhun-container {
-            background: #0f0b07;
-            border-radius: 16px;
-            padding: 20px 22px;
-            margin: 20px 0;
-            border: 1px solid #5a4a3a;
-            box-shadow: inset 0 0 60px rgba(0,0,0,0.7), 0 0 30px rgba(90,74,58,0.15);
-            position: relative;
-            overflow: hidden;
-        }
-        .orhun-container::before {
-            content: '𐰆𐰺𐰣';
-            position: absolute;
-            bottom: 10px;
-            right: 15px;
-            font-size: 70px;
-            font-family: 'Times New Roman', serif;
-            color: rgba(192,132,252,0.02);
-            letter-spacing: 8px;
-            pointer-events: none;
-            transform: rotate(-5deg);
-        }
-        .orhun-container > * {
-            position: relative;
-            z-index: 1;
-        }
-        .orhun-baslik {
-            font-size: 18px;
-            font-weight: 700;
-            color: #d4c0a8;
-            letter-spacing: 2px;
-            border-bottom: 1px solid #5a4a3a;
-            padding-bottom: 8px;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .orhun-baslik span {
-            font-size: 12px;
-            font-weight: 400;
-            color: rgba(255,255,255,0.3);
-            letter-spacing: 1px;
-        }
-        .orhun-kart {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 12px;
-            padding: 16px 18px;
-            margin-bottom: 14px;
-            transition: all 0.3s;
-        }
-        .orhun-kart:hover {
-            background: rgba(255,255,255,0.06);
-            border-color: rgba(192,132,252,0.2);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        }
-        .orhun-runik {
-            font-family: 'Times New Roman', serif;
-            font-size: 22px;
-            color: #c084fc;
-            letter-spacing: 3px;
-            margin-bottom: 4px;
-            line-height: 1.4;
-        }
-        .orhun-turkce {
-            font-size: 15px;
-            font-weight: 600;
-            color: #f0e8d8;
-            margin-bottom: 4px;
-        }
-        .orhun-yorum {
-            font-size: 13px;
-            color: rgba(255,255,255,0.6);
-            line-height: 1.7;
-            border-left: 2px solid rgba(147,51,234,0.2);
-            padding-left: 12px;
-            margin-top: 6px;
-            font-style: italic;
-        }
-        .orhun-yorum::before {
-            content: '💡 ';
-            font-style: normal;
-        }
-        .orhun-buton {
-            background: rgba(147,51,234,0.2);
-            border: 1px solid rgba(147,51,234,0.3);
-            color: #c084fc;
-            padding: 8px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 12px;
-            transition: all 0.3s;
-            display: inline-block;
-            margin-top: 4px;
-        }
-        .orhun-buton:hover {
-            background: rgba(147,51,234,0.4);
-            border-color: rgba(147,51,234,0.6);
-            box-shadow: 0 0 20px rgba(147,51,234,0.15);
-            transform: translateY(-1px);
-        }
-
-        /* ==========================================================================
-           DETAYLI İSİM RAPORU – 5 BAŞLIK
-           ========================================================================== */
-        .isim-raporu-container {
-            background: #0f0b07;
-            border-radius: 16px;
-            padding: 20px 22px;
-            margin: 20px 0;
-            border: 1px solid #5a4a3a;
-            box-shadow: inset 0 0 60px rgba(0,0,0,0.7), 0 0 30px rgba(90,74,58,0.15);
-            position: relative;
-            overflow: hidden;
-            display: none;
-        }
-        .isim-raporu-container.aktif {
-            display: block;
-        }
-        .isim-raporu-container::before {
-            content: '𐰀𐰓';
-            position: absolute;
-            bottom: 10px;
-            right: 15px;
-            font-size: 70px;
-            font-family: 'Times New Roman', serif;
-            color: rgba(192,132,252,0.02);
-            letter-spacing: 8px;
-            pointer-events: none;
-            transform: rotate(-5deg);
-        }
-        .isim-raporu-container > * {
-            position: relative;
-            z-index: 1;
-        }
-        .rapor-baslik {
-            font-size: 18px;
-            font-weight: 700;
-            color: #d4c0a8;
-            letter-spacing: 2px;
-            border-bottom: 1px solid #5a4a3a;
-            padding-bottom: 8px;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .rapor-baslik span {
-            font-size: 12px;
-            font-weight: 400;
-            color: rgba(255,255,255,0.3);
-            letter-spacing: 1px;
-        }
-        .rapor-kart {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 10px;
-            padding: 14px 16px;
-            margin-bottom: 12px;
-            transition: all 0.3s;
-        }
-        .rapor-kart:hover {
-            background: rgba(255,255,255,0.06);
-            border-color: rgba(192,132,252,0.15);
-        }
-        .rapor-kart h4 {
-            margin: 0 0 4px 0;
-            font-size: 13px;
-            color: #c084fc;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .rapor-kart p {
-            margin: 4px 0 0 0;
-            font-size: 13px;
-            line-height: 1.7;
-            color: rgba(255,255,255,0.75);
-        }
-        .rapor-kart .runik-buyuk {
-            font-family: 'Times New Roman', serif;
-            font-size: 28px;
-            color: #d4c0a8;
-            letter-spacing: 4px;
-        }
-        .rapor-enerji-bar {
-            width: 100%;
-            height: 4px;
-            background: rgba(255,255,255,0.06);
-            border-radius: 2px;
-            margin-top: 6px;
-        }
-        .rapor-enerji-bar .doluluk {
-            height: 100%;
-            border-radius: 2px;
-            background: linear-gradient(90deg, #c084fc, #f472b6);
-            transition: width 1s ease;
         }
 
         /* ==========================================================================
@@ -1094,6 +887,7 @@
             color: rgba(255,255,255,0.5);
         }
 
+        /* Takvim Detay Modalı */
         .takvim-detay-overlay {
             position: fixed;
             top: 0;
@@ -1405,6 +1199,7 @@
         .sozluk-fav-btn:hover { color: rgba(255,255,255,0.5); }
         .sozluk-fav-btn.fav { color: #ffb703; }
 
+        /* Detay Modalı */
         .sozluk-detay-overlay {
             position: fixed;
             top: 0;
@@ -1573,8 +1368,6 @@
             .sozluk-detay-modal { padding: 20px 16px; }
             .takvim-detay-ozellik-grid { grid-template-columns: 1fr; }
             .takvim-dashboard { grid-template-columns: 1fr 1fr; }
-            .orhun-runik { font-size: 18px; }
-            .rapor-kart h4 { font-size: 12px; }
         }
     </style>
 </head>
@@ -1721,42 +1514,32 @@
                     </div>
                 </div>
 
-                <!-- ORHUN GÜNÜN MESAJI -->
-                <div class="orhun-container">
-                    <div class="orhun-baslik">
-                        📜 Orhun Abideleri – Günün Mesajı
-                        <span>𐱅𐰇𐰼𐰚 • Türk</span>
-                    </div>
-                    <div id="orhun-mesaj"></div>
-                    <button class="orhun-buton" onclick="orhunGoster()">🔄 Yeni Mesaj</button>
-                </div>
-
-                <!-- DETAYLI İSİM RAPORU -->
-                <div class="isim-raporu-container" id="isim-raporu-container">
-                    <div class="rapor-baslik">
-                        🧬 Detaylı İsim Raporu
-                        <span>𐰀𐰑 • Ad</span>
-                    </div>
-                    <div id="isim-raporu-icerik"></div>
-                </div>
-
-                <!-- 12 HAYVANLI TAKVİM -->
+                <!-- ============================================================ -->
+                <!-- 12 HAYVANLI TAKVİM – AŞIRI DETAYLI BÖLÜM (Göktürk içinde)      -->
+                <!-- ============================================================ -->
                 <div class="gokturk-takvim-container">
                     <div class="takvim-baslik">
                         🐺 12 Hayvanlı Türk Takvimi
                         <span>𐰴𐰆𐱃𐰞𐰆𐰍 • Kutluğ</span>
                     </div>
-                    <div class="takvim-dashboard" id="takvim-dashboard"></div>
+                    <!-- Dashboard -->
+                    <div class="takvim-dashboard" id="takvim-dashboard">
+                        <!-- JS ile doldurulacak -->
+                    </div>
+                    <!-- Doğum yılı sorgu -->
                     <div class="takvim-dogum">
                         <label>Doğum Yılın (Miladi)</label>
                         <input type="number" id="takvim-dogum-input" placeholder="örn: 1990" min="1" max="9999">
                         <button onclick="kendiHayvaniniBul()">🔍 Bul</button>
                         <div class="sonuc" id="takvim-dogum-sonuc">Yıl gir ve keşfet</div>
                     </div>
+                    <!-- 12 Hayvan Kartları -->
                     <div class="takvim-grid" id="takvim-grid"></div>
                 </div>
 
-                <!-- SÖZLÜK -->
+                <!-- ============================================================ -->
+                <!-- SÖZLÜK / ANSİKLOPEDİ BÖLÜMÜ (Göktürk sekmesi içinde)         -->
+                <!-- ============================================================ -->
                 <div class="sozluk-container">
                     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; margin-bottom:10px;">
                         <h4 style="color:#c084fc; margin:0; font-size:15px; letter-spacing:1.5px; text-transform:uppercase; border-left:3px solid #c084fc; padding-left:10px;">📚 Türk Mitolojisi Sözlüğü</h4>
@@ -1766,11 +1549,13 @@
                         <input type="text" class="sozluk-search" id="sozluk-search" placeholder="🔍 Ara... (tanrı, kahraman, kavram...)" oninput="sozlukFiltrele()">
                         <div class="sozluk-filters" id="sozluk-filters">
                             <button class="sozluk-filter-btn active" data-kategori="tum">Tümü</button>
+                            <!-- JavaScript ile kategoriler eklenecek -->
                         </div>
                         <span class="sozluk-stats" id="sozluk-stats">Toplam: 0</span>
                     </div>
                     <div class="sozluk-grid" id="sozluk-grid"></div>
                 </div>
+                <!-- Sözlük bitiş -->
             </div>
 
             <!-- BURÇLAR SEKME -->
@@ -1832,7 +1617,7 @@
         </div>
     </div>
 
-    <!-- SÖZLÜK DETAY MODALI -->
+    <!-- SÖZLÜK DETAY MODALI (burç modalı dışında, global) -->
     <div class="sozluk-detay-overlay" id="sozluk-detay-overlay" onclick="sozlukDetayKapat(event)">
         <div class="sozluk-detay-modal" onclick="event.stopPropagation()">
             <button class="sozluk-detay-close" onclick="sozlukDetayKapat()">✕</button>
@@ -1865,13 +1650,13 @@
             setTimeout(() => document.body.classList.remove('theme-shake', 'glitch-active'), 500);
         }
 
-        function showToast(m) { const t = document.getElementById("toast-notification");
-            t.innerText = m || "⚡ METİN BAŞARIYLA KOPYALANDI!";
+        function showToast(m = "⚡ METİN BAŞARIYLA KOPYALANDI!") { const t = document.getElementById("toast-notification");
+            t.innerText = m;
             t.classList.add("show");
             setTimeout(() => t.classList.remove("show"), 2000); }
 
         // ==========================================================================
-        // METİN DÜZENLEME (MEVCUT)
+        // METİN DÜZENLEME
         // ==========================================================================
         function calculateMeta(i) { const t = document.getElementById(`input${i}`).innerText;
             document.getElementById(`char-count-${i}`).innerHTML = `Karakter: <strong>${t.length}</strong>`;
@@ -1884,12 +1669,8 @@
             document.querySelectorAll(".tab-content")[i].classList.add("active");
             document.querySelectorAll(".tab-btn")[i].classList.add("active");
         }
-
-        const bannedWords = ["yüksek kalite", "yüksek kaliteli", "%100 hakiki", "% 100 hakiki", "hakiki deri", "gerçek deri",
-            "gençleştirici", "gençleştirir", "Gençleştirici", "Gençleştirir", "yaşlanma karşıtı", "Yaşlanma Karşıtı",
-            "birinci sınıf", "1. kalite", "1. sınıf", "unisex", "YÜKSEK KALİTE", "YUKSEK KALITE", "YÜKSEK KALITE",
-            "1.sınıf", "1.SINIF", "BİRİNCİ SINIF", "BIRINCI SINIF", "yüksek kalite", "1. SINIF", "onarıcı", "Onarıcı",
-            "Yaşlanma karşıtı"
+        const bannedWords = ["yüksek kalite", "yüksek kaliteli", "%100 hakiki", "% 100 hakiki", "hakiki deri", "gerçek deri", "gençleştirici", "gençleştirir", "Gençleştirici", "Gençleştirir", "yaşlanma karşıtı", "Yaşlanma Karşıtı",
+            "birinci sınıf", "1. kalite", "1. sınıf", "unisex", "YÜKSEK KALİTE", "YUKSEK KALITE", "YÜKSEK KALITE", "1.sınıf", "1.SINIF", "BİRİNCİ SINIF", "BIRINCI SINIF", "yüksek kalite", "1. SINIF", "onarıcı", "Onarıcı", "Yaşlanma karşıtı",
         ];
 
         function escapeRegExp(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
@@ -1899,22 +1680,20 @@
 
         function hardProtectBoldStyles(r) {
             if (!r) return "";
-            r = r.replace(/<span\b[^>]*\bstyle\s*=\s*"[^"]*font-weight\s*:\s*(bold|bolder|[7-9]00)[^"]*"[^>]*>([\s\S]*?)<\/span>/gi,
-                '<b>$2</b>');
+            r = r.replace(/<span\b[^>]*\bstyle\s*=\s*"[^"]*font-weight\s*:\s*(bold|bolder|[7-9]00)[^"]*"[^>]*>([\s\S]*?)<\/span>/gi, '<b>$2</b>');
             r = r.replace(/<strong\b[^>]*>([\s\S]*?)<\/strong>/gi, '<b>$1</b>');
             return r;
         }
 
-        function cleanInvisibleWebGarbage(t, f) { if (!t) return "";
-            let c = t.replace(/[\r\u200B\u200C\u200D\uFEFF]/g, "").replace(/&nbsp;/gi, " ").replace(/nbsp;/gi, " ")
-            .replace(/;nbsp/gi, " ").replace(/&nbsp/gi, " ").replace(/\u00A0/g, " ").replace(/&amp;;/gi, " ").replace(
-                /&amp;/gi, " ").replace(/&[^;]+;/g, " ").replace(/&/g, " ").replace(/;/g, " ");
+        function cleanInvisibleWebGarbage(t, f = false) { if (!t) return ""; let c = t.replace(/[\r\u200B\u200C\u200D\uFEFF]/g,
+                "").replace(/&nbsp;/gi, " ").replace(/nbsp;/gi, " ").replace(/;nbsp/gi, " ").replace(/&nbsp/gi, " ").replace(
+                /\u00A0/g, " ").replace(/&amp;;/gi, " ").replace(/&amp;/gi, " ").replace(/&[^;]+;/g, " ").replace(/&/g,
+                " ").replace(/;/g, " ");
             c = c.replace(/B\s*\+\s*/gi, "B+").replace(/B\s*-\s*/gi, "B-").replace(/\s{2,}/g, " ");
             if (f) c = c.toLocaleLowerCase('tr-TR');
-            return c;
-        }
+            return c; }
 
-        function processUltraEngine(id, f) {
+        function processUltraEngine(id, f = false) {
             const inp = document.getElementById(id);
             if (!inp || !inp.innerHTML.trim()) return "";
             let raw = inp.innerHTML;
@@ -1929,8 +1708,7 @@
                 }
                 heading.appendChild(b);
             });
-            const blockSelectors =
-                'p,div,br,li,tr,ul,ol,h1,h2,h3,h4,h5,h6,table,tbody,td,th,pre,blockquote,section,article,header,footer,main,aside,figure,figcaption,address,dl,dt,dd,form,fieldset,legend';
+            const blockSelectors = 'p,div,br,li,tr,ul,ol,h1,h2,h3,h4,h5,h6,table,tbody,td,th,pre,blockquote,section,article,header,footer,main,aside,figure,figcaption,address,dl,dt,dd,form,fieldset,legend';
             div.querySelectorAll(blockSelectors).forEach(el => {
                 if (el.tagName.toLowerCase() === 'br') {
                     el.before(document.createTextNode('\n'));
@@ -1956,8 +1734,7 @@
                 let cl = cleanInvisibleWebGarbage(line, f);
                 if (cl.replace(/<[^>]*>/g, "").replace(/\s+/g, "").trim() !== "") {
                     let fin = cl.trim();
-                    if (f) fin = fin.replace(/(^|>|[.!?]\s+)([a-zçğıöşü])/g, (m, p1, p2) => p1 + p2.toLocaleUpperCase(
-                        'tr-TR'));
+                    if (f) fin = fin.replace(/(^|>|[.!?]\s+)([a-zçğıöşü])/g, (m, p1, p2) => p1 + p2.toLocaleUpperCase('tr-TR'));
                     res.push(fin);
                 }
             });
@@ -1998,7 +1775,7 @@
             calculateMeta(2); }
 
         // ==========================================================================
-        // OYUN MODAL (MEVCUT)
+        // OYUN MODAL
         // ==========================================================================
         function openGameModal() {
             document.getElementById('game-modal').classList.add('active');
@@ -2012,7 +1789,7 @@
         }
 
         // ==========================================================================
-        // RADYO MODAL (MEVCUT)
+        // RADYO MODAL
         // ==========================================================================
         function openRadioModal() {
             document.getElementById('radio-modal').classList.add('active');
@@ -2026,7 +1803,7 @@
         }
 
         // ==========================================================================
-        // HARF ANALİZİ (GÖKTÜRK)
+        // GÖKTÜRK ÇEVİRİ + ENERJİ ANALİZİ (burç içinde)
         // ==========================================================================
         const harfAnalizi = {
             'a': { runik: '𐰀', anlam: 'Başlangıç, doğum, yeni başlangıç', deger: 1 },
@@ -2061,583 +1838,10 @@
         };
 
         // ==========================================================================
-        // ORHUN YAZITLARI – 55 GERÇEK ALINTI (TAM)
-        // ==========================================================================
-        const orhunVerisi = [
-            { runik: '𐱅𐰇𐰼𐰚 𐰉𐰆𐰑𐰣 𐰘𐰃𐰢𐰀 𐰖𐰃𐰤𐰀 𐱅𐰇𐰼𐰚 𐰉𐰆𐰑𐰣 𐰰𐰇𐰲𐰃𐰭𐰀',
-                turkce: 'Türk milleti, yine Türk milletinin gücüne güvenir.',
-                yorum: 'Atalarımız bize, kendi gücümüze ve birliğimize inanmamızı öğütlemiş. Bugün de sadece kendi özümüze ve yeteneklerimize güvenerek yol almalıyız.' },
-            { runik: '𐰃𐰢𐰀 𐰲𐰃𐰭𐰀 𐰆𐰞𐰺𐰆𐰺𐰆𐰯 𐰘𐰃𐰢𐰀 𐰖𐰃𐰤𐰀 𐰉𐰆𐰑𐰣 𐱅𐰇𐰼𐰚 𐰉𐰆𐰑𐰣',
-                turkce: 'İleri oturup, yine millet, Türk milleti.',
-                yorum: 'Türk milleti daima ayakta kalmış, pes etmemiş. Zorluklar karşısında bile dik durmayı bilmiş. Sende de o direnç var.' },
-            { runik: '𐱅𐰇𐰼𐰚 𐰉𐰆𐰑𐰣 𐰴𐰣 𐰚𐰇𐰤𐰃 𐰘𐰇𐰏𐰼𐰇 𐰉𐰆𐰞𐰯 𐰲𐰃𐰭𐰀',
-                turkce: 'Türk milleti, güneş gibi doğup ilerlemiş.',
-                yorum: 'Her zorluk, yeni bir doğuşun habercisidir. Bugün karşına çıkan engeller, aslında yükselişinin basamaklarıdır.' },
-            { runik: '𐰃𐰢𐰀 𐰇𐰠𐰇𐰏𐰢𐰀 𐰴𐰃𐰞𐰯 𐰋𐰃𐰓𐰏𐰢𐰀 𐰘𐰃𐰤𐰀',
-                turkce: 'Ölmeyi de bilip, yaşamayı da bilelim.',
-                yorum: 'Hayatın iniş çıkışlarına, kazanç ve kayıplarına rağmen daima dik durmayı öğütler. Bugün ne gelirse gelsin, şikayet etmeden kabullen ve yoluna devam et.' },
-            { runik: '𐰴𐰣𐰢 𐰴𐰑𐰯 𐰘𐰃𐰢𐰀 𐰘𐰃𐰤𐰀 𐰆𐰞𐰺𐰆𐰺', turkce: 'Hanım oturup yine oturur.',
-                yorum: 'Liderler bile zaman zaman dinlenir ve stratejik olarak geri çekilir. Pes etmek değil, doğru anı beklemek akıllıcadır.' },
-            { runik: '𐰇𐰠𐰏 𐰀𐰽𐰾 𐰘𐰃𐰢𐰀 𐰘𐰇𐰼𐰇𐰼', turkce: 'Büyük atalar yürür.',
-                yorum: 'Büyük işler yapan atalarımızın izinde yürümek, bugün de büyük başarıların anahtarıdır.' },
-            { runik: '𐱅𐰇𐰼𐰚 𐰉𐰆𐰑𐰣 𐰇𐰺𐰇𐰭 𐰉𐰆𐰞𐰆𐰺', turkce: 'Türk milleti, örnek olur.',
-                yorum: 'Kendi kültürüne, tarihine ve değerlerine sahip çıkan her birey, çevresine ilham verir. Sen de o örneklerden biri ol.' },
-            { runik: '𐰖𐰃𐰢𐰀 𐰲𐰃𐰭𐰀 𐰆𐰞𐰺𐰆𐰺𐰆𐰯 𐰘𐰃𐰢𐰀', turkce: 'Yine ileri oturup yine.',
-                yorum: 'Hep ileriye bakmak, asla geri adım atmamak gerekir. Bugünü dünün pişmanlıklarıyla değil, yarının umutlarıyla inşa etmelisin.' },
-            { runik: '𐰋𐰃𐰠𐰏𐰀 𐰶𐰍𐰣 𐰺𐰣𐰃 𐰴𐰺𐰞𐰉𐰆𐰞𐰆𐰺', turkce: 'Bilge Kağan, kuralları belirler.',
-                yorum: 'Akıl ve bilgelikle hareket edenler, hayatın kurallarını kendileri yazar. Sen de kendi yolunu kendin çiz.' },
-            { runik: '𐱃𐰆𐰭𐰆𐰔 𐰼 𐰖𐰃𐰢𐰀 𐰖𐰃𐰤𐰀', turkce: 'Domuz er yine yine.',
-                yorum: 'Sabır ve direnç her zorluğun üstesinden gelir. Yılma, mücadeleye devam et.' },
-            { runik: '𐰇𐰠𐰇𐰏 𐰉𐰆𐰑𐰣 𐰘𐰇𐰼𐰇𐰼', turkce: 'Ölü millet yürür.',
-                yorum: 'Millet olarak birlik ve beraberlik içinde hareket ettiğimizde, hiçbir engel bizi durduramaz.' },
-            { runik: '𐰴𐰣𐰢 𐰴𐰺𐰞𐰉𐰆𐰞𐰆𐰺 𐰴𐰺𐰞', turkce: 'Hanım karar verir, karar.',
-                yorum: 'Kararlılık, başarının en önemli anahtarıdır. Verdiğin her kararın arkasında dur, sonuçlarına katlan.' },
-            { runik: '𐰇𐰠𐰏 𐰀𐰽𐰾 𐰘𐰇𐰼𐰇𐰼', turkce: 'Büyük atalar yürür.',
-                yorum: 'Atalarının izinden gitmek, bugünkü başarılarının temelidir. Onların bilgeliğinden ve tecrübesinden faydalan.' },
-            { runik: '𐱅𐰇𐰼𐰚 𐰉𐰆𐰑𐰣 𐰇𐰺𐰇𐰭 𐰉𐰆𐰞𐰆𐰺', turkce: 'Türk milleti, örnek olur.',
-                yorum: 'Her Türk, yaşadığı toplumda bir iz bırakır. Bu iz, erdemli, çalışkan ve adil olmaktan geçer.' },
-            { runik: '𐰖𐰃𐰢𐰀 𐰲𐰃𐰭𐰀 𐰆𐰞𐰺𐰆𐰺𐰆𐰯 𐰘𐰃𐰢𐰀', turkce: 'Yine ileri oturup yine.',
-                yorum: 'Geçmişe takılı kalmadan, hep ileriye doğru adım atmak gerekir. Her gün yeni bir başlangıçtır.' },
-            { runik: '𐰋𐰃𐰠𐰏𐰀 𐰶𐰍𐰣 𐰺𐰣𐰃 𐰴𐰺𐰞𐰉𐰆𐰞𐰆𐰺', turkce: 'Bilge Kağan, kuralları belirler.',
-                yorum: 'Bilgelik, doğru kurallar koymak ve bu kurallara sadık kalmaktır. Hayatında da kendi doğrularını belirle ve onlardan şaşma.' },
-            { runik: '𐱃𐰆𐰭𐰆𐰔 𐰼 𐰖𐰃𐰢𐰀 𐰖𐰃𐰤𐰀', turkce: 'Domuz er yine yine.',
-                yorum: 'Sabırlı ve azimli olmak, zorlukları aşmanın en etkili yoludur. Bugün yılmazsan, yarın zafer senin olacak.' },
-            { runik: '𐰇𐰠𐰇𐰏 𐰉𐰆𐰑𐰣 𐰘𐰇𐰼𐰇𐰼', turkce: 'Ölü millet yürür.',
-                yorum: 'Birlik ve beraberlik içinde her türlü engeli aşabiliriz. Bugün de çevrenle dayanışma içinde ol, gücünü birlikten al.' },
-            { runik: '𐰴𐰣𐰢 𐰴𐰺𐰞𐰉𐰆𐰞𐰆𐰺 𐰴𐰺𐰞', turkce: 'Hanım karar verir, karar.',
-                yorum: 'Kararlı olmak, hayatta en önemli erdemlerden biridir. Bugün bir karar vermen gerekiyorsa, tereddüt etme, iç sesini dinle.' },
-            { runik: '𐰇𐰠𐰏 𐰀𐰽𐰾 𐰘𐰇𐰼𐰇𐰼', turkce: 'Büyük atalar yürür.',
-                yorum: 'Atalarının bıraktığı mirasa sahip çıkmak, geleceğe güvenle bakmanı sağlar.' },
-            { runik: '𐱅𐰇𐰼𐰚 𐰉𐰆𐰑𐰣 𐰇𐰺𐰇𐰭 𐰉𐰆𐰞𐰆𐰺', turkce: 'Türk milleti, örnek olur.',
-                yorum: 'Türk milletinin tarihi boyunca verdiği örnekler, bugün de yol göstericidir. Adil, cesur ve merhametli ol.' },
-            { runik: '𐰖𐰃𐰢𐰀 𐰲𐰃𐰭𐰀 𐰆𐰞𐰺𐰆𐰺𐰆𐰯 𐰘𐰃𐰢𐰀', turkce: 'Yine ileri oturup yine.',
-                yorum: 'Geçmişteki başarılarına güven ama asla rehavete kapılma. Her an yenilenmeye ve ilerlemeye açık ol.' },
-            { runik: '𐰋𐰃𐰠𐰏𐰀 𐰶𐰍𐰣 𐰺𐰣𐰃 𐰴𐰺𐰞𐰉𐰆𐰞𐰆𐰺', turkce: 'Bilge Kağan, kuralları belirler.',
-                yorum: 'Hayatının kurallarını kendin belirle. Başkalarının beklentilerine göre değil, kendi doğrularına göre yaşa.' },
-            { runik: '𐱃𐰆𐰭𐰆𐰔 𐰼 𐰖𐰃𐰢𐰀 𐰖𐰃𐰤𐰀', turkce: 'Domuz er yine yine.',
-                yorum: 'Sabırlı ol. Zor zamanlar geçer, tıpkı domuzun zorlu koşullara dayanması gibi sen de dayan.' },
-            { runik: '𐰇𐰠𐰇𐰏 𐰉𐰆𐰑𐰣 𐰘𐰇𐰼𐰇𐰼', turkce: 'Ölü millet yürür.',
-                yorum: 'Ölümsüz olan millet ruhudur. Bugün yaşadığın her an, bu ruhu yaşatmaktır.' },
-            { runik: '𐰴𐰣𐰢 𐰴𐰺𐰞𐰉𐰆𐰞𐰆𐰺 𐰴𐰺𐰞', turkce: 'Hanım karar verir, karar.',
-                yorum: 'Kararlılık, seni hedefine ulaştıracak en güçlü araçtır. Bugün bir konuda karar vermen gerekiyorsa, cesur ol.' },
-            { runik: '𐰇𐰠𐰏 𐰀𐰽𐰾 𐰘𐰇𐰼𐰇𐰼', turkce: 'Büyük atalar yürür.',
-                yorum: 'Atalarının izini takip etmek, seni asla yanlış yola götürmez. Onların bilgeliğinden ilham al.' },
-            { runik: '𐱅𐰇𐰼𐰚 𐰉𐰆𐰑𐰣 𐰇𐰺𐰇𐰭 𐰉𐰆𐰞𐰆𐰺', turkce: 'Türk milleti, örnek olur.',
-                yorum: 'Her an, her davranışınla çevrendekilere örnek ol. Sözlerin ve eylemlerin tutarlı olsun.' },
-            { runik: '𐰖𐰃𐰢𐰀 𐰲𐰃𐰭𐰀 𐰆𐰞𐰺𐰆𐰺𐰆𐰯 𐰘𐰃𐰢𐰀', turkce: 'Yine ileri oturup yine.',
-                yorum: 'Geçmişteki başarısızlıklarına takılıp kalma. Her yeni gün, yeni fırsatlar sunar. İleriye bak.' },
-            { runik: '𐰋𐰃𐰠𐰏𐰀 𐰶𐰍𐰣 𐰺𐰣𐰃 𐰴𐰺𐰞𐰉𐰆𐰞𐰆𐰺', turkce: 'Bilge Kağan, kuralları belirler.',
-                yorum: 'Akıllı insan, hayatının kurallarını kendi koyar. Başkalarının seni yönetmesine izin verme.' },
-            { runik: '𐱃𐰆𐰭𐰆𐰔 𐰼 𐰖𐰃𐰢𐰀 𐰖𐰃𐰤𐰀', turkce: 'Domuz er yine yine.',
-                yorum: 'Azim ve kararlılık, en zorlu yolları bile açar. Bugün pes etme, sonuç seni şaşırtacak.' },
-            { runik: '𐰇𐰠𐰇𐰏 𐰉𐰆𐰑𐰣 𐰘𐰇𐰼𐰇𐰼', turkce: 'Ölü millet yürür.',
-                yorum: 'Birlik olmak, millet olmanın özüdür. Bugün de çevrenle kenetlen, gücünü birlikten al.' },
-            { runik: '𐰴𐰣𐰢 𐰴𐰺𐰞𐰉𐰆𐰞𐰆𐰺 𐰴𐰺𐰞', turkce: 'Hanım karar verir, karar.',
-                yorum: 'Kararlarının arkasında dur. Bugün bir seçim yapacaksan, yüreğinin sesini dinle ve cesur ol.' },
-            { runik: '𐰇𐰠𐰏 𐰀𐰽𐰾 𐰘𐰇𐰼𐰇𐰼', turkce: 'Büyük atalar yürür.',
-                yorum: 'Atalarımız, zorluklara göğüs germiş ve bizlere güçlü bir miras bırakmış. Onların azmiyle hareket et.' },
-            { runik: '𐱅𐰇𐰼𐰚 𐰉𐰆𐰑𐰣 𐰇𐰺𐰇𐰭 𐰉𐰆𐰞𐰆𐰺', turkce: 'Türk milleti, örnek olur.',
-                yorum: 'Türk milletinin tarihi boyunca verdiği mücadeleler, bugün de ilham kaynağıdır. Onurlu ve dik dur.' },
-            { runik: '𐰖𐰃𐰢𐰀 𐰲𐰃𐰭𐰀 𐰆𐰞𐰺𐰆𐰺𐰆𐰯 𐰘𐰃𐰢𐰀', turkce: 'Yine ileri oturup yine.',
-                yorum: 'Hayat bir yolculuktur; önemli olan hep ileriye bakabilmek ve yürümeye devam etmektir.' },
-            { runik: '𐰋𐰃𐰠𐰏𐰀 𐰶𐰍𐰣 𐰺𐰣𐰃 𐰴𐰺𐰞𐰉𐰆𐰞𐰆𐰺', turkce: 'Bilge Kağan, kuralları belirler.',
-                yorum: 'Bilgelik, doğruyu yanlıştan ayırmak ve adaletle hükmetmektir. Bugün de adil ol, hakkaniyetten ayrılma.' },
-            { runik: '𐱃𐰆𐰭𐰆𐰔 𐰼 𐰖𐰃𐰢𐰀 𐰖𐰃𐰤𐰀', turkce: 'Domuz er yine yine.',
-                yorum: 'Dayanıklılık, her türlü zorluğa göğüs germektir. Bugün zorluklar karşısında yılmamayı seç.' },
-            { runik: '𐰇𐰠𐰇𐰏 𐰉𐰆𐰑𐰣 𐰘𐰇𐰼𐰇𐰼', turkce: 'Ölü millet yürür.',
-                yorum: 'Millet olmak, birlikte yaşamak ve birlikte mücadele etmektir. Bugün de çevrene destek ol.' },
-            { runik: '𐰴𐰣𐰢 𐰴𐰺𐰞𐰉𐰆𐰞𐰆𐰺 𐰴𐰺𐰞', turkce: 'Hanım karar verir, karar.',
-                yorum: 'Karar vermek, sorumluluk almaktır. Bugün bir karar vermen gerekiyorsa, erteleme ve harekete geç.' },
-            { runik: '𐰇𐰠𐰏 𐰀𐰽𐰾 𐰘𐰇𐰼𐰇𐰼', turkce: 'Büyük atalar yürür.',
-                yorum: 'Tarihe yön veren atalarımız, bugün de bize yol gösteriyor. Onların izinde yürümek, doğru olanı yapmaktır.' },
-            { runik: '𐱅𐰇𐰼𐰚 𐰉𐰆𐰑𐰣 𐰇𐰺𐰇𐰭 𐰉𐰆𐰞𐰆𐰺', turkce: 'Türk milleti, örnek olur.',
-                yorum: 'Her zaman en iyisini yapmaya çalış, çünkü sen sadece kendini değil, Türk milletini de temsil ediyorsun.' },
-            { runik: '𐰖𐰃𐰢𐰀 𐰲𐰃𐰭𐰀 𐰆𐰞𐰺𐰆𐰺𐰆𐰯 𐰘𐰃𐰢𐰀', turkce: 'Yine ileri oturup yine.',
-                yorum: 'Hayatın her anında ileriye dönük ol, geçmişe takılıp kalma. Yeni ufuklara yelken aç.' },
-            { runik: '𐰋𐰃𐰠𐰏𐰀 𐰶𐰍𐰣 𐰺𐰣𐰃 𐰴𐰺𐰞𐰉𐰆𐰞𐰆𐰺', turkce: 'Bilge Kağan, kuralları belirler.',
-                yorum: 'Kurallar ve düzen, toplumun temelidir. Bugün de düzenli ve prensipli ol, kaostan uzak dur.' },
-            { runik: '𐱃𐰆𐰭𐰆𐰔 𐰼 𐰖𐰃𐰢𐰀 𐰖𐰃𐰤𐰀', turkce: 'Domuz er yine yine.',
-                yorum: 'Pes etmeyen, daima kazanır. Bugün karşına ne çıkarsa çıksın, inancını ve azmini koru.' },
-            { runik: '𐰇𐰠𐰇𐰏 𐰉𐰆𐰑𐰣 𐰘𐰇𐰼𐰇𐰼', turkce: 'Ölü millet yürür.',
-                yorum: 'Millet olarak birlikte yürüdüğümüzde hiçbir güç bizi durduramaz. Bugün de dayanışma içinde ol.' },
-            { runik: '𐰴𐰣𐰢 𐰴𐰺𐰞𐰉𐰆𐰞𐰆𐰺 𐰴𐰺𐰞', turkce: 'Hanım karar verir, karar.',
-                yorum: 'Kararlılık, en zorlu engelleri aşmanın yoludur. Bugün cesur bir karar al ve uygulamaya koy.' },
-            { runik: '𐰇𐰠𐰏 𐰀𐰽𐰾 𐰘𐰇𐰼𐰇𐰼', turkce: 'Büyük atalar yürür.',
-                yorum: 'Atalarının mirası olan cesaret, bugün de en büyük gücün olsun.' },
-            { runik: '𐱅𐰇𐰼𐰚 𐰉𐰆𐰑𐰣 𐰇𐰺𐰇𐰭 𐰉𐰆𐰞𐰆𐰺', turkce: 'Türk milleti, örnek olur.',
-                yorum: 'Doğruluk, dürüstlük ve çalışkanlıkla her zaman örnek olabilirsin. Bugün de bu erdemlerle hareket et.' },
-            { runik: '𐰖𐰃𐰢𐰀 𐰲𐰃𐰭𐰀 𐰆𐰞𐰺𐰆𐰺𐰆𐰯 𐰘𐰃𐰢𐰀', turkce: 'Yine ileri oturup yine.',
-                yorum: 'Hayat bir nehirdir, geriye akmaz. Bugün de ileriye doğru ak, geçmişin yükünü bırak.' },
-            { runik: '𐰋𐰃𐰠𐰏𐰀 𐰶𐰍𐰣 𐰺𐰣𐰃 𐰴𐰺𐰞𐰉𐰆𐰞𐰆𐰺', turkce: 'Bilge Kağan, kuralları belirler.',
-                yorum: 'Kendi hayatının mimarı sensin. Bugün kendi kurallarını koy ve bu kurallara sadık kal.' },
-            { runik: '𐱃𐰆𐰭𐰆𐰔 𐰼 𐰖𐰃𐰢𐰀 𐰖𐰃𐰤𐰀', turkce: 'Domuz er yine yine.',
-                yorum: 'Sabırlı ve dirençli ol. En zorlu şartlarda bile ayakta kalmayı başar.' },
-            { runik: '𐰇𐰠𐰇𐰏 𐰉𐰆𐰑𐰣 𐰘𐰇𐰼𐰇𐰼', turkce: 'Ölü millet yürür.',
-                yorum: 'Millet ruhu ölümsüzdür. Bugün yaşadığın her an, bu ruhu yaşatmak ve geleceğe taşımaktır.' },
-            { runik: '𐰴𐰣𐰢 𐰴𐰺𐰞𐰉𐰆𐰞𐰆𐰺 𐰴𐰺𐰞', turkce: 'Hanım karar verir, karar.',
-                yorum: 'Cesur ve kararlı ol. Bugün aldığın her karar, yarını şekillendirir.' },
-            { runik: '𐰇𐰠𐰏 𐰀𐰽𐰾 𐰘𐰇𐰼𐰇𐰼', turkce: 'Büyük atalar yürür.',
-                yorum: 'Atalarının yolundan git, onların bilgeliğinden yararlan. Bugün de onlar gibi ilham verici ol.' },
-            { runik: '𐱅𐰇𐰼𐰚 𐰉𐰆𐰑𐰣 𐰇𐰺𐰇𐰭 𐰉𐰆𐰞𐰆𐰺', turkce: 'Türk milleti, örnek olur.',
-                yorum: 'Türk milleti tarih boyunca nice zorluklara göğüs germiş ve daima örnek olmuştur. Bugün de aynı ruhla hareket et.' }
-        ];
-
-        // Çıkan mesaj indekslerini tut (sayfa yenilenene kadar)
-        let cikanOrhunIndeksler = [];
-
-        function orhunGoster() {
-            const container = document.getElementById('orhun-mesaj');
-            if (cikanOrhunIndeksler.length >= orhunVerisi.length) {
-                cikanOrhunIndeksler = [];
-            }
-            let idx;
-            let deneme = 0;
-            do {
-                idx = Math.floor(Math.random() * orhunVerisi.length);
-                deneme++;
-                if (deneme > 100) break;
-            } while (cikanOrhunIndeksler.includes(idx));
-            cikanOrhunIndeksler.push(idx);
-            const m = orhunVerisi[idx];
-            container.innerHTML = `
-                <div class="orhun-kart">
-                    <div class="orhun-runik">${m.runik}</div>
-                    <div class="orhun-turkce">🗣️ ${m.turkce}</div>
-                    <div class="orhun-yorum">${m.yorum}</div>
-                </div>
-            `;
-        }
-
-        // ==========================================================================
-        // DETAYLI İSİM RAPORU
-        // ==========================================================================
-        function isimRaporuOlustur(ad) {
-            const container = document.getElementById('isim-raporu-container');
-            const icerik = document.getElementById('isim-raporu-icerik');
-            if (!ad || ad.trim() === '') {
-                container.classList.remove('aktif');
-                return;
-            }
-            const temiz = ad.trim().toLowerCase();
-            const harfler = temiz.split('');
-            let toplamDeger = 0;
-            const frekans = {};
-            let bulunan = 0;
-            harfler.forEach(h => {
-                const bilgi = harfAnalizi[h];
-                if (bilgi) {
-                    toplamDeger += bilgi.deger;
-                    frekans[h] = (frekans[h] || 0) + 1;
-                    bulunan++;
-                }
-            });
-            if (bulunan === 0) {
-                container.classList.remove('aktif');
-                return;
-            }
-
-            let maxHarf = '';
-            let maxFrek = 0;
-            for (const [h, f] of Object.entries(frekans)) {
-                if (f > maxFrek) { maxFrek = f;
-                    maxHarf = h; }
-            }
-            const enCokHarf = maxHarf ? harfAnalizi[maxHarf] : null;
-            const ilk = harfAnalizi[harfler[0]];
-            const son = harfAnalizi[harfler[harfler.length - 1]];
-
-            let kaderSayi = toplamDeger;
-            while (kaderSayi > 9 && kaderSayi !== 11 && kaderSayi !== 22) {
-                let s = 0;
-                while (kaderSayi > 0) { s += kaderSayi % 10;
-                    kaderSayi = Math.floor(kaderSayi / 10); }
-                kaderSayi = s;
-            }
-            const kaderYorum = {
-                1: 'Lider, bağımsız, öncü. Kendi yolunu çizen, cesur ve girişimci.',
-                2: 'İşbirlikçi, diplomat, uyumlu. Duyarlı ve sezgisel, barış elçisi.',
-                3: 'Yaratıcı, neşeli, iletişimci. Sanatçı ruh, esprili ve sosyal.',
-                4: 'Düzenli, çalışkan, güvenilir. Disiplinli, sabırlı ve pratik.',
-                5: 'Özgür ruhlu, maceracı, değişken. Hızlı düşünen, esnek ve adaptif.',
-                6: 'Fedakar, sorumlu, şefkatli. Aileye düşkün, koruyucu ve yardımsever.',
-                7: 'Bilge, araştırmacı, analitik. Derin düşünen, felsefi ve meraklı.',
-                8: 'Başarılı, güçlü, kararlı. Lider, zenginlik ve güç odaklı.',
-                9: 'İdealist, cömert, evrensel. İnsancıl, sanatsal ve fedakar.',
-                11: 'Sezgili, ruhsal, ilham verici. Yüksek farkındalık, şifacı ruh.',
-                22: 'Büyük vizyon, usta inşaatçı. Hayalleri gerçeğe dönüştüren, güçlü.'
-            };
-            const kaderMetin = kaderYorum[kaderSayi] || 'Kader sayısı, potansiyelinin derinliğini gösterir.';
-
-            const ruhMap = {
-                'a': 'Tengri (Gök Tanrı) – Yaratıcı ve koruyucu.',
-                'e': 'Umay Ana – Bereket ve doğurganlık.',
-                'i': 'Ülgen – İyilik ve bilgelik.',
-                'o': 'Bozkurt – Özgürlük ve cesaret.',
-                'u': 'Gün Ana – Işık ve yaşam.',
-                'b': 'Erlik Han – Güç ve direnç.',
-                'k': 'Kayra Han – Yaratıcılık ve düzen.',
-                'm': 'Ay Ata – Zaman ve rehberlik.',
-                't': 'Dağ İyesi – Dayanıklılık ve koruma.',
-                's': 'Su İyesi – Arınma ve yaşam.',
-                'y': 'Yer Ana – Toprak ve bereket.'
-            };
-            const ilkHarf = harfler[0];
-            const koruyucu = ruhMap[ilkHarf] || 'Bozkurt – Türklerin kutsal koruyucusu.';
-
-            const yetenekMap = {
-                'a': 'Yeni başlangıçlar yapma, öncü olma yeteneği.',
-                'b': 'Fiziksel güç, dayanıklılık ve koruma içgüdüsü.',
-                'c': 'Hızlı düşünme, zeka ve çeviklik.',
-                'd': 'Kararlılık, azim ve liderlik.',
-                'e': 'Öğrenme, bilgi toplama ve öğretme yeteneği.',
-                'f': 'Güç ve kuvvet, fiziksel ve zihinsel direnç.',
-                'g': 'Liderlik, yönetim ve strateji.',
-                'h': 'Koruyuculuk, kollayıcılık ve sadakat.',
-                'ı': 'İç gözlem, derin düşünme ve analiz.',
-                'i': 'Duygu, sezgi ve sanat.',
-                'j': 'Tamamlama, bitirme ve sonuçlandırma.',
-                'k': 'Otorite, güç ve kararlılık.',
-                'l': 'Dayanıklılık, sağlamlık ve istikrar.',
-                'm': 'Bolluk, bereket ve paylaşımcılık.',
-                'n': 'Bilgelik, tecrübe ve rehberlik.',
-                'o': 'Cesaret, atılganlık ve maceracılık.',
-                'ö': 'Yaratıcılık, sanat ve estetik.',
-                'p': 'Savaşçı ruh, rekabet ve mücadele.',
-                'r': 'Liderlik, rehberlik ve ilham verme.',
-                's': 'Sadakat, bağlılık ve güvenilirlik.',
-                'ş': 'Zarafet, güzellik ve incelik.',
-                't': 'Dayanıklılık, direnç ve sabır.',
-                'u': 'Özgürlük, bağımsızlık ve keşif.',
-                'ü': 'Yaratıcılık, üretkenlik ve dönüşüm.',
-                'v': 'Güç, kuvvet ve etki.',
-                'y': 'Yükseliş, ilerleme ve başarı.',
-                'z': 'Tamamlama, sonuçlandırma ve döngü.'
-            };
-            const yetenek = enCokHarf ? (yetenekMap[enCokHarf.harf] || 'Çok yönlü yetenek, her alanda başarılı.') :
-                'Kendini keşfetmeye açık, her alanda potansiyel var.';
-
-            let karakter = '';
-            if (enCokHarf) {
-                karakter =
-                    `${enCokHarf.harf.toUpperCase()} harfi, "${enCokHarf.anlam}" enerjisini taşıyor. Bu, ${enCokHarf.anlam.toLowerCase()} konusunda doğal bir yeteneğin olduğunu gösterir. ${ilk ? ilk.anlam : ''} ile başlayıp ${son ? son.anlam : ''} ile biten adın, hayatına ${ilk ? ilk.anlam.toLowerCase() : ''} ile başlayıp ${son ? son.anlam.toLowerCase() : ''} ile yön verdiğini söyler.`;
-            } else {
-                karakter = 'Adındaki harfler, karakterini ve potansiyelini yansıtır. Her harf bir enerji taşır.';
-            }
-
-            const runikYazi = temiz.split('').map(h => harfAnalizi[h] ? harfAnalizi[h].runik : h).join('');
-
-            icerik.innerHTML = `
-                <div class="rapor-kart">
-                    <h4>🪄 Runik Kimlik</h4>
-                    <div class="runik-buyuk">${runikYazi}</div>
-                    <p style="font-size:12px;color:rgba(255,255,255,0.4);">“${ad}” adının Göktürk alfabesindeki karşılığı.</p>
-                </div>
-                <div class="rapor-kart">
-                    <h4>🧠 Karakter Analizi</h4>
-                    <p>${karakter}</p>
-                    <div class="rapor-enerji-bar"><div class="doluluk" style="width:${Math.min(100, (toplamDeger / 20) * 100)}%;"></div></div>
-                    <p style="font-size:10px;color:rgba(255,255,255,0.3);margin-top:4px;">Enerji seviyesi: ${toplamDeger} birim</p>
-                </div>
-                <div class="rapor-kart">
-                    <h4>🎯 Gizli Yetenek</h4>
-                    <p>${yetenek}</p>
-                </div>
-                <div class="rapor-kart">
-                    <h4>🔢 Kader Sayısı</h4>
-                    <p><strong style="color:#c084fc;font-size:18px;">${kaderSayi}</strong> — ${kaderMetin}</p>
-                </div>
-                <div class="rapor-kart">
-                    <h4>🐾 Koruyucu Ruh</h4>
-                    <p>${koruyucu}</p>
-                </div>
-            `;
-            container.classList.add('aktif');
-        }
-
-        // ==========================================================================
-        // GÖKTÜRK ÇEVİRİ + RAPOR TETİKLEME
-        // ==========================================================================
-        let mitolojikIndeks = parseInt(sessionStorage.getItem('mitolojikIndeks')) || -1;
-        const mitolojikMetinler = sozlukVerisi ? sozlukVerisi.map(m => m.detay) : [];
-
-        function gokturkMitolojikBilgiDegistir() {
-            if (mitolojikIndeks === -1 || mitolojikIndeks >= mitolojikMetinler.length - 1) {
-                mitolojikIndeks = 0;
-            } else {
-                mitolojikIndeks++;
-            }
-            sessionStorage.setItem('mitolojikIndeks', mitolojikIndeks);
-            document.getElementById('gokturkce-mitolojik').innerHTML = mitolojikMetinler[mitolojikIndeks] || mitolojikMetinler[0];
-        }
-
-        function gokturkceCevir() {
-            const input = document.getElementById('gokturkce-input');
-            const ad = input.value.trim().toLowerCase();
-            if (!ad) {
-                document.getElementById('gokturkce-oyuk').textContent = '—';
-                document.getElementById('gokturkce-analiz').style.display = 'none';
-                document.getElementById('gokturk-alt-row').style.display = 'none';
-                document.getElementById('isim-raporu-container').classList.remove('aktif');
-                return;
-            }
-            const harfMap = {
-                'a': '𐰀', 'b': '𐰋', 'c': '𐰲', 'ç': '𐰲', 'd': '𐰓', 'e': '𐰅', 'f': '𐰋',
-                'g': '𐰏', 'ğ': '𐰏', 'h': '𐰴', 'ı': '𐰃', 'i': '𐰄', 'j': '𐰔', 'k': '𐰚',
-                'l': '𐰞', 'm': '𐰢', 'n': '𐰤', 'o': '𐰆', 'ö': '𐰇', 'p': '𐰯', 'r': '𐰺',
-                's': '𐰽', 'ş': '𐰾', 't': '𐱃', 'u': '𐰆', 'ü': '𐰈', 'v': '𐰋', 'y': '𐰘',
-                'z': '𐰔'
-            };
-            let ceviri = '';
-            for (let ch of ad) {
-                if (ch === ' ') ceviri += ' ';
-                else ceviri += harfMap[ch] || ch;
-            }
-            document.getElementById('gokturkce-oyuk').textContent = ceviri;
-
-            const analizDiv = document.getElementById('gokturkce-analiz');
-            analizDiv.innerHTML = '';
-            const harfler = ad.split('');
-            let toplamDeger = 0;
-            harfler.forEach(h => {
-                const bilgi = harfAnalizi[h];
-                if (bilgi) {
-                    toplamDeger += bilgi.deger;
-                    const item = document.createElement('div');
-                    item.className = 'gokturk-analiz-item';
-                    item.innerHTML = `
-                        <span class="runik-harf">${bilgi.runik}</span>
-                        <span class="harf-bilgi"><span class="harf-adi">${h.toUpperCase()}</span> – ${bilgi.anlam}</span>
-                        <span class="harf-deger">${bilgi.deger}</span>
-                    `;
-                    analizDiv.appendChild(item);
-                } else {
-                    const item = document.createElement('div');
-                    item.className = 'gokturk-analiz-item';
-                    item.innerHTML = `
-                        <span class="runik-harf">?</span>
-                        <span class="harf-bilgi"><span class="harf-adi">${h.toUpperCase()}</span> – (Göktürk alfabesinde yok)</span>
-                        <span class="harf-deger">-</span>
-                    `;
-                    analizDiv.appendChild(item);
-                }
-            });
-            analizDiv.style.display = 'grid';
-            document.getElementById('gokturk-alt-row').style.display = 'flex';
-            document.getElementById('gokturkce-enerji-sayi').textContent = toplamDeger;
-
-            // İsim raporunu tetikle
-            isimRaporuOlustur(ad);
-        }
-
-        // ==========================================================================
-        // 12 HAYVANLI TAKVİM – TAM VERİ (12 HAYVAN)
-        // ==========================================================================
-        const hayvanlar = [
-            { id: 'fare', ad: 'Fare', runik: '𐰾𐰃𐰲𐰍𐰣', emoji: '🐭', element: 'Su', yon: 'Kuzey', mevsim: 'Kış',
-                ugurluSayilar: [2, 3], ugurluRenkler: ['Mavi', 'Turkuaz', 'Gümüş'],
-                pozitif: 'Zeki, çalışkan, uyumlu, yaratıcı, sezgisel, esprili.',
-                negatif: 'Kaygılı, obsesif, kıskanç, manipülatif, aşırı hassas.',
-                uyumlu: ['Sığır', 'Maymun', 'Ejderha'], zit: ['At'],
-                ozellik: 'Fare burcu, zekası ve pratikliğiyle tanınır. Zor durumlarda hızlı çözüm üretir, her ortama uyum sağlar. Parasal konularda başarılıdır, birikim yapmayı sever. Sezgileri güçlüdür, insanları iyi okur. Aşkta sadık ve romantiktir, ancak kıskançlık yapabilir. Kariyerde yönetici veya danışman olarak başarılı olur.'
-            },
-            { id: 'sigir', ad: 'Sığır', runik: '𐰇𐰏𐰕', emoji: '🐂', element: 'Toprak', yon: 'Kuzeydoğu', mevsim: 'Kış',
-                ugurluSayilar: [1, 4], ugurluRenkler: ['Kırmızı', 'Sarı', 'Kahverengi'],
-                pozitif: 'Güvenilir, sabırlı, kararlı, çalışkan, sadık, sakin.',
-                negatif: 'İnatçı, ağır, aşırı korumacı, duygusuz görünebilir, değişime kapalı.',
-                uyumlu: ['Yılan', 'Horoz', 'Fare'], zit: ['Koyun'],
-                ozellik: 'Sığır burcu, istikrarı ve kararlılığı simgeler. Sakin ve güvenilir bir yapısı vardır, verilen işi en iyi şekilde tamamlar. Geleneğe bağlıdır, aile hayatına düşkündür. Aşkta sadık ve sağlam bir eştir. Kariyerde tarım, inşaat veya bankacılıkta başarılı olur.'
-            },
-            { id: 'kaplan', ad: 'Kaplan', runik: '𐰉𐰺𐰽', emoji: '🐯', element: 'Ateş', yon: 'Doğu', mevsim: 'İlkbahar',
-                ugurluSayilar: [1, 3, 7], ugurluRenkler: ['Turuncu', 'Kırmızı', 'Beyaz'],
-                pozitif: 'Cesur, lider, tutkulu, çekici, özgür ruhlu, adil.',
-                negatif: 'Asabi, sabırsız, baskın, aşırı rekabetçi, risk seven.',
-                uyumlu: ['At', 'Köpek', 'Ejderha'], zit: ['Maymun'],
-                ozellik: 'Kaplan burcu, cesaret ve liderlikle özdeşleşir. Macera ve heyecan onun vazgeçilmezidir. Doğal bir liderdir, insanları etkileme yeteneği yüksektir. Adalet duygusu gelişmiştir. Aşkta tutkulu ve yoğundur. Kariyerde askerlik, spor veya girişimcilikte parlar.'
-            },
-            { id: 'tavsan', ad: 'Tavşan', runik: '𐱃𐰉𐱁𐰍𐰣', emoji: '🐇', element: 'Ağaç', yon: 'Doğu', mevsim: 'İlkbahar',
-                ugurluSayilar: [3, 6, 9], ugurluRenkler: ['Yeşil', 'Pembe', 'Beyaz'],
-                pozitif: 'Nazik, zarif, diplomat, sabırlı, yaratıcı, sezgisel.',
-                negatif: 'Aşırı hassas, kaçak, kararsız, yüzeysel, çekingen.',
-                uyumlu: ['Koyun', 'Domuz', 'Köpek'], zit: ['Horoz'],
-                ozellik: 'Tavşan burcu, zarafeti ve inceliğiyle bilinir. Sanatsal yetenekleri gelişmiştir, güzellikten anlar. Çatışmadan kaçınır, herkesle iyi geçinmek ister. Aşkta romantik ve sadıktır. Kariyerde sanat, tasarım ve diplomatik alanlarda başarılı olur.'
-            },
-            { id: 'ejderha', ad: 'Ejderha', runik: '𐰅𐰔𐰓𐰀', emoji: '🐉', element: 'Odun', yon: 'Doğu', mevsim: 'İlkbahar',
-                ugurluSayilar: [1, 6, 7], ugurluRenkler: ['Kırmızı', 'Altın', 'Turkuaz'],
-                pozitif: 'Güçlü, karizmatik, vizyoner, cesur, zenginlik getirir, koruyucu.',
-                negatif: 'Kibirli, sabırsız, otoriter, aşırı hırslı, kırılgan.',
-                uyumlu: ['Fare', 'Maymun', 'Yılan'], zit: ['Köpek'],
-                ozellik: 'Ejderha burcu, en güçlü ve şanslı hayvanlardan biridir. Büyük hayalleri ve vizyonu vardır, her şeyi başarabileceğine inanır. Karizmasıyla insanları peşinden sürükler. Aşkta tutkulu ve koruyucudur. Kariyerde liderlik, iş dünyası ve sanatta zirveyi hedefler.'
-            },
-            { id: 'yilan', ad: 'Yılan', runik: '𐰖𐰃𐰞𐰣', emoji: '🐍', element: 'Ateş', yon: 'Güney', mevsim: 'Yaz',
-                ugurluSayilar: [2, 8, 9], ugurluRenkler: ['Kırmızı', 'Sarı', 'Siyah'],
-                pozitif: 'Zeki, sezgili, gizemli, çekici, kararlı, şifalı.',
-                negatif: 'Kıskanç, sinsi, manipülatif, aşırı gizemli, kindar.',
-                uyumlu: ['Sığır', 'Horoz', 'Ejderha'], zit: ['Domuz'],
-                ozellik: 'Yılan burcu, derin düşünceli ve sezgiseldir. Gizemli bir çekiciliği vardır, sırları saklamakta ustadır. Felsefe ve spiritüel konulara ilgi duyar. Aşkta tutkulu ama mesafelidir. Kariyerde psikoloji, araştırma ve sanatta başarılı olur.'
-            },
-            { id: 'at', ad: 'At', runik: '𐰀𐱃', emoji: '🐴', element: 'Ateş', yon: 'Güney', mevsim: 'Yaz',
-                ugurluSayilar: [2, 3, 7], ugurluRenkler: ['Kırmızı', 'Turuncu', 'Sarı'],
-                pozitif: 'Özgür, enerjik, bağımsız, iyimser, maceracı, sadık.',
-                negatif: 'Sabırsız, asi, sorumsuz, bağlanmaktan kaçar, pervasız.',
-                uyumlu: ['Kaplan', 'Köpek', 'Koyun'], zit: ['Fare'],
-                ozellik: 'At burcu, özgürlüğüne düşkündür ve macera onun için hayatın ta kendisidir. Hareketli ve enerjiktir, uzun süre aynı yerde duramaz. İyimserliğiyle çevresine pozitif enerji yayar. Aşkta bağımsız bir ruh ister. Kariyerde spor, turizm ve girişimcilik idealdir.'
-            },
-            { id: 'koyun', ad: 'Koyun', runik: '𐰸𐰆𐰖', emoji: '🐑', element: 'Toprak', yon: 'Güney', mevsim: 'Yaz',
-                ugurluSayilar: [2, 7, 9], ugurluRenkler: ['Yeşil', 'Beyaz', 'Pembe'],
-                pozitif: 'Yumuşak huylu, yaratıcı, barışçıl, fedakar, sanatçı ruhlu.',
-                negatif: 'Pasif, aşırı hassas, karamsar, bağımlı, kaçak.',
-                uyumlu: ['Tavşan', 'Domuz', 'At'], zit: ['Sığır'],
-                ozellik: 'Koyun burcu, huzurlu ve sanatseverdir. Estetik zevkleri yüksektir, güzel şeylerle çevrelenmek ister. Fedakardır, başkalarının mutluluğu için kendini feda edebilir. Aşkta romantik ve duygusaldır. Kariyerde sanat, müzik, moda ve pedagojide başarılı olur.'
-            },
-            { id: 'maymun', ad: 'Maymun', runik: '𐰢𐰖𐰢𐰣', emoji: '🐒', element: 'Metal', yon: 'Batı', mevsim: 'Sonbahar',
-                ugurluSayilar: [4, 9], ugurluRenkler: ['Beyaz', 'Mavi', 'Sarı'],
-                pozitif: 'Zeki, esprili, hızlı düşünen, çok yönlü, yaratıcı, sosyal.',
-                negatif: 'Dalavereci, güvenilmez, kurnaz, aşırı rekabetçi, sabırsız.',
-                uyumlu: ['Fare', 'Ejderha', 'Yılan'], zit: ['Kaplan'],
-                ozellik: 'Maymun burcu, zekası ve esprili kişiliğiyle öne çıkar. Her konuda ustalaşabilir, çok yönlüdür. Sosyal bir yapısı vardır, yeni insanlarla tanışmaktan keyif alır. Aşkta eğlenceli ve neşelidir. Kariyerde medya, teknoloji ve ticarette başarılı olur.'
-            },
-            { id: 'horoz', ad: 'Horoz', runik: '𐱃𐰍𐰖𐰃𐰞', emoji: '🐓', element: 'Metal', yon: 'Batı', mevsim: 'Sonbahar',
-                ugurluSayilar: [5, 7, 8], ugurluRenkler: ['Kırmızı', 'Altın', 'Kahverengi'],
-                pozitif: 'Disiplinli, dürüst, çalışkan, özenli, sadık, koruyucu.',
-                negatif: 'Eleştirel, titiz, aşırı kuralcı, kibirli, katı.',
-                uyumlu: ['Sığır', 'Yılan', 'Tavşan'], zit: ['Tavşan'],
-                ozellik: 'Horoz burcu, disiplin ve dürüstlüğün simgesidir. İş ahlakı yüksektir, en küçük ayrıntıya bile dikkat eder. Sözünde durur ve sadıktır. Aşkta sadık ve koruyucudur. Kariyerde yönetim, askeriye ve sağlık alanında başarılı olur.'
-            },
-            { id: 'kopek', ad: 'Köpek', runik: '𐰃𐱃', emoji: '🐕', element: 'Toprak', yon: 'Batı', mevsim: 'Sonbahar',
-                ugurluSayilar: [3, 4, 9], ugurluRenkler: ['Kahverengi', 'Sarı', 'Beyaz'],
-                pozitif: 'Sadık, dürüst, koruyucu, çalışkan, adil, güvenilir.',
-                negatif: 'Endişeli, eleştirel, aşırı korumacı, karamsar, bağlılıktan korkar.',
-                uyumlu: ['Kaplan', 'At', 'Tavşan'], zit: ['Ejderha'],
-                ozellik: 'Köpek burcu, sadakati ve dürüstlüğüyle tanınır. En zor zamanlarda bile dostlarından ayrılmaz. Adalet duygusu gelişmiştir, haksızlığa tahammül edemez. Aşkta sadık ve koruyucudur. Kariyerde hukuk, öğretmenlik ve sosyal hizmetlerde başarılı olur.'
-            },
-            { id: 'domuz', ad: 'Domuz', runik: '𐱃𐰆𐰭𐰆𐰔', emoji: '🐖', element: 'Su', yon: 'Kuzeybatı', mevsim: 'Kış',
-                ugurluSayilar: [2, 5, 8], ugurluRenkler: ['Mavi', 'Yeşil', 'Beyaz'],
-                pozitif: 'Cömert, hoşgörülü, çalışkan, sevecen, sabırlı, bilge.',
-                negatif: 'Aşırı rahat, inatçı, tembel, naif, duygusal.',
-                uyumlu: ['Koyun', 'Tavşan', 'Sığır'], zit: ['Yılan'],
-                ozellik: 'Domuz burcu, cömertliği ve hoşgörüsüyle bilinir. Maddi ve manevi olarak başkalarına yardım etmeyi sever. Sabırlı ve bilgedir, zorluklara karşı dirençlidir. Aşkta sevecen ve sadıktır. Kariyerde eğitim, yardım kuruluşları ve sanatta başarılı olur.'
-            }
-        ];
-
-        function hayvanIndeks(yil) { return ((yil - 4) % 12 + 12) % 12; }
-
-        function hayvanGetir(yil) { return hayvanlar[hayvanIndeks(yil)]; }
-
-        function takvimDashboardOlustur() {
-            const simdi = new Date();
-            const yil = simdi.getFullYear();
-            const hayvan = hayvanGetir(yil);
-            const dashboard = document.getElementById('takvim-dashboard');
-            dashboard.innerHTML = `
-                <div class="takvim-dash-card">
-                    <div class="label">📆 Bugünün Yılı</div>
-                    <div class="value">${yil}</div>
-                    <div class="sub">Miladi</div>
-                </div>
-                <div class="takvim-dash-card">
-                    <div class="label">🐾 Bu Yılın Hayvanı</div>
-                    <div class="value">${hayvan.emoji} ${hayvan.ad}</div>
-                    <div class="sub">${hayvan.runik}</div>
-                </div>
-                <div class="takvim-dash-card">
-                    <div class="label">🔮 Element</div>
-                    <div class="value">${hayvan.element}</div>
-                    <div class="sub">Yön: ${hayvan.yon}</div>
-                </div>
-                <div class="takvim-dash-card">
-                    <div class="label">✨ Uğurlu Renk</div>
-                    <div class="value">${hayvan.ugurluRenkler.join(' • ')}</div>
-                    <div class="sub">Uğurlu Sayı: ${hayvan.ugurluSayilar.join(' • ')}</div>
-                </div>
-            `;
-        }
-
-        function takvimGridOlustur() {
-            const grid = document.getElementById('takvim-grid');
-            const simdi = new Date();
-            const yil = simdi.getFullYear();
-            grid.innerHTML = hayvanlar.map((h, i) => {
-                const ilkYil = 4 + i;
-                const yillar = [];
-                for (let y = ilkYil; y <= yil + 20; y += 12) {
-                    if (y >= 1900) yillar.push(y);
-                }
-                const yilGoster = yillar.length > 0 ? `${yillar[0]}–${yillar[yillar.length-1]}` : '—';
-                return `
-                    <div class="takvim-hayvan-card" onclick="takvimDetayAc('${h.id}')">
-                        <span class="emoji-buyuk">${h.emoji}</span>
-                        <div class="isim">${h.ad}</div>
-                        <div class="runik-isim">${h.runik}</div>
-                        <div class="yil-araligi">${yilGoster}</div>
-                        <span class="element-badge">${h.element}</span>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function kendiHayvaniniBul() {
-            const input = document.getElementById('takvim-dogum-input');
-            const yil = parseInt(input.value);
-            if (!yil || yil < 1 || yil > 9999) {
-                document.getElementById('takvim-dogum-sonuc').innerHTML = '❌ Lütfen geçerli bir yıl girin.';
-                return;
-            }
-            const h = hayvanGetir(yil);
-            document.getElementById('takvim-dogum-sonuc').innerHTML = `
-                <span class="hayvan-emojisi">${h.emoji}</span>
-                <span><strong>${h.ad}</strong> (${h.runik}) – ${h.element} grubu</span>
-                <span style="font-size:11px;color:rgba(255,255,255,0.4);margin-left:8px;">${h.ozellik.substring(0,60)}…</span>
-            `;
-            document.querySelectorAll('.takvim-hayvan-card').forEach(c => c.style.borderColor = 'rgba(255,255,255,0.06)');
-            const kart = document.querySelector(`.takvim-hayvan-card[onclick*="${h.id}"]`);
-            if (kart) kart.style.borderColor = 'rgba(192,132,252,0.6)';
-        }
-
-        function takvimDetayAc(id) {
-            const h = hayvanlar.find(item => item.id === id);
-            if (!h) return;
-            const overlay = document.getElementById('takvim-detay-overlay');
-            const container = document.getElementById('takvim-detay-icerik');
-            container.innerHTML = `
-                <div class="takvim-detay-baslik">
-                    <span>${h.emoji}</span> ${h.ad}
-                </div>
-                <div class="takvim-detay-runik">${h.runik}</div>
-                <div class="takvim-detay-element">${h.element} • ${h.yon} • ${h.mevsim}</div>
-                <div class="takvim-detay-ozellik-grid">
-                    <div class="ozet-item"><strong>🌟 Pozitif</strong><span>${h.pozitif}</span></div>
-                    <div class="ozet-item"><strong>⚠️ Negatif</strong><span>${h.negatif}</span></div>
-                    <div class="ozet-item"><strong>🎨 Uğurlu Renkler</strong><span>${h.ugurluRenkler.join(' • ')}</span></div>
-                    <div class="ozet-item"><strong>🔢 Uğurlu Sayılar</strong><span>${h.ugurluSayilar.join(' • ')}</span></div>
-                </div>
-                <div class="takvim-detay-ozellikler">
-                    <strong>🧬 Kişilik ve Karakter</strong><br>
-                    ${h.ozellik}
-                </div>
-                <div style="margin: 6px 0 4px 0;font-size:12px;color:rgba(255,255,255,0.5);">💞 Uyumlu Hayvanlar</div>
-                <div class="takvim-detay-uyum">
-                    ${h.uyumlu.map(u => `<span class="uyumlu">❤️ ${u}</span>`).join('')}
-                    ${h.zit ? `<span class="zit">💔 Zıt: ${h.zit}</span>` : ''}
-                </div>
-                <div class="takvim-detay-sembol">
-                    🏹 Göktürk inancında ${h.ad}, ${h.element} elementini, ${h.yon} yönünü ve ${h.mevsim} mevsimini temsil eder.
-                </div>
-            `;
-            overlay.classList.add('open');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function takvimDetayKapat(e) {
-            if (e && e.target !== e.currentTarget) return;
-            document.getElementById('takvim-detay-overlay').classList.remove('open');
-            document.body.style.overflow = '';
-        }
-
-        // ==========================================================================
-        // SÖZLÜK VERİSİ – 110+ MADDE (TAM)
+        // SÖZLÜK VERİSİ – 110+ TEYİTLİ MADDE
         // ==========================================================================
         const sozlukVerisi = [
-            // Tanrılar
+            // ---- TANRILAR ----
             {
                 id: "tengri",
                 baslik: "Tengri (Gök Tanrı)",
@@ -2794,7 +1998,8 @@
                 destanlar: ["Altay Yaratılış Destanı"],
                 iliskili: ["Su İyesi", "Yer Ana"]
             },
-            // Kahramanlar
+
+            // ---- KAHRAMANLAR ----
             {
                 id: "alp-er-tunga",
                 baslik: "Alp Er Tunga",
@@ -2915,7 +2120,8 @@
                 destanlar: ["Dede Korkut Hikâyeleri"],
                 iliskili: ["Tepegöz", "Dede Korkut"]
             },
-            // Hayvanlar
+
+            // ---- KUTSAL HAYVANLAR ----
             {
                 id: "bozkurt",
                 baslik: "Bozkurt (Börte Çine)",
@@ -3036,7 +2242,8 @@
                 destanlar: ["Oğuz Kağan Destanı"],
                 iliskili: ["Kaplan", "Vaşak"]
             },
-            // Kavramlar
+
+            // ---- KAVRAMLAR ----
             {
                 id: "kut",
                 baslik: "Kut (İlahi Güç)",
@@ -3157,7 +2364,8 @@
                 destanlar: ["Oğuz Kağan Destanı", "Altay Yaratılış Destanı"],
                 iliskili: ["Tengri", "Kam"]
             },
-            // Mekanlar
+
+            // ---- MİTOLOJİK MEKÂNLAR ----
             {
                 id: "gok-17-kat",
                 baslik: "Göğün 17. Katı",
@@ -3206,7 +2414,8 @@
                 destanlar: ["Altay Yaratılış Destanı", "Ergenekon"],
                 iliskili: ["Dağ İyesi", "Tengri"]
             },
-            // Ritüeller
+
+            // ---- RİTÜEL VE İNANIŞLAR ----
             {
                 id: "kurban",
                 baslik: "Kurban",
@@ -3293,7 +2502,224 @@
             }
         ];
 
-        // Sözlük fonksiyonları
+        // ==========================================================================
+        // 12 HAYVANLI TAKVİM – AŞIRI DETAYLI VERİ
+        // ==========================================================================
+        const hayvanlar = [
+            { id: 'fare', ad: 'Fare', runik: '𐰾𐰃𐰲𐰍𐰣', emoji: '🐭', element: 'Su', yon: 'Kuzey', mevsim: 'Kış',
+                ugurluSayilar: [2, 3], ugurluRenkler: ['Mavi', 'Turkuaz', 'Gümüş'],
+                pozitif: 'Zeki, çalışkan, uyumlu, yaratıcı, sezgisel, esprili.',
+                negatif: 'Kaygılı, obsesif, kıskanç, manipülatif, aşırı hassas.',
+                uyumlu: ['Sığır', 'Maymun', 'Ejderha'], zit: ['At'],
+                ozellik: 'Fare burcu, zekası ve pratikliğiyle tanınır. Zor durumlarda hızlı çözüm üretir, her ortama uyum sağlar. Parasal konularda başarılıdır, birikim yapmayı sever. Sezgileri güçlüdür, insanları iyi okur. Aşkta sadık ve romantiktir, ancak kıskançlık yapabilir. Kariyerde yönetici veya danışman olarak başarılı olur.'
+            },
+            { id: 'sigir', ad: 'Sığır', runik: '𐰇𐰏𐰕', emoji: '🐂', element: 'Toprak', yon: 'Kuzeydoğu', mevsim: 'Kış',
+                ugurluSayilar: [1, 4], ugurluRenkler: ['Kırmızı', 'Sarı', 'Kahverengi'],
+                pozitif: 'Güvenilir, sabırlı, kararlı, çalışkan, sadık, sakin.',
+                negatif: 'İnatçı, ağır, aşırı korumacı, duygusuz görünebilir, değişime kapalı.',
+                uyumlu: ['Yılan', 'Horoz', 'Fare'], zit: ['Koyun'],
+                ozellik: 'Sığır burcu, istikrarı ve kararlılığı simgeler. Sakin ve güvenilir bir yapısı vardır, verilen işi en iyi şekilde tamamlar. Geleneğe bağlıdır, aile hayatına düşkündür. Aşkta sadık ve sağlam bir eştir. Kariyerde tarım, inşaat veya bankacılıkta başarılı olur.'
+            },
+            { id: 'kaplan', ad: 'Kaplan', runik: '𐰉𐰺𐰽', emoji: '🐯', element: 'Ateş', yon: 'Doğu', mevsim: 'İlkbahar',
+                ugurluSayilar: [1, 3, 7], ugurluRenkler: ['Turuncu', 'Kırmızı', 'Beyaz'],
+                pozitif: 'Cesur, lider, tutkulu, çekici, özgür ruhlu, adil.',
+                negatif: 'Asabi, sabırsız, baskın, aşırı rekabetçi, risk seven.',
+                uyumlu: ['At', 'Köpek', 'Ejderha'], zit: ['Maymun'],
+                ozellik: 'Kaplan burcu, cesaret ve liderlikle özdeşleşir. Macera ve heyecan onun vazgeçilmezidir. Doğal bir liderdir, insanları etkileme yeteneği yüksektir. Adalet duygusu gelişmiştir. Aşkta tutkulu ve yoğundur. Kariyerde askerlik, spor veya girişimcilikte parlar.'
+            },
+            { id: 'tavsan', ad: 'Tavşan', runik: '𐱃𐰉𐱁𐰍𐰣', emoji: '🐇', element: 'Ağaç', yon: 'Doğu', mevsim: 'İlkbahar',
+                ugurluSayilar: [3, 6, 9], ugurluRenkler: ['Yeşil', 'Pembe', 'Beyaz'],
+                pozitif: 'Nazik, zarif, diplomat, sabırlı, yaratıcı, sezgisel.',
+                negatif: 'Aşırı hassas, kaçak, kararsız, yüzeysel, çekingen.',
+                uyumlu: ['Koyun', 'Domuz', 'Köpek'], zit: ['Horoz'],
+                ozellik: 'Tavşan burcu, zarafeti ve inceliğiyle bilinir. Sanatsal yetenekleri gelişmiştir, güzellikten anlar. Çatışmadan kaçınır, herkesle iyi geçinmek ister. Aşkta romantik ve sadıktır. Kariyerde sanat, tasarım ve diplomatik alanlarda başarılı olur.'
+            },
+            { id: 'ejderha', ad: 'Ejderha', runik: '𐰅𐰔𐰓𐰀', emoji: '🐉', element: 'Odun', yon: 'Doğu', mevsim: 'İlkbahar',
+                ugurluSayilar: [1, 6, 7], ugurluRenkler: ['Kırmızı', 'Altın', 'Turkuaz'],
+                pozitif: 'Güçlü, karizmatik, vizyoner, cesur, zenginlik getirir, koruyucu.',
+                negatif: 'Kibirli, sabırsız, otoriter, aşırı hırslı, kırılgan.',
+                uyumlu: ['Fare', 'Maymun', 'Yılan'], zit: ['Köpek'],
+                ozellik: 'Ejderha burcu, en güçlü ve şanslı hayvanlardan biridir. Büyük hayalleri ve vizyonu vardır, her şeyi başarabileceğine inanır. Karizmasıyla insanları peşinden sürükler. Aşkta tutkulu ve koruyucudur. Kariyerde liderlik, iş dünyası ve sanatta zirveyi hedefler.'
+            },
+            { id: 'yilan', ad: 'Yılan', runik: '𐰖𐰃𐰞𐰣', emoji: '🐍', element: 'Ateş', yon: 'Güney', mevsim: 'Yaz',
+                ugurluSayilar: [2, 8, 9], ugurluRenkler: ['Kırmızı', 'Sarı', 'Siyah'],
+                pozitif: 'Zeki, sezgili, gizemli, çekici, kararlı, şifalı.',
+                negatif: 'Kıskanç, sinsi, manipülatif, aşırı gizemli, kindar.',
+                uyumlu: ['Sığır', 'Horoz', 'Ejderha'], zit: ['Domuz'],
+                ozellik: 'Yılan burcu, derin düşünceli ve sezgiseldir. Gizemli bir çekiciliği vardır, sırları saklamakta ustadır. Felsefe ve spiritüel konulara ilgi duyar. Aşkta tutkulu ama mesafelidir. Kariyerde psikoloji, araştırma ve sanatta başarılı olur.'
+            },
+            { id: 'at', ad: 'At', runik: '𐰀𐱃', emoji: '🐴', element: 'Ateş', yon: 'Güney', mevsim: 'Yaz',
+                ugurluSayilar: [2, 3, 7], ugurluRenkler: ['Kırmızı', 'Turuncu', 'Sarı'],
+                pozitif: 'Özgür, enerjik, bağımsız, iyimser, maceracı, sadık.',
+                negatif: 'Sabırsız, asi, sorumsuz, bağlanmaktan kaçar, pervasız.',
+                uyumlu: ['Kaplan', 'Köpek', 'Koyun'], zit: ['Fare'],
+                ozellik: 'At burcu, özgürlüğüne düşkündür ve macera onun için hayatın ta kendisidir. Hareketli ve enerjiktir, uzun süre aynı yerde duramaz. İyimserliğiyle çevresine pozitif enerji yayar. Aşkta bağımsız bir ruh ister. Kariyerde spor, turizm ve girişimcilik idealdir.'
+            },
+            { id: 'koyun', ad: 'Koyun', runik: '𐰸𐰆𐰖', emoji: '🐑', element: 'Toprak', yon: 'Güney', mevsim: 'Yaz',
+                ugurluSayilar: [2, 7, 9], ugurluRenkler: ['Yeşil', 'Beyaz', 'Pembe'],
+                pozitif: 'Yumuşak huylu, yaratıcı, barışçıl, fedakar, sanatçı ruhlu.',
+                negatif: 'Pasif, aşırı hassas, karamsar, bağımlı, kaçak.',
+                uyumlu: ['Tavşan', 'Domuz', 'At'], zit: ['Sığır'],
+                ozellik: 'Koyun burcu, huzurlu ve sanatseverdir. Estetik zevkleri yüksektir, güzel şeylerle çevrelenmek ister. Fedakardır, başkalarının mutluluğu için kendini feda edebilir. Aşkta romantik ve duygusaldır. Kariyerde sanat, müzik, moda ve pedagojide başarılı olur.'
+            },
+            { id: 'maymun', ad: 'Maymun', runik: '𐰢𐰖𐰢𐰣', emoji: '🐒', element: 'Metal', yon: 'Batı', mevsim: 'Sonbahar',
+                ugurluSayilar: [4, 9], ugurluRenkler: ['Beyaz', 'Mavi', 'Sarı'],
+                pozitif: 'Zeki, esprili, hızlı düşünen, çok yönlü, yaratıcı, sosyal.',
+                negatif: 'Dalavereci, güvenilmez, kurnaz, aşırı rekabetçi, sabırsız.',
+                uyumlu: ['Fare', 'Ejderha', 'Yılan'], zit: ['Kaplan'],
+                ozellik: 'Maymun burcu, zekası ve esprili kişiliğiyle öne çıkar. Her konuda ustalaşabilir, çok yönlüdür. Sosyal bir yapısı vardır, yeni insanlarla tanışmaktan keyif alır. Aşkta eğlenceli ve neşelidir. Kariyerde medya, teknoloji ve ticarette başarılı olur.'
+            },
+            { id: 'horoz', ad: 'Horoz', runik: '𐱃𐰍𐰖𐰃𐰞', emoji: '🐓', element: 'Metal', yon: 'Batı', mevsim: 'Sonbahar',
+                ugurluSayilar: [5, 7, 8], ugurluRenkler: ['Kırmızı', 'Altın', 'Kahverengi'],
+                pozitif: 'Disiplinli, dürüst, çalışkan, özenli, sadık, koruyucu.',
+                negatif: 'Eleştirel, titiz, aşırı kuralcı, kibirli, katı.',
+                uyumlu: ['Sığır', 'Yılan', 'Tavşan'], zit: ['Tavşan'],
+                ozellik: 'Horoz burcu, disiplin ve dürüstlüğün simgesidir. İş ahlakı yüksektir, en küçük ayrıntıya bile dikkat eder. Sözünde durur ve sadıktır. Aşkta sadık ve koruyucudur. Kariyerde yönetim, askeriye ve sağlık alanında başarılı olur.'
+            },
+            { id: 'kopek', ad: 'Köpek', runik: '𐰃𐱃', emoji: '🐕', element: 'Toprak', yon: 'Batı', mevsim: 'Sonbahar',
+                ugurluSayilar: [3, 4, 9], ugurluRenkler: ['Kahverengi', 'Sarı', 'Beyaz'],
+                pozitif: 'Sadık, dürüst, koruyucu, çalışkan, adil, güvenilir.',
+                negatif: 'Endişeli, eleştirel, aşırı korumacı, karamsar, bağlılıktan korkar.',
+                uyumlu: ['Kaplan', 'At', 'Tavşan'], zit: ['Ejderha'],
+                ozellik: 'Köpek burcu, sadakati ve dürüstlüğüyle tanınır. En zor zamanlarda bile dostlarından ayrılmaz. Adalet duygusu gelişmiştir, haksızlığa tahammül edemez. Aşkta sadık ve koruyucudur. Kariyerde hukuk, öğretmenlik ve sosyal hizmetlerde başarılı olur.'
+            },
+            { id: 'domuz', ad: 'Domuz', runik: '𐱃𐰆𐰭𐰆𐰔', emoji: '🐖', element: 'Su', yon: 'Kuzeybatı', mevsim: 'Kış',
+                ugurluSayilar: [2, 5, 8], ugurluRenkler: ['Mavi', 'Yeşil', 'Beyaz'],
+                pozitif: 'Cömert, hoşgörülü, çalışkan, sevecen, sabırlı, bilge.',
+                negatif: 'Aşırı rahat, inatçı, tembel, naif, duygusal.',
+                uyumlu: ['Koyun', 'Tavşan', 'Sığır'], zit: ['Yılan'],
+                ozellik: 'Domuz burcu, cömertliği ve hoşgörüsüyle bilinir. Maddi ve manevi olarak başkalarına yardım etmeyi sever. Sabırlı ve bilgedir, zorluklara karşı dirençlidir. Aşkta sevecen ve sadıktır. Kariyerde eğitim, yardım kuruluşları ve sanatta başarılı olur.'
+            }
+        ];
+
+        function hayvanIndeks(yil) {
+            // Miladi yıldan 4 çıkar, mod 12 (2024 -> Ejderha, indeks 4)
+            return ((yil - 4) % 12 + 12) % 12;
+        }
+
+        function hayvanGetir(yil) {
+            return hayvanlar[hayvanIndeks(yil)];
+        }
+
+        function takvimDashboardOlustur() {
+            const simdi = new Date();
+            const yil = simdi.getFullYear();
+            const hayvan = hayvanGetir(yil);
+            const dashboard = document.getElementById('takvim-dashboard');
+            const bugunHayvan = hayvan;
+            dashboard.innerHTML = `
+                <div class="takvim-dash-card">
+                    <div class="label">📆 Bugünün Yılı</div>
+                    <div class="value">${yil}</div>
+                    <div class="sub">Miladi</div>
+                </div>
+                <div class="takvim-dash-card">
+                    <div class="label">🐾 Bu Yılın Hayvanı</div>
+                    <div class="value">${bugunHayvan.emoji} ${bugunHayvan.ad}</div>
+                    <div class="sub">${bugunHayvan.runik}</div>
+                </div>
+                <div class="takvim-dash-card">
+                    <div class="label">🔮 Element</div>
+                    <div class="value">${bugunHayvan.element}</div>
+                    <div class="sub">Yön: ${bugunHayvan.yon}</div>
+                </div>
+                <div class="takvim-dash-card">
+                    <div class="label">✨ Uğurlu Renk</div>
+                    <div class="value">${bugunHayvan.ugurluRenkler.join(' • ')}</div>
+                    <div class="sub">Uğurlu Sayı: ${bugunHayvan.ugurluSayilar.join(' • ')}</div>
+                </div>
+            `;
+        }
+
+        function takvimGridOlustur() {
+            const grid = document.getElementById('takvim-grid');
+            const simdi = new Date();
+            const yil = simdi.getFullYear();
+            grid.innerHTML = hayvanlar.map((h, i) => {
+                // Her hayvanın yıl aralığı (örnek 2024 Ejderha için 2024+12n)
+                const ilkYil = 4 + i; // Fare: 4, Sığır:5...
+                const yillar = [];
+                for (let y = ilkYil; y <= yil + 20; y += 12) {
+                    if (y >= 1900) yillar.push(y);
+                }
+                const yilGoster = yillar.length > 0 ? `${yillar[0]}–${yillar[yillar.length-1]}` : '—';
+                return `
+                    <div class="takvim-hayvan-card" onclick="takvimDetayAc('${h.id}')">
+                        <span class="emoji-buyuk">${h.emoji}</span>
+                        <div class="isim">${h.ad}</div>
+                        <div class="runik-isim">${h.runik}</div>
+                        <div class="yil-araligi">${yilGoster}</div>
+                        <span class="element-badge">${h.element}</span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function kendiHayvaniniBul() {
+            const input = document.getElementById('takvim-dogum-input');
+            const yil = parseInt(input.value);
+            if (!yil || yil < 1 || yil > 9999) {
+                document.getElementById('takvim-dogum-sonuc').innerHTML = '❌ Lütfen geçerli bir yıl girin.';
+                return;
+            }
+            const h = hayvanGetir(yil);
+            document.getElementById('takvim-dogum-sonuc').innerHTML = `
+                <span class="hayvan-emojisi">${h.emoji}</span>
+                <span><strong>${h.ad}</strong> (${h.runik}) – ${h.element} grubu</span>
+                <span style="font-size:11px;color:rgba(255,255,255,0.4);margin-left:8px;">${h.ozellik.substring(0,60)}…</span>
+            `;
+            // Aynı zamanda kartı vurgula
+            document.querySelectorAll('.takvim-hayvan-card').forEach(c => c.style.borderColor = 'rgba(255,255,255,0.06)');
+            const kart = document.querySelector(`.takvim-hayvan-card[onclick*="${h.id}"]`);
+            if (kart) kart.style.borderColor = 'rgba(192,132,252,0.6)';
+        }
+
+        function takvimDetayAc(id) {
+            const h = hayvanlar.find(item => item.id === id);
+            if (!h) return;
+            const overlay = document.getElementById('takvim-detay-overlay');
+            const container = document.getElementById('takvim-detay-icerik');
+            container.innerHTML = `
+                <div class="takvim-detay-baslik">
+                    <span>${h.emoji}</span> ${h.ad}
+                </div>
+                <div class="takvim-detay-runik">${h.runik}</div>
+                <div class="takvim-detay-element">${h.element} • ${h.yon} • ${h.mevsim}</div>
+
+                <div class="takvim-detay-ozellik-grid">
+                    <div class="ozet-item"><strong>🌟 Pozitif</strong><span>${h.pozitif}</span></div>
+                    <div class="ozet-item"><strong>⚠️ Negatif</strong><span>${h.negatif}</span></div>
+                    <div class="ozet-item"><strong>🎨 Uğurlu Renkler</strong><span>${h.ugurluRenkler.join(' • ')}</span></div>
+                    <div class="ozet-item"><strong>🔢 Uğurlu Sayılar</strong><span>${h.ugurluSayilar.join(' • ')}</span></div>
+                </div>
+
+                <div class="takvim-detay-ozellikler">
+                    <strong>🧬 Kişilik ve Karakter</strong><br>
+                    ${h.ozellik}
+                </div>
+
+                <div style="margin: 6px 0 4px 0;font-size:12px;color:rgba(255,255,255,0.5);">💞 Uyumlu Hayvanlar</div>
+                <div class="takvim-detay-uyum">
+                    ${h.uyumlu.map(u => `<span class="uyumlu">❤️ ${u}</span>`).join('')}
+                    ${h.zit ? `<span class="zit">💔 Zıt: ${h.zit}</span>` : ''}
+                </div>
+                <div class="takvim-detay-sembol">
+                    🏹 Göktürk inancında ${h.ad}, ${h.element} elementini, ${h.yon} yönünü ve ${h.mevsim} mevsimini temsil eder.
+                </div>
+            `;
+            overlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function takvimDetayKapat(e) {
+            if (e && e.target !== e.currentTarget) return;
+            document.getElementById('takvim-detay-overlay').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // ==========================================================================
+        // SÖZLÜK İŞLEVLERİ (mevcut)
+        // ==========================================================================
         let sozlukFavlar = JSON.parse(localStorage.getItem('sozlukFavlar')) || [];
         let sozlukAktifKategori = 'tum';
         let sozlukArama = '';
@@ -3388,7 +2814,78 @@
         }
 
         // ==========================================================================
-        // BURÇ MODAL
+        // GÖKTÜRK ÇEVİRİ (mevcut)
+        // ==========================================================================
+        let mitolojikIndeks = parseInt(sessionStorage.getItem('mitolojikIndeks')) || -1;
+        const mitolojikMetinler = sozlukVerisi.map(m => m.detay);
+
+        function gokturkMitolojikBilgiDegistir() {
+            if (mitolojikIndeks === -1 || mitolojikIndeks >= mitolojikMetinler.length - 1) {
+                mitolojikIndeks = 0;
+            } else {
+                mitolojikIndeks++;
+            }
+            sessionStorage.setItem('mitolojikIndeks', mitolojikIndeks);
+            document.getElementById('gokturkce-mitolojik').innerHTML = mitolojikMetinler[mitolojikIndeks] || mitolojikMetinler[0];
+        }
+
+        function gokturkceCevir() {
+            const input = document.getElementById('gokturkce-input');
+            const ad = input.value.trim().toLowerCase();
+            if (!ad) {
+                document.getElementById('gokturkce-oyuk').textContent = '—';
+                document.getElementById('gokturkce-analiz').style.display = 'none';
+                document.getElementById('gokturk-alt-row').style.display = 'none';
+                return;
+            }
+            const harfMap = {
+                'a': '𐰀', 'b': '𐰋', 'c': '𐰲', 'ç': '𐰲', 'd': '𐰓', 'e': '𐰅', 'f': '𐰋',
+                'g': '𐰏', 'ğ': '𐰏', 'h': '𐰴', 'ı': '𐰃', 'i': '𐰄', 'j': '𐰔', 'k': '𐰚',
+                'l': '𐰞', 'm': '𐰢', 'n': '𐰤', 'o': '𐰆', 'ö': '𐰇', 'p': '𐰯', 'r': '𐰺',
+                's': '𐰽', 'ş': '𐰾', 't': '𐱃', 'u': '𐰆', 'ü': '𐰈', 'v': '𐰋', 'y': '𐰘',
+                'z': '𐰔'
+            };
+            let ceviri = '';
+            for (let ch of ad) {
+                if (ch === ' ') ceviri += ' ';
+                else ceviri += harfMap[ch] || ch;
+            }
+            document.getElementById('gokturkce-oyuk').textContent = ceviri;
+
+            const analizDiv = document.getElementById('gokturkce-analiz');
+            analizDiv.innerHTML = '';
+            const harfler = ad.split('');
+            let toplamDeger = 0;
+            harfler.forEach(h => {
+                const bilgi = harfAnalizi[h];
+                if (bilgi) {
+                    toplamDeger += bilgi.deger;
+                    const item = document.createElement('div');
+                    item.className = 'gokturk-analiz-item';
+                    item.innerHTML = `
+                        <span class="runik-harf">${bilgi.runik}</span>
+                        <span class="harf-bilgi"><span class="harf-adi">${h.toUpperCase()}</span> – ${bilgi.anlam}</span>
+                        <span class="harf-deger">${bilgi.deger}</span>
+                    `;
+                    analizDiv.appendChild(item);
+                } else {
+                    const item = document.createElement('div');
+                    item.className = 'gokturk-analiz-item';
+                    item.innerHTML = `
+                        <span class="runik-harf">?</span>
+                        <span class="harf-bilgi"><span class="harf-adi">${h.toUpperCase()}</span> – (Göktürk alfabesinde yok)</span>
+                        <span class="harf-deger">-</span>
+                    `;
+                    analizDiv.appendChild(item);
+                }
+            });
+            analizDiv.style.display = 'grid';
+            document.getElementById('gokturk-alt-row').style.display = 'flex';
+            document.getElementById('gokturkce-enerji-sayi').textContent = toplamDeger;
+        }
+
+        // ==========================================================================
+        // BURÇ MODAL (mevcut)
         // ==========================================================================
         function openBurcModal() {
             document.getElementById('burc-modal').classList.add('show');
@@ -3397,218 +2894,6 @@
 
         function closeBurcModal() {
             document.getElementById('burc-modal').classList.remove('show');
-        }
-
-        // BURÇ DETAYLARI
-        const burcDetaylari = {
-            "koç": { emoji: "♈", element: "Ateş", tarih: "21 Mart - 19 Nisan", gezegen: "Mars", renk: "Kırmızı",
-                tas: "Yakut, Elmas", ugurluGun: "Salı",
-                ozellik: "Koç burcu, zodyağın ilk burcu olarak cesur, öncü ve dinamik bir yapıya sahiptir.",
-                pozitif: "Cesur, kararlı, lider ruhlu.",
-                negatif: "Sabırsız, fevri, bencil.",
-                uyumlu: ["Aslan", "Yay"], uyumsuz: ["Yengeç", "Oğlak"] },
-            "boğa": { emoji: "♉", element: "Toprak", tarih: "20 Nisan - 20 Mayıs", gezegen: "Venüs", renk: "Yeşil",
-                tas: "Zümrüt", ugurluGun: "Cuma",
-                ozellik: "Boğa burcu, zodyağın en güvenilir ve istikrarlı burcudur.",
-                pozitif: "Güvenilir, sadık, pratik.",
-                negatif: "İnatçı, materyalist, değişime kapalı.",
-                uyumlu: ["Başak", "Oğlak"], uyumsuz: ["Kova", "Aslan"] },
-            "ikizler": { emoji: "♊", element: "Hava", tarih: "21 Mayıs - 20 Haziran", gezegen: "Merkür", renk: "Sarı",
-                tas: "Akuamarin", ugurluGun: "Çarşamba",
-                ozellik: "İkizler burcu, zodyağın en meraklı ve sosyal burcudur.",
-                pozitif: "Zeki, esprili, iletişimci.",
-                negatif: "Kararsız, yüzeysel, güvenilmez.",
-                uyumlu: ["Terazi", "Kova"], uyumsuz: ["Balık", "Başak"] },
-            "yengeç": { emoji: "♋", element: "Su", tarih: "21 Haziran - 22 Temmuz", gezegen: "Ay", renk: "Beyaz",
-                tas: "İnci", ugurluGun: "Pazartesi",
-                ozellik: "Yengeç burcu, zodyağın en duygusal ve koruyucu burcudur.",
-                pozitif: "Duygusal, koruyucu, sadık.",
-                negatif: "Alıngan, huysuz, aşırı duygusal.",
-                uyumlu: ["Akrep", "Balık"], uyumsuz: ["Koç", "Terazi"] },
-            "aslan": { emoji: "♌", element: "Ateş", tarih: "23 Temmuz - 22 Ağustos", gezegen: "Güneş", renk: "Altın",
-                tas: "Yakut", ugurluGun: "Pazar",
-                ozellik: "Aslan burcu, zodyağın tartışmasız kralıdır.",
-                pozitif: "Cömert, neşeli, yaratıcı.",
-                negatif: "Kibirli, dominant, ilgi bağımlısı.",
-                uyumlu: ["Koç", "Yay"], uyumsuz: ["Boğa", "Akrep"] },
-            "başak": { emoji: "♍", element: "Toprak", tarih: "23 Ağustos - 22 Eylül", gezegen: "Merkür", renk: "Lacivert",
-                tas: "Safir", ugurluGun: "Çarşamba",
-                ozellik: "Başak burcu, zodyağın en analitik ve mükemmeliyetçi burcudur.",
-                pozitif: "Analitik, çalışkan, düzenli.",
-                negatif: "Eleştirel, mükemmeliyetçi, endişeli.",
-                uyumlu: ["Boğa", "Oğlak"], uyumsuz: ["İkizler", "Yay"] },
-            "terazi": { emoji: "♎", element: "Hava", tarih: "23 Eylül - 22 Ekim", gezegen: "Venüs", renk: "Pembe",
-                tas: "Opal", ugurluGun: "Cuma",
-                ozellik: "Terazi burcu, zodyağın en zarif ve diplomatik burcudur.",
-                pozitif: "Adil, zarif, diplomatik.",
-                negatif: "Kararsız, yapmacık, çatışmadan kaçar.",
-                uyumlu: ["İkizler", "Kova"], uyumsuz: ["Yengeç", "Oğlak"] },
-            "akrep": { emoji: "♏", element: "Su", tarih: "23 Ekim - 21 Kasım", gezegen: "Plüton", renk: "Bordo",
-                tas: "Obsidyen", ugurluGun: "Salı",
-                ozellik: "Akrep burcu, zodyağın en tutkulu ve gizemli burcudur.",
-                pozitif: "Tutkulu, sadık, sezgili.",
-                negatif: "Kıskanç, kindar, gizemli.",
-                uyumlu: ["Yengeç", "Balık"], uyumsuz: ["Aslan", "Kova"] },
-            "yay": { emoji: "♐", element: "Ateş", tarih: "22 Kasım - 21 Aralık", gezegen: "Jüpiter", renk: "Mor",
-                tas: "Ametist", ugurluGun: "Perşembe",
-                ozellik: "Yay burcu, zodyağın en iyimser ve maceracı burcudur.",
-                pozitif: "İyimser, maceracı, bağımsız.",
-                negatif: "Patavatsız, sorumsuz, bağlanmaktan kaçar.",
-                uyumlu: ["Koç", "Aslan"], uyumsuz: ["Başak", "Balık"] },
-            "oğlak": { emoji: "♑", element: "Toprak", tarih: "22 Aralık - 19 Ocak", gezegen: "Satürn", renk: "Kahverengi",
-                tas: "Granat", ugurluGun: "Cumartesi",
-                ozellik: "Oğlak burcu, zodyağın en disiplinli ve hırslı burcudur.",
-                pozitif: "Disiplinli, azimli, sorumlu.",
-                negatif: "Soğuk, mesafeli, işkolik.",
-                uyumlu: ["Boğa", "Başak"], uyumsuz: ["Koç", "Terazi"] },
-            "kova": { emoji: "♒", element: "Hava", tarih: "20 Ocak - 18 Şubat", gezegen: "Uranüs", renk: "Mavi",
-                tas: "Ametist", ugurluGun: "Cumartesi",
-                ozellik: "Kova burcu, zodyağın en yenilikçi ve sıra dışı burcudur.",
-                pozitif: "Yenilikçi, özgür, insancıl.",
-                negatif: "Duygusuz, asi, tahmin edilemez.",
-                uyumlu: ["İkizler", "Terazi"], uyumsuz: ["Boğa", "Akrep"] },
-            "balık": { emoji: "♓", element: "Su", tarih: "19 Şubat - 20 Mart", gezegen: "Neptün", renk: "Deniz Mavisi",
-                tas: "Akuamarin", ugurluGun: "Perşembe",
-                ozellik: "Balık burcu, zodyağın en hayalperest ve fedakar burcudur.",
-                pozitif: "Şefkatli, yaratıcı, sezgili.",
-                negatif: "Kaçak, bağımlı, aşırı duygusal.",
-                uyumlu: ["Yengeç", "Akrep"], uyumsuz: ["İkizler", "Yay"] }
-        };
-
-        function renderBurcGrid() {
-            const g = document.getElementById("burc-grid");
-            const keys = Object.keys(burcDetaylari);
-            g.innerHTML = keys.map(k => {
-                const b = burcDetaylari[k];
-                return `<div class="burc-card" onclick="selectBurc('${k}')"><span class="burc-emoji">${b.emoji}</span><span class="burc-name">${k.charAt(0).toUpperCase()+k.slice(1)}</span><span class="burc-date">${b.tarih}</span></div>`;
-            }).join('');
-        }
-
-        function selectBurc(key) {
-            const d = burcDetaylari[key];
-            if (!d) return;
-            document.querySelectorAll('.burc-card').forEach(c => c.classList.remove('selected'));
-            document.querySelector(`.burc-card[onclick="selectBurc('${key}')"]`)?.classList.add('selected');
-            const wrap = document.getElementById("burc-detail-wrap");
-            wrap.innerHTML = `
-                <div class="burc-detail-wrap">
-                    <div class="burc-header"><span class="burc-header-emoji">${d.emoji}</span><div class="burc-header-info"><h3>${key.charAt(0).toUpperCase()+key.slice(1)} Burcu</h3><span>${d.tarih} • ${d.element} Grubu • Gezegen: ${d.gezegen}</span></div></div>
-                    <div class="burc-grid-info">
-                        <div class="burc-info-box"><h4>🌟 Detaylı Özellikler</h4><p>${d.ozellik}</p></div>
-                        <div class="burc-info-box"><h4>✨ Pozitif Yönler</h4><p>${d.pozitif}</p><h4 style="margin-top:12px;">⚠️ Negatif Yönler</h4><p>${d.negatif}</p></div>
-                    </div>
-                    <div class="burc-tags"><span class="burc-tag">🎨 Renk: ${d.renk}</span><span class="burc-tag">💎 Taş: ${d.tas}</span><span class="burc-tag">📅 Uğurlu Gün: ${d.ugurluGun}</span></div>
-                    <div class="burc-tags">${d.uyumlu.map(u=>`<span class="burc-tag good">💚 ${u}</span>`).join('')}${d.uyumsuz.map(u=>`<span class="burc-tag bad">💔 ${u}</span>`).join('')}</div>
-                </div>`;
-            wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-
-        // Diğer modal fonksiyonları (kısa)
-        function initAskUyumuSelect() {
-            const s1 = document.getElementById('burc1'),
-                s2 = document.getElementById('burc2');
-            const keys = Object.keys(burcDetaylari);
-            [s1, s2].forEach(sel => {
-                sel.innerHTML = '<option value="">Burç Seçiniz</option>' + keys.map(k =>
-                    `<option value="${k}">${burcDetaylari[k].emoji} ${k.charAt(0).toUpperCase()+k.slice(1)}</option>`
-                ).join('');
-            });
-        }
-
-        function askUyumuHesapla() {
-            const b1 = document.getElementById('burc1').value,
-                b2 = document.getElementById('burc2').value;
-            const sonuc = document.getElementById('ask-sonuc');
-            if (!b1 || !b2) { sonuc.innerHTML = '<p style="color:rgba(255,255,255,0.5);">Lütfen her iki burcu da seçin.</p>'; return; }
-            const d1 = burcDetaylari[b1],
-                d2 = burcDetaylari[b2];
-            let puan = 50;
-            if (d1.element === d2.element) puan += 20;
-            else if ((d1.element === 'Ateş' && d2.element === 'Hava') || (d1.element === 'Hava' && d2.element === 'Ateş')) puan
-                += 15;
-            else if ((d1.element === 'Toprak' && d2.element === 'Su') || (d1.element === 'Su' && d2.element === 'Toprak')) puan
-                += 15;
-            else puan += 5;
-            if (d1.uyumlu.includes(b2) || d2.uyumlu.includes(b1)) puan += 20;
-            if (d1.uyumsuz.includes(b2) || d2.uyumsuz.includes(b1)) puan -= 15;
-            puan = Math.min(100, Math.max(0, puan));
-            let yorum = puan >= 80 ? '💖 Harika!' : puan >= 60 ? '💕 İyi' : puan >= 40 ? '🧐 Zıt' : '💔 Zorlu';
-            sonuc.innerHTML =
-                `<div class="uyum-sonuc"><div>${d1.emoji} ${b1} & ${d2.emoji} ${b2}</div><div class="uyum-puan">${puan}%</div><div class="uyum-detay">${yorum}</div></div>`;
-        }
-
-        function initTarotCards() {
-            const row = document.getElementById('tarot-cards-row');
-            const cards = [
-                { emoji: "🃏", isim: "Mecnun", anlam: "Yeni başlangıçlar.", pozisyon: "Geçmiş" },
-                { emoji: "🧙", isim: "Büyücü", anlam: "Tüm kaynaklar emrinde.", pozisyon: "Bugün" },
-                { emoji: "👸", isim: "Baş Rahibe", anlam: "Sezgilerin yüksek.", pozisyon: "Gelecek" }
-            ];
-            row.innerHTML = cards.map((c, i) => `
-                <div class="tarot-card-wrap" onclick="flipTarot(this, ${i})">
-                    <div class="tarot-card">
-                        <div class="tarot-card-front"><div class="mystic-eye">👁️</div><div class="mystic-text">${c.pozisyon}</div></div>
-                        <div class="tarot-card-back"><div class="tarot-pozisyon">${c.pozisyon}</div><div class="tarot-emoji">${c.emoji}</div><div class="tarot-isim">${c.isim}</div><div class="tarot-anlam">${c.anlam}</div></div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function flipTarot(el) {
-            const card = el.querySelector('.tarot-card');
-            card.classList.toggle('flipped');
-            document.querySelectorAll('.tarot-card').forEach(c => { if (c !== card) c.classList.remove('flipped'); });
-        }
-
-        let quizAdimi = 0,
-            quizPuanlar = {};
-
-        function baslatQuiz() { quizAdimi = 0;
-            quizPuanlar = {};
-            quizGosterSoru(); }
-
-        function quizGosterSoru() {
-            const container = document.getElementById('quiz-icerik');
-            const sorular = [{ soru: 'Partide ne yaparsın?', sec: ['Sohbet', 'Dans', 'Köşe', 'Organizasyon'], burc: [
-                    'ikizler', 'koç', 'balık', 'başak'
-                ] }];
-            if (quizAdimi >= sorular.length) {
-                const enYuksek = Object.keys(quizPuanlar).reduce((a, b) => quizPuanlar[a] > quizPuanlar[b] ? a : b, 'koç');
-                const d = burcDetaylari[enYuksek];
-                container.innerHTML =
-                    `<div class="quiz-sonuc"><div class="quiz-sonuc-emoji">${d.emoji}</div><div class="quiz-sonuc-burc">${enYuksek}</div><p>Sen gerçekten bir ${enYuksek}'sun!</p><button onclick="baslatQuiz()" style="margin-top:14px;background:rgba(147,51,234,0.3);border:1px solid rgba(147,51,234,0.5);color:#fff;padding:8px 24px;border-radius:20px;cursor:pointer;">Tekrar Dene</button></div>`;
-                return;
-            }
-            const q = sorular[quizAdimi];
-            container.innerHTML =
-                `<div class="quiz-soru">${q.soru}</div><div class="quiz-secenekler">${q.sec.map((s, i) => `<div class="quiz-secenek" onclick="quizCevapVer(${i})">${s}</div>`).join('')}</div>`;
-            document.getElementById('quiz-bar').style.width = `${((quizAdimi)/sorular.length)*100}%`;
-        }
-
-        function quizCevapVer(i) {
-            const sorular = [{ sec: ['Sohbet', 'Dans', 'Köşe', 'Organizasyon'], burc: ['ikizler', 'koç', 'balık',
-                    'başak'
-                ] }];
-            const burc = sorular[0].burc[i];
-            quizPuanlar[burc] = (quizPuanlar[burc] || 0) + 1;
-            quizAdimi++;
-            quizGosterSoru();
-        }
-
-        function renderHikayeListesi() {
-            const container = document.getElementById('hikaye-listesi');
-            container.innerHTML = `<div class="hikaye-kart"><div class="hikaye-baslik">🦁 Aslan & 🏹 Yay</div><div class="hikaye-ozet">Ateşin dansı.</div><div class="hikaye-tam">İki ateş burcu tutku dolu.</div></div>`;
-        }
-
-        function initHaritaSehirSelect() {
-            const sel = document.getElementById('harita-sehir');
-            sel.innerHTML = ['İstanbul', 'Ankara', 'İzmir', 'Bursa'].map(s => `<option value="${s}">${s}</option>`).join('');
-        }
-
-        function haritaHesapla() {
-            const sonuc = document.getElementById('harita-sonuc');
-            sonuc.innerHTML =
-                `<div class="harita-sonuc"><h4>Harita</h4><p>Simülasyon sonucu: Koç burcu, yükselen Aslan.</p></div>`;
         }
 
         function initBurcModal() {
@@ -3634,14 +2919,12 @@
                 sessionStorage.setItem('mitolojikIndeks', mitolojikIndeks);
             }
             document.getElementById('gokturkce-mitolojik').innerHTML = mitolojikMetinler[mitolojikIndeks] || mitolojikMetinler[0];
-            // Sözlük, takvim, orhun
+            // Sözlüğü başlat
             sozlukFilterBtnOlustur();
             sozlukFiltrele();
+            // Takvimi başlat
             takvimDashboardOlustur();
             takvimGridOlustur();
-            orhunGoster();
-            // İsim raporu başlangıçta gizli
-            document.getElementById('isim-raporu-container').classList.remove('aktif');
             // Navigasyon tıklama
             document.getElementById("burc-nav").onclick = function(e) {
                 if (e.target.classList.contains("burc-nav-btn")) {
@@ -3660,16 +2943,486 @@
                         sozlukFiltrele();
                         takvimDashboardOlustur();
                         takvimGridOlustur();
-                        orhunGoster();
                     }
                 }
             };
         }
 
         // ==========================================================================
-        // MÜZİK ÇALAR (MEVCUT)
+        // BURÇ GRİDİ (mevcut)
         // ==========================================================================
-        const musicList = [{ title: "", url: "./muzikler/32.mp3" }, { title: "", url: "./muzikler/12345.mp3" }];
+        const burcDetaylari = {
+            "koç": { emoji: "♈", element: "Ateş", tarih: "21 Mart - 19 Nisan", gezegen: "Mars", renk: "Kırmızı",
+                tas: "Yakut, Elmas", ugurluGun: "Salı",
+                ozellik: "Koç burcu, zodyağın ilk burcu olarak cesur, öncü ve dinamik bir yapıya sahiptir. Yönetici gezegeni Mars'ın etkisiyle savaşçı ruhlu, rekabetçi ve hırslıdır. Yeni başlangıçlara bayılır, neredeyse hiçbir şeyden korkmaz. Ancak sabırsızlığı ve düşünmeden hareket etmesi başını belaya sokabilir. Doğal bir liderdir; nereye gitse öne çıkar ve insanları peşinden sürükler. Çabuk öfkelenir ama öfkesi çabuk geçer, kin tutmaz. Macera ve heyecan onun için hayatın tuzu biberidir. Aşk hayatında tutkulu ama bir o kadar da bağımsızlığına düşkündür. Kariyerde girişimci ruhuyla kendi işini kurmaya yatkındır.",
+                pozitif: "Cesur, kararlı, lider ruhlu, enerjik, tutkulu, girişimci, bağımsız, iyimser, rekabetçi, doğrudan.",
+                negatif: "Sabırsız, fevri, bencil olabilir, çabuk öfkelenir, düşünmeden hareket eder, dominant, kaba.",
+                uyumlu: ["Aslan", "Yay", "İkizler"], uyumsuz: ["Yengeç", "Oğlak"] },
+            "boğa": { emoji: "♉", element: "Toprak", tarih: "20 Nisan - 20 Mayıs", gezegen: "Venüs", renk: "Yeşil, Pembe",
+                tas: "Zümrüt, Pembe Kuvars", ugurluGun: "Cuma",
+                ozellik: "Boğa burcu, zodyağın en güvenilir ve istikrarlı burcudur. Venüs'ün yönettiği bu burç, güzelliğe, konfora ve kaliteli yaşama düşkündür. Değişimden hoşlanmaz, rutinlerine bağlıdır. Son derece sabırlıdır ancak sabrı taştığında öfkesi şiddetli olur. Maddi güvence onun için çok önemlidir, bu yüzden iyi bir birikimci ve yatırımcı olabilir. Sanat, müzik ve lezzetli yemekler onun ruhunu besler. İnatçılığıyla ünlüdür; bir kere karar verdiyse onu döndürmek neredeyse imkansızdır. Aşkta sadık, romantik ve sahiplenicidir. Kariyerde istikrarlı tırmanışı sever.",
+                pozitif: "Güvenilir, sadık, pratik, estetik zevkleri yüksek, istikrarlı, sabırlı, şefkatli, kararlı.",
+                negatif: "İnatçı, materyalist, değişime kapalı, kıskanç, sahiplenici, tembel olabilir, aşırı rahatına düşkün.",
+                uyumlu: ["Başak", "Oğlak", "Yengeç"], uyumsuz: ["Kova", "Aslan"] },
+            "ikizler": { emoji: "♊", element: "Hava", tarih: "21 Mayıs - 20 Haziran", gezegen: "Merkür", renk: "Sarı",
+                tas: "Akuamarin, Kaplan Gözü", ugurluGun: "Çarşamba",
+                ozellik: "İkizler burcu, zodyağın en meraklı ve sosyal burcudur. Merkür'ün yönettiği bu burç, iletişim konusunda doğuştan yeteneklidir. Aynı anda birden fazla işle uğraşabilir, zihni sürekli yeni bilgiler arar. Esprili, zeki ve sohbetleriyle herkesi kendine hayran bırakabilir. Ancak kararsızlığı ve yüzeyselliği en büyük handikapıdır. Değişken ruh hali onu bir güneşli bir yağmurlu yapar. Yeni insanlar tanımaya, yeni yerler görmeye bayılır. Aşkta entelektüel uyum arar, sıkılmaya asla gelemez. Kariyerde medya, yazarlık, pazarlama gibi alanlar idealdir.",
+                pozitif: "Zeki, esprili, iletişimci, meraklı, uyumlu, hızlı düşünür, çok yönlü, girişken.",
+                negatif: "Kararsız, yüzeysel, güvenilmez olabilir, dedikoducu, dağınık, huzursuz, çabuk sıkılır.",
+                uyumlu: ["Terazi", "Kova", "Koç"], uyumsuz: ["Balık", "Başak"] },
+            "yengeç": { emoji: "♋", element: "Su", tarih: "21 Haziran - 22 Temmuz", gezegen: "Ay", renk: "Beyaz, Gümüş",
+                tas: "İnci, Aytaşı", ugurluGun: "Pazartesi",
+                ozellik: "Yengeç burcu, zodyağın en duygusal ve koruyucu burcudur. Ay'ın yönettiği bu burç, tıpkı Ay'ın evreleri gibi inişli çıkışlı duygulara sahiptir. Aile ve yuva kavramları onun için her şeyden önce gelir. Sadık, şefkatli ve anaç bir yapıya sahiptir. Sezgileri o kadar güçlüdür ki, karşısındakinin ne düşündüğünü anında hissedebilir. Geçmişe bağlıdır, anılar ve nostalji onun ruhunu besler. Kabuğuna çekilmeyi sever, duygusal yaralarını içinde saklar. Aşkta romantik ve hayalperesttir. Kariyerde hizmet, bakım ve yaratıcılık alanları idealdir.",
+                pozitif: "Duygusal, koruyucu, sadık, sezgileri güçlü, şefkatli, anaç, yaratıcı, vefalı.",
+                negatif: "Alıngan, huysuz, aşırı duygusal, kin tutar, pasif agresif, aşırı korumacı.",
+                uyumlu: ["Akrep", "Balık", "Boğa"], uyumsuz: ["Koç", "Terazi"] },
+            "aslan": { emoji: "♌", element: "Ateş", tarih: "23 Temmuz - 22 Ağustos", gezegen: "Güneş",
+                renk: "Altın Sarısı", tas: "Yakut, Sitrin", ugurluGun: "Pazar",
+                ozellik: "Aslan burcu, zodyağın tartışmasız kralıdır. Güneş tarafından yönetilmesi onu doğal bir ışık kaynağı yapar; girdiği her ortamda dikkatleri üzerine çeker. Cömert, sıcakkanlı ve neşelidir. Yaratıcı enerjisi ve sahne karizmasıyla sanatın her dalında parlayabilir. Liderlik onun kanında vardır, ancak bu liderlik bazen kibir ve dominantlığa dönüşebilir. İltifat duymaya bayılır, takdir edilmediğinde söner. Aşkta görkemli jestler yapar, sadakat bekler. Kariyerde yönetici, sanatçı veya girişimci olarak zirveyi hedefler.",
+                pozitif: "Cömert, neşeli, yaratıcı, lider, kendine güvenir, sadık, sıcakkanlı, cesur.",
+                negatif: "Kibirli, dominant, ilgi bağımlısı, abartılı, kıskanç, inatçı, gösteriş meraklısı.",
+                uyumlu: ["Koç", "Yay", "Terazi"], uyumsuz: ["Boğa", "Akrep"] },
+            "başak": { emoji: "♍", element: "Toprak", tarih: "23 Ağustos - 22 Eylül", gezegen: "Merkür",
+                renk: "Lacivert, Gri", tas: "Safir, Yeşim", ugurluGun: "Çarşamba",
+                ozellik: "Başak burcu, zodyağın en analitik ve mükemmeliyetçi burcudur. Merkür'ün yönettiği bu burç, detaylara inanılmaz derecede hakimdir. Düzen, temizlik ve organizasyon onun olmazsa olmazıdır. Çalışkandır, iş ahlakına büyük saygı duyar. Yardımseverliğiyle tanınır ama eleştirel bakışı bazen insanları kırabilir. Sağlık konusunda takıntılı olabilir. Aklı sürekli bir şeyleri iyileştirmekle meşguldür. Aşkta mesafeli başlar ama güvenince son derece sadık olur. Kariyerde sağlık, mühendislik, editörlük gibi detay odaklı alanlarda mükemmeldir.",
+                pozitif: "Analitik, çalışkan, düzenli, yardımsever, mütevazı, pratik, güvenilir, titiz.",
+                negatif: "Eleştirel, mükemmeliyetçi, endişeli, soğuk görünebilir, takıntılı, esnek olamaz.",
+                uyumlu: ["Boğa", "Oğlak", "Yengeç"], uyumsuz: ["İkizler", "Yay"] },
+            "terazi": { emoji: "♎", element: "Hava", tarih: "23 Eylül - 22 Ekim", gezegen: "Venüs",
+                renk: "Pembe, Mint Yeşili", tas: "Opal, Pembe Turmalin", ugurluGun: "Cuma",
+                ozellik: "Terazi burcu, zodyağın en zarif ve diplomatik burcudur. Venüs tarafından yönetilmesi ona estetik bir bakış açısı ve güzelliğe düşkünlük verir. Adalet duygusu çok gelişmiştir; her zaman her iki tarafı da dinlemeden karar vermez. Uyum ve denge onun hayat felsefesidir, bu yüzden çatışmadan nefret eder. Karar vermekte zorlanır çünkü her seçeneğin artısını eksisini uzun uzun tartar. Sosyal ortamlarda parlaktır, herkesle iyi geçinir. Aşkta romantizmin dibine vurur. Kariyerde hukuk, sanat, danışmanlık gibi alanlarda başarılıdır.",
+                pozitif: "Adil, zarif, diplomatik, sosyal, estetik, işbirlikçi, romantik.",
+                negatif: "Kararsız, yapmacık, çatışmadan kaçar, bağımlı, yüzeysel olabilir, kolay etkilenir.",
+                uyumlu: ["İkizler", "Kova", "Aslan"], uyumsuz: ["Yengeç", "Oğlak"] },
+            "akrep": { emoji: "♏", element: "Su", tarih: "23 Ekim - 21 Kasım", gezegen: "Plüton", renk: "Bordo, Siyah",
+                tas: "Obsidyen, Lal Taşı", ugurluGun: "Salı",
+                ozellik: "Akrep burcu, zodyağın en tutkulu ve gizemli burcudur. Plüton'un yönettiği bu burç, ölüm ve yeniden doğuşun enerjisini taşır. Son derece kararlıdır; bir şeyi kafasına koydu mu asla vazgeçmez. Sezgileri o kadar keskindir ki, yalanı anında hisseder. Sadakat onun için kutsaldır, ihaneti asla affetmez. Duygularını derinde yaşar, herkesin içinde göstermez. Kıskançlık ve sahiplenme duyguları güçlüdür. Aşkta her şeyin en yoğununu ister; ya hep ya hiç. Kariyerde araştırmacı, dedektif, cerrah gibi derinlik gerektiren işlerde parlaktır.",
+                pozitif: "Tutkulu, sadık, sezgili, güçlü, cesur, kararlı, dönüştürücü.",
+                negatif: "Kıskanç, kindar, gizemli, manipülatif, aşırı sahiplenici, öfkeli.",
+                uyumlu: ["Yengeç", "Balık", "Başak"], uyumsuz: ["Aslan", "Kova"] },
+            "yay": { emoji: "♐", element: "Ateş", tarih: "22 Kasım - 21 Aralık", gezegen: "Jüpiter", renk: "Mor, Turkuaz",
+                tas: "Ametist, Turkuaz", ugurluGun: "Perşembe",
+                ozellik: "Yay burcu, zodyağın en iyimser ve maceracı burcudur. Jüpiter'in yönettiği bu burç, şans ve büyüme enerjisini taşır. Özgürlüğüne aşırı düşkündür; kısıtlandığını hissettiği an kaçıp gider. Felsefe, din, yabancı kültürler ve seyahat onun ruhunu besler. Dürüstlüğü bazen patavatsızlığa varır. İyimserliği sayesinde her kötü durumdan bir ders çıkarır. Bağlanmaktan korkar, uzun süreli ilişkilerde özgürlüğünü kaybetme endişesi yaşar. Kariyerde akademisyen, gezgin rehber, yayıncı gibi ufuk açıcı işler idealdir.",
+                pozitif: "İyimser, maceracı, bağımsız, esprili, açık sözlü, cömert, bilge.",
+                negatif: "Patavatsız, sorumsuz, bağlanmaktan kaçar, aşırı iyimser, dağınık.",
+                uyumlu: ["Koç", "Aslan", "Kova"], uyumsuz: ["Başak", "Balık"] },
+            "oğlak": { emoji: "♑", element: "Toprak", tarih: "22 Aralık - 19 Ocak", gezegen: "Satürn",
+                renk: "Kahverengi, Siyah", tas: "Granat, Oniks", ugurluGun: "Cumartesi",
+                ozellik: "Oğlak burcu, zodyağın en disiplinli ve hırslı burcudur. Satürn'ün yönettiği bu burç, zaman ve sabır kavramlarını en iyi bilendir. Başarı onun için bir maratondur; adım adım, emin adımlarla zirveye tırmanır. Sorumluluk sahibidir, verilen görevi eksiksiz yerine getirir. Dışarıdan soğuk ve mesafeli görünebilir ancak içinde derin bir duygusal dünya saklıdır. Geleneğe ve aile değerlerine bağlıdır. Zorluklar karşısında yılmaz, aksine güçlenir. Aşkta ciddidir, uzun vadeli düşünür. Kariyerde yönetici, mimar, mühendis gibi prestijli mesleklerde zirveye oynar.",
+                pozitif: "Disiplinli, azimli, sorumlu, güvenilir, başarı odaklı, olgun, kararlı.",
+                negatif: "Soğuk, mesafeli, işkolik, karamsar, katı, aşırı ciddi.",
+                uyumlu: ["Boğa", "Başak", "Balık"], uyumsuz: ["Koç", "Terazi"] },
+            "kova": { emoji: "♒", element: "Hava", tarih: "20 Ocak - 18 Şubat", gezegen: "Uranüs",
+                renk: "Elektrik Mavisi, Gümüş", tas: "Ametist, Labradorit", ugurluGun: "Cumartesi",
+                ozellik: "Kova burcu, zodyağın en yenilikçi ve sıra dışı burcudur. Uranüs'ün yönettiği bu burç, devrimci fikirler ve gelecek vizyonuyla doludur. Geleneksel kalıplara sığmaz, kendi yolunu çizer. İnsancıldır, toplumsal eşitliğe inanır. Entelektüel sohbetlerden keyif alır, arkadaşlık onun için aşktan daha önemli olabilir. Ancak duygularını ifade etmekte zorlanır. Bağımsızlığına düşkündür. Aşkta arkadaşça bir yakınlık arar. Kariyerde teknoloji, bilim, sosyal girişimcilik gibi alanlarda öncüdür.",
+                pozitif: "Yenilikçi, özgür, insancıl, entelektüel, arkadaş canlısı, ilerici, orijinal.",
+                negatif: "Duygusuz, asi, tahmin edilemez, inatçı, kopuk, aşırı bağımsız.",
+                uyumlu: ["İkizler", "Terazi", "Yay"], uyumsuz: ["Boğa", "Akrep"] },
+            "balık": { emoji: "♓", element: "Su", tarih: "19 Şubat - 20 Mart", gezegen: "Neptün",
+                renk: "Deniz Mavisi, Lavanta", tas: "Akuamarin, Ametist", ugurluGun: "Perşembe",
+                ozellik: "Balık burcu, zodyağın en hayalperest ve fedakar burcudur. Neptün'ün yönettiği bu burç, sezgi ve ilhamın doruk noktasıdır. Empati yeteneği inanılmazdır; karşısındakinin duygularını kendi duygularıymış gibi yaşar. Sanatsal yaratıcılığı olağanüstüdür; müzik, resim, şiir onun ifade alanlarıdır. Gerçeklerden kaçma eğilimi vardır, hayal dünyasına sığınır. Fedakarlığı bazen kendini ihmal etmesine yol açar. Rüyaları ve sezgileri ona rehberlik eder. Aşkta sonsuz bir romantizm arar, masallara inanır. Kariyerde sanatçı, terapist olarak parlar.",
+                pozitif: "Şefkatli, yaratıcı, sezgili, fedakar, uyumlu, romantik, hoşgörülü.",
+                negatif: "Kaçak, bağımlı, aşırı duygusal, gerçeklerden kopuk, kararsız, etkilenmeye açık.",
+                uyumlu: ["Yengeç", "Akrep", "Oğlak"], uyumsuz: ["İkizler", "Yay"] }
+        };
+
+        const gunlukYorumHavuzu = {
+            "koç": ["Bugün enerjin tavan yapacak! Yeni bir başlangıç yapmak için mükemmel bir gün. Ancak ani çıkışların çevrendekileri kırabilir, derin bir nefes almayı unutma. İş yerinde liderlik özelliklerin öne çıkacak, fırsatları değerlendir.",
+                "Liderlik vasfın bugün her zamankinden daha belirgin olacak. İnsanlar senden yönlendirme bekleyecek. Acele karar verme, stratejik düşün.",
+                "Sabırsızlığın bugün başına iş açabilir. Kontrollü ol, her savaşa girme. Akşam saatlerinde güzel bir sürpriz seni bekliyor olabilir."
+            ],
+            "boğa": ["Finansal konularda bugün temkinli olman gerekiyor. Büyük harcamalardan kaçın, bütçeni gözden geçir. Doğa yürüyüşü ruhuna iyi gelecek.",
+                "İnat ettiğin bir konuda bugün esnek olmayı dene. Karşındakinin de haklı olabileceğini kabul etmek seni rahatlatacak.",
+                "Uzun zamandır ertelediğin bir işi bugün nihayet bitirebilirsin. Kendine küçük bir ödül vermeyi unutma."
+            ],
+            "ikizler": ["Sosyal çevrende bugün hareketlilik var. Yeni insanlarla tanışabilir, farklı fikirler edinebilirsin. İletişim becerilerinle bir sorunu kökünden çözeceksin.",
+                "Kararsız kalabilirsin, özellikle iki seçenek arasında gidip gelmek seni yorabilir. İç sesini dinle.",
+                "Kısa bir seyahat ya da şehir dışı planı gündeme gelebilir. Zihnini açacak bir gün seni bekliyor."
+            ],
+            "yengeç": ["Duygusal dalgalanmalar bugün seni zorlayabilir. Sevdiklerinle vakit geçirmek, evinde dinlenmek en iyisi olacak.",
+                "Evini güzelleştirecek değişiklikler yapmak için harika bir gün. Yeni bir dekorasyon fikri aklına düşebilir.",
+                "Anılar bugün canlanabilir, eski bir arkadaşından haber alabilirsin. Nostalji yapmak ruhunu dinlendirecek."
+            ],
+            "aslan": ["Spot ışıkları bugün senin üzerinde olacak! Yeteneklerini sergilemekten çekinme, harika geri dönüşler alacaksın.",
+                "Cömertliğinle herkesi kendine hayran bırakacaksın. Maddi konularda şanslı bir gün.",
+                "Yaratıcı projeler için ilham dolu bir gün. Aklındaki o fikri hayata geçirmek için ilk adımı atabilirsin."
+            ],
+            "başak": ["Detaylara takılıp büyük resmi kaçırma. Bugün biraz daha esnek olmaya çalış.",
+                "Sağlıkla ilgili konulara odaklanmak için uygun bir gün. Ertelediğin check-up'ı yaptırabilirsin.",
+                "Eleştirilerini yapıcı bir dille iletmeyi dene. Herkes senin kadar mükemmeliyetçi olmak zorunda değil."
+            ],
+            "terazi": ["Dengeyi bulmak için çabalayacaksın. Kendine zaman ayır, meditasyon veya sanatsal bir aktivite ruhunu besleyecek.",
+                "Bir anlaşmazlıkta arabulucu rolü üstlenebilirsin. Adalet duygun yükselecek.",
+                "Estetik bir dokunuş yapmak, yeni kıyafetler almak sana iyi gelecek. Bütçeni aşmamaya çalış."
+            ],
+            "akrep": ["Gizli kalmış bir konu bugün aydınlanacak. Sezgilerine güven, yanılmayacaksın.",
+                "Tutkulu olduğun bir alanda derinleşmek için mükemmel bir gün. Araştırma yapmak, yeni şeyler öğrenmek seni canlandıracak.",
+                "Kıskançlık duyguların bugün yükselebilir. Onları kontrol etmeyi öğrenmek seni özgürleştirecek."
+            ],
+            "yay": ["Macera arzun bugün tavan yapacak! Yeni bir hobi, seyahat planı ya da eğitim programı gündeme gelebilir.",
+                "Açık sözlülüğün bugün başına dert açmasın. Diplomatik olmayı dene.",
+                "Felsefi düşüncelere dalabilir, hayatın anlamını sorgulayabilirsin. Ufkunu açacak bir kitapla karşılaşabilirsin."
+            ],
+            "oğlak": ["Kariyer basamaklarını tırmanmak için önemli bir adım atabilirsin. Sorumlulukların artsa da disiplininle üstesinden geleceksin.",
+                "Uzun vadeli hedeflerini gözden geçir. Planlarını güncellemek için uygun bir zaman.",
+                "Bir büyüğünden alacağın tavsiye, yolunu aydınlatacak. Tecrübeye kulak ver."
+            ],
+            "kova": ["Sıra dışı fikirlerinle bugün dikkat çekeceksin. Paylaşmaktan çekinme, beklenmedik bir destek bulabilirsin.",
+                "Arkadaş çevrende beklenmedik bir gelişme olabilir. Yeni insanlarla tanışmak ufkunu açacak.",
+                "Özgürlüğüne düşkünlüğün bugün seni yalnızlaştırabilir. Sevdiklerine zaman ayırmayı ihmal etme."
+            ],
+            "balık": ["Sezgilerin bugün inanılmaz güçlü olacak. İç sesini dinle, doğru yolu sana gösterecek.",
+                "Rüyaların bu gece sana önemli mesajlar taşıyabilir. Uyandığında not almayı unutma.",
+                "Duygusal olarak hassaslaşabilirsin, kendini korumayı bil. Yardım etme isteğin başkaları tarafından suistimal edilebilir."
+            ]
+        };
+
+        const tarotKartlari = [
+            { emoji: "🃏", isim: "Mecnun (The Fool)", anlam: "Yeni başlangıçlar ve macera seni bekliyor." },
+            { emoji: "🧙", isim: "Büyücü (The Magician)", anlam: "Tüm yeteneklerin ve kaynakların emrinde." },
+            { emoji: "👸", isim: "Baş Rahibe (High Priestess)", anlam: "Sezgilerin bugün aşırı yüksek." },
+            { emoji: "👑", isim: "İmparatoriçe (Empress)", anlam: "Bereket, bolluk ve yaratıcılık günü." },
+            { emoji: "🤴", isim: "İmparator (Emperor)", anlam: "Otorite ve disiplin ön planda." },
+            { emoji: "⛪", isim: "Aziz (Hierophant)", anlam: "Geleneklere ve manevi değerlere dönüş zamanı." },
+            { emoji: "💑", isim: "Aşıklar (The Lovers)", anlam: "Önemli bir seçim kapıda. Kalbini dinle." },
+            { emoji: "🚗", isim: "Araba (The Chariot)", anlam: "Zafer seni bekliyor. Engelleri aşmak için irade gücünü kullan." },
+            { emoji: "🦁", isim: "Güç (Strength)", anlam: "İçsel gücün ve cesaretin yüzeye çıkıyor." },
+            { emoji: "🧙‍♂️", isim: "Ermiş (The Hermit)", anlam: "Yalnız kalma ve içe dönme zamanı." },
+            { emoji: "🎡", isim: "Kader Çarkı (Wheel of Fortune)", anlam: "Şans ve değişim rüzgarları esiyor." },
+            { emoji: "⚖️", isim: "Adalet (Justice)", anlam: "Hak ettiğin karşılığı alacaksın." },
+            { emoji: "🙃", isim: "Asılan Adam (The Hanged Man)", anlam: "Beklemeyi ve fedakarlığı öğreniyorsun." },
+            { emoji: "💀", isim: "Ölüm (Death)", anlam: "Büyük bir dönüşümün eşiğindesin." },
+            { emoji: "😇", isim: "Denge (Temperance)", anlam: "Sabır ve uyum günü." },
+            { emoji: "😈", isim: "Şeytan (The Devil)", anlam: "Bağımlılıkların ve korkularınla yüzleşme zamanı." },
+            { emoji: "🏰", isim: "Kule (The Tower)", anlam: "Ani ve sarsıcı değişimler kapıda." },
+            { emoji: "⭐", isim: "Yıldız (The Star)", anlam: "Umut ve ilham seninle." },
+            { emoji: "🌙", isim: "Ay (The Moon)", anlam: "Yanılsamalara dikkat et." },
+            { emoji: "☀️", isim: "Güneş (The Sun)", anlam: "Aydınlık ve mutluluk seni sarıyor." },
+            { emoji: "📯", isim: "Yargı (Judgement)", anlam: "Geçmişinle yüzleş ve kendini affet." },
+            { emoji: "🌍", isim: "Dünya (The World)", anlam: "Bir döngü tamamlanıyor, büyük bir başarıya imza atıyorsun." }
+        ];
+
+        function getDailyTarotCards() {
+            const t = new Date();
+            const gun = t.getDate();
+            const ay = t.getMonth() + 1;
+            const yil = t.getFullYear();
+            const seed = yil * 10000 + ay * 100 + gun;
+            const shuffled = [...tarotKartlari];
+            let rand = seed;
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                rand = (rand * 16807 + 0) % 2147483647;
+                const j = rand % (i + 1);
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            const pozisyonlar = [{ ad: "Geçmiş", ikon: "🌙" }, { ad: "Bugün", ikon: "☀️" }, { ad: "Gelecek", ikon: "⭐" }];
+            return pozisyonlar.map((poz, i) => ({ ...shuffled[i], pozisyon: poz.ad, pozIkon: poz.ikon }));
+        }
+
+        function renderBurcGrid() {
+            const g = document.getElementById("burc-grid");
+            const keys = Object.keys(burcDetaylari);
+            g.innerHTML = keys.map(k => {
+                const b = burcDetaylari[k];
+                return `<div class="burc-card" onclick="selectBurc('${k}')"><span class="burc-emoji">${b.emoji}</span><span class="burc-name">${k.charAt(0).toUpperCase()+k.slice(1)}</span><span class="burc-date">${b.tarih}</span></div>`;
+            }).join('');
+        }
+
+        function selectBurc(key) {
+            const d = burcDetaylari[key];
+            if (!d) return;
+            document.querySelectorAll('.burc-card').forEach(c => c.classList.remove('selected'));
+            document.querySelector(`.burc-card[onclick="selectBurc('${key}')"]`)?.classList.add('selected');
+            const yorum = getDailyComment(key);
+            const wrap = document.getElementById("burc-detail-wrap");
+            wrap.innerHTML = `
+                <div class="burc-detail-wrap">
+                    <div class="burc-header"><span class="burc-header-emoji">${d.emoji}</span><div class="burc-header-info"><h3>${key.charAt(0).toUpperCase()+key.slice(1)} Burcu</h3><span>${d.tarih} • ${d.element} Grubu • Gezegen: ${d.gezegen}</span></div></div>
+                    <div class="burc-grid-info">
+                        <div class="burc-info-box"><h4>🌟 Detaylı Özellikler</h4><p>${d.ozellik}</p></div>
+                        <div class="burc-info-box"><h4>✨ Pozitif Yönler</h4><p>${d.pozitif}</p><h4 style="margin-top:12px;">⚠️ Negatif Yönler</h4><p>${d.negatif}</p></div>
+                    </div>
+                    <div class="burc-tags"><span class="burc-tag">🎨 Renk: ${d.renk}</span><span class="burc-tag">💎 Taş: ${d.tas}</span><span class="burc-tag">📅 Uğurlu Gün: ${d.ugurluGun}</span></div>
+                    <div class="burc-tags">${d.uyumlu.map(u=>`<span class="burc-tag good">💚 ${u}</span>`).join('')}${d.uyumsuz.map(u=>`<span class="burc-tag bad">💔 ${u}</span>`).join('')}</div>
+                    <div class="gunluk-yorum-box"><strong>📆 Günlük Burç Yorumu (${new Date().toLocaleDateString('tr-TR')})</strong><p style="margin-top:8px;">${yorum}</p></div>
+                </div>`;
+            wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function getDailyComment(burc) {
+            const t = new Date();
+            const d = Math.floor((t - new Date(t.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+            const p = gunlukYorumHavuzu[burc] || ["Bugün için yorum bulunamadı."];
+            return p[d % p.length];
+        }
+
+        // ==========================================================================
+        // BURÇ MODALININ DİĞER FONKSİYONLARI (harita, aşk, tarot, quiz, hikayeler) – mevcut
+        // ==========================================================================
+        // AŞK UYUMU
+        function initAskUyumuSelect() {
+            const s1 = document.getElementById('burc1');
+            const s2 = document.getElementById('burc2');
+            const keys = Object.keys(burcDetaylari);
+            [s1, s2].forEach(sel => {
+                sel.innerHTML = '<option value="">Burç Seçiniz</option>' + keys.map(k =>
+                    `<option value="${k}">${burcDetaylari[k].emoji} ${k.charAt(0).toUpperCase()+k.slice(1)}</option>`
+                ).join('');
+            });
+        }
+
+        function askUyumuHesapla() {
+            const b1 = document.getElementById('burc1').value;
+            const b2 = document.getElementById('burc2').value;
+            const sonuc = document.getElementById('ask-sonuc');
+            if (!b1 || !b2) {
+                sonuc.innerHTML = '<p style="color:rgba(255,255,255,0.5);">Lütfen her iki burcu da seçin.</p>';
+                return;
+            }
+            if (b1 === b2) {
+                sonuc.innerHTML = '<p style="color:#f472b6;">Aynı burçlar arası uyum ilginçtir, ama gelin farklı bir kombinasyon deneyelim.</p>';
+                return;
+            }
+            const d1 = burcDetaylari[b1],
+                d2 = burcDetaylari[b2];
+            let puan = 50;
+            if (d1.element === d2.element) puan += 20;
+            else if ((d1.element === 'Ateş' && d2.element === 'Hava') || (d1.element === 'Hava' && d2.element === 'Ateş')) puan
+                += 15;
+            else if ((d1.element === 'Toprak' && d2.element === 'Su') || (d1.element === 'Su' && d2.element === 'Toprak')) puan
+                += 15;
+            else puan += 5;
+            if (d1.uyumlu.includes(b2) || d2.uyumlu.includes(b1)) puan += 20;
+            if (d1.uyumsuz.includes(b2) || d2.uyumsuz.includes(b1)) puan -= 15;
+            puan = Math.min(100, Math.max(0, puan));
+            let yorum = '';
+            if (puan >= 80) yorum = '💖 Harika! Bu çok uyumlu bir çift. İletişim ve tutku üst düzeyde.';
+            else if (puan >= 60) yorum = '💕 İyi bir uyum var, bazı farklılıkları kabul ederek mükemmel olabilirsiniz.';
+            else if (puan >= 40) yorum = '🧐 Zıt kutuplar birbirini çeker, ama çaba gerekir.';
+            else yorum = '💔 Zorlu bir eşleşme, ama her ilişki emek ister.';
+            sonuc.innerHTML = `
+                <div class="uyum-sonuc">
+                    <div>${d1.emoji} ${b1.charAt(0).toUpperCase()+b1.slice(1)} & ${d2.emoji} ${b2.charAt(0).toUpperCase()+b2.slice(1)}</div>
+                    <div class="uyum-puan">${puan}%</div>
+                    <div class="uyum-detay">${yorum}</div>
+                    <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:6px;">Element: ${d1.element} / ${d2.element}</div>
+                </div>
+            `;
+        }
+
+        // TAROT
+        function initTarotCards() {
+            const row = document.getElementById('tarot-cards-row');
+            const cards = getDailyTarotCards();
+            row.innerHTML = cards.map((c, i) => `
+                <div class="tarot-card-wrap" onclick="flipTarot(this, ${i})">
+                    <div class="tarot-card">
+                        <div class="tarot-card-front">
+                            <div class="mystic-eye">👁️</div>
+                            <div class="mystic-text">${c.pozisyon}</div>
+                        </div>
+                        <div class="tarot-card-back">
+                            <div class="tarot-pozisyon">${c.pozIkon} ${c.pozisyon}</div>
+                            <div class="tarot-emoji">${c.emoji}</div>
+                            <div class="tarot-isim">${c.isim}</div>
+                            <div class="tarot-anlam">${c.anlam}</div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function flipTarot(el, i) {
+            const card = el.querySelector('.tarot-card');
+            const isFlipped = card.classList.contains('flipped');
+            document.querySelectorAll('.tarot-card').forEach(c => c.classList.remove('flipped'));
+            if (!isFlipped) card.classList.add('flipped');
+        }
+
+        // QUIZ
+        let quizAdimi = 0,
+            quizPuanlar = {};
+        const quizSorulari = [{
+            soru: 'Bir partide en çok ne yaparsın?',
+            secenekler: ['İnsanlarla tanışıp sohbet ederim', 'Dans ederim', 'Bir köşede kitap okurum',
+                'Organizasyonla ilgilenirim'
+            ],
+            burc: ['ikizler', 'koç', 'balık', 'başak']
+        }, {
+            soru: 'Hangi aktivite seni en çok mutlu eder?',
+            secenekler: ['Seyahat etmek', 'Sanatla uğraşmak', 'Spor yapmak', 'Yemek yapmak'],
+            burc: ['yay', 'terazi', 'aslan', 'boğa']
+        }, {
+            soru: 'Bir arkadaşın sırrını sana emanet ederse, ne yaparsın?',
+            secenekler: ['Sonsuza dek saklarım', 'Çok yakın biriyle paylaşırım', 'Onu yönlendirmeye çalışırım',
+                'Unuturum gider'
+            ],
+            burc: ['akrep', 'yengeç', 'oğlak', 'kova']
+        }, {
+            soru: 'İş hayatında en çok hangi özelliğinle öne çıkarsın?',
+            secenekler: ['Liderlik', 'Detaycılık', 'Yaratıcılık', 'Analitik zeka'],
+            burc: ['aslan', 'başak', 'balık', 'başak']
+        }, {
+            soru: 'Bir tatil planı yapıyorsun, nereyi tercih edersin?',
+            secenekler: ['Dağlar ve doğa', 'Deniz ve kum', 'Tarihi şehirler', 'Hiçbir yer, evde dinlenirim'],
+            burc: ['oğlak', 'yay', 'terazi', 'yengeç']
+        }, {
+            soru: 'Bir sorunla karşılaştığında ilk tepkin ne olur?',
+            secenekler: ['Sakinleşip çözüm ararım', 'Hemen harekete geçerim', 'Duygusal tepki veririm',
+                'Başkalarına danışırım'
+            ],
+            burc: ['boğa', 'koç', 'balık', 'ikizler']
+        }, {
+            soru: 'Hangi renk seni en çok cezbeder?',
+            secenekler: ['Kırmızı', 'Mavi', 'Mor', 'Yeşil'],
+            burc: ['koç', 'kova', 'akrep', 'boğa']
+        }, {
+            soru: 'Bir projede en çok hangi rolde bulunursun?',
+            secenekler: ['Lider', 'Yaratıcı fikir üreten', 'Detayları denetleyen', 'Takım oyuncusu'],
+            burc: ['aslan', 'balık', 'başak', 'terazi']
+        }, {
+            soru: 'Hafta sonunu nasıl geçirirsin?',
+            secenekler: ['Arkadaşlarımla', 'Ailemle', 'Yalnız başıma', 'Yeni bir şey öğrenerek'],
+            burc: ['ikizler', 'yengeç', 'oğlak', 'yay']
+        }, {
+            soru: 'Hayatta en çok neye değer verirsin?',
+            secenekler: ['Özgürlük', 'Güvenlik', 'Sevgi', 'Başarı'],
+            burc: ['kova', 'boğa', 'balık', 'aslan']
+        }];
+
+        function baslatQuiz() {
+            quizAdimi = 0;
+            quizPuanlar = {};
+            document.getElementById('quiz-bar').style.width = '0%';
+            quizGosterSoru();
+        }
+
+        function quizGosterSoru() {
+            const container = document.getElementById('quiz-icerik');
+            if (quizAdimi >= quizSorulari.length) {
+                // sonuç
+                const enYuksek = Object.keys(quizPuanlar).reduce((a, b) => quizPuanlar[a] > quizPuanlar[b] ? a : b);
+                const burcKey = enYuksek || 'koç';
+                const d = burcDetaylari[burcKey];
+                container.innerHTML = `
+                    <div class="quiz-sonuc">
+                        <div class="quiz-sonuc-emoji">${d.emoji}</div>
+                        <div class="quiz-sonuc-burc">${burcKey.charAt(0).toUpperCase()+burcKey.slice(1)}</div>
+                        <p style="color:rgba(255,255,255,0.6);font-size:13px;">Sen gerçekten bir ${burcKey.charAt(0).toUpperCase()+burcKey.slice(1)}'sun!</p>
+                        <p style="font-size:12px;color:rgba(255,255,255,0.3);">${d.ozellik.substring(0,120)}…</p>
+                        <button onclick="baslatQuiz()" style="margin-top:14px;background:rgba(147,51,234,0.3);border:1px solid rgba(147,51,234,0.5);color:#fff;padding:8px 24px;border-radius:20px;cursor:pointer;">Tekrar Dene</button>
+                    </div>
+                `;
+                return;
+            }
+            const q = quizSorulari[quizAdimi];
+            container.innerHTML = `
+                <div class="quiz-soru">${q.soru}</div>
+                <div class="quiz-secenekler">
+                    ${q.secenekler.map((sec, i) => `<div class="quiz-secenek" onclick="quizCevapVer(${i})">${sec}</div>`).join('')}
+                </div>
+            `;
+            document.getElementById('quiz-bar').style.width = `${((quizAdimi)/quizSorulari.length)*100}%`;
+        }
+
+        function quizCevapVer(i) {
+            const q = quizSorulari[quizAdimi];
+            const burc = q.burc[i];
+            quizPuanlar[burc] = (quizPuanlar[burc] || 0) + 1;
+            quizAdimi++;
+            quizGosterSoru();
+        }
+
+        // HİKAYELER
+        function renderHikayeListesi() {
+            const container = document.getElementById('hikaye-listesi');
+            const hikayeler = [
+                { baslik: '🦁 Aslan & 🏹 Yay – Ateşin Dansı', ozet: 'İki ateş burcu, tutku ve macera dolu bir ilişki.',
+                tam: 'Aslan ve Yay, ateş elementinde buluşan iki burçtur. İkisi de özgür ruhlu, maceracı ve iyimserdir. Birlikte dünyayı keşfetmek, yeni yerler görmek ve hayatı dolu dolu yaşamak onların ortak tutkusudur. Aslan\'ın liderliği, Yay\'ın öğretmen ruhuyla birleşince harika bir ikili oluştururlar. Çatışma nadirdir, ama ikisi de inatçı olabilir. Birlikte geçirdikleri her an bir macera filmi gibidir.' },
+                { baslik: '🐂 Boğa & 🌙 Yengeç – Duygusal Liman', ozet: 'Toprak ve suyun buluştuğu huzurlu bir aşk.',
+                tam: 'Boğa ve Yengeç, istikrar ve duygusallığın mükemmel dengesidir. Boğa\'nın sağlamlığı, Yengeç\'in koruyucu ve anaç yapısıyla birleşince güvenli bir liman oluştururlar. Ev hayatına düşkündürler, birlikte yemek yapmak, evlerini güzelleştirmek onlara keyif verir. Zaman zaman Yengeç\'in duygusal dalgalanmaları Boğa\'yı zorlayabilir, ama sabır ve sadakat her şeyin üstesinden gelir.' },
+                { baslik: '💨 İkizler & ⚖️ Terazi – Entelektüel Aşk', ozet: 'Hava burçlarının zihin uyumu.',
+                tam: 'İkizler ve Terazi, hava elementinin iki temsilcisi olarak iletişimde zirve yaparlar. Sohbet, tartışma, fikir alışverişi onların vazgeçilmezidir. Birlikte uzun saatler konuşabilir, kitaplar, filmler ve sanat üzerine derin sohbetler edebilirler. İkizler\'in değişkenliği, Terazi\'nin denge arayışıyla dengelenir. Bu ilişki, zihinsel bir bağın fiziksel çekimden daha güçlü olduğunun kanıtıdır.' },
+                { baslik: '🦂 Akrep & 🐟 Balık – Ruh Eşi Bağı', ozet: 'Su burçlarının en derin ve tutkulu aşkı.',
+                tam: 'Akrep ve Balık, su elementinin en duygusal ve derin iki burcudur. Birbirlerini anlama konusunda eşsiz bir yetenekleri vardır. Akrep\'in tutkusu ve yoğunluğu, Balık\'ın hayal gücü ve şefkatiyle birleşince ruh eşi bağı oluşur. Birlikte sanat, müzik ve manevi konulara düşkündürler. Zor anlarda birbirlerine sonsuz destek olurlar. Bu ilişki, kelimelerin ötesine geçen bir bağdır.' },
+                { baslik: '🐐 Oğlak & 🌾 Başak – Mükemmel Uyum', ozet: 'Toprak burçları arasında en istikrarlı birliktelik.',
+                tam: 'Oğlak ve Başak, disiplin ve mükemmeliyetçiliğin kesiştiği noktadır. İkisi de çalışkan, planlı ve sorumluluk sahibidir. Birlikte hayatlarını sistemli bir şekilde inşa ederler, ortak hedefler belirler ve bu hedeflere adım adım ilerlerler. Eleştirel bakış açıları zaman zaman çatışma yaratabilir, ama ikisi de ilişkinin değerini bilir ve uzun vadeli düşünür. Bu, hayat boyu sürecek bir sadakat hikâyesidir.' }
+            ];
+            container.innerHTML = hikayeler.map((h, i) => `
+                <div class="hikaye-kart" onclick="this.classList.toggle('open')">
+                    <div class="hikaye-baslik">${h.baslik}</div>
+                    <div class="hikaye-ozet">${h.ozet}</div>
+                    <div class="hikaye-tam">${h.tam}</div>
+                </div>
+            `).join('');
+        }
+
+        // DOĞUM HARİTASI
+        function initHaritaSehirSelect() {
+            const sel = document.getElementById('harita-sehir');
+            const sehirler = ['İstanbul', 'Ankara', 'İzmir', 'Bursa', 'Antalya', 'Adana', 'Konya', 'Gaziantep', 'Diyarbakır',
+                'Samsun', 'Erzurum', 'Trabzon', 'Van', 'Şanlıurfa', 'Kayseri', 'Eskişehir', 'Denizli', 'Mersin', 'Kocaeli',
+                'Konya'
+            ];
+            sel.innerHTML = sehirler.map(s => `<option value="${s}">${s}</option>`).join('');
+        }
+
+        function haritaHesapla() {
+            const isim = document.getElementById('harita-isim').value || 'İsimsiz';
+            const tarih = document.getElementById('harita-tarih').value;
+            const saat = document.getElementById('harita-saat').value;
+            const sehir = document.getElementById('harita-sehir').value || 'Bilinmiyor';
+            const sonuc = document.getElementById('harita-sonuc');
+            if (!tarih) {
+                sonuc.innerHTML = '<p style="color:rgba(255,255,255,0.5);">Lütfen doğum tarihinizi girin.</p>';
+                return;
+            }
+            const dt = new Date(tarih + 'T' + (saat || '12:00'));
+            const burcIndex = dt.getMonth() + (dt.getDate() >= 21 ? 1 : 0);
+            const burcKeys = Object.keys(burcDetaylari);
+            const burcKey = burcKeys[burcIndex % 12] || 'koç';
+            const d = burcDetaylari[burcKey];
+            const yukselen = burcKeys[(burcIndex + 4) % 12] || 'aslan';
+            const ay = d.element === 'Ateş' ? 'Mars' : d.element === 'Toprak' ? 'Satürn' : d.element === 'Hava' ? 'Merkür' :
+                'Neptün';
+            sonuc.innerHTML = `
+                <div class="harita-sonuc">
+                    <h4 style="color:#c084fc;margin:0 0 8px;">${isim}’in Doğum Haritası</h4>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:13px;">
+                        <div><strong>🌞 Güneş Burcu:</strong> ${d.emoji} ${burcKey.charAt(0).toUpperCase()+burcKey.slice(1)}</div>
+                        <div><strong>🌙 Ay Burcu:</strong> ${burcDetaylari[yukselen].emoji} ${yukselen.charAt(0).toUpperCase()+yukselen.slice(1)} (Yükselen)</div>
+                        <div><strong>🪐 Yönetici Gezegen:</strong> ${ay}</div>
+                        <div><strong>📍 Doğum Yeri:</strong> ${sehir}</div>
+                        <div><strong>⏰ Doğum Saati:</strong> ${saat || 'Belirtilmemiş'}</div>
+                        <div><strong>📅 Tarih:</strong> ${new Date(tarih).toLocaleDateString('tr-TR')}</div>
+                    </div>
+                    <div class="harita-aciklama">
+                        <strong>📖 Yorum:</strong> ${isim}, ${burcKey} burcunun özelliklerini taşıyor. Yükselen ${yukselen} ise dış dünyaya yansıttığın kişiliği gösteriyor. ${d.element} grubunun etkisiyle ${d.ozellik.substring(0,80)}…
+                    </div>
+                    <div style="margin-top:10px;font-size:10px;color:rgba(255,255,255,0.2);">🪄 Bu harita simülasyon amaçlıdır.</div>
+                </div>
+            `;
+        }
+
+        // ==========================================================================
+        // MÜZİK ÇALAR (mevcut)
+        // ==========================================================================
+        const musicList = [{ title: "", url: "./muzikler/32.mp3" }, { title: "", url: "./muzikler/12345.mp3" }, { title: "", url: "./muzikler/3.mp3" }, { title: "", url: "./muzikler/2.mp3" }, { title: "",
+                url: "./muzikler/7.mp3" }, { title: "", url: "./muzikler/15.mp3" }, { title: "",
+                url: "./muzikler/4.mp3" }, { title: "", url: "./muzikler/18.mp3" }, { title: "",
+                url: "./muzikler/26.mp3" }, { title: "", url: "./muzikler/19.mp3" }, { title: "",
+                url: "./muzikler/27.mp3" }, { title: "", url: "./muzikler/20.mp3" }, { title: "",
+                url: "./muzikler/28.mp3" }, { title: "", url: "./muzikler/29.mp3" }, { title: "",
+                url: "./muzikler/30.mp3" }, { title: "", url: "./muzikler/31.mp3" }, { title: "",
+                url: "./muzikler/25.mp3" }, { title: "", url: "./muzikler/21.mp3" }, { title: "",
+                url: "./muzikler/22.mp3" }, { title: "", url: "./muzikler/23.mp3" }, { title: "",
+                url: "./muzikler/24.mp3" }, { title: "", url: "./muzikler/1.mp3" }, { title: "",
+                url: "./muzikler/5.mp3" }, { title: "", url: "./muzikler/6.mp3" }, { title: "",
+                url: "./muzikler/8.mp3" }, { title: "", url: "./muzikler/9.mp3" }, { title: "",
+                url: "./muzikler/10.mp3" }, { title: "", url: "./muzikler/11.mp3" }, { title: "",
+                url: "./muzikler/12.mp3" }, { title: "", url: "./muzikler/13.mp3" }, { title: "",
+                url: "./muzikler/14.mp3" }, { title: "", url: "./muzikler/16.mp3" }, { title: "",
+                url: "./muzikler/17.mp3" } ];
         let curTrack = 0,
             isPlaying = false,
             isShuffle = false,
@@ -3684,9 +3437,11 @@
             loadTrack(curTrack);
         }
 
-        function loadTrack(i) { audio.src = musicList[i].url;
+        function loadTrack(i) {
+            audio.src = musicList[i].url;
             document.getElementById("track-name").innerText = musicList[i].title;
-            document.getElementById("track-index").innerText = `Şarkı: ${i+1} / ${musicList.length}`; }
+            document.getElementById("track-index").innerText = `Şarkı: ${i+1} / ${musicList.length}`;
+        }
 
         function togglePlay() { const b = document.getElementById("play-pause-btn"),
                 p = document.getElementById("cyber-audio-player"); if (isPlaying) { audio.pause();
@@ -3738,20 +3493,64 @@
         function changeVolume(v) { audio.volume = v; if (v == 1) showToast("🔊 Kulaklarını seviyorsan biraz kıs aslan parçası"); }
 
         // ==========================================================================
-        // KAHVE (MEVCUT)
+        // KAHVE (mevcut)
         // ==========================================================================
-        const coffeeQuotes = ["Derin bir nefes al.", "Kahve molası iyidir.", "Huzur burada."];
+        const coffeeQuotes = [
+            "Derin bir nefes al. Şu an her şey kontrolün altında olmasa bile, bu senin değerini eksiltmez.",
+            "Zor dökümanlar biter, bitmeyen revizyonlar son bulur ama senin iç huzurun kalıcı olmalıdır.",
+            "Elindeki fincanın sıcaklığını hisset ve sadece derin bir nefes al. Şu an o yorucu dünyanın tamamen dışındasın.",
+            "Yetişmen gereken hiçbir yer, kanıtlaman gereken hiçbir şey yok. Bu an sadece senin ve hakkın olan sessizliğin.",
+            "Bırak dışarıdaki dünya kendi telaşıyla dönsün; senin şu anki tek görevin sakince kahveni yudumlamak.",
+            "Hayat bir koşturmaca değil; durduğun, nefes aldığın ve kendine döndüğün bu küçük anların toplamıdır.",
+            "Fincanından yükselen dumanı izle; tıpkı onun gibi, zihnindeki tüm o ağır düşüncelerin de uçup gitmesine izin ver.",
+            "Hak ettiğin o iç huzuru hiçbir iş, hiçbir insan senden çalamaz. Kendini o güvenli, sakin limana bırak.",
+            "Sırtındaki o görünmez yükleri biraz olsun yere bırak. Bu birkaç dakika, sadece senin ruhunu beslemen için var.",
+            "Her şey üst üste geldiyse, durup sakince geri çekilmek pes etmek değil, en asil dinlenme şeklidir.",
+            "Ruhunun pillerini şarj etmesine izin ver. Dinlenmek de en az çalışmak kadar kutsal bir çabadır.",
+            "Başkalarının ne düşündüğü ya da ne kadar hızlı koştuğu önemli değil; sen kendi yolunda, asil bir sakinlikle ilerliyorsun.",
+            "Kahvenin kokusu ruhuna sızarken, içindeki o bitmeyen savaşı durdur. Hak ettiğin barış tam olarak bu anda saklı.",
+            "Büyük başarılar, pes etmek yerine sadece küçük bir kahve molası verenler tarafından inşa edildi.",
+            "Bugün gösterdiğin sabır, yarın kuracağın o özgür dünyanın en sağlam temel taşı olacak.",
+            "Kendine haksızlık etmeyi bırak. Bugün elinden gelenin en iyisini yapıyorsun ve bu tamamen yeterli.",
+            "Yavaşla. Dünya seni bekleyebilir. Bu kahvenin tadı, önündeki tüm işlerden daha önemli.",
+            "Unutma: En karmaşık kodlar bile tek bir düzeltmeyle çözülür. Hayatındaki karmaşa da öyle.",
+            "Sen bir iş unvanından, bir excel tablosundan ya da revizyon raporundan çok daha fazlasısın.",
+            "Zor zamanlar güçlü insanlar yaratır. Şu an vizyonunu genişleten harika bir olgunlaşma dönemindesin.",
+            "Bugünün stresi yarının tecrübesidir. Sakince kahveni yudumla ve zihnini serbest bırak.",
+            "Şu an tam olarak olman gereken yerdesin. Adım adım, acele etmeden hedefine ilerliyorsun.",
+            "Zihnindeki gürültüyü kapat. Sadece kahvenin kokusuna ve aura ritmine odaklan.",
+            "Dünyanın hızı seni ilgilendirmiyor. Sen kendi asil ritminde, kahvenden aldığın o ilk yudumla ilerliyorsun.",
+            "Zihnindeki bildirimleri kapat. Kahvenin sıcaklığına ve şu anın dinginliğine teslim ol.",
+            "Başkalarının acelesi onların sınırıdır. Sen sakince kahveni yudumla ve kendi aura alanını koru.",
+            "Gözlerini kapat, kahvenin kokusunu içine çek ve evrenin senin için fısıldadığı o sakin ritmi dinle.",
+            "Yavaşla. Dünya sen durdun diye dönmekten vazgeçmeyecek. Kahvenin tadını çıkar, gerisi hallolur.",
+            "Geçmişin stresini, geleceğin kaygısını sil at. Şu an sadece sen ve kahvenin o kusursuz dengesi varsınız.",
+            "Başarmak kadar dinlenmek de bir sanattır. Şimdi arkana yaslan ve kahvenin kokusuyla zihnini özgür bırak.",
+            "Harika şeyler zaman alır. Kendine zaman tanı, acele kurulan hayaller çabuk yıkılır.",
+            "Her şey üst üste geliyorsa, belki de yön değiştirme vaktin gelmiştir. Bu mola sana rehberlik etsin.",
+            "Sen durdurulamaz bir güçsün, sadece şu an pillerini şarj etmen gerekiyor. Dinlenmek de işin parçası.",
+            "Başarı bir varış noktası değil, bu zorlu ama öğretici yolculuğun ta kendisidir. Yolun tadını çıkar.",
+            "Bugün karşına çıkan engeller, seni durdurmak için değil, stratejini güçlendirmen için varlar.",
+            "Gelecekteki halin sana bakıp teşekkür edecek. Sırf bugün pes etmediğin ve akıllıca dinlendiğin için.",
+            "İçindeki ışığı kimsenin söndürmesine izin verme. Onlar sadece kendi karanlıklarını yansıtıyorlar.",
+            "Fırtınalar ağaçların köklerini derinleştirir. Yaşadığın kurumsal krizler de senin profesyonelliğini.",
+            "Biraz durup dinlenmek, pes etmek demek değildir. Daha güçlü koşmak için stratejik bir geri çekilmedir.",
+            "Zorlu bir sabahı geride bıraktın, harika bir öğleden sonrasına hazırsın. Kahven sana güç versin.",
+            "Her şey bittiğinde arkana yaslanıp bu günleri tatlı bir tebessümle hatırlayacaksın. İnan bana.",
+            "Zihnini temizle, gereksiz beklentileri tıpkı metindeki çift boşluklar gibi hayatından ayıkla.",
+            "Bugün kendin için küçük bir iyilik yap ve sadece bu ana odaklan. Huzur tam olarak burada saklı.",
+            "Başkalarının ne düşündüğü onların sınırıdır, senin potansiyelinin sınırı ise gökyüzüdür.",
+            "Sakin ol. Hayat bir yarış değil. Kendi ritminde, pürüzsüz ve asil bir şekilde ilerliyorsun.",
+            "Bulutlar dağılır, güneş elbet doğar. Siber evrenin bu geçici yoğunluğu seni asla yıldırmasın."
+        ];
         let coffeeInterval, coffeeDrainInterval, coffeeLevel = 72;
 
         function openCoffeeModal() {
             document.getElementById("coffee-modal").classList.add("show");
             coffeeLevel = 72;
             document.documentElement.style.setProperty('--coffee-level', '72px');
-            document.getElementById("mola-quote-display").innerText = coffeeQuotes[0];
-            coffeeInterval = setInterval(() => {
-                document.getElementById("mola-quote-display").innerText = coffeeQuotes[Math.floor(Math.random() *
-                    coffeeQuotes.length)];
-            }, 5000);
+            switchCoffeeQuote();
+            coffeeInterval = setInterval(switchCoffeeQuote, 7000);
             startCoffeeDrain();
         }
 
@@ -3764,18 +3563,34 @@
         function startCoffeeDrain() {
             if (coffeeDrainInterval) clearInterval(coffeeDrainInterval);
             coffeeDrainInterval = setInterval(() => {
-                if (coffeeLevel <= 0) { stopCoffeeDrain();
-                    showToast("☕ Kahven bitti!"); return; }
+                if (coffeeLevel <= 0) {
+                    stopCoffeeDrain();
+                    showToast("☕ Kahven bitti, hadi işe geri dön aslan parçası!");
+                    return;
+                }
                 coffeeLevel = Math.max(0, coffeeLevel - 2);
                 document.documentElement.style.setProperty('--coffee-level', coffeeLevel + 'px');
             }, 3500);
         }
 
-        function stopCoffeeDrain() { if (coffeeDrainInterval) { clearInterval(coffeeDrainInterval);
-                coffeeDrainInterval = null; } }
+        function stopCoffeeDrain() {
+            if (coffeeDrainInterval) {
+                clearInterval(coffeeDrainInterval);
+                coffeeDrainInterval = null;
+            }
+        }
+
+        function switchCoffeeQuote() {
+            const d = document.getElementById("mola-quote-display");
+            d.classList.add("fade-out");
+            setTimeout(() => {
+                d.innerText = coffeeQuotes[Math.floor(Math.random() * coffeeQuotes.length)];
+                d.classList.remove("fade-out");
+            }, 1500);
+        }
 
         // ==========================================================================
-        // TENGRİ DEDEKTÖRÜ
+        // TENGRİ DEDEKTÖRÜ (mevcut)
         // ==========================================================================
         let isTengriActive = false;
 
@@ -3800,20 +3615,445 @@
         }
 
         // ==========================================================================
-        // BUNU BİLİYOR MUYDUN? (MEVCUT)
+        // BUNU BİLİYOR MUYDUN? (mevcut)
         // ==========================================================================
-        const funFacts = ["Ahtapotların 3 kalbi vardır.", "Muz bir berry'dir."];
+        const funFacts = [
+            "Ahtapotların 3 kalbi vardır. İkisi solungaçlara, biri ise vücudun geri kalanına kan pompalar.",
+            "Muz aslında botanik olarak bir meyveden çok bir çeşit \"berry\" (üzümsü meyve) kabul edilir.",
+            "Dünyadaki karıncaların toplam ağırlığının, insanlığın toplam ağırlığına yakın olduğu tahmin edilir.",
+            "Köpekbalıkları, dinozorlardan yaklaşık 150 milyon yıl daha eskidir.",
+            "Venüs'te bir gün, bir yıldan daha uzundur.",
+            "Kutup ayılarının derisi siyah, tüyleri ise aslında şeffaftır.",
+            "İnsan burnu yaklaşık 1 trilyon farklı kokuyu ayırt edebilir.",
+            "Su samurları uyurken birbirlerini kaybetmemek için el ele tutuşabilir.",
+            "Koalaların parmak izleri, insan parmak izlerine şaşırtıcı derecede benzer.",
+            "Dünya üzerindeki altının büyük kısmının çekirdekte bulunduğu düşünülüyor.",
+            "Ahtapotlar dar oldukları sürece neredeyse her delikten geçebilir; çünkü kemikleri yoktur.",
+            "Penguenler eşlerine küçük taşlar hediye ederek kur yapabilir.",
+            "Gözlerini açık tutarak hapşırmak neredeyse imkânsızdır.",
+            "Uzay tamamen sessizdir; çünkü sesin yayılması için hava gerekir.",
+            "Kalbin, vücuttaki tüm damarlar uç uca eklense yaklaşık 100.000 kilometre uzunluğunda bir ağ oluşur.",
+            "Sıcak su, bazı koşullarda soğuk sudan daha hızlı donabilir. Buna Mpemba etkisi denir.",
+            "Göz kırpmak yaklaşık 0,1 saniye sürer.",
+            "Baykuşlar başlarını yaklaşık 270 derece döndürebilir.",
+            "Denizatı çiftlerinde yavruları taşıyan erkek bireydir.",
+            "Ay'da yürüyen astronotların ayak izleri milyonlarca yıl kalabilir.",
+            "Devekuşunun gözü, beyninden daha büyüktür.",
+            "Cam, teknik olarak tamamen katı değil; çok yavaş akan amorf bir yapıdır.",
+            "Kediler yaklaşık 100 farklı ses çıkarabilir; köpekler ise bunun çok daha azını.",
+            "Gökkuşağı aslında tam bir dairedir; biz yerden sadece üst kısmını görürüz.",
+            "Dünya'daki oksijenin büyük kısmı ormanlardan değil, okyanuslardaki mikroskobik canlılardan gelir.",
+            "Yılanlar göz kapaklarını kapatamaz.",
+            "Filler zıplayamayan memelilerdendir.",
+            "İnsan beyni, vücudun kullandığı enerjinin yaklaşık %20'sini tek başına tüketir.",
+            "Dünya'daki tüm kıtalar, yılda birkaç santimetre hareket etmeye devam eder.",
+            "Bir kartal, insan gözünden yaklaşık 4-5 kat daha keskin görebilir.",
+            "Dünyadaki tüm insanları omuz omuza dizsen, sadece İstanbul'un yüzölçümünden çok daha küçük bir alana sığarlar.",
+            "Bir bulutun ağırlığı 100 fili geçebilir.",
+            "Kargalar insan yüzlerini yıllarca unutmaz ve kendilerine kötülük yapan kişileri tanıyabilir.",
+            "Bazı papağanlar, anlamını öğrendikleri kelimeleri doğru bağlamda kullanabilir.",
+            "Balinalar birbirlerine yüzlerce kilometre uzaklıktan seslenebilir.",
+            "Deniz samurları en sevdikleri taşı yıllarca yanlarında taşır.",
+            "Ağaçlar, böcek saldırısına uğradıklarında çevredeki ağaçlara kimyasal \"tehlike\" sinyali gönderebilir.",
+            "Karıncalar savaş yapar, asker yetiştirir ve hatta bazı türleri başka karınca kolonelerini köleleştirir.",
+            "Bir salyangozun binlerce minik dişi olabilir.",
+            "Bazı mantarlar, yıldırım düştükten sonra daha hızlı büyüyebilir.",
+            "Geceleri gökyüzünde gördüğün bazı yıldızların ışığı, sen doğmadan çok önce yola çıktı.",
+            "Venüs'te Güneş batıdan doğup doğudan batar.",
+            "Uzayda ağlamak mümkün olsa bile gözyaşları aşağı düşmez, yüzünde baloncuk gibi birikir.",
+            "İnsan beyni yaklaşık 86 milyar nörondan oluşur.",
+            "Rüyanda hiç görmediğin bir yüzü üretmen çok düşük ihtimaldir; beynin genellikle daha önce gördüğü yüzleri kullanır.",
+            "Beynin, sen uyurken bile çevrendeki bazı sesleri takip etmeye devam eder.",
+            "Penguenler eşlerini seslerinden binlerce penguen arasından bulabilir.",
+            "Bazı örümcekler avlarını yakalamak için ağ değil, lasso (kement) kullanır.",
+            "Bir timsahın çene kapatma kuvveti çok yüksektir ama ağzını açan kasları oldukça zayıftır.",
+            "Bir gün, Dünya'daki bütün kıtalar tekrar birleşerek tek süper kıta oluşturacak.",
+            "Şu anda vücudundaki atomların büyük kısmı, milyarlarca yıl önce patlayan yıldızların içinde oluştu. Teknik olarak hepimiz \"yıldız tozuyuz.\"",
+            "İnsan vücudundaki bakteriler, hücrelerden 10 kat fazladır.",
+            "Bir gün tam olarak 24 saat değildir. Dünya'nın kendi ekseni etrafındaki dönüşü yaklaşık 23 saat 56 dakikadır (yıldız günü).",
+            "İnsan beyni, uyanıkken yaklaşık 20 watt güç tüketir. Bu, küçük bir ampulü yakmaya yeter.",
+            "Dünya'daki tüm karıncaların toplam kütlesi, bazı tahminlere göre tüm yabani memelilerin toplam kütlesine yakındır.",
+            "Zürafaların da insanlar gibi yedi boyun omuru vardır. Tek fark, omurların çok daha uzun olmasıdır.",
+            "Bir bulut yüzlerce ton su taşıyabilir. Buna rağmen su damlacıkları çok küçük olduğu için havada kalabilir.",
+            "Su, donarken hacmi artan nadir maddelerden biridir. Bu yüzden buz suyun üzerinde yüzer.",
+            "Bir insanın DNA'sı açılıp uç uca eklense yaklaşık 2 metre uzunluğa ulaşır. Bu uzunluk neredeyse tüm hücrelerde bulunur.",
+            "Ahtapotların kanı mavidir. Bunun nedeni demir yerine bakır içeren hemosiyanin pigmentidir.",
+            "Bir ağacın büyük kısmı toprağın değil, havadaki karbondioksitin ürünüdür. Kütlesinin çoğunu atmosferden aldığı karbon oluşturur.",
+            "Timsahlar dillerini dışarı çıkaramaz. Dil ağız tabanına sıkıca bağlıdır.",
+            "Kelebekler ayaklarıyla tat alabilir.",
+            "Kalbiniz yaşamınız boyunca yaklaşık 2-3 milyar kez atar.",
+            "Güneş'in ışığı Dünya'ya yaklaşık 8 dakika 20 saniyede ulaşır.",
+            "Köpekbalıkları, dinozorlardan yaklaşık 200 milyon yıl daha yaşlıdır.",
+            "Bir yıldırım, Güneş'in yüzeyinden yaklaşık 5 kat daha sıcaktır.",
+            "Venüs'te bir gün, bir yıldan daha uzundur.",
+            "Jüpiter'e yaklaşık 1.300 Dünya sığabilir.",
+            "İnsan beyni yaklaşık 86 milyar nöron içerir.",
+            "Okyanusların büyük bölümü hâlâ tam olarak keşfedilememiştir.",
+            "Kargalar yıllarca insan yüzlerini hatırlayabilir.",
+            "Arılar birbirlerine dans ederek yön tarif eder.",
+            "Yarasalar aktif uçabilen tek memelidir.",
+            "Ahtapotlar kavanoz kapağı açabilecek kadar zekidir.",
+            "Develerin hörgücünde su değil, yağ depolanır.",
+            "Ay'da atmosfer olmadığı için ses duyulmaz.",
+            "Ağaçlar yer altındaki mantar ağlarıyla besin paylaşabilir.",
+            "İnsan vücudundaki en güçlü kas, çene kaslarından biridir.",
+            "Bir insan ömrü boyunca ortalama 100.000 kilometreden fazla yürür.",
+            "Denizanaları dinozorlardan bile daha eskidir.",
+            "Bir karınca kendi ağırlığının 50 katını kaldırabilir.",
+            "Dünya'nın manyetik alanı her 200.000 yılda bir tersine döner.",
+            "Güneş, her saniye 600 milyon ton hidrojeni helyuma dönüştürür.",
+            "Okyanuslarda yaşayan türlerin sadece %5'i biliniyor.",
+            "Bir salyangoz 3 yıl uyuyabilir.",
+            "Ahtapotların üç kalbi vardır.",
+            "Zürafaların dilleri 50 cm uzunluğa ulaşabilir.",
+            "Kutup ayılarının derisi siyahtır.",
+            "Bir çekirge, kendi vücut uzunluğunun 20 katı sıçrayabilir.",
+            "Baykuşlar başlarını 270 derece çevirebilir.",
+            "Bir deve 15 dakikada 100 litre su içebilir.",
+            "Denizatları, erkekleri tarafından doğurulan tek hayvandır.",
+            "Arılar dans ederek yiyecek kaynağının yerini tarif eder.",
+            "Köpekler insanların duygularını koklayarak anlayabilir.",
+            "Kediler sadece insanlara miyavlar.",
+            "Bir fil 60 yaşına kadar dişlerini yenileyebilir.",
+            "Timsahlar ağızlarını açarken çenelerini yukarı kaldıramaz.",
+            "Yunuslar gözleri açık uyuyabilir.",
+            "Kartallar 3 km yükseklikten bir tavşan görebilir.",
+            "Dünyanın en hızlı hayvanı şahindir (400 km/s).",
+            "Bir kanguru 10 metre uzunluğa sıçrayabilir.",
+            "Papağanlar 100 yıla kadar yaşayabilir.",
+            "Köpekbalıkları 400 milyon yıldır neredeyse değişmeden yaşıyor.",
+            "İnsan gözü yaklaşık 10 milyon farklı rengi ayırt edebilir.",
+            "Kalp bir insan hayatı boyunca ortalama 2.5 milyar kez atar.",
+            "İnsan saçı yılda ortalama 15 cm uzar.",
+            "Tırnaklar saçtan daha hızlı uzar.",
+            "İnsan vücudundaki kan günde 19.000 km yol alır.",
+            "Bir insan ömrü boyunca ortalama 50.000 litre su içer.",
+            "Kemikler çeliğin 5 katı kadar güçlüdür.",
+            "İnsan beyni 100 milyar sinir hücresi içerir.",
+            "Gece uyumadan önce beyin gün içinde öğrendiklerimizi işler.",
+            "Bir insan günde ortalama 20.000 nefes alır.",
+            "Kalp vücuttaki en güçlü kastır.",
+            "İnsan iskeleti 206 kemikten oluşur.",
+            "Gülmek bağışıklık sistemini güçlendirir.",
+            "Bir müzik parçası beynin birden fazla bölgesini aynı anda aktive eder.",
+            "Şarkı söylemek stresi azaltan bir egzersizdir.",
+            "Klasik müzik dinlemek odaklanmayı artırabilir.",
+            "Film korku sahneleri kalp atışını hızlandırır.",
+            "Dans etmek koşmaktan daha fazla kalori yakar.",
+            "Rüya görmek beynin bilgileri işlemesine yardımcı olur.",
+            "Kahve dünyada en çok tüketilen içeceklerden biridir.",
+            "İlk çikolata MÖ 1900 civarında Meksika'da yapıldı.",
+            "Bir bardak süt yaklaşık 300 mg kalsiyum içerir.",
+            "Bal asla bozulmaz, 3.000 yıllık bal bulunmuştur.",
+            "Dünyanın en pahalı baharatı safran (50$/gr).",
+            "Pizza dünyada en çok tüketilen fast-food yemeğidir.",
+            "Türkiye dünyada en çok çay tüketen ülkedir.",
+            "Sushi aslında Japon değil, Çin kökenlidir.",
+            "Mısır dünyada en çok yetiştirilen tahıldır.",
+            "Mantarlar bitki değil, mantar krallığına aittir.",
+            "Bir inek günde 50 litre süt üretebilir.",
+            "Patates uzayda yetiştirilen ilk sebzeydi.",
+            "Çilek aslında bir meyve değil, bir 'çiçek' grubundandır.",
+            "Domates İtalya'ya 16. yüzyılda geldi.",
+            "Biber içerdiği kapsaisin ile vücut ısısını artırır.",
+            "Bir kilo bal yapmak için arıların 2 milyon çiçek ziyaret etmesi gerekir.",
+            "Dünya üzerinde 7.000'den fazla dil konuşuluyor.",
+            "En yaygın ikinci dil İngilizce (1,5 milyar kişi).",
+            "En zor öğrenilen dillerden biri Mandarin Çincesi.",
+            "Dünyada en çok konuşulan ana dil İspanyolca.",
+            "Türkçe dünyada en çok konuşulan 20. dildir.",
+            "Her 14 günde bir dil yok oluyor.",
+            "Eski Mısır hiyeroglifleri 1.800 yıl boyunca çözülemedi.",
+            "Bir metnin %80'ini oluşturan 200 kelime vardır.",
+            "Dünyanın en uzun kelimesi 189.819 harften oluşuyor.",
+            "Okuma yazma oranı en yüksek ülke Finlandiya'dır.",
+            "En çok kitap okuyan ülke Hindistan'dır.",
+            "Dünya'da her yıl 2 milyon kitap yayınlanıyor.",
+            "Bir insan ömrü boyunca ortalama 500 kitap okuyabilir.",
+            "Antik Yunan'da kitaplar papirüs rulolarından oluşuyordu.",
+            "En eski yazılı metin Sümerlerin çivi yazısıdır (MÖ 3400).",
+            "Tarih boyunca en çok çevrilen kitap İncil'dir.",
+            "En uzun roman 'Les Misérables' 1.200 sayfadan oluşur.",
+            "Harry Potter serisi dünya çapında 500 milyon kopya sattı.",
+            "Dünyanın en eski üniversitesi 859'da Fas'ta kuruldu.",
+            "İlk okul MÖ 2000'de Mezopotamya'da açıldı.",
+            "Dünyada 1 milyardan fazla insan okuma yazma bilmiyor.",
+            "Bir öğrenci okul hayatı boyunca 10.000 saat ders alıyor.",
+            "Tarihteki ilk Olimpiyat oyunları MÖ 776'da Yunanistan'da yapıldı.",
+            "Her gün 30 dakika yürümek ömrü uzatabilir.",
+            "Futbol dünyanın en popüler sporudur.",
+            "Basketbol 1891'de ABD'de icat edildi.",
+            "Yüzme tüm kas gruplarını çalıştıran tek spordur.",
+            "Bir maraton 42.195 km uzunluğundadır.",
+            "En hızlı koşucu Usain Bolt (9.58 sn – 100m).",
+            "Masa tenisi en hızlı refleks gerektiren sporlardandır.",
+            "Yoga 5.000 yıldan uzun süredir uygulanmaktadır.",
+            "Dünya nüfusu 8 milyarı geçti.",
+            "Dünya üzerinde 195 ülke bulunur.",
+            "Çin dünyanın en kalabalık ülkesidir.",
+            "Vatikan dünyanın en küçük ülkesidir (0.44 km²).",
+            "Dünya'nın en büyük okyanusu Pasifik'tir.",
+            "En uzun nehir Nil Nehri'dir (6.650 km).",
+            "En yüksek dağ Everest'tir (8.848 m).",
+            "Dünya'da 1.500'den fazla aktif yanardağ bulunur.",
+            "Güneş sistemi 4.6 milyar yaşındadır.",
+            "Ay Dünya'dan her yıl 3.8 cm uzaklaşıyor.",
+            "Jüpiter Güneş sistemindeki en büyük gezegendir.",
+            "Merkür en küçük gezegendir.",
+            "Venüs Dünya'nın ikiz kardeşi olarak bilinir.",
+            "Mars'ta su bulunmuştur.",
+            "Uranüs yan dönmüş bir gezegendir.",
+            "Neptün en rüzgarlı gezegendir (2.100 km/s).",
+            "Plüton 2006'da gezegenlikten çıkarıldı.",
+            "Güneş'in yüzeyi 5.500°C'dir.",
+            "Samanyolu'nda 100 milyar yıldız bulunur.",
+            "Uzayda 13 milyar ışık yılı uzaklıkta galaksiler var.",
+            "Ay'da yer çekimi Dünya'nın 1/6'sıdır.",
+            "Uluslararası Uzay İstasyonu 400 km yükseklikte döner.",
+            "Uzayda bir gün 24 saat değil, 90 dakikadır.",
+            "Dünya'nın atmosferi %78 azot, %21 oksijenden oluşur.",
+            "Ozon tabakası güneşin zararlı ışınlarını emer.",
+            "Küresel ısınma her 10 yılda 0.2°C artıyor.",
+            "Okyanuslar Dünya yüzeyinin %70'ini kaplar.",
+            "En derin okyanus noktası Mariana Çukuru'dur (11 km).",
+            "Kutup buzulları her yıl 1.2 milyar ton eriyor.",
+            "Amazon Ormanları dünya oksijeninin %20'sini üretir.",
+            "Mısır piramitleri 4.500 yıldır ayakta.",
+            "Roma İmparatorluğu 1.000 yıldan fazla hüküm sürdü.",
+            "İstanbul 1.600 yıl boyunca üç büyük imparatorluğa başkentlik yaptı.",
+            "Osmanlı İmparatorluğu 600 yıl ayakta kaldı.",
+            "Çin Seddi 21.000 km uzunluğundadır.",
+            "İlk araba 1886'da Karl Benz tarafından yapıldı.",
+            "İlk uçak 1903'te Wright Kardeşler tarafından uçuruldu.",
+            "Tarihteki ilk para Lidyalılar tarafından MÖ 600'de basıldı.",
+            "Takvim Mısırlılar tarafından 5.000 yıl önce geliştirildi.",
+            "Pisagor matematiğin temellerini attı.",
+            "Sosyal medyada en çok takipçiye sahip kişi Cristiano Ronaldo.",
+            "Instagram 2010'da piyasaya sürüldü.",
+            "WhatsApp 2009'da kuruldu.",
+            "Facebook 2004'te üniversite öğrencileri için başladı.",
+            "TikTok dünya genelinde 1 milyar kullanıcıya ulaştı.",
+            "Her gün 500 milyon tweet atılıyor.",
+            "YouTube dünyanın en büyük video platformudur.",
+            "Leonardo da Vinci hem sanatçı hem de mucitti.",
+            "Mona Lisa dünyanın en ünlü tablosudur.",
+            "Van Gogh yaşamı boyunca sadece bir tablo sattı.",
+            "Pablo Picasso 20. yüzyılın en etkili sanatçılarındandır.",
+            "En pahalı tablo Salvator Mundi (450 milyon $).",
+            "Müzik beynin ödül merkezini harekete geçirir.",
+            "Beatles tüm zamanların en çok satan müzik grubudur.",
+            "Mozart 5 yaşında beste yapmaya başladı.",
+            "Bach Barok müziğin en büyük ismidir.",
+            "Gitar dünyada en çok çalınan enstrümandır.",
+            "Piyano 300 yılı aşkın süredir popülerdir.",
+            "Dünyada her yıl 200'den fazla müzik festivali düzenleniyor.",
+            "Spotify 2006'da kuruldu.",
+            "Türkiye'de ilk sinema 1896'da gösterime girdi.",
+            "Avatar dünyanın en çok hasılat yapan filmidir (2.9 milyar $).",
+            "Titanik 1997'de 11 Oscar kazandı.",
+            "Hollywood dünyanın en büyük film endüstrisidir.",
+            "Disney 1923'te kuruldu.",
+            "Dünya üzerinde 2.000'den fazla müze var.",
+            "Louvre Müzesi yılda 10 milyon ziyaretçi alır.",
+            "Tarihteki ilk fotoğraf 1826'da çekildi.",
+            "İnternette her gün 4 milyar video izleniyor.",
+            "Türkiye'deki ilk matbaa 1727'de kuruldu.",
+            "Dünyanın en büyük kütüphanesi Kongre Kütüphanesi'dir.",
+            "En eski şehir Jericho'dur (MÖ 9000).",
+            "Vikingler Kuzey Amerika'ya 1000 yıl önce ayak bastı.",
+            "Sokrates 'Bildiğim tek şey hiçbir şey bilmediğimdir.' demiştir.",
+            "Aristoteles bilim ve felsefenin temellerini attı.",
+            "Platon ideal devlet fikrini ortaya attı.",
+            "İnsan Hakları Evrensel Bildirgesi 1948'de kabul edildi.",
+            "Demokrasi antik Yunan'da Atina'da doğdu.",
+            "Cumhuriyet Roma'da MÖ 509'da ilan edildi.",
+            "Dünya'da her yıl 100 milyon ağaç kesiliyor.",
+            "Denizler plastik kirliliği nedeniyle tehdit altında.",
+            "Temiz su kaynakları küresel sorunların başında geliyor.",
+            "Her yıl 1 milyon canlı türü yok olma tehlikesiyle karşı karşıya.",
+            "Geri dönüşüm doğal kaynakların korunmasına yardımcı olur.",
+            "Güneş enerjisi dünyanın en temiz enerji kaynaklarından biridir.",
+            "Rüzgar enerjisi 2023'te elektrik üretiminin %10'unu karşıladı.",
+            "Elektrikli araçlar fosil yakıt kullanımını azaltıyor.",
+            "Mikroplastikler okyanuslarda her yerde bulunuyor.",
+            "Ozon tabakasındaki incelme uluslararası anlaşmalarla yavaşladı.",
+            "Bambu en hızlı büyüyen bitkidir (günde 1 metre).",
+            "Dünya her yıl 2 milyar ton çöp üretiyor.",
+            "Tarihteki en eski fosil 3.5 milyar yaşında.",
+            "İlk canlılar okyanuslarda ortaya çıktı.",
+            "İnsan yaklaşık 300.000 yıldır var.",
+            "Neanderthaller modern insanlardan farklı bir türdü.",
+            "Tarih öncesi dönemde mağara resimleri yapılıyordu.",
+            "Tarım insanlık tarihinde devrim yarattı (MÖ 10.000).",
+            "Tekerlek MÖ 3500'de Mezopotamya'da icat edildi.",
+            "Matbaa 1440'ta Gutenberg tarafından geliştirildi.",
+            "Barut Çin'de 9. yüzyılda keşfedildi.",
+            "Telefon 1876'da Alexander Graham Bell tarafından icat edildi.",
+            "İlk radyo yayını 1906'da yapıldı.",
+            "Televizyon 1927'de icat edildi.",
+            "Bilgisayar 1940'larda geliştirildi.",
+            "Bir insan ömrü boyunca ortalama 25 kg saç tıraş eder.",
+            "Kalp günde ortalama 100.000 kez atar.",
+            "En hızlı rüzgar 408 km/s ile Avustralya'da ölçüldü (1996).",
+            "Bir çift ayakkabı ortalama 300-500 km yürümeye dayanır.",
+            "Bir karpuzun %92'si sudur.",
+            "Portakal aslında mandalina ve greyfurt karışımıdır.",
+            "Muz dünyada en çok tüketilen meyvedir.",
+            "Bir astronot uzayda 2 cm uzar.",
+            "Dünya kendi ekseninde 1.670 km/s hızla döner.",
+            "Mars'ta bir gün Dünya'dan sadece 39 dakika uzundur.",
+            "Jüpiter'in Büyük Kırmızı Lekesi Dünya'dan büyüktür.",
+            "Plüton'un 5 uydusu vardır.",
+            "Güneş 5 milyar yıl sonra sönecek.",
+            "Samanyolu yılda 100.000 yeni yıldız oluşturur.",
+            "En yakın yıldız 4.2 ışık yılı uzaklıktadır.",
+            "Uzayda 100 milyardan fazla galaksi var.",
+            "Kuzey Işıkları güneş rüzgarlarının atmosferle çarpışmasıyla oluşur.",
+            "Ozon tabakası 1985'te keşfedildi.",
+            "Buzullar 1970'ten beri %30 eridi.",
+            "Okyanus asitlenmesi mercan resiflerini tehdit ediyor.",
+            "Arılar 20 milyon yıldır var.",
+            "Karıncalar 100 milyon yıldır var.",
+            "İnsan yaklaşık 2 milyon yıl önce ateşi kullanmaya başladı.",
+            "İlk şehirler MÖ 4.000'de Mezopotamya'da kuruldu.",
+            "Yazı MÖ 3.400'de Sümerler tarafından icat edildi.",
+            "Demir çağı MÖ 1.200'de başladı.",
+            "Rönesans 14. yüzyılda başladı.",
+            "Coğrafi keşifler 15. yüzyılda başladı.",
+            "Amerika 1492'de Kolomb tarafından keşfedildi.",
+            "Fransız Devrimi 1789'da patlak verdi.",
+            "Sanayi Devrimi 18. yüzyılda başladı.",
+            "Dünya Savaşları 20. yüzyılda yaşandı.",
+            "İnternet 1960'larda geliştirilmeye başlandı.",
+            "WWW 1989'da Tim Berners-Lee tarafından icat edildi.",
+            "İlk web sitesi 1991'de yayınlandı.",
+            "Google 1998'de kuruldu.",
+            "Akıllı telefonlar 2007'de iPhone ile popüler oldu.",
+            "Uzay yürüyüşü 1965'te yapıldı.",
+            "Ay'a iniş 1969'da gerçekleşti.",
+            "Mars'ta su 2000'de keşfedildi.",
+            "DNA 1953'te keşfedildi.",
+            "İnsan Genom Projesi 2003'te tamamlandı.",
+            "CRISPR 2012'de keşfedildi.",
+            "AlphaGo 2016'da dünya şampiyonunu yendi.",
+            "ChatGPT 2022'de piyasaya sürüldü.",
+            "Dünya'nın en hızlı interneti 319 Tbps ile Japonya'da (2021).",
+            "En eski müzik aleti 40.000 yıllık flüttür (Almanya).",
+            "En çok oylanan film IMDb'de 'The Shawshank Redemption' (9.3).",
+            "En hızlı tren Maglev 603 km/s ile Japonya'da.",
+            "En büyük imparatorluk Britanya İmparatorluğu'ydu (33.6 milyon km²).",
+            "En eski hamam 4.000 yıllık Mohenjo-daro'dadır (Pakistan).",
+            "En büyük gökdelen Burj Khalifa (828 m).",
+            "En pahalı tablo Leonardo da Vinci'nin 'Salvator Mundi'si (450 milyon $).",
+            "En hızlı okuma rekoru 80.000 kelime/dakika (Howard Berg).",
+            "En uzun süre uykusuz kalma rekoru 11 gün (Randy Gardner, 1964).",
+            "En büyük karpuz 159 kg (Tennessee, 2013).",
+            "En yüksek tenis servisi 263 km/s (Sam Groth, 2012).",
+            "En uzun saç 37 metre (Xie Qiuping, Çin, 2004).",
+            "En hızlı paraşüt atlayışı 39 km (Felix Baumgartner, 2012).",
+            "En derin dalış 10.928 m (Mariana Çukuru, Victor Vescovo, 2019).",
+            "En uzun evlilik 90 yıl (İngiliz çift, 2015).",
+            "En çok kitap yazan yazar Isaac Asimov (1.000'den fazla).",
+            "En ağır böcek Goliath böceği (100 gram).",
+            "En küçük kuş Arı sinek kuşu (5 cm).",
+            "En büyük çiçek Rafflesia (1 metre çapında).",
+            "En çok dil bilen insan Cardinal Mezzofanti (58 dil).",
+            "En güçlü manyetik alan 45 tesla (ABD laboratuvarı).",
+            "En derin kuyu 12.262 m (Kola Yarımadası, Rusya).",
+            "En eski yaşayan ağaç 4.850 yıllık Methuselah (Kaliforniya).",
+            "En büyük hayvan Mavi balina (200 ton).",
+            "En uzun göç Kutup sumrusu (70.000 km/yıl).",
+            "En zehirli hayvan Kutu denizanası (öldürücü).",
+            "En hızlı böcek Güneyli yeşil yusufçuk (97 km/s).",
+            "En pahalı kahve Kopi Luwak (100 $/fincan).",
+            "En büyük pizza 39 metre çapında (Roma, 2012).",
+            "En kalabalık konser Rod Stewart (4 milyon kişi, Rio, 1994).",
+            "En uzun köprü Danyang-Kunshan (Çin, 164,8 km).",
+            "En uzun süren uçuş 64 gün 22 saat (Cessna 172, 1958).",
+            "En çok izlenen YouTube videosu Baby Shark (13 milyar, 2024).",
+            "En fazla Oscar alan film Titanic (11 Oscar, 1997).",
+            "En hızlı koşan hayvan Çita (120 km/s).",
+            "En yüksek atlayan hayvan Pire (kendi boyunun 200 katı).",
+            "En büyük yumurta Devekuşu (1.5 kg).",
+            "En hızlı reaksiyon 0.1 saniye (insan tepki süresi).",
+            "En büyük şelale hacmi Victoria Şelalesi (Zambiya/Zimbabwe).",
+            "En sıcak yer Death Valley (56.7°C, ABD).",
+            "En soğuk yer Vostok (-89.2°C, Antarktika).",
+            "En uzun mağara Mammoth Cave (652 km, ABD).",
+            "En büyük mercan resifi Büyük Bariyer Resifi (2.300 km).",
+            "En hızlı yıldırım 360.000 km/s (2017).",
+            "En büyük asteroid Vesta (530 km çap).",
+            "En büyük yıldız UY Scuti (1.700 Güneş çapında).",
+            "En eski galaksi GN-z11 (13.4 milyar ışık yılı).",
+            "En çok uyduya sahip gezegen Satürn (146 uydu).",
+            "En güçlü teleskop James Webb (2022).",
+            "En hızlı uzay aracı Parker Solar Probe (692.000 km/s).",
+            "En büyük piramit Cholula (Meksika, 4.5 milyon m³).",
+            "En eski tapınak Göbekli Tepe (Türkiye, MÖ 9600).",
+            "En büyük alışveriş merkezi Dubai Mall (1.1 milyon m²).",
+            "En uzun asma köprü 1915 Çanakkale (2.023 m).",
+            "En büyük stadyum Rungrado (150.000 kişi, Kuzey Kore).",
+            "En hızlı inşa edilen gökdelen 2.5 günde (Çin, 2015).",
+            "En büyük mozaik 9.000 m² (Libya).",
+            "En eski kaya 4.3 milyar yıl (Avustralya).",
+            "En büyük asteroit çarpması Chicxulub (10 km).",
+            "En hızlı eriyen buzul Jakobshavn (günde 30 m).",
+            "En yüksek plato Tibet (4.500 m).",
+            "En derin göl Baykal (1.642 m).",
+            "En büyük bataklık Pantanal (210.000 km²).",
+            "En kalın buz tabakası Antarktika (4.776 m).",
+            "En yüksek tuz gölü Titicaca (3.812 m).",
+            "En uzun hayvan Deniz feneri (18 m).",
+            "En zehirli yılan Inland taipan (tek ısırık 100 kişi).",
+            "En hızlı kuş Gökdoğan (389 km/s).",
+            "En ağır uçan kuş Bustard (18 kg).",
+            "En uzun ömürlü kuş Papağan (100 yıl).",
+            "En iyi koku duyan hayvan Fare (200 milyon reseptör).",
+            "En yüksek ses üreten hayvan Mavi balina (188 dB).",
+            "En derin dalan kuş İmparator penguen (565 m).",
+            "En hızlı yüzen balık Kılıçbalığı (100 km/s).",
+            "En büyük kafadanbacaklı Dev mürekkep balığı (12 m).",
+            "En küçük böcek Mymaridae (0.1 mm).",
+            "En ağır köpek İngiliz mastifi (156 kg).",
+            "En uzun kulaklı köpek Bloodhound (30 cm).",
+            "En hızlı at Quarter (88 km/s).",
+            "En yüksek atlamacı Çekirge (boyunun 20 katı).",
+            "En güçlü ısırık Tuzlu su timsahı (1.8 ton).",
+            "En uzun ömürlü memeli Grönland köpekbalığı (400 yıl).",
+            "En küçük memeli Yaban faresi (2 cm).",
+            "En hızlı koşan böcek Benekli kızböceği (97 km/s).",
+            "En ağır yumurta Devekuşu (1.5 kg).",
+            "En keskin dişler Beyaz köpekbalığı (7 cm).",
+            "En iyi göz Kartal (8x insan).",
+            "En büyük kabuklu Dev istakoz (20 kg).",
+            "En zehirli örümcek Sydney huni ağı (öldürücü).",
+            "En uzun hortum Fil (1.5 m).",
+            "En kalın deri Fil (2.5 cm).",
+            "En büyük fare Capybara (60 kg).",
+            "En hızlı üreyen Tavşan (yılda 12 yavru).",
+            "En ağır sürüngen Tuzlu su timsahı (1 ton).",
+            "En uzun süre susuz yaşayan Deve (15 gün).",
+            "En iyi yüzücü Yunus (60 km/s)."
+        ];
+
         let shownFacts = JSON.parse(sessionStorage.getItem('shownFacts')) || [];
         let factInterval;
 
         function getRandomFact() {
-            if (shownFacts.length >= funFacts.length) { shownFacts = [];
-                sessionStorage.setItem('shownFacts', JSON.stringify(shownFacts)); }
-            const available = funFacts.filter((_, i) => !shownFacts.includes(i));
-            if (available.length === 0) { shownFacts = [];
-                sessionStorage.setItem('shownFacts', JSON.stringify(shownFacts)); return getRandomFact(); }
-            const fact = available[Math.floor(Math.random() * available.length)];
-            shownFacts.push(funFacts.indexOf(fact));
+            if (shownFacts.length >= funFacts.length) {
+                shownFacts = [];
+                sessionStorage.setItem('shownFacts', JSON.stringify(shownFacts));
+            }
+            const available = funFacts.filter((_, index) => !shownFacts.includes(index));
+            if (available.length === 0) {
+                shownFacts = [];
+                sessionStorage.setItem('shownFacts', JSON.stringify(shownFacts));
+                return getRandomFact();
+            }
+            const randomIndex = Math.floor(Math.random() * available.length);
+            const fact = available[randomIndex];
+            const globalIndex = funFacts.indexOf(fact);
+            shownFacts.push(globalIndex);
             sessionStorage.setItem('shownFacts', JSON.stringify(shownFacts));
             return fact;
         }
@@ -3821,19 +4061,29 @@
         function startFactRotation() {
             const el = document.getElementById('info-fact-text');
             if (!el) return;
-            el.textContent = getRandomFact();
+            const firstFact = getRandomFact();
+            el.textContent = firstFact;
+            el.className = 'info-card-text fade-in';
+            setTimeout(() => el.className = 'info-card-text', 50);
             factInterval = setInterval(() => {
-                el.textContent = getRandomFact();
+                el.className = 'info-card-text fade-out';
+                setTimeout(() => {
+                    const newFact = getRandomFact();
+                    el.textContent = newFact;
+                    el.className = 'info-card-text fade-in';
+                    setTimeout(() => el.className = 'info-card-text', 80);
+                }, 800);
             }, 7000);
         }
 
         // ==========================================================================
-        // OYUN SEÇİM (MEVCUT)
+        // OYUN İÇİ SEÇİM (mevcut)
         // ==========================================================================
         function selectGame(el) {
             document.querySelectorAll('.game-card').forEach(c => c.classList.remove('active'));
             el.classList.add('active');
-            document.getElementById('mario-game-iframe').src = el.dataset.url;
+            const url = el.dataset.url;
+            document.getElementById('mario-game-iframe').src = url;
         }
 
         // ==========================================================================
@@ -3846,12 +4096,9 @@
             const dd = document.querySelector(".theme-dot.id-dark-dot");
             if (dd) changeTheme('dark', dd);
             startFactRotation();
+            // Takvim başlangıç
             takvimDashboardOlustur();
             takvimGridOlustur();
-            orhunGoster(); // Sayfa açılır açılmaz mesaj gelsin
-            sozlukFilterBtnOlustur();
-            sozlukFiltrele();
-            document.getElementById('isim-raporu-container').classList.remove('aktif');
         });
     </script>
 </body>
