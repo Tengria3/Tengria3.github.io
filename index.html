@@ -4465,7 +4465,7 @@ Bu ikiliye özel, ${acilanAci} odaklı, 2-3 cümlelik SICAK ve SAMİMİ bir tavs
             "Ay her yıl Dünya'dan yaklaşık 3,8 cm uzaklaşmaktadır; bu oran tırnaklarımızın büyüme hızıyla benzerdir.",
             "Mars'taki Olympus Mons, güneş sisteminin bilinen en büyük yanardağıdır: yüksekliği Everest'in yaklaşık üç katıdır (21 km).",
             "Jüpiter'in Büyük Kırmızı Leke'si, içinde birkaç Dünya sığdırabilecek büyüklükte olup en az 350 yıldır süren bir kasırgadır.",
-            "Plüton, 1930'da keşfedildiğinden bu yana Güneş etrafında tam bir turu henüz tamamlayamamıştır; yörünge süresi yaklaşık 248 Dünya yılıdır.",
+            "Plüton, 1930'da keşfedildiğinden bu yana Güneş etrafında tam bir turu henüz tamamlamamıştır; yörünge süresi yaklaşık 248 Dünya yılıdır.",
             "Venüs kendi ekseni etrafında geriye doğru döner ve bu döngüsü o kadar yavaştır ki bir Venüs günü, bir Venüs yılından daha uzundur.",
             "Mısır piramitleri inşa edilirken dev mamutlar hâlâ yaşıyordu; son mamutlar Wrangel Adası'nda M.Ö. yaklaşık 1650'ye kadar hayatta kaldı.",
             "1883'te patlayan Krakatau yanardağının sesi 4.800 km uzaktan duyuldu; bu insanlık tarihinde kayıt altına alınan en yüksek ses olayıdır.",
@@ -4785,10 +4785,10 @@ ${wikiMetin}`;
 
 
         // ====
-        // GROQ API (Llama 3.3 70B)
+        // GROQ API (Llama 3.3 70B) — TÜM İSTEKLER CLOUDFLARE WORKER ÜZERİNDEN
         // ====
-        const _AKEY = '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';
-        const _GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
+        // Eski doğrudan API anahtarı KALDIRILDI. Worker'a güven.
+        const _GROQ_URL = 'https://tengri-worker.alesseapl000.workers.dev/';
         const _GROQ_MODEL = 'llama-3.3-70b-versatile';
 
 
@@ -4821,13 +4821,14 @@ ${wikiMetin}`;
         }
 
         // Groq API çağrısı — geçici hatalarda otomatik yeniden dener
+        // Worker üzerinden proxy’lendiği için Authorization header’ı gerekli değil.
         async function _groqApiCall(bodyBase) {
             const payload = { model: _GROQ_MODEL, ...bodyBase };
             const res = await _fetchWithRetry(_GROQ_URL, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + _AKEY
+                    'Content-Type': 'application/json'
+                    // Authorization header'ı KALDIRILDI
                 },
                 body: JSON.stringify(payload)
             }, 2);
