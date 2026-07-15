@@ -242,32 +242,65 @@
         .game-iframe-wrapper .iframe-container iframe { width:100%; height:800px; margin-top:-40px; border:none; display:block; background:#000; }
         .game-iframe-wrapper .iframe-container .fullscreen-btn { position:absolute; bottom:15px; right:15px; z-index:10; background:rgba(0,0,0,0.7); color:#fff; border:2px solid #fff; border-radius:8px; padding:10px 16px; font-size:14px; font-weight:bold; cursor:pointer; backdrop-filter:blur(4px); box-shadow:0 0 15px rgba(0,0,0,0.5); transition:all 0.3s ease; }
 
-        /* ── MÜZİK ÇALAR — MİNİMALİST TASARIM ─────────────────────────── */
-        .cyber-player{position:fixed;bottom:0;left:0;width:100%;background:rgba(8,8,14,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-top:1px solid rgba(255,255,255,.07);z-index:9999;box-shadow:0 -8px 30px rgba(0,0,0,.6);transition:transform .35s cubic-bezier(.4,0,.2,1);}
+        /* ── MÜZİK ÇALAR — EPİK TASARIM ─────────────────────────── */
+        /* ══════════════════════════════════════════════════════════
+           MÜZİK ÇALAR — ULTRA EPİK TASARIM
+        ══════════════════════════════════════════════════════════ */
+        .cyber-player{position:fixed;bottom:0;left:0;width:100%;background:linear-gradient(to top,rgba(4,4,8,1) 0%,rgba(8,8,14,.99) 100%);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);border-top:1px solid rgba(255,255,255,.06);z-index:9999;box-shadow:0 -20px 80px rgba(0,0,0,.95),0 -1px 0 rgba(255,255,255,.04);transition:transform .45s cubic-bezier(.4,0,.2,1);}
         .cyber-player.minimized{transform:translateY(100%);}
-        .player-toggle-btn{position:absolute;right:12px;top:-18px;background:rgba(8,8,14,.97);border:1px solid rgba(255,255,255,.08);border-bottom:none;padding:2px 9px;font-size:11px;font-weight:700;border-radius:6px 6px 0 0;color:var(--text-main);transition:color .2s;cursor:pointer;line-height:1.4;}
-        .player-toggle-btn:hover{color:var(--accent-color);}
-        .viz-canvas{position:absolute;top:0;left:0;width:100%;height:16px;display:block;opacity:0;transition:opacity .6s ease;pointer-events:none;}
-        .cyber-player.playing .viz-canvas{opacity:.55;}
-        .player-main{display:flex;align-items:center;height:40px;padding:0 10px;gap:6px;position:relative;}
-        .player-btn-icon{width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--text-main);font-size:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0;font-family:inherit;line-height:1;}
-        .player-btn-icon:hover{background:rgba(255,255,255,.12);border-color:var(--accent-color);color:var(--text-heading);}
-        .player-btn-icon.play-main{width:26px;height:26px;font-size:11px;background:var(--accent-color);color:#02020a;border-color:transparent;font-weight:900;}
-        .player-btn-icon.play-main:hover{filter:brightness(1.1);}
-        .player-btn-icon.active-mode{border-color:var(--accent-color);color:var(--accent-color);}
-        .player-info-col{flex-shrink:1;min-width:0;width:120px;overflow:hidden;}
-        .track-name{color:var(--text-heading);font-size:10.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.1px;}
-        .track-index{color:var(--accent-color);font-size:7px;letter-spacing:.5px;opacity:.7;font-weight:600;white-space:nowrap;}
-        .player-timeline-row{display:flex;align-items:center;gap:6px;flex:1;min-width:0;}
-        .time-display{font-size:8px;font-family:monospace;color:var(--text-main);min-width:26px;opacity:.55;flex-shrink:0;}
-        .timeline-container{flex-grow:1;height:3px;background:rgba(255,255,255,.08);border-radius:2px;position:relative;cursor:pointer;transition:height .12s;}
-        .timeline-container:hover{height:5px;}
-        .timeline-progress{height:100%;width:0%;background:var(--accent-color);border-radius:2px;pointer-events:none;}
-        .player-right{flex-shrink:0;display:flex;align-items:center;gap:5px;}
-        .player-vol-icon{font-size:9px;opacity:.5;color:var(--text-main);}
-        .player-vol-slider{width:40px;height:3px;appearance:none;-webkit-appearance:none;background:rgba(255,255,255,.1);border-radius:2px;cursor:pointer;accent-color:var(--accent-color);border:none;outline:none;}
-        @media(max-width:640px){.player-info-col{display:none}.player-vol-slider{width:30px}}
-        @media(max-width:420px){#shuffle-btn,#repeat-btn,.player-right{display:none}.player-main{gap:5px;padding:0 8px}}
+        .player-toggle-btn{position:absolute;left:50%;transform:translateX(-50%);top:-28px;background:rgba(6,6,12,.97);border:1px solid rgba(255,255,255,.08);border-bottom:none;padding:5px 28px;font-size:9px;font-weight:800;letter-spacing:3px;border-radius:10px 10px 0 0;color:var(--text-main);transition:all .2s;cursor:pointer;white-space:nowrap;text-transform:uppercase;}
+        .player-toggle-btn:hover{color:var(--accent-color);letter-spacing:3.5px;}
+        .cyber-player.minimized .player-toggle-btn{box-shadow:0 -8px 28px rgba(0,0,0,.6);}
+        /* Ana satır */
+        .player-main{display:flex;align-items:center;height:92px;padding:0 24px;gap:0;position:relative;}
+        /* ── Vinil ── */
+        .player-vinyl-wrap{flex-shrink:0;width:72px;height:72px;margin-right:18px;position:relative;cursor:pointer;}
+        .player-vinyl-wrap::before{content:'';position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(var(--accent-color) 0deg,transparent 40deg,transparent 360deg);opacity:0;transition:opacity .5s;animation:vinylAura 2s linear infinite;animation-play-state:paused;}
+        .cyber-player.playing .player-vinyl-wrap::before{opacity:.35;animation-play-state:running;}
+        @keyframes vinylAura{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+        .player-vinyl{width:72px;height:72px;border-radius:50%;background:
+            radial-gradient(circle at 50% 50%,#1a1a28 0%,#0c0c14 42%,#111118 43%,#0a0a12 58%,#181820 59%,#0a0a12 74%,#141420 75%,#0a0a12 88%,#181820 89%,#0a0a12 100%);
+        border:1.5px solid rgba(255,255,255,.07);
+        box-shadow:0 0 0 2px rgba(0,0,0,.9),0 0 0 4px rgba(255,255,255,.025),0 0 0 10px rgba(0,0,0,.7),0 0 0 12px rgba(255,255,255,.015),0 8px 40px rgba(0,0,0,.95),inset 0 0 20px rgba(0,0,0,.85);
+        animation:vinylSpin 3s linear infinite;animation-play-state:paused;position:relative;transition:box-shadow .3s;}
+        .cyber-player.playing .player-vinyl{animation-play-state:running;box-shadow:0 0 0 2px rgba(0,0,0,.9),0 0 0 4px rgba(255,255,255,.025),0 0 0 10px rgba(0,0,0,.7),0 0 0 12px rgba(255,255,255,.015),0 8px 40px rgba(0,0,0,.95),inset 0 0 20px rgba(0,0,0,.85),0 0 30px var(--accent-glow);}
+        .player-vinyl::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:radial-gradient(circle,var(--accent-color) 0%,rgba(0,0,0,.95) 62%);box-shadow:0 0 16px var(--accent-glow),0 0 6px var(--accent-glow);z-index:1;}
+        .player-vinyl::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:7px;height:7px;border-radius:50%;background:#04040a;z-index:2;}
+        @keyframes vinylSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+        /* ── Parça bilgisi ── */
+        .player-info-col{flex-shrink:0;width:200px;margin-right:20px;}
+        .player-now-playing{font-size:7.5px;letter-spacing:2.5px;color:var(--accent-color);text-transform:uppercase;font-weight:800;opacity:0;transition:opacity .4s;margin-bottom:4px;display:flex;align-items:center;gap:5px;}
+        .cyber-player.playing .player-now-playing{opacity:1;}
+        .now-playing-dot{width:5px;height:5px;border-radius:50%;background:var(--accent-color);animation:npBlink 1.2s ease-in-out infinite;}
+        @keyframes npBlink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
+        .track-name{color:var(--text-heading);font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px;letter-spacing:.1px;}
+        .track-index{color:var(--accent-color);font-size:8.5px;margin-top:3px;letter-spacing:1.2px;opacity:.75;font-weight:600;text-transform:uppercase;}
+        /* ── Merkez kontroller ── */
+        .player-center{flex:1;display:flex;flex-direction:column;gap:9px;min-width:0;}
+        .player-controls-row{display:flex;align-items:center;justify-content:center;gap:12px;}
+        .player-btn-icon{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:var(--text-main);font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;font-family:inherit;line-height:1;}
+        .player-btn-icon:hover{background:rgba(255,255,255,.1);border-color:var(--accent-color);color:var(--text-heading);transform:scale(1.15);box-shadow:0 0 12px var(--accent-glow);}
+        .player-btn-icon.play-main{width:56px;height:56px;font-size:22px;background:var(--accent-color);color:#02020a;border-color:transparent;font-weight:900;box-shadow:0 0 28px var(--accent-glow),0 0 60px rgba(var(--accent-rgb),.2),inset 0 1px 0 rgba(255,255,255,.28);}
+        .player-btn-icon.play-main:hover{transform:scale(1.1);box-shadow:0 0 50px var(--accent-glow),0 0 100px rgba(var(--accent-rgb),.25);}
+        @keyframes playPulse{0%,100%{box-shadow:0 0 28px var(--accent-glow),0 0 60px rgba(var(--accent-rgb),.2),inset 0 1px 0 rgba(255,255,255,.28)}50%{box-shadow:0 0 55px var(--accent-glow),0 0 120px rgba(var(--accent-rgb),.35),inset 0 1px 0 rgba(255,255,255,.28)}}
+        .cyber-player.playing .player-btn-icon.play-main{animation:playPulse 2.8s ease-in-out infinite;}
+        .player-btn-icon.active-mode{border-color:var(--accent-color);color:var(--accent-color);box-shadow:0 0 12px var(--accent-glow);}
+        /* ── Zaman çizgisi ── */
+        .player-timeline-row{display:flex;align-items:center;gap:9px;}
+        .time-display{font-size:9.5px;font-family:monospace;color:var(--text-main);min-width:34px;opacity:.6;flex-shrink:0;}
+        .timeline-container{flex-grow:1;height:3px;background:rgba(255,255,255,.07);border-radius:2px;position:relative;cursor:pointer;transition:height .12s;}
+        .timeline-container:hover{height:6px;}
+        .timeline-progress{height:100%;width:0%;background:linear-gradient(90deg,var(--accent-color),var(--accent-color));box-shadow:0 0 10px var(--accent-color),0 0 20px var(--accent-glow);border-radius:2px;pointer-events:none;transition:box-shadow .3s;}
+        .cyber-player.playing .timeline-progress{box-shadow:0 0 14px var(--accent-color),0 0 30px var(--accent-glow);}
+        /* ── Sağ panel ── */
+        .player-right{flex-shrink:0;margin-left:20px;display:flex;align-items:center;gap:9px;}
+        .player-vol-icon{font-size:13px;opacity:.5;color:var(--text-main);}
+        .player-vol-slider{width:75px;height:3px;appearance:none;-webkit-appearance:none;background:rgba(255,255,255,.1);border-radius:2px;cursor:pointer;accent-color:var(--accent-color);border:none;outline:none;}
+        /* ── Görselleştirici (AYNA efekti) ── */
+        .viz-canvas{width:100%;height:52px;display:block;opacity:0;transition:opacity .9s ease;}
+        .cyber-player.playing .viz-canvas{opacity:1;}
+        @media(max-width:700px){.player-vinyl-wrap{display:none}.player-info-col{width:140px;margin-right:14px}.player-right{margin-left:10px}.player-vol-slider{width:52px}}
+        @media(max-width:460px){.player-now-playing,.track-index{display:none}.player-center{gap:6px}}
 
         .coffee-overlay, .burc-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(4,4,5,0.94); backdrop-filter:blur(25px); z-index:100000; display:none; align-items:center; justify-content:center; flex-direction:column; opacity:0; transition:opacity 0.4s ease; }
         .coffee-overlay.show, .burc-overlay.show { display:flex; opacity:1; }
@@ -1750,6 +1783,36 @@
         }
         .tarot-ai-box { display: none; }
         /* ── ŞEHİRLER BÖLÜMÜ ───────────────────────────────────────────────── */
+        /* ── TARİHTE BUGÜN ─────────────────────────────────────────────── */
+        .tarih-picker-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px;}
+        .tarih-select{background:var(--bg-input);border:1px solid var(--border-color);border-radius:8px;padding:9px 14px;color:var(--text-input);font-size:13px;cursor:pointer;outline:none;font-family:inherit;transition:border-color .2s;min-width:100px;}
+        .tarih-select:focus{border-color:var(--accent-color);}
+        .tarih-kesfet-btn{padding:9px 24px;background:var(--accent-color);color:#12102a;font-weight:700;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-family:inherit;transition:all .2s;letter-spacing:.5px;}
+        .tarih-kesfet-btn:hover:not(:disabled){opacity:.85;transform:translateY(-1px);}
+        .tarih-kesfet-btn:disabled{opacity:.45;cursor:not-allowed;transform:none;}
+        .tarih-loading{text-align:center;padding:40px;color:var(--text-main);font-size:13px;animation:pulse 1.4s infinite;}
+        .tarih-tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;}
+        .tarih-tab-btn{padding:6px 16px;border-radius:20px;border:1px solid var(--border-color);background:var(--bg-btn);color:var(--text-btn);font-size:11px;font-family:inherit;cursor:pointer;transition:all .2s;letter-spacing:.3px;}
+        .tarih-tab-btn.aktif{background:var(--accent-color);color:#12102a;font-weight:700;border-color:var(--accent-color);}
+        .tarih-badge{display:inline-block;background:rgba(255,255,255,.1);border-radius:10px;padding:1px 6px;font-size:9.5px;margin-left:4px;font-weight:400;}
+        .tarih-tab-btn.aktif .tarih-badge{background:rgba(0,0,0,.2);}
+        .tarih-yil-input{background:var(--bg-input);border:1px solid var(--border-color);border-radius:8px;padding:9px 12px;color:var(--text-input);font-size:13px;outline:none;font-family:inherit;width:130px;transition:border-color .2s;}
+        .tarih-yil-input:focus{border-color:var(--accent-color);}
+        .tarih-yil-input::placeholder{opacity:.5;}
+        .tarih-results{max-height:440px;overflow-y:auto;padding-right:4px;}
+        .tarih-results::-webkit-scrollbar{width:3px}.tarih-results::-webkit-scrollbar-thumb{background:var(--border-color);border-radius:4px}
+        .tarih-card{display:flex;gap:12px;align-items:flex-start;padding:12px;margin-bottom:8px;background:var(--bg-btn);border:1px solid var(--border-color);border-radius:10px;transition:border-color .2s,box-shadow .2s;}
+        .tarih-card:hover{border-color:var(--accent-color);box-shadow:0 2px 12px var(--accent-glow);}
+        .tarih-yil-badge{min-width:58px;text-align:center;font-weight:800;font-size:11.5px;color:var(--accent-color);background:rgba(201,162,39,.08);border:1px solid var(--accent-color);border-radius:6px;padding:5px 4px;flex-shrink:0;line-height:1.4;}
+        .tarih-card-body{flex:1;}
+        .tarih-card-metin{font-size:12.5px;color:var(--text-main);line-height:1.65;}
+        .tarih-card-isim{font-weight:700;color:var(--text-heading);margin-bottom:2px;font-size:13px;}
+        .tarih-card-desc{font-size:11.5px;color:var(--text-main);opacity:.75;margin-top:2px;}
+        .tarih-bos{text-align:center;padding:30px;color:var(--text-main);opacity:.6;font-size:13px;}
+        .tarih-baslik-satir{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+        .tarih-tarih-goster{font-size:15px;font-weight:700;color:var(--text-heading);}
+        .tarih-wiki-not{font-size:10px;color:var(--text-main);opacity:.5;font-style:italic;}
+        /* ────────────────────────────────────────────────────────────────── */
         .sehir-search-wrap { display:flex; gap:10px; margin-bottom:12px; }
         .sehir-search { flex:1; background:var(--bg-input); border:1px solid var(--border-color); border-radius:8px; padding:9px 16px; color:var(--text-input); font-size:13px; outline:none; transition:border-color .2s; font-family:inherit; }
         .sehir-search:focus { border-color:var(--accent-color); }
@@ -1925,30 +1988,38 @@
 
     <!-- MÜZİK ÇALAR -->
     <div id="cyber-audio-player" class="cyber-player">
-        <canvas id="viz-canvas" class="viz-canvas" height="16"></canvas>
-        <button id="player-toggle" class="player-toggle-btn" onclick="togglePlayerMinimize()" title="Aşağı kaydırmak için tıkla">▼</button>
+        <button id="player-toggle" class="player-toggle-btn" onclick="togglePlayerMinimize()">♪ MÜZİK ÇALAR</button>
         <div class="player-main">
-            <button class="player-btn-icon" onclick="prevTrack()" title="Önceki">⏮</button>
-            <button class="player-btn-icon play-main" id="play-pause-btn" onclick="togglePlay()" title="Oynat / Durdur">▶</button>
-            <button class="player-btn-icon" onclick="nextTrack()" title="Sonraki">⏭</button>
+            <div class="player-vinyl-wrap" onclick="togglePlay()" title="Oynat / Durdur">
+                <div class="player-vinyl"></div>
+            </div>
             <div class="player-info-col">
+                <div class="player-now-playing"><span class="now-playing-dot"></span>ŞU AN ÇALIYOR</div>
                 <div id="track-name" class="track-name">—</div>
                 <div id="track-index" class="track-index">♪ 1 / 57</div>
             </div>
-            <div class="player-timeline-row">
-                <span id="current-time" class="time-display">00:00</span>
-                <div id="timeline-container" class="timeline-container" onclick="seekTrack(event)">
-                    <div id="timeline-progress" class="timeline-progress"></div>
+            <div class="player-center">
+                <div class="player-controls-row">
+                    <button class="player-btn-icon" onclick="prevTrack()" title="Önceki">⏮</button>
+                    <button class="player-btn-icon play-main" id="play-pause-btn" onclick="togglePlay()">▶</button>
+                    <button class="player-btn-icon" onclick="nextTrack()" title="Sonraki">⏭</button>
+                    <button class="player-btn-icon" id="shuffle-btn" onclick="toggleShuffle()" title="Karıştır">⇄</button>
+                    <button class="player-btn-icon" id="repeat-btn" onclick="toggleRepeat()" title="Tekrar">↺</button>
                 </div>
-                <span id="total-duration" class="time-display">00:00</span>
+                <div class="player-timeline-row">
+                    <span id="current-time" class="time-display">00:00</span>
+                    <div id="timeline-container" class="timeline-container" onclick="seekTrack(event)">
+                        <div id="timeline-progress" class="timeline-progress"></div>
+                    </div>
+                    <span id="total-duration" class="time-display">00:00</span>
+                </div>
             </div>
-            <button class="player-btn-icon" id="shuffle-btn" onclick="toggleShuffle()" title="Karıştır">⇄</button>
-            <button class="player-btn-icon" id="repeat-btn" onclick="toggleRepeat()" title="Tekrar">↺</button>
             <div class="player-right">
                 <span class="player-vol-icon">🔊</span>
                 <input type="range" class="player-vol-slider" min="0" max="1" step="0.05" value="1" oninput="changeVolume(this.value)">
             </div>
         </div>
+        <canvas id="viz-canvas" class="viz-canvas" height="52"></canvas>
         <audio id="main-audio" src=""></audio>
     </div>
 
@@ -1968,6 +2039,7 @@
                     <button class="burc-nav-btn" data-section="hikayeler">📖 Burç Hikayeleri</button>
                     <button class="burc-nav-btn" data-section="tarot">🃏 Tarot</button>
                     <button class="burc-nav-btn" data-section="sehirler">🏙️ Şehirler</button>
+                    <button class="burc-nav-btn" data-section="tarih">📅 Tarihte Bugün</button>
                 </div>
             </div>
             <p class="burc-subtitle">Yıldızların fısıldadığı sırları keşfet</p>
@@ -2031,6 +2103,24 @@
                 <div class="tarot-cards-row" id="tarot-cards-row"></div>
 
                 <div class="tarot-ai-box" id="tarot-ai-box"></div>
+            </div>
+
+            <!-- TARİHTE BUGÜN BÖLÜMÜ -->
+            <div class="burc-section" id="section-tarih">
+                <h3 style="color:var(--accent-color);border-color:var(--accent-color);">📅 Tarihte Bu Gün</h3>
+                <p style="font-size:12px;color:var(--text-main);opacity:.8;margin-bottom:16px;">Gün ve ay seç — o günde dünyada neler olmuş; savaşlar, bilim, doğanlar, ölenler keşfet. Veriler Türkçe Wikipedia'dan alınır.</p>
+                <div class="tarih-picker-row">
+                    <select class="tarih-select" id="tarih-ay">
+                        <option value="01">Ocak</option><option value="02">Şubat</option><option value="03">Mart</option>
+                        <option value="04">Nisan</option><option value="05">Mayıs</option><option value="06">Haziran</option>
+                        <option value="07">Temmuz</option><option value="08">Ağustos</option><option value="09">Eylül</option>
+                        <option value="10">Ekim</option><option value="11">Kasım</option><option value="12">Aralık</option>
+                    </select>
+                    <select class="tarih-select" id="tarih-gun"></select>
+                    <input type="number" class="tarih-yil-input" id="tarih-yil" placeholder="Yıl (örn: 1969)" min="-3000" max="2025">
+                    <button class="tarih-kesfet-btn" id="tarih-btn" onclick="_tarihKesfet()">🔍 Keşfet</button>
+                </div>
+                <div id="tarih-sonuc"></div>
             </div>
 
             <!-- ŞEHİRLER BÖLÜMÜ -->
@@ -2116,29 +2206,6 @@
             return r;
         }
 
-        // Yapıştırılan metindeki her bir kelimenin/karakterin ORİJİNAL rengini korur:
-        // hangi kelime siyahsa siyah kalır, başka renkteyse o renk korunur (span, font,
-        // veya üst elemente (h2, p, div...) uygulanmış renk fark etmez).
-        function preserveOriginalTextColors(root) {
-            const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
-            const textNodes = [];
-            let n;
-            while ((n = walker.nextNode())) {
-                if (n.nodeValue && n.nodeValue.trim() && n.parentElement) textNodes.push(n);
-            }
-            textNodes.forEach(node => {
-                const parent = node.parentElement;
-                if (!parent) return;
-                let color;
-                try { color = window.getComputedStyle(parent).color; } catch (e) { color = null; }
-                if (!color) return;
-                const span = document.createElement('span');
-                span.setAttribute('data-keepcolor', color);
-                parent.replaceChild(span, node);
-                span.appendChild(node);
-            });
-        }
-
         function cleanInvisibleWebGarbage(t, f = false) { if (!t) return ""; let c = t.replace(/[\r\u200B\u200C\u200D\uFEFF]/g,
                 "").replace(/&nbsp;/gi, " ").replace(/nbsp;/gi, " ").replace(/;nbsp/gi, " ").replace(/&nbsp/gi, " ").replace(
                 /\u00A0/g, " ").replace(/&amp;;/gi, " ").replace(/&amp;/gi, " ").replace(/&[^;]+;/g, " ").replace(/&/g,
@@ -2154,7 +2221,6 @@
             let bolded = hardProtectBoldStyles(raw);
             let div = document.createElement("div");
             div.innerHTML = bolded;
-            preserveOriginalTextColors(div);
             const headings = div.querySelectorAll('h1, h2, h3, h4, h5, h6');
             headings.forEach(heading => {
                 const b = document.createElement('b');
@@ -2175,19 +2241,12 @@
             let all = div.getElementsByTagName("*");
             for (let i = all.length - 1; i >= 0; i--) {
                 let el = all[i];
-                const tag = el.tagName.toLowerCase();
-                if (tag === 'b') {
+                if (el.tagName.toLowerCase() !== 'b') {
+                    el.outerHTML = el.innerHTML;
+                } else {
                     el.removeAttribute('style');
                     el.removeAttribute('class');
                     el.removeAttribute('id');
-                } else if (tag === 'span' && el.hasAttribute('data-keepcolor')) {
-                    const color = el.getAttribute('data-keepcolor');
-                    el.removeAttribute('class');
-                    el.removeAttribute('id');
-                    el.removeAttribute('data-keepcolor');
-                    el.setAttribute('style', 'color:' + color + ';');
-                } else {
-                    el.outerHTML = el.innerHTML;
                 }
             }
             let lines = div.innerHTML.split('\n');
@@ -3445,6 +3504,7 @@
                     if (sec === 'quiz' && quizAdimi === 0) baslatQuiz();
                     if (sec === 'ask') initAskUyumuSelect();
                     if (sec === 'harita') initHaritaSehirSelect();
+                    if (sec === 'tarih') initTarih();
                 }
             };
         }
@@ -4396,15 +4456,13 @@ Bu ikiliye özel, ${acilanAci} odaklı, 2-3 cümlelik SICAK ve SAMİMİ bir tavs
                 sec = Math.floor(s % 60); return `${m<10?'0':''}${m}:${sec<10?'0':''}${sec}`; }
 
         function togglePlayerMinimize() {
-            const p = document.getElementById("cyber-audio-player");
-            const b = document.getElementById("player-toggle");
+            const p = document.getElementById("cyber-audio-player"),
+                  b = document.getElementById("player-toggle");
             p.classList.toggle("minimized");
-            const minimized = p.classList.contains("minimized");
-            b.textContent = minimized ? "▲" : "▼";
-            b.title = minimized ? "Yukarı kaydırmak için tıkla" : "Aşağı kaydırmak için tıkla";
+            b.textContent = p.classList.contains("minimized") ? "▲ AÇMAK İÇİN TIK" : "♪ MÜZİK ÇALAR";
         }
 
-        function changeVolume(v) { audio.volume = v; if (v == 1) showToast("🔊 Kulaklarını seviyorsan sesi biraz kıs"); }
+        function changeVolume(v) { audio.volume = v; if (v == 1) showToast("🔊 Kulaklarını seviyorsan biraz kıs aslan parçası"); }
 
         // ==========================================================================
         // KAHVE
@@ -5982,7 +6040,7 @@ Kurallar:
 
             const loadDiv = document.createElement('div');
             loadDiv.className = 'chat-msg ai-reply loading-msg';
-            loadDiv.innerHTML = '<span class="ai-pulse"></span> ...';
+            loadDiv.innerHTML = '<span class="ai-pulse"></span> Arastiriyor...';
             box.appendChild(loadDiv);
             box.scrollTop = box.scrollHeight;
 
@@ -6297,7 +6355,7 @@ Kurallar:
 {p:57,n:'Sinop',b:'Karadeniz',k:'Antik efsaneye göre adını Tanrı Apollo\'nun sevgilisi Sinope\'den almaktadır; antik kaynaklarda M.Ö. 7. yüzyıldan itibaren "Sinope" olarak geçer.',y:['Sinop kalkan balığı (turbot; Karadeniz\'in en değerli balıklarından)','Boyabat Çerkes peyniri','Karakuş simidi','Tatlısu balık yemekleri','Fındıklı kurabiye'],t:['Sinop Cezaevi (1887 Rus inşası; bugün müze ve kültür merkezi)','Balatlar Kilisesi (Bizans dönemi; kısmen ayakta)','Sinop Kalesi','Sarıkum Tabiat Koruma Alanı','Türkiye\'nin en kuzey noktası (İnceburun)'],o:'Eski Yunan filozofu Diyojen (M.Ö. 412-323) Sinop doğumludur. Siniklik felsefesinin kurucusu olan Diyojen, değer sistemi dışı yaşam biçimiyle ve fıçı içinde yaşamasıyla antik dünya tarihine geçmiştir.'},
 {p:58,n:'Sivas',b:'İç Anadolu',k:'Roma İmparatoru Augustus\'a ithafen "Sebasteia" adını taşıyordu; bu isim zamanla "Sivas"a dönüşmüştür.',y:['Kangal balığı (doktor balığı; terapi amaçlı)','Sivas köftesi','Höşmerim tatlısı','Zara pekmezi','Divriği keşkeği'],t:['Divriği Ulu Camii ve Darüşşifası (UNESCO Dünya Mirası; 1228; Türk mimarisinin portal şaheseleri)','Sivas Kongresi Binası (1919; Kurtuluş Savaşı\'nın kritik kararlarının alındığı yer)','Çifte Minareli Medrese (1271)','Buruciye Medresesi','Kangal Köpeği Araştırma Çiftliği'],o:'Divriği Ulu Camii\'nin portalleri, Türk-İslam taş işçiliğinin dünya genelinde kabul gören en zengin örnekleri arasındadır; 1985\'te UNESCO Dünya Mirası\'na alınan yapı eşsiz süslemeleriyle mimarlık tarihinin referans noktasıdır.'},
 {p:59,n:'Tekirdağ',b:'Marmara',k:'"Tekir" (çizgili ya da taşlık anlamında yerel sözcük) ve "dağ" sözcüklerinden oluştuğu düşünülmektedir; eski adları "Rodoscuk" ve Bizans dönemi "Bisanthe"dir.',y:['Tekirdağ köftesi (coğrafi işaret; özel un ve baharat oranıyla)','Tekirdağ rakısı (coğrafi işaret)','Malkara sucuğu','Şarköy üzümü ve şarabı','Çorlu peyniri'],t:['Namık Kemal Evi ve Müzesi (şair ve gazeteci, 1840-1888)','Tekirdağ Arkeoloji ve Etnografya Müzesi','Şarköy bağ alanları','Hayrabolu tarihi çarşısı','Rákóczi Müzesi (sürgün Macar prensi II. Rákóczi\'nin evi)'],o:'Macar milli kahramanı II. Rákóczi Ferenc, Osmanlı\'ya sığındıktan sonra 1720\'den ölümüne (1735) dek Tekirdağ\'da yaşamıştır; evi bugün müzeye dönüştürülmüş ve Macaristan ile kültürel köprü işlevi görmektedir.'},
-{p:60,n:'Tokat',b:'Karadeniz',k:'Bizans dönemindeki "Dokeia" yerleşiminin adından türediği ya da daha eski Anadolu dillerinden geldiği öne sürülmektedir.',y:['Tokat kebabı (coğrafi işaret; kapalı toprak kapta fırında pişirilir)','Tokat eriştesi','Zile pekmezi','Niksar fındığı','Artova paçası'],t:['Ballıca Mağarası (Türkiye\'nin en uzun sarkıt-dikit mağaralarından)','Niksar Kalesi (antik Neocaesarea)','Tokat Kalesi','Zile Kalesi ve antik Zela kenti','Sulusaray Antik Sebastopolis'],o:'"Veni, vidi, vici" (Geldim, gördüm, yendim) sözünün Caesar\'ın M.Ö. 47\'deki Zela Muharebesi\'nin ardından söylediği kabul edilmektedir; bu muharebe bugünkü Zile (Tokat) yakınlarında gerçekleşmiştir.'},
+{p:60,n:'Tokat',b:'Karadeniz',k:'Bizans dönemindeki "Dokeia" yerleşiminin adından türediği ya da daha eski Anadolu dillerinden geldiği öne sürülmektedir.',y:['Tokat kebabı (coğrafi işaret; kapalı toprak kapta fırında pişirilir)','Tokat eriştesi','Zile pekmezi','Niksar fındığı','Artova paçası'],t:['Ballıca Mağarası (Türkiye\'nin en uzun sarkıt-dikit mağaralarından)','Niksar Kalesi (antik Neocaesarea)','Tokat Kalesi','Zile Kalesi ve antik Zela kenti','Sulusaray Antik Sebastopolis'],o:'"Veni, vidi, vici" (Geldim, gördüm, yendim) sözünün Caesar\'ın M.Ö. 47\'deki Zela Muharebesi\'nin ardından söylendiği kabul edilmektedir; bu muharebe bugünkü Zile (Tokat) yakınlarında gerçekleşmiştir.'},
 {p:61,n:'Trabzon',b:'Karadeniz',k:'Antik Yunanca "Trapezous" (masa, dikdörtgen düzlük) sözcüğünden gelir; şehrin kurulduğu düz kayalık platoya atıfla bu isim verilmiştir.',y:['Trabzon pidesi (coğrafi işaret; tereyağlı-kaşarlı)','Kuymak (mısır unu ve kaşar peyniri)','Hamsili pilav','Akçaabat köftesi','Muhlama'],t:['Sümela Manastırı (M.S. 386; dik kayaya oyulmuş Bizans manastırı; Meryem Ana freskleri)','Atatürk Köşkü (1890; fotoğraflı tarihi köşk)','Trabzon Kalesi ve tarihi merkez','Uzungöl (yüksek yayla gölü)','Ayasofya Trabzon (13. yy; iç mekan Bizans freskleri)'],o:'Sümela Manastırı, dik kayaya oyulmuş yapısıyla Karadeniz\'in simgesi haline gelmiştir; M.S. 386\'dan bu yana varlığını koruyan manastır, Trabzon\'un en çok ziyaret edilen tarihi mekânıdır.'},
 {p:62,n:'Tunceli',b:'Doğu Anadolu',k:'"Tunc" (bronz/güçlü) ve "eli" (yurt/bölge) sözcüklerinden oluşur; "Bronz Yurdu" anlamına gelmektedir. Daha önce "Dersim" adıyla anılmış, 1946\'da yeniden adlandırılmıştır.',y:['Munzur alabalığı','Dağ balı','Tandır ekmeği','Yöresel ot yemekleri','Kavut'],t:['Munzur Vadisi Milli Parkı (Türkiye\'nin en büyük milli parklarından)','Munzur Nehri (yaban hayatı açısından zengin)','Çemişgezek Kalesi','Pertek Kalesi (Keban Barajı gölü ortasında ada görünümünde)','Kemah Boğazı yakınlığı'],o:'Munzur Vadisi Milli Parkı, ülkenin en az insan etkisine maruz kalmış ve biyolojik çeşitlilik açısından zengin korunan alanlarından biridir; bölgede yüzlerce endemik bitki türü bulunmaktadır.'},
 {p:63,n:'Şanlıurfa',b:'Güneydoğu Anadolu',k:'"Urfa" adı Aramice "Urhay" sözcüğünden türemiştir. "Şanlı" unvanı, Kurtuluş Savaşı\'ndaki direnişin onuruna 1984\'te verilmiştir. Halk arasında "Peygamberler Şehri" olarak da anılır.',y:['Çiğ köfte (orijinal versiyonu çiğ etle; coğrafi işaret)','Urfa kebabı (acılı "şanlı" ve sade versiyonları)','Lahmacun','Katmer','İçli köfte'],t:['Göbeklitepe (UNESCO Dünya Mirası; M.Ö. 10.000; dünyanın bilinen en eski tapınağı)','Balıklıgöl (Hz. İbrahim\'in ateşe atıldığı kabul edilen kutsal havuz; antik Nimrod Kalesi)','Harran (M.Ö. 2000\'den itibaren kesintisiz yerleşim; konik kubbeli taş evler)','Şanlıurfa Arkeoloji Müzesi (Göbeklitepe eserleri)','Halfeti\'nin sel altındaki köy kalıntıları'],o:'Göbeklitepe, M.Ö. 10.000\'e tarihlenen ve tarihin en eski organize tapınağı olarak kabul edilen T-biçimli devasa taş sütunlardan oluşmaktadır; bu keşif, yazılı tarihin başlangıcından 6000 yıl önce organize dini yapıların var olduğunu kanıtlamıştır.'},
@@ -6602,6 +6660,155 @@ Kurallar:
         }
 
         // ==========================================================================
+        // TARİHTE BUGÜN — CORS Proxy → allorigins.win fallback
+        // Kaynak: Türkçe Wikipedia REST API
+        // ==========================================================================
+        const _tarihCache = {};
+        let _tarihAktifDat = null;
+
+        function _tarihGunDoldur() {
+            const ayEl = document.getElementById('tarih-ay');
+            const gunEl = document.getElementById('tarih-gun');
+            if (!ayEl || !gunEl) return;
+            const ay = parseInt(ayEl.value);
+            const maxGun = new Date(2024, ay, 0).getDate(); // 2024 artık yıl
+            const eskiGun = parseInt(gunEl.value) || 1;
+            gunEl.innerHTML = Array.from({length: maxGun}, (_, i) =>
+                `<option value="${String(i+1).padStart(2,'0')}"${(i+1)===Math.min(eskiGun,maxGun)?' selected':''}>${i+1}</option>`
+            ).join('');
+        }
+
+        function initTarih() {
+            const ayEl = document.getElementById('tarih-ay');
+            const gunEl = document.getElementById('tarih-gun');
+            if (!ayEl || !gunEl) return;
+            const bugun = new Date();
+            ayEl.value = String(bugun.getMonth() + 1).padStart(2, '0');
+            _tarihGunDoldur();
+            gunEl.value = String(bugun.getDate()).padStart(2, '0');
+            ayEl.onchange = _tarihGunDoldur;
+        }
+
+        // Savaş / bilim / spor keyword filtreleri
+        const _savasKW = ['war','battle','siege','coup','revolution','attack','invasion','military','treaty','surrender','bomb','massacre','assassination','conflict','troops','army','navy','defeat','victory','independence','revolt','rebellion','civil war','genocide','occupation','liberation'];
+        const _bilimKW = ['discovered','invented','launched','founded','Nobel','spacecraft','satellite','nuclear','atomic','pioneered','telescope','vaccine','experiment','scientific','expedition','published','patent','theory','galaxy','planet','comet','DNA','gene','virus','bacteria'];
+        const _sporKW  = ['olympic','championship','world cup','gold medal','tournament','grand prix','title','record','marathon','athlete','won','champion','cup final','league','tennis','boxing','swimming','gymnastics'];
+        const _isSavas = t => _savasKW.some(k => t.toLowerCase().includes(k));
+        const _isBilim = t => _bilimKW.some(k => t.toLowerCase().includes(k));
+        const _isSpor  = t => _sporKW.some(k  => t.toLowerCase().includes(k));
+
+        async function _tarihKesfet() {
+            const ay  = document.getElementById('tarih-ay')?.value;
+            const gun = document.getElementById('tarih-gun')?.value;
+            const yilRaw = document.getElementById('tarih-yil')?.value;
+            const yilFilter = yilRaw ? parseInt(yilRaw) : null;
+            if (!ay || !gun) return;
+            const key = `${ay}-${gun}`;
+            const sonucEl = document.getElementById('tarih-sonuc');
+            const btn = document.getElementById('tarih-btn');
+
+            if (!_tarihCache[key]) {
+                btn.disabled = true;
+                sonucEl.innerHTML = '<div class="tarih-loading">🔍 Tarihte bu güne yolculuk yapılıyor...</div>';
+
+                // Backend proxy kullanıyoruz — CORS ve Wikipedia kısıtlaması yok
+                const proxyUrl = `/api/tarih/${parseInt(ay)}/${parseInt(gun)}`;
+                let data = null;
+                try {
+                    const ctrl = new AbortController();
+                    const timer = setTimeout(() => ctrl.abort(), 15000);
+                    const res = await fetch(proxyUrl, { signal: ctrl.signal });
+                    clearTimeout(timer);
+                    if (res.ok) {
+                        const json = await res.json();
+                        if (json && (json.events || json.births || json.deaths)) data = json;
+                    }
+                } catch(e) { data = null; }
+
+                btn.disabled = false;
+                if (!data || (!data.events && !data.births && !data.deaths)) {
+                    sonucEl.innerHTML = '<div class="tarih-bos">⚠️ Tarih verisi alınamadı. Sunucu internete erişemiyor olabilir. Lütfen birkaç saniye bekleyip tekrar dene.</div>';
+                    return;
+                }
+                _tarihCache[key] = data;
+            }
+
+            btn.disabled = false;
+            _tarihRender(sonucEl, _tarihCache[key], ay, gun, yilFilter);
+        }
+
+        function _tarihRender(el, data, ay, gun, yilFilter) {
+            const aylar = ['','Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
+            const fy = list => yilFilter ? list.filter(x => x.year === yilFilter) : list;
+            const srtYil = list => list.sort((a,b) => a.year - b.year);
+
+            _tarihAktifDat = {
+                olaylar: fy(srtYil(data.events  || [])),
+                dogan:   fy(srtYil(data.births   || [])),
+                olen:    fy(srtYil(data.deaths   || [])),
+                savas:   fy(srtYil((data.events  || []).filter(e => _isSavas(e.text || '')))),
+                bilim:   fy(srtYil((data.events  || []).filter(e => _isBilim(e.text || '')))),
+                spor:    fy(srtYil((data.events  || []).filter(e => _isSpor(e.text  || '')))),
+            };
+            const {olaylar, dogan, olen, savas, bilim, spor} = _tarihAktifDat;
+            const yilText = yilFilter ? ` · ${yilFilter} Yılı` : '';
+            const badge = n => `<span class="tarih-badge">${n}</span>`;
+
+            el.innerHTML = `
+                <div class="tarih-baslik-satir">
+                    <div class="tarih-tarih-goster">📅 ${parseInt(gun)} ${aylar[parseInt(ay)]}${yilText}</div>
+                    <div class="tarih-wiki-not">Wikipedia EN · ${yilFilter ? yilFilter + ' yılına filtreli' : 'Tüm yıllar'}</div>
+                </div>
+                <div class="tarih-tabs">
+                    <button class="tarih-tab-btn aktif" onclick="_tarihTab(this,'olaylar')">📌 Olaylar ${badge(olaylar.length)}</button>
+                    <button class="tarih-tab-btn" onclick="_tarihTab(this,'dogan')">👶 Doğumlar ${badge(dogan.length)}</button>
+                    <button class="tarih-tab-btn" onclick="_tarihTab(this,'olen')">✝️ Ölümler ${badge(olen.length)}</button>
+                    <button class="tarih-tab-btn" onclick="_tarihTab(this,'savas')">⚔️ Savaşlar ${badge(savas.length)}</button>
+                    <button class="tarih-tab-btn" onclick="_tarihTab(this,'bilim')">🔬 Bilim ${badge(bilim.length)}</button>
+                    <button class="tarih-tab-btn" onclick="_tarihTab(this,'spor')">🏅 Spor ${badge(spor.length)}</button>
+                </div>
+                <div class="tarih-results" id="tarih-items">${_tarihOlayHTML(olaylar)}</div>`;
+        }
+
+        function _tarihTab(btn, tip) {
+            document.querySelectorAll('.tarih-tab-btn').forEach(b => b.classList.remove('aktif'));
+            btn.classList.add('aktif');
+            const el = document.getElementById('tarih-items');
+            if (!el || !_tarihAktifDat) return;
+            if      (tip === 'dogan') el.innerHTML = _tarihKisiHTML(_tarihAktifDat.dogan);
+            else if (tip === 'olen')  el.innerHTML = _tarihKisiHTML(_tarihAktifDat.olen);
+            else                      el.innerHTML = _tarihOlayHTML(_tarihAktifDat[tip] || []);
+        }
+
+        function _tarihYilStr(y) { return y < 0 ? `M.Ö.<br>${Math.abs(y)}` : String(y); }
+
+        function _tarihOlayHTML(list) {
+            if (!list.length) return '<div class="tarih-bos">Bu tarih için kayıtlı olay bulunamadı.</div>';
+            return list.map(o => `<div class="tarih-card">
+                <div class="tarih-yil-badge">${_tarihYilStr(o.year)}</div>
+                <div class="tarih-card-body"><div class="tarih-card-metin">${o.text}</div></div>
+            </div>`).join('');
+        }
+
+        function _tarihKisiHTML(list) {
+            if (!list.length) return '<div class="tarih-bos">Bu tarih için kayıtlı isim bulunamadı.</div>';
+            return list.map(k => {
+                const sayfa = k.pages && k.pages[0];
+                const aciklama = sayfa?.description || '';
+                const isim = (k.text || '').split(',')[0].trim();
+                const kalan = (k.text || '').includes(',') ? (k.text || '').slice(isim.length+1).trim() : '';
+                return `<div class="tarih-card">
+                    <div class="tarih-yil-badge">${_tarihYilStr(k.year)}</div>
+                    <div class="tarih-card-body">
+                        <div class="tarih-card-isim">${isim}</div>
+                        ${aciklama ? `<div class="tarih-card-desc">${aciklama}</div>` : ''}
+                        ${kalan ? `<div class="tarih-card-metin" style="margin-top:3px;opacity:.75">${kalan}</div>` : ''}
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        // ==========================================================================
         // MÜZİK GÖRSELLEŞTİRİCİ — Web Audio API (gerçek ses frekansı analizi)
         // ==========================================================================
         let _vizCtx = null, _vizAnalyser = null, _vizInited = false;
@@ -6675,6 +6882,8 @@ Kurallar:
             const dd = document.querySelector(".theme-dot.id-dark-dot");
             if (dd) changeTheme('dark', dd);
             startFactRotation();
+            // Gerçek fotoğrafları arka planda yükle
+            // SVG ikonlar artık inline — ağ isteği gerekmez
         });
     </script>
 
@@ -6701,5 +6910,5 @@ Kurallar:
     </div>
 
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"f0f03d0605bf45f1a3b17cf7d5e6861f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-<script src="https://replit-cdn.com/replit-pill/replit-pill.global.js" data-repl-id="a37c5a0e-4a3a-40cd-91b5-cc9e7c840e21"></script></body>
+</body>
 </html>
