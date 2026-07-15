@@ -244,7 +244,7 @@
 
         /* ── MÜZİK ÇALAR — EPİK TASARIM ─────────────────────────── */
         /* ══════════════════════════════════════════════════════════
-           MÜZİK ÇALAR — ULTRA EPİK TASARIM
+           MÜZİK ÇALAR — ULTRA EPİK TASARIM (BOYUT KÜÇÜLTÜLDÜ)
         ══════════════════════════════════════════════════════════ */
         .cyber-player{position:fixed;bottom:0;left:0;width:100%;background:linear-gradient(to top,rgba(4,4,8,1) 0%,rgba(8,8,14,.99) 100%);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);border-top:1px solid rgba(255,255,255,.06);z-index:9999;box-shadow:0 -20px 80px rgba(0,0,0,.95),0 -1px 0 rgba(255,255,255,.04);transition:transform .45s cubic-bezier(.4,0,.2,1);}
         .cyber-player.minimized{transform:translateY(100%);}
@@ -252,55 +252,55 @@
         .player-toggle-btn:hover{color:var(--accent-color);letter-spacing:3.5px;}
         .cyber-player.minimized .player-toggle-btn{box-shadow:0 -8px 28px rgba(0,0,0,.6);}
         /* Ana satır */
-        .player-main{display:flex;align-items:center;height:92px;padding:0 24px;gap:0;position:relative;}
+        .player-main{display:flex;align-items:center;height:72px;padding:0 16px;gap:0;position:relative;}
         /* ── Vinil ── */
-        .player-vinyl-wrap{flex-shrink:0;width:72px;height:72px;margin-right:18px;position:relative;cursor:pointer;}
+        .player-vinyl-wrap{flex-shrink:0;width:56px;height:56px;margin-right:12px;position:relative;cursor:pointer;}
         .player-vinyl-wrap::before{content:'';position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(var(--accent-color) 0deg,transparent 40deg,transparent 360deg);opacity:0;transition:opacity .5s;animation:vinylAura 2s linear infinite;animation-play-state:paused;}
         .cyber-player.playing .player-vinyl-wrap::before{opacity:.35;animation-play-state:running;}
         @keyframes vinylAura{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
-        .player-vinyl{width:72px;height:72px;border-radius:50%;background:
+        .player-vinyl{width:56px;height:56px;border-radius:50%;background:
             radial-gradient(circle at 50% 50%,#1a1a28 0%,#0c0c14 42%,#111118 43%,#0a0a12 58%,#181820 59%,#0a0a12 74%,#141420 75%,#0a0a12 88%,#181820 89%,#0a0a12 100%);
         border:1.5px solid rgba(255,255,255,.07);
         box-shadow:0 0 0 2px rgba(0,0,0,.9),0 0 0 4px rgba(255,255,255,.025),0 0 0 10px rgba(0,0,0,.7),0 0 0 12px rgba(255,255,255,.015),0 8px 40px rgba(0,0,0,.95),inset 0 0 20px rgba(0,0,0,.85);
         animation:vinylSpin 3s linear infinite;animation-play-state:paused;position:relative;transition:box-shadow .3s;}
         .cyber-player.playing .player-vinyl{animation-play-state:running;box-shadow:0 0 0 2px rgba(0,0,0,.9),0 0 0 4px rgba(255,255,255,.025),0 0 0 10px rgba(0,0,0,.7),0 0 0 12px rgba(255,255,255,.015),0 8px 40px rgba(0,0,0,.95),inset 0 0 20px rgba(0,0,0,.85),0 0 30px var(--accent-glow);}
-        .player-vinyl::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:radial-gradient(circle,var(--accent-color) 0%,rgba(0,0,0,.95) 62%);box-shadow:0 0 16px var(--accent-glow),0 0 6px var(--accent-glow);z-index:1;}
-        .player-vinyl::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:7px;height:7px;border-radius:50%;background:#04040a;z-index:2;}
+        .player-vinyl::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:18px;height:18px;border-radius:50%;background:radial-gradient(circle,var(--accent-color) 0%,rgba(0,0,0,.95) 62%);box-shadow:0 0 16px var(--accent-glow),0 0 6px var(--accent-glow);z-index:1;}
+        .player-vinyl::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:6px;height:6px;border-radius:50%;background:#04040a;z-index:2;}
         @keyframes vinylSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
         /* ── Parça bilgisi ── */
-        .player-info-col{flex-shrink:0;width:200px;margin-right:20px;}
-        .player-now-playing{font-size:7.5px;letter-spacing:2.5px;color:var(--accent-color);text-transform:uppercase;font-weight:800;opacity:0;transition:opacity .4s;margin-bottom:4px;display:flex;align-items:center;gap:5px;}
+        .player-info-col{flex-shrink:0;width:160px;margin-right:14px;}
+        .player-now-playing{font-size:7px;letter-spacing:2px;color:var(--accent-color);text-transform:uppercase;font-weight:800;opacity:0;transition:opacity .4s;margin-bottom:3px;display:flex;align-items:center;gap:4px;}
         .cyber-player.playing .player-now-playing{opacity:1;}
-        .now-playing-dot{width:5px;height:5px;border-radius:50%;background:var(--accent-color);animation:npBlink 1.2s ease-in-out infinite;}
+        .now-playing-dot{width:4px;height:4px;border-radius:50%;background:var(--accent-color);animation:npBlink 1.2s ease-in-out infinite;}
         @keyframes npBlink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
-        .track-name{color:var(--text-heading);font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px;letter-spacing:.1px;}
-        .track-index{color:var(--accent-color);font-size:8.5px;margin-top:3px;letter-spacing:1.2px;opacity:.75;font-weight:600;text-transform:uppercase;}
+        .track-name{color:var(--text-heading);font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px;letter-spacing:.1px;}
+        .track-index{color:var(--accent-color);font-size:7.5px;margin-top:2px;letter-spacing:1px;opacity:.75;font-weight:600;text-transform:uppercase;}
         /* ── Merkez kontroller ── */
-        .player-center{flex:1;display:flex;flex-direction:column;gap:9px;min-width:0;}
-        .player-controls-row{display:flex;align-items:center;justify-content:center;gap:12px;}
-        .player-btn-icon{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:var(--text-main);font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;font-family:inherit;line-height:1;}
+        .player-center{flex:1;display:flex;flex-direction:column;gap:5px;min-width:0;}
+        .player-controls-row{display:flex;align-items:center;justify-content:center;gap:8px;}
+        .player-btn-icon{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:var(--text-main);font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;font-family:inherit;line-height:1;}
         .player-btn-icon:hover{background:rgba(255,255,255,.1);border-color:var(--accent-color);color:var(--text-heading);transform:scale(1.15);box-shadow:0 0 12px var(--accent-glow);}
-        .player-btn-icon.play-main{width:56px;height:56px;font-size:22px;background:var(--accent-color);color:#02020a;border-color:transparent;font-weight:900;box-shadow:0 0 28px var(--accent-glow),0 0 60px rgba(var(--accent-rgb),.2),inset 0 1px 0 rgba(255,255,255,.28);}
+        .player-btn-icon.play-main{width:44px;height:44px;font-size:18px;background:var(--accent-color);color:#02020a;border-color:transparent;font-weight:900;box-shadow:0 0 28px var(--accent-glow),0 0 60px rgba(var(--accent-rgb),.2),inset 0 1px 0 rgba(255,255,255,.28);}
         .player-btn-icon.play-main:hover{transform:scale(1.1);box-shadow:0 0 50px var(--accent-glow),0 0 100px rgba(var(--accent-rgb),.25);}
         @keyframes playPulse{0%,100%{box-shadow:0 0 28px var(--accent-glow),0 0 60px rgba(var(--accent-rgb),.2),inset 0 1px 0 rgba(255,255,255,.28)}50%{box-shadow:0 0 55px var(--accent-glow),0 0 120px rgba(var(--accent-rgb),.35),inset 0 1px 0 rgba(255,255,255,.28)}}
         .cyber-player.playing .player-btn-icon.play-main{animation:playPulse 2.8s ease-in-out infinite;}
         .player-btn-icon.active-mode{border-color:var(--accent-color);color:var(--accent-color);box-shadow:0 0 12px var(--accent-glow);}
         /* ── Zaman çizgisi ── */
-        .player-timeline-row{display:flex;align-items:center;gap:9px;}
-        .time-display{font-size:9.5px;font-family:monospace;color:var(--text-main);min-width:34px;opacity:.6;flex-shrink:0;}
+        .player-timeline-row{display:flex;align-items:center;gap:6px;}
+        .time-display{font-size:8.5px;font-family:monospace;color:var(--text-main);min-width:30px;opacity:.6;flex-shrink:0;}
         .timeline-container{flex-grow:1;height:3px;background:rgba(255,255,255,.07);border-radius:2px;position:relative;cursor:pointer;transition:height .12s;}
-        .timeline-container:hover{height:6px;}
+        .timeline-container:hover{height:5px;}
         .timeline-progress{height:100%;width:0%;background:linear-gradient(90deg,var(--accent-color),var(--accent-color));box-shadow:0 0 10px var(--accent-color),0 0 20px var(--accent-glow);border-radius:2px;pointer-events:none;transition:box-shadow .3s;}
         .cyber-player.playing .timeline-progress{box-shadow:0 0 14px var(--accent-color),0 0 30px var(--accent-glow);}
         /* ── Sağ panel ── */
-        .player-right{flex-shrink:0;margin-left:20px;display:flex;align-items:center;gap:9px;}
-        .player-vol-icon{font-size:13px;opacity:.5;color:var(--text-main);}
-        .player-vol-slider{width:75px;height:3px;appearance:none;-webkit-appearance:none;background:rgba(255,255,255,.1);border-radius:2px;cursor:pointer;accent-color:var(--accent-color);border:none;outline:none;}
+        .player-right{flex-shrink:0;margin-left:12px;display:flex;align-items:center;gap:6px;}
+        .player-vol-icon{font-size:11px;opacity:.5;color:var(--text-main);}
+        .player-vol-slider{width:60px;height:3px;appearance:none;-webkit-appearance:none;background:rgba(255,255,255,.1);border-radius:2px;cursor:pointer;accent-color:var(--accent-color);border:none;outline:none;}
         /* ── Görselleştirici (AYNA efekti) ── */
-        .viz-canvas{width:100%;height:52px;display:block;opacity:0;transition:opacity .9s ease;}
+        .viz-canvas{width:100%;height:40px;display:block;opacity:0;transition:opacity .9s ease;}
         .cyber-player.playing .viz-canvas{opacity:1;}
-        @media(max-width:700px){.player-vinyl-wrap{display:none}.player-info-col{width:140px;margin-right:14px}.player-right{margin-left:10px}.player-vol-slider{width:52px}}
-        @media(max-width:460px){.player-now-playing,.track-index{display:none}.player-center{gap:6px}}
+        @media(max-width:700px){.player-vinyl-wrap{display:none}.player-info-col{width:120px;margin-right:10px}.player-right{margin-left:8px}.player-vol-slider{width:44px}}
+        @media(max-width:460px){.player-now-playing,.track-index{display:none}.player-center{gap:4px}}
 
         .coffee-overlay, .burc-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(4,4,5,0.94); backdrop-filter:blur(25px); z-index:100000; display:none; align-items:center; justify-content:center; flex-direction:column; opacity:0; transition:opacity 0.4s ease; }
         .coffee-overlay.show, .burc-overlay.show { display:flex; opacity:1; }
@@ -1958,7 +1958,7 @@
 
     <!-- MÜZİK ÇALAR -->
     <div id="cyber-audio-player" class="cyber-player">
-        <button id="player-toggle" class="player-toggle-btn" onclick="togglePlayerMinimize()">AŞAĞI KAYDIRMAK İÇİN TIK ▼</button>
+        <button id="player-toggle" class="player-toggle-btn" onclick="togglePlayerMinimize()">▼ AŞAĞI KAYDIRMAK İÇİN TIK</button>
         <div class="player-main">
             <div class="player-vinyl-wrap" onclick="togglePlay()" title="Oynat / Durdur">
                 <div class="player-vinyl"></div>
@@ -4406,10 +4406,10 @@ Bu ikiliye özel, ${acilanAci} odaklı, 2-3 cümlelik SICAK ve SAMİMİ bir tavs
                 sec = Math.floor(s % 60); return `${m<10?'0':''}${m}:${sec<10?'0':''}${sec}`; }
 
         function togglePlayerMinimize() {
-            const p = document.getElementById("cyber-audio-player"),
-                  b = document.getElementById("player-toggle");
+            const p = document.getElementById("cyber-audio-player");
+            const b = document.getElementById("player-toggle");
             p.classList.toggle("minimized");
-            b.textContent = p.classList.contains("minimized") ? "▲ YUKARI KAYDIRMAK İÇİN TIK";
+            b.textContent = p.classList.contains("minimized") ? "▲ YUKARI KAYDIRMAK İÇİN TIK" : "▼ AŞAĞI KAYDIRMAK İÇİN TIK";
         }
 
         function changeVolume(v) { audio.volume = v; if (v == 1) showToast("🔊 Kulaklarını seviyorsan sesi biraz kıs"); }
@@ -6683,8 +6683,6 @@ Kurallar:
             const dd = document.querySelector(".theme-dot.id-dark-dot");
             if (dd) changeTheme('dark', dd);
             startFactRotation();
-            // Gerçek fotoğrafları arka planda yükle
-            // SVG ikonlar artık inline — ağ isteği gerekmez
         });
     </script>
 
