@@ -1958,7 +1958,7 @@
 
     <!-- MÜZİK ÇALAR -->
     <div id="cyber-audio-player" class="cyber-player">
-        <button id="player-toggle" class="player-toggle-btn" onclick="togglePlayerMinimize()">♪ MÜZİK ÇALAR</button>
+        <button id="player-toggle" class="player-toggle-btn" onclick="togglePlayerMinimize()">AŞAĞI KAYDIRMAK İÇİN TIK ▼</button>
         <div class="player-main">
             <div class="player-vinyl-wrap" onclick="togglePlay()" title="Oynat / Durdur">
                 <div class="player-vinyl"></div>
@@ -4409,7 +4409,7 @@ Bu ikiliye özel, ${acilanAci} odaklı, 2-3 cümlelik SICAK ve SAMİMİ bir tavs
             const p = document.getElementById("cyber-audio-player"),
                   b = document.getElementById("player-toggle");
             p.classList.toggle("minimized");
-            b.textContent = p.classList.contains("minimized") ? "▲ AÇMAK İÇİN TIK" : "♪ MÜZİK ÇALAR";
+            b.textContent = p.classList.contains("minimized") ? "▲ YUKARI KAYDIRMAK İÇİN TIK" : "♪ MÜZİK ÇALAR";
         }
 
         function changeVolume(v) { audio.volume = v; if (v == 1) showToast("🔊 Kulaklarını seviyorsan biraz kıs aslan parçası"); }
@@ -5990,7 +5990,7 @@ Kurallar:
 
             const loadDiv = document.createElement('div');
             loadDiv.className = 'chat-msg ai-reply loading-msg';
-            loadDiv.innerHTML = '<span class="ai-pulse"></span> Arastiriyor...';
+            loadDiv.innerHTML = '<span class="ai-pulse"></span> ...';
             box.appendChild(loadDiv);
             box.scrollTop = box.scrollHeight;
 
