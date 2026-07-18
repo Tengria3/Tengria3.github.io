@@ -242,253 +242,102 @@
         .game-iframe-wrapper .iframe-container iframe { width:100%; height:800px; margin-top:-40px; border:none; display:block; background:#000; }
         .game-iframe-wrapper .iframe-container .fullscreen-btn { position:absolute; bottom:15px; right:15px; z-index:10; background:rgba(0,0,0,0.7); color:#fff; border:2px solid #fff; border-radius:8px; padding:10px 16px; font-size:14px; font-weight:bold; cursor:pointer; backdrop-filter:blur(4px); box-shadow:0 0 15px rgba(0,0,0,0.5); transition:all 0.3s ease; }
 
-        /* ══════════════ TENGRİ KAPISI v4 ══════════════ */
-        :root{--tg4-c:#00c8d4;--tg4-c2:#7fecf4;--tg4-w:#e8f6ff;--tg4-dim:rgba(0,200,212,0.18);--tg4-bg:#03060f;}
-        .gtp4{
-          position:relative;width:100%;overflow:hidden;
-          background:radial-gradient(ellipse 120% 90% at 50% 110%,#040d1a 0%,#020812 40%,#010508 100%);
-          border-top:1px solid rgba(0,200,212,0.22);
-          font-family:inherit;
-        }
-        /* Yıldız doku — üst yarı arka plan */
-        .gtp4::before{
-          content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
-          background-image:
-            radial-gradient(circle,rgba(255,255,255,0.55) 1px,transparent 1px),
-            radial-gradient(circle,rgba(0,200,212,0.3) 1px,transparent 1px);
-          background-size:120px 120px,180px 180px;
-          background-position:0 0,60px 60px;
-          opacity:0.18;
-        }
-        /* Üst yatay çizgi parıltısı */
-        .gtp4::after{
-          content:'';position:absolute;top:0;left:0;right:0;height:1px;z-index:10;pointer-events:none;
-          background:linear-gradient(90deg,transparent,rgba(0,200,212,0.4) 15%,var(--tg4-c) 50%,rgba(0,200,212,0.4) 85%,transparent);
-          box-shadow:0 0 40px rgba(0,200,212,0.9),0 0 100px rgba(0,200,212,0.3);
-        }
-        /* === ÜST RUNİK BANT === */
-        .gtp4-rband{
-          position:relative;z-index:5;
-          height:24px;display:flex;align-items:center;overflow:hidden;
-          background:rgba(0,0,0,0.35);
-          border-bottom:1px solid rgba(0,200,212,0.1);
-        }
-        .gtp4-rscroll{
-          display:flex;white-space:nowrap;
-          animation:gtp4Scroll 70s linear infinite;
-          will-change:transform;
-        }
-        .gtp4.playing .gtp4-rscroll{animation-duration:40s;}
-        .gtp4-rcopy{
-          flex-shrink:0;
-          font-size:12px;letter-spacing:9px;
-          color:rgba(0,200,212,0.2);
-          padding-right:80px;
-          text-shadow:0 0 12px rgba(0,200,212,0.4);
-        }
-        .gtp4.playing .gtp4-rcopy{
-          color:rgba(0,200,212,0.55);
-          text-shadow:0 0 20px rgba(0,200,212,0.95),0 0 50px rgba(0,200,212,0.3);
-        }
-        @keyframes gtp4Scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+        /* ══════════════ GÖKTÜRK MÜZİK ÇALARI ══════════════ */
+        .tengri-player{--pa:var(--player-accent,var(--pa));--pa-rgb:var(--player-accent-rgb,212,175,55);position:relative;width:100%;margin-top:20px;background:linear-gradient(170deg,#06080d 0%,#070910 60%,#090712 100%);overflow:hidden;}
+        .tengri-player::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 0%,rgba(var(--pa-rgb),0.42) 4%,var(--pa) 25%,var(--pa) 50%,var(--pa) 75%,rgba(var(--pa-rgb),0.42) 96%,transparent 100%);box-shadow:0 0 22px rgba(var(--pa-rgb),0.55),0 0 50px rgba(var(--pa-rgb),0.15);z-index:1;pointer-events:none;}
+        .t-rune-band{position:relative;overflow:hidden;height:22px;display:flex;align-items:center;border-bottom:1px solid rgba(var(--pa-rgb),0.07);background:linear-gradient(90deg,transparent,rgba(var(--pa-rgb),0.03),transparent);z-index:2;}
+        .t-rune-inner{display:flex;white-space:nowrap;animation:runeScroll 55s linear infinite;will-change:transform;}
+        .t-marquee-copy{flex-shrink:0;font-size:13px;letter-spacing:6px;color:rgba(var(--pa-rgb),0.45);padding-right:60px;}
+        @keyframes runeScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+        .t-body{display:flex;align-items:center;gap:20px;padding:16px 32px 12px;position:relative;z-index:2;}
+        .t-tamga{flex-shrink:0;width:76px;height:76px;position:relative;}
+        .t-tamga svg{width:100%;height:100%;}
+        .tamga-spin{transform-origin:50px 50px;animation:tamgaSpin 18s linear infinite;animation-play-state:paused;}
+        .tengri-player.playing .tamga-spin{animation-play-state:running;}
+        .tamga-glow{transition:filter 0.8s ease;}
+        .tengri-player.playing .tamga-glow{filter:drop-shadow(0 0 8px rgba(var(--pa-rgb),0.9)) drop-shadow(0 0 22px rgba(var(--pa-rgb),0.35));}
+        @keyframes tamgaSpin{to{transform:rotate(360deg)}}
+        .tamga-pulse{animation:tamgaPulse 2.8s ease-in-out infinite;animation-play-state:paused;}
+        .tengri-player.playing .tamga-pulse{animation-play-state:running;}
+        @keyframes tamgaPulse{0%,100%{opacity:0.5}50%{opacity:1}}
+        /* Tamga titreşim efekti */
+        @keyframes tamgaVibrate{0%{transform:translate(0,0) rotate(0deg)}10%{transform:translate(-2px,-1px) rotate(-1.5deg)}20%{transform:translate(2px,1px) rotate(1.5deg)}30%{transform:translate(-2px,1px) rotate(-1deg)}40%{transform:translate(2px,-1px) rotate(1deg)}50%{transform:translate(-1px,2px) rotate(-1.5deg)}60%{transform:translate(1px,-2px) rotate(1.5deg)}70%{transform:translate(-2px,-1px) rotate(-0.5deg)}80%{transform:translate(2px,1px) rotate(0.5deg)}90%{transform:translate(-1px,0) rotate(0deg)}100%{transform:translate(0,0) rotate(0deg)}}
+        .t-tamga{cursor:pointer;}
+        .t-tamga:hover{animation:tamgaVibrate 0.12s linear infinite;}
+        .t-tamga:hover .tamga-glow{filter:drop-shadow(0 0 14px rgba(var(--pa-rgb),1)) drop-shadow(0 0 30px rgba(var(--pa-rgb),0.5));}
+        .t-tamga:active{animation:tamgaVibrate 0.07s linear infinite;}
+        .t-info{flex:1;min-width:100px;display:flex;flex-direction:column;gap:5px;}
+        .t-sublabel{font-size:7.5px;letter-spacing:3.5px;color:rgba(var(--pa-rgb),0.38);text-transform:uppercase;font-weight:700;}
+        #track-name{font-size:13.5px;font-weight:700;color:var(--pa);letter-spacing:0.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:230px;text-shadow:0 0 14px rgba(var(--pa-rgb),0.4);}
+        #track-index{font-size:10px;color:rgba(var(--pa-rgb),0.38);letter-spacing:1.5px;font-family:monospace;}
+        .t-controls{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+        .t-btn{background:none;border:1px solid rgba(var(--pa-rgb),0.22);color:rgba(var(--pa-rgb),0.65);border-radius:50%;width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;transition:all 0.22s ease;padding:0;line-height:1;letter-spacing:0;flex-shrink:0;}
+        .t-btn:hover{border-color:rgba(var(--pa-rgb),0.75);color:var(--pa);background:rgba(var(--pa-rgb),0.07);box-shadow:0 0 14px rgba(var(--pa-rgb),0.28);}
+        .t-btn-play{width:56px;height:56px;font-size:20px;border:2px solid rgba(var(--pa-rgb),0.55);background:radial-gradient(circle at 38% 32%,rgba(var(--pa-rgb),0.14),rgba(0,0,0,0.4));}
+        .t-btn-play:hover{border-color:var(--pa);box-shadow:0 0 24px rgba(var(--pa-rgb),0.55),0 0 50px rgba(var(--pa-rgb),0.18);color:var(--pa);}
+        .tengri-player.playing .t-btn-play{border-color:var(--pa);box-shadow:0 0 20px rgba(var(--pa-rgb),0.45);}
+        .t-btn-sm{width:32px;height:32px;font-size:11px;border-radius:6px;}
+        .t-btn.t-active{border-color:rgba(var(--pa-rgb),0.75);color:var(--pa);background:rgba(var(--pa-rgb),0.1);box-shadow:0 0 12px rgba(var(--pa-rgb),0.32);}
+        .t-vol{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+        .t-vol-icon{font-size:11px;color:rgba(var(--pa-rgb),0.45);}
+        .t-vol-slider{-webkit-appearance:none;appearance:none;width:72px;height:2px;background:rgba(var(--pa-rgb),0.18);border-radius:1px;outline:none;cursor:pointer;border:none;}
+        .t-vol-slider::-webkit-slider-thumb{-webkit-appearance:none;width:11px;height:11px;border-radius:50%;background:var(--pa);cursor:pointer;box-shadow:0 0 7px rgba(var(--pa-rgb),0.7);}
+        .t-vol-slider::-moz-range-thumb{width:11px;height:11px;border-radius:50%;background:var(--pa);cursor:pointer;border:none;box-shadow:0 0 7px rgba(var(--pa-rgb),0.7);}
+        .t-timeline-wrap{display:flex;align-items:center;gap:10px;padding:4px 32px 10px;position:relative;z-index:2;}
+        .t-time{font-size:9.5px;font-family:monospace;color:rgba(var(--pa-rgb),0.42);min-width:32px;}
+        .timeline-container{flex-grow:1;height:2px;background:rgba(var(--pa-rgb),0.1);border-radius:1px;position:relative;cursor:pointer;margin:4px 0;}
+        .timeline-container::after{content:'';position:absolute;top:-6px;bottom:-6px;left:0;right:0;}
+        .timeline-progress{height:100%;width:0%;background:linear-gradient(90deg,rgba(var(--pa-rgb),0.42),var(--pa) 60%,var(--pa));box-shadow:0 0 8px rgba(var(--pa-rgb),0.65);border-radius:1px;position:relative;pointer-events:none;transition:width 0.1s linear;}
+        .timeline-progress::after{content:'\25c6';position:absolute;right:-5px;top:50%;transform:translateY(-50%);font-size:6px;color:var(--pa);text-shadow:0 0 8px var(--pa);}
+        .viz-canvas{width:100%;height:46px;display:block;opacity:0;transition:opacity 1.2s ease;}
+        .tengri-player.playing .viz-canvas{opacity:1;}
 
-        /* === ANA BÖLÜM (3 sütun: boş | merkez tamga+bilgi | kontroller) === */
-        .gtp4-main{
-          position:relative;z-index:5;
-          display:grid;
-          grid-template-columns:1fr auto 1fr;
-          align-items:center;
-          gap:0 18px;
-          padding:18px 24px 10px;
-        }
-        /* Sol sütun: parça bilgisi */
-        .gtp4-info{
-          display:flex;flex-direction:column;gap:5px;
-          min-width:0;
-        }
-        .gtp4-sublbl{
-          font-size:8px;letter-spacing:6px;text-transform:uppercase;font-weight:900;
-          color:rgba(0,200,212,0.28);
-        }
-        #track-name{
-          font-size:16px;font-weight:700;
-          color:var(--tg4-w);
-          white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-          text-shadow:0 0 22px rgba(0,200,212,0.5);
-          transition:text-shadow 0.6s;
-        }
-        .gtp4.playing #track-name{text-shadow:0 0 30px rgba(0,200,212,0.95),0 0 70px rgba(0,200,212,0.35);}
-        #track-index{
-          font-size:9px;letter-spacing:4px;color:rgba(0,200,212,0.3);font-family:monospace;
-        }
-        .gtp4-runerow{
-          display:flex;gap:6px;margin-top:3px;
-        }
-        .gtp4-r{
-          font-size:15px;color:rgba(0,200,212,0.12);transition:color .5s,text-shadow .5s;
-        }
-        .gtp4.playing .gtp4-r{
-          color:rgba(0,200,212,0.48);
-          text-shadow:0 0 16px rgba(0,200,212,0.9);
-          animation:gtp4RunePulse 2.8s ease-in-out infinite;
-        }
-        .gtp4.playing .gtp4-r:nth-child(2){animation-delay:.4s}
-        .gtp4.playing .gtp4-r:nth-child(3){animation-delay:.8s}
-        .gtp4.playing .gtp4-r:nth-child(4){animation-delay:1.2s}
-        @keyframes gtp4RunePulse{0%,100%{opacity:.48}50%{opacity:.9}}
+        /* ── Runik kazıma dekorasyonları ── */
+        .t-rune-sigil{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 14px;opacity:0.22;transition:opacity 0.6s,color 0.6s;flex-shrink:0;pointer-events:none;}
+        .t-rune-sigil span{font-size:11px;color:var(--pa);line-height:1.35;display:block;text-align:center;}
+        .t-rune-sigil .rs-sep{font-size:6px;opacity:0.5;}
+        .tengri-player:hover .t-rune-sigil{opacity:0.55;}
+        .tengri-player.playing .t-rune-sigil{opacity:0.4;animation:runePulseDecor 3.2s ease-in-out infinite;}
+        @keyframes runePulseDecor{0%,100%{opacity:0.4}50%{opacity:0.7}}
+        .t-rune-cap{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:3px;padding:0 20px 0 8px;opacity:0.16;transition:opacity 0.6s;flex-shrink:0;pointer-events:none;}
+        .t-rune-cap .rc-line{font-size:9px;letter-spacing:3px;color:var(--pa);white-space:nowrap;}
+        .t-rune-cap .rc-dot{width:4px;height:4px;border-radius:50%;background:var(--pa);opacity:0.6;margin:0 auto;}
+        .tengri-player:hover .t-rune-cap{opacity:0.42;}
+        .tengri-player.playing .t-rune-cap{opacity:0.35;}
+        @media(max-width:600px){.t-rune-sigil,.t-rune-cap{display:none;}}
+        /* ── Aurora arka plan ── */
+        .t-aurora{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;}
+        .t-aurora-blob{position:absolute;border-radius:50%;filter:blur(42px);opacity:0;background:var(--pa);transition:opacity 0.9s,background 0.6s;}
+        .t-aurora-blob.b1{width:260px;height:130px;top:-40px;left:8%;animation:auroraDrift1 9s ease-in-out infinite;}
+        .t-aurora-blob.b2{width:200px;height:110px;top:-30px;right:12%;animation:auroraDrift2 12s ease-in-out infinite;}
+        .t-aurora-blob.b3{width:160px;height:90px;top:5px;left:42%;animation:auroraDrift3 15s ease-in-out infinite;}
+        .tengri-player.playing .t-aurora-blob.b1{opacity:0.10;}
+        .tengri-player.playing .t-aurora-blob.b2{opacity:0.08;}
+        .tengri-player.playing .t-aurora-blob.b3{opacity:0.06;}
+        @keyframes auroraDrift1{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(35px,18px) scale(1.18);}}
+        @keyframes auroraDrift2{0%,100%{transform:translate(0,0) scale(1.1);}50%{transform:translate(-28px,12px) scale(0.88);}}
+        @keyframes auroraDrift3{0%,100%{transform:translate(0,0) scale(0.95);}50%{transform:translate(18px,-14px) scale(1.22);}}
+        /* ── Runik parçacık canvas ── */
+        #rune-particles{position:absolute;inset:0;pointer-events:none;z-index:1;opacity:0;transition:opacity 1s;}
+        .tengri-player.playing #rune-particles{opacity:1;}
+        /* ── Beat ring (tamga çevresi) ── */
+        .t-beat-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;z-index:2;width:82px;height:82px;border:1.5px solid transparent;opacity:0;transition:border-color 0.04s,box-shadow 0.04s,opacity 0.04s;}
+        /* ── Parça değişim animasyonu ── */
+        @keyframes runeScatter{0%{opacity:1;transform:translate(0,0) scale(1) rotate(0deg);}100%{opacity:0;transform:translate(var(--dx,20px),var(--dy,-25px)) scale(0.15) rotate(var(--dr,120deg));}}
+        @keyframes runeAssemble{0%{opacity:0;transform:translate(var(--dx,0px),var(--dy,18px)) scale(0.1) rotate(var(--dr,0deg));}65%{opacity:1;transform:translate(0,0) scale(1.15) rotate(0deg);}100%{opacity:1;transform:translate(0,0) scale(1) rotate(0deg);}}
+        .rsc{display:inline-block;animation:runeScatter 0.42s cubic-bezier(0.55,0,1,0.45) forwards;}
+        .rsa{display:inline-block;animation:runeAssemble 0.52s cubic-bezier(0.34,1.56,0.64,1) forwards;}
 
-        /* === MERKEZ TAMGA === */
-        .gtp4-tamga-wrap{
-          position:relative;
-          width:110px;height:110px;
-          flex-shrink:0;
-          cursor:pointer;
-          display:flex;align-items:center;justify-content:center;
-        }
-        /* Portal halkası — canvas overlay */
-        #gtp4-portal{
-          position:absolute;inset:0;border-radius:50%;pointer-events:none;z-index:2;
-        }
-        .gtp4-tamga-wrap svg{
-          position:relative;z-index:3;
-          width:100%;height:100%;
-          filter:drop-shadow(0 0 8px rgba(0,200,212,0.25));
-          transition:filter 0.4s;
-        }
-        .gtp4.playing .gtp4-tamga-wrap svg{
-          filter:drop-shadow(0 0 18px rgba(0,200,212,0.9)) drop-shadow(0 0 50px rgba(0,200,212,0.35));
-        }
-        /* Dönen dış halka */
-        .gtp4-orb{
-          animation:gtp4OrbSpin 55s linear infinite paused;
-          transform-origin:50px 50px;
-        }
-        .gtp4.playing .gtp4-orb{animation-play-state:running;}
-        @keyframes gtp4OrbSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-        /* Ters dönen iç halka */
-        .gtp4-orb2{
-          animation:gtp4OrbSpin2 80s linear infinite paused;
-          transform-origin:50px 50px;
-        }
-        .gtp4.playing .gtp4-orb2{animation-play-state:running;}
-        @keyframes gtp4OrbSpin2{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
-        /* Nefes alan iç tamga */
-        .gtp4-pulse{
-          animation:gtp4Pulse 3.2s ease-in-out infinite paused;
-          transform-origin:50px 50px;
-        }
-        .gtp4.playing .gtp4-pulse{animation-play-state:running;}
-        @keyframes gtp4Pulse{
-          0%,100%{opacity:0.62;transform:scale(1)}
-          50%{opacity:0.95;transform:scale(1.04)}
-        }
-        /* Beat ring */
-        #gtp4-beat-ring{
-          position:absolute;inset:-10px;border-radius:50%;
-          border:2px solid transparent;pointer-events:none;z-index:4;opacity:0;
-          box-sizing:border-box;transition:border-color .1s,opacity .2s;
-        }
 
-        /* === SAĞ SÜTUN: KONTROLLER === */
-        .gtp4-ctrl-col{
-          display:flex;flex-direction:column;align-items:flex-end;gap:10px;
-        }
-        .gtp4-ctrls{display:flex;align-items:center;gap:10px;}
-        .gtp4-btn{
-          background:rgba(0,200,212,0.04);
-          border:1px solid rgba(0,200,212,0.2);
-          color:rgba(0,200,212,0.5);
-          border-radius:50%;width:38px;height:38px;
-          display:inline-flex;align-items:center;justify-content:center;
-          cursor:pointer;font-size:15px;transition:all .2s;padding:0;
-          box-shadow:inset 0 1px 0 rgba(255,255,255,.03);
-        }
-        .gtp4-btn:hover{
-          border-color:var(--tg4-c);color:var(--tg4-c2);
-          background:rgba(0,200,212,0.14);
-          box-shadow:0 0 24px rgba(0,200,212,0.55);
-        }
-        .gtp4-btn-play{
-          width:60px;height:60px;font-size:22px;
-          border:2px solid rgba(0,200,212,0.35);
-          background:radial-gradient(circle at 40% 36%,rgba(0,200,212,0.16),rgba(2,6,14,0.9));
-          position:relative;
-        }
-        .gtp4-btn-play::before{
-          content:'';position:absolute;inset:-8px;border-radius:50%;
-          border:1px solid rgba(0,200,212,0.1);pointer-events:none;transition:all .4s;
-        }
-        .gtp4.playing .gtp4-btn-play{
-          border-color:var(--tg4-c);
-          box-shadow:0 0 32px rgba(0,200,212,0.75),0 0 80px rgba(0,200,212,0.28);
-        }
-        .gtp4.playing .gtp4-btn-play::before{
-          border-color:rgba(0,200,212,0.28);
-          box-shadow:0 0 22px rgba(0,200,212,0.45);
-        }
-        .gtp4-aux{display:flex;gap:8px;align-items:center;}
-        .gtp4-btn-sm{
-          background:rgba(0,200,212,0.04);
-          border:1px solid rgba(0,200,212,0.15);
-          color:rgba(0,200,212,0.38);
-          border-radius:7px;width:28px;height:28px;
-          font-size:13px;display:inline-flex;align-items:center;justify-content:center;
-          cursor:pointer;padding:0;transition:all .2s;
-        }
-        .gtp4-btn-sm:hover{border-color:var(--tg4-c);color:var(--tg4-c2);background:rgba(0,200,212,0.12);}
-        .gtp4-btn-sm.active{
-          border-color:var(--tg4-c);color:var(--tg4-c2);background:rgba(0,200,212,0.16);
-          box-shadow:0 0 12px rgba(0,200,212,0.5);
-        }
-        /* Ses */
-        .gtp4-vol{display:flex;align-items:center;gap:6px;}
-        .gtp4-vol-icon{font-size:13px;opacity:0.4;}
-        .gtp4-vol-slider{
-          -webkit-appearance:none;appearance:none;
-          width:72px;height:3px;border-radius:2px;outline:none;cursor:pointer;
-          background:linear-gradient(90deg,var(--tg4-c) 0%,var(--tg4-c) 100%) no-repeat 0/100% 50%,
-                    rgba(0,200,212,0.12) 100%;
-        }
-        .gtp4-vol-slider::-webkit-slider-thumb{
-          -webkit-appearance:none;width:12px;height:12px;border-radius:50%;
-          background:var(--tg4-c);box-shadow:0 0 8px rgba(0,200,212,0.8);cursor:pointer;
-        }
 
-        /* === ZAMAN ÇUBUĞU === */
-        .gtp4-timeline-wrap{
-          position:relative;z-index:5;
-          display:flex;align-items:center;gap:8px;
-          padding:4px 24px 8px;
-        }
-        .gtp4-time{
-          font-size:9.5px;font-family:monospace;
-          color:rgba(0,200,212,0.38);min-width:36px;letter-spacing:1px;
-        }
-        .timeline-container{
-          flex:1;height:3px;border-radius:2px;
-          background:rgba(0,200,212,0.1);cursor:pointer;position:relative;overflow:hidden;
-        }
-        .timeline-progress{
-          height:100%;border-radius:2px;width:0%;
-          background:linear-gradient(90deg,rgba(0,200,212,0.5),var(--tg4-c));
-          box-shadow:0 0 8px rgba(0,200,212,0.8);
-          transition:width .25s linear;pointer-events:none;
-        }
 
-        /* === VİZÜALİZER === */
-        .gt-viz-canvas{
-          width:100%;height:44px;display:block;
-          opacity:0;transition:opacity 1.2s;
-          position:relative;z-index:4;
-        }
-        .gtp4.playing .gt-viz-canvas{opacity:1;}
-
-        /* === PORTAL CANVAS (tamga etrafı ışın) === */
-        #gtp4-rays{
-          position:absolute;inset:-30px;pointer-events:none;z-index:1;
-          opacity:0;transition:opacity 1s;
-        }
-        .gtp4.playing #gtp4-rays{opacity:1;}
+        /* ── Prosedürel Kapak Sanatı ── */
+        /* ── Duman ── */
+        #smoke-canvas{position:absolute;inset:0;pointer-events:none;z-index:1;opacity:0;transition:opacity 1.5s;}
+        .tengri-player.playing #smoke-canvas{opacity:1;}
+        /* ── Dalga Formu ── */
+        .wave-canvas{width:100%;height:30px;display:block;opacity:0;transition:opacity 1.2s ease;}
+        .tengri-player.playing .wave-canvas{opacity:1;}
 
         .coffee-overlay, .burc-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(4,4,5,0.94); backdrop-filter:blur(25px); z-index:100000; display:none; align-items:center; justify-content:center; flex-direction:column; opacity:0; transition:opacity 0.4s ease; }
         .coffee-overlay.show, .burc-overlay.show { display:flex; opacity:1; }
@@ -2047,29 +1896,7 @@
         .sehir-ozellik { font-size:12.5px; color:var(--text-main); line-height:1.75; padding:11px 14px; background:rgba(201,162,39,.07); border-left:3px solid var(--accent-color); border-radius:0 6px 6px 0; }
         .sehir-bos { text-align:center; padding:30px; color:var(--text-main); opacity:.45; font-size:13px; grid-column:1/-1; }
 
-
-        /* ── AI ŞEHİR BİLGİ PANELI ── */
-        /* ── AI ŞEHİR CHIP SİSTEMİ ── */
-        .sehir-ai-loading{display:flex;align-items:center;gap:8px;padding:12px 0 4px;color:var(--text-muted,rgba(255,255,255,.45));font-size:12px;}
-        .sehir-ai-error{font-size:12px;color:rgba(255,100,100,.7);margin-top:8px;font-style:italic;}
-        .ai-pulse{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent-color);flex-shrink:0;animation:aiPulseCity 1.2s ease-in-out infinite;}
-        @keyframes aiPulseCity{0%,100%{opacity:.3;transform:scale(.8);}50%{opacity:1;transform:scale(1.2);}}
-        .sehir-ai-wrap{margin-top:14px;padding-top:14px;border-top:1px dashed rgba(255,255,255,.07);}
-        .sehir-ai-label{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--accent-color);opacity:.65;margin-bottom:9px;}
-        .sehir-ai-chips{display:flex;flex-wrap:wrap;gap:7px;}
-        .sehir-ai-chip{background:rgba(var(--accent-rgb),.07);border:1px solid rgba(var(--accent-rgb),.22);color:var(--text-main);font-size:12px;padding:5px 13px;border-radius:20px;cursor:pointer;transition:background .18s,border-color .18s,color .18s;font-family:inherit;}
-        .sehir-ai-chip:hover{background:rgba(var(--accent-rgb),.18);border-color:rgba(var(--accent-rgb),.5);}
-        .sehir-ai-chip.aktif{background:var(--accent-color);color:#fff;border-color:var(--accent-color);}
-        .sehir-ai-detail{margin-top:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:14px 15px;animation:fadeInDetail .25s ease;}
-        @keyframes fadeInDetail{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:none;}}
-        .sehir-ai-detail-name{font-size:13px;font-weight:700;color:var(--accent-color);margin-bottom:7px;}
-        .sehir-ai-detail-text{font-size:13px;color:var(--text-input);line-height:1.85;}
-        .sehir-ai-wiki-src{margin-top:10px;font-size:11px;color:rgba(255,255,255,.35);}
-        .sehir-ai-wiki-src a{color:rgba(255,255,255,.45);text-decoration:underline;text-underline-offset:3px;}
-        .sehir-ai-wiki-src a:hover{color:var(--accent-color);}
-
         /* ── GÖKTÜRK MÜHRÜ / LOGO ── */
-
 
     </style>
 </head>
@@ -2171,136 +1998,145 @@
         </div>
     </div>
 
-    <!-- MÜZİK ÇALAR — TENGRİ KAPISI v4 -->
-    <div id="cyber-audio-player" class="gtp4">
-
-      <!-- Runik kayan bant -->
-      <div class="gtp4-rband" aria-hidden="true">
-        <div class="gtp4-rscroll">
-          <div class="gtp4-rcopy">𐱅𐰭𐰼𐰃 ᛫ 𐰇𐰠𐰏𐰤 ᛫ 𐰼𐰠𐰚 ᛫ 𐰉𐰆𐰕𐰴𐰆𐰺𐱅 ᛫ 𐰚𐰇𐰚 𐱅𐰭𐰼𐰃 ᛫ 𐰖𐰼 𐱅𐰭𐰼𐰃 ᛫ 𐰇𐰓 𐱅𐰭𐰼𐰃 ᛫ 𐰴𐰺 𐰴𐰣 ᛫ 𐰓𐰅𐰓𐰅 𐰴𐰺𐰴𐰆𐱅 ᛫ 𐰞𐰯𐰢𐰃𐱁 ᛫ 𐱅𐰤𐰼𐰃 ᛫ 𐰈𐰏𐰼𐰶 ᛫ 𐰽𐰇 ᛫ 𐱃𐰆𐰺𐰆𐰴 ᛫ </div>
-          <div class="gtp4-rcopy">𐱅𐰭𐰼𐰃 ᛫ 𐰇𐰠𐰏𐰤 ᛫ 𐰼𐰠𐰚 ᛫ 𐰉𐰆𐰕𐰴𐰆𐰺𐱅 ᛫ 𐰚𐰇𐰚 𐱅𐰭𐰼𐰃 ᛫ 𐰖𐰼 𐱅𐰭𐰼𐰃 ᛫ 𐰇𐰓 𐱅𐰭𐰼𐰃 ᛫ 𐰴𐰺 𐰴𐰣 ᛫ 𐰓𐰅𐰓𐰅 𐰴𐰺𐰴𐰆𐱅 ᛫ 𐰞𐰯𐰢𐰃𐱁 ᛫ 𐱅𐰤𐰼𐰃 ᛫ 𐰈𐰏𐰼𐰶 ᛫ 𐰽𐰇 ᛫ 𐱃𐰆𐰺𐰆𐰴 ᛫ </div>
+    <!-- MÜZİK ÇALAR -->
+    <div id="cyber-audio-player" class="tengri-player">
+        <div class="t-aurora" aria-hidden="true">
+            <div class="t-aurora-blob b1"></div>
+            <div class="t-aurora-blob b2"></div>
+            <div class="t-aurora-blob b3"></div>
         </div>
-      </div>
+        <canvas id="rune-particles"></canvas>
+        <canvas id="smoke-canvas"></canvas>
 
-      <!-- Ana bölüm: sol bilgi | merkez tamga | sağ kontrol -->
-      <div class="gtp4-main">
 
-        <!-- Sol: parça bilgisi + runik dekor -->
-        <div class="gtp4-info">
-          <div class="gtp4-sublbl">𐱅𐰭𐰼𐰃 · TENGRİ KAPISI</div>
-          <div id="track-name">—</div>
-          <div id="track-index">𐰃 1 / 57 𐰃</div>
-          <div class="gtp4-runerow" aria-hidden="true">
-            <span class="gtp4-r">𐱅</span>
-            <span class="gtp4-r">𐰭</span>
-            <span class="gtp4-r">𐰼</span>
-            <span class="gtp4-r">𐰃</span>
-          </div>
+        <!-- Runik kaydırma bandı -->
+        <div class="t-rune-band" aria-hidden="true">
+            <div class="t-rune-inner">
+                <div class="t-marquee-copy">𐱅𐰭𐰼𐰃 ᛫ 𐰇𐰠𐰏𐰤 ᛫ 𐰼𐰠𐰚 ᛫ 𐰴𐰖𐰺 𐰴𐰣 ᛫ 𐰆𐰢𐰖 ᛫ 𐰉𐰆𐰕𐰴𐰆𐰺𐱅 ᛫ 𐰚𐰇𐰚 𐱅𐰭𐰼𐰃 ᛫ 𐰖𐰼 𐱅𐰭𐰼𐰃 ᛫ 𐰇𐰓 𐱅𐰭𐰼𐰃 ᛫ 𐰴𐰺 𐰴𐰣 ᛫ 𐰓𐰅𐰓𐰅 𐰴𐰺𐰴𐰆𐱅 ᛫ 𐰞𐰯𐰢𐰃𐱁 ᛫ </div>
+                <div class="t-marquee-copy">𐱅𐰭𐰼𐰃 ᛫ 𐰇𐰠𐰏𐰤 ᛫ 𐰼𐰠𐰚 ᛫ 𐰴𐰖𐰺 𐰴𐰣 ᛫ 𐰆𐰢𐰖 ᛫ 𐰉𐰆𐰕𐰴𐰆𐰺𐱅 ᛫ 𐰚𐰇𐰚 𐱅𐰭𐰼𐰃 ᛫ 𐰖𐰼 𐱅𐰭𐰼𐰃 ᛫ 𐰇𐰓 𐱅𐰭𐰼𐰃 ᛫ 𐰴𐰺 𐰴𐰣 ᛫ 𐰓𐰅𐰓𐰅 𐰴𐰺𐰴𐰆𐱅 ᛫ 𐰞𐰯𐰢𐰃𐱁 ᛫ </div>
+            </div>
         </div>
 
-        <!-- Merkez: büyük tamga portal -->
-        <div class="gtp4-tamga-wrap" onclick="togglePlay()" title="Oynat / Durdur">
-          <div id="gtp4-beat-ring"></div>
-          <canvas id="gtp4-rays" width="170" height="170"></canvas>
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="tg4bg" cx="50%" cy="50%" r="50%">
-                <stop offset="0%"   stop-color="#001a1f" stop-opacity="0.98"/>
-                <stop offset="100%" stop-color="#000a10" stop-opacity="1"/>
-              </radialGradient>
-              <filter id="tg4glow">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur"/>
-                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-              </filter>
-            </defs>
+        <!-- Ana gövde -->
+        <div class="t-body">
 
-            <!-- Arka plan disk -->
-            <circle cx="50" cy="50" r="49" fill="url(#tg4bg)" stroke="rgba(0,200,212,0.22)" stroke-width="0.5"/>
+            <!-- Göktürk Tamgası (dönen disk) -->
+            <div class="t-tamga">
+                
+                <div class="t-beat-ring" id="beat-ring"></div>
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Dış dönen halka + çentikler -->
+                    <g class="tamga-spin tamga-glow">
+                        <circle cx="50" cy="50" r="47" fill="none" stroke="#d4af37" stroke-width="0.7" opacity="0.5"/>
+                        <!-- 12 çentik -->
+                        <line x1="50" y1="3"  x2="50" y2="11"  stroke="#d4af37" stroke-width="2"   opacity="0.8"/>
+                        <line x1="73" y1="9"  x2="69" y2="16"  stroke="#d4af37" stroke-width="1.5" opacity="0.55"/>
+                        <line x1="90" y1="26" x2="84" y2="29"  stroke="#d4af37" stroke-width="2"   opacity="0.8"/>
+                        <line x1="97" y1="50" x2="89" y2="50"  stroke="#d4af37" stroke-width="1.5" opacity="0.55"/>
+                        <line x1="90" y1="74" x2="84" y2="71"  stroke="#d4af37" stroke-width="2"   opacity="0.8"/>
+                        <line x1="73" y1="91" x2="69" y2="84"  stroke="#d4af37" stroke-width="1.5" opacity="0.55"/>
+                        <line x1="50" y1="97" x2="50" y2="89"  stroke="#d4af37" stroke-width="2"   opacity="0.8"/>
+                        <line x1="27" y1="91" x2="31" y2="84"  stroke="#d4af37" stroke-width="1.5" opacity="0.55"/>
+                        <line x1="10" y1="74" x2="16" y2="71"  stroke="#d4af37" stroke-width="2"   opacity="0.8"/>
+                        <line x1="3"  y1="50" x2="11" y2="50"  stroke="#d4af37" stroke-width="1.5" opacity="0.55"/>
+                        <line x1="10" y1="26" x2="16" y2="29"  stroke="#d4af37" stroke-width="2"   opacity="0.8"/>
+                        <line x1="27" y1="9"  x2="31" y2="16"  stroke="#d4af37" stroke-width="1.5" opacity="0.55"/>
+                        <!-- 4 rün harf -->
+                        <text x="50" y="21"  text-anchor="middle" font-size="7" fill="#d4af37" opacity="0.75">𐱅</text>
+                        <text x="79" y="53"  text-anchor="middle" font-size="7" fill="#d4af37" opacity="0.75">𐰭</text>
+                        <text x="50" y="85"  text-anchor="middle" font-size="7" fill="#d4af37" opacity="0.75">𐰼</text>
+                        <text x="21" y="53"  text-anchor="middle" font-size="7" fill="#d4af37" opacity="0.75">𐰃</text>
+                    </g>
+                    <!-- Statik iç dolgu -->
+                    <circle cx="50" cy="50" r="37" fill="rgba(6,7,14,0.92)" stroke="#d4af37" stroke-width="0.4" opacity="0.4"/>
+                    <!-- 8-kollu Göktürk güneş yıldızı -->
+                    <path d="M50 19 L52.5 33 L63 23 L56 36 L70 37 L57.5 44 L67 55 L52.5 50 L52 65 L50 51 L48 65 L47.5 50 L33 55 L42.5 44 L30 37 L44 36 L37 23 L47.5 33 Z"
+                          fill="rgba(212,175,55,0.07)" stroke="#d4af37" stroke-width="0.5" opacity="0.5"/>
+                    <!-- İç yıldız (daha küçük, ters) -->
+                    <path d="M50 29 L51.5 38 L58 32 L54 40 L63 41 L55 46 L60 54 L51.5 49 L51 58 L50 49.5 L49 58 L48.5 49 L40 54 L45 46 L37 41 L46 40 L42 32 L48.5 38 Z"
+                          fill="rgba(212,175,55,0.05)" stroke="#d4af37" stroke-width="0.4" opacity="0.4" class="tamga-pulse"/>
+                    <!-- Merkez iç halka -->
+                    <circle cx="50" cy="50" r="16" fill="rgba(4,5,10,0.95)" stroke="#d4af37" stroke-width="0.6" opacity="0.5"/>
+                    <!-- Bozkurt / stilize kurt kafası (geometrik) -->
+                    <!-- Baş gövdesi -->
+                    <path d="M43 53 L41 45 L44 39 L50 37 L56 39 L59 45 L57 53 L53 57 L50 58 L47 57 Z"
+                          fill="none" stroke="#d4af37" stroke-width="0.9" opacity="0.85"/>
+                    <!-- Sol kulak -->
+                    <path d="M44 39 L41 33 L46.5 38" fill="none" stroke="#d4af37" stroke-width="0.9" opacity="0.75"/>
+                    <!-- Sağ kulak -->
+                    <path d="M56 39 L59 33 L53.5 38" fill="none" stroke="#d4af37" stroke-width="0.9" opacity="0.75"/>
+                    <!-- Gözler -->
+                    <circle cx="46.5" cy="45" r="1.6" fill="#d4af37" opacity="0.95"/>
+                    <circle cx="53.5" cy="45" r="1.6" fill="#d4af37" opacity="0.95"/>
+                    <!-- Burun/ağız çizgisi -->
+                    <path d="M47.5 53 L50 56 L52.5 53" fill="none" stroke="#d4af37" stroke-width="0.7" opacity="0.6"/>
+                    <!-- Merkez nokta -->
+                    <circle cx="50" cy="50" r="1" fill="#d4af37" opacity="0.4"/>
+                </svg>
+            </div>
 
-            <!-- Dış dönen yörünge halkası (12 çentik + 4 rün) -->
-            <g class="gtp4-orb" filter="url(#tg4glow)">
-              <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(0,200,212,0.28)" stroke-width="0.45"/>
-              <!-- 12 nokta -->
-              <circle cx="50"   cy="5.5"  r="1"   fill="#00c8d4" opacity="0.9"/>
-              <circle cx="72.5" cy="11.5" r="0.6" fill="#00c8d4" opacity="0.55"/>
-              <circle cx="89"   cy="28"   r="1"   fill="#00c8d4" opacity="0.9"/>
-              <circle cx="94.5" cy="50"   r="0.6" fill="#00c8d4" opacity="0.55"/>
-              <circle cx="89"   cy="72"   r="1"   fill="#00c8d4" opacity="0.9"/>
-              <circle cx="72.5" cy="88.5" r="0.6" fill="#00c8d4" opacity="0.55"/>
-              <circle cx="50"   cy="94.5" r="1"   fill="#00c8d4" opacity="0.9"/>
-              <circle cx="27.5" cy="88.5" r="0.6" fill="#00c8d4" opacity="0.55"/>
-              <circle cx="11"   cy="72"   r="1"   fill="#00c8d4" opacity="0.9"/>
-              <circle cx="5.5"  cy="50"   r="0.6" fill="#00c8d4" opacity="0.55"/>
-              <circle cx="11"   cy="28"   r="1"   fill="#00c8d4" opacity="0.9"/>
-              <circle cx="27.5" cy="11.5" r="0.6" fill="#00c8d4" opacity="0.55"/>
-              <!-- 4 Göktürk rün harfi -->
-              <text x="50"   y="17.5" text-anchor="middle" font-size="6" fill="#00c8d4" opacity="0.85">𐱅</text>
-              <text x="83"   y="53.5" text-anchor="middle" font-size="6" fill="#00c8d4" opacity="0.85">𐰭</text>
-              <text x="50"   y="90"   text-anchor="middle" font-size="6" fill="#00c8d4" opacity="0.85">𐰼</text>
-              <text x="17.5" y="53.5" text-anchor="middle" font-size="6" fill="#00c8d4" opacity="0.85">𐰃</text>
-            </g>
+            <!-- Parça bilgisi -->
+            <div class="t-info">
+                <div class="t-sublabel">𐱅𐰭𐰼𐰃 · MÜZİK</div>
+                <div id="track-name">—</div>
+                <div id="track-index">𐰃 1 / 57 𐰃</div>
+            </div>
 
-            <!-- Ters dönen ikinci halka -->
-            <g class="gtp4-orb2">
-              <circle cx="50" cy="50" r="37" fill="none" stroke="rgba(0,200,212,0.16)" stroke-width="0.35" stroke-dasharray="3 4"/>
-            </g>
+            <!-- Kontroller -->
+            <div class="t-controls">
+                <button class="t-btn" onclick="prevTrack()" title="Önceki">⏮</button>
+                <button id="play-pause-btn" class="t-btn t-btn-play" onclick="togglePlay()" title="Oynat / Durdur">▶</button>
+                <button class="t-btn" onclick="nextTrack()" title="Sonraki">⏭</button>
+                <button id="shuffle-btn" class="t-btn t-btn-sm" onclick="toggleShuffle()" title="Karıştır">🔀</button>
+                <button id="repeat-btn" class="t-btn t-btn-sm" onclick="toggleRepeat()" title="Tekrarla">🔁</button>
+            </div>
 
-            <!-- Doldurma disk -->
-            <circle cx="50" cy="50" r="30" fill="rgba(0,10,16,0.95)" stroke="rgba(0,200,212,0.2)" stroke-width="0.4"/>
 
-            <!-- Göktürk 8 kollu güneş yıldızı (ana motif) -->
-            <g class="gtp4-pulse">
-              <path d="M50 22 L52 33 L61 24 L55.5 35 L67 37 L56 43 L64 53 L52 48 L52 62 L50 50 L48 62 L48 48 L36 53 L44 43 L33 37 L44.5 35 L39 24 L48 33 Z"
-                    fill="rgba(0,200,212,0.08)" stroke="#00c8d4" stroke-width="0.55" opacity="0.85"/>
-            </g>
+            <!-- Runik kazıma — boş alan dekoru -->
+            <div class="t-rune-sigil" aria-hidden="true">
+                <span>𐰚</span>
+                <span class="rs-sep">᛫</span>
+                <span>𐰇</span>
+                <span>𐰚</span>
+                <span class="rs-sep">᛫</span>
+                <span>𐱅</span>
+                <span>𐰭</span>
+                <span>𐰼</span>
+                <span>𐰃</span>
+            </div>
 
-            <!-- İç halka -->
-            <circle cx="50" cy="50" r="17" fill="rgba(0,5,12,0.97)" stroke="rgba(0,200,212,0.3)" stroke-width="0.5"/>
+            <!-- Ses -->
+            <div class="t-vol">
+                <span class="t-vol-icon">🔊</span>
+                <input type="range" min="0" max="1" step="0.05" value="1" oninput="changeVolume(this.value)" class="t-vol-slider">
+            </div>
 
-            <!-- Bozkurt — geometrik Göktürk stili (orijinal korundu) -->
-            <path d="M43 53.5 L41 45 L44 38.5 L50 36.5 L56 38.5 L59 45 L57 53.5 L53 57.5 L50 58.5 L47 57.5 Z"
-                  fill="none" stroke="#00c8d4" stroke-width="0.9" opacity="0.92"/>
-            <path d="M44 38.5 L40.5 32.5 L46.5 37.5" fill="none" stroke="#00c8d4" stroke-width="0.85" opacity="0.78"/>
-            <path d="M56 38.5 L59.5 32.5 L53.5 37.5" fill="none" stroke="#00c8d4" stroke-width="0.85" opacity="0.78"/>
-            <circle cx="46.5" cy="45" r="1.75" fill="#00c8d4" opacity="0.98"/>
-            <circle cx="53.5" cy="45" r="1.75" fill="#00c8d4" opacity="0.98"/>
-            <path d="M47.5 53.5 L50 56.5 L52.5 53.5" fill="none" stroke="#00c8d4" stroke-width="0.65" opacity="0.62"/>
-            <circle cx="50" cy="50" r="1" fill="#00c8d4" opacity="0.48"/>
-          </svg>
+
+            <!-- Runik köşe mühürü -->
+            <div class="t-rune-cap" aria-hidden="true">
+                <span class="rc-line">𐰴𐰖𐰺 𐰴𐰣</span>
+                <div class="rc-dot"></div>
+                <span class="rc-line">𐰉𐰆𐰕𐰴𐰆𐰺𐱅</span>
+                <div class="rc-dot"></div>
+                <span class="rc-line">𐰆𐰢𐰖</span>
+            </div>
+
         </div>
 
-        <!-- Sağ: kontroller -->
-        <div class="gtp4-ctrl-col">
-          <div class="gtp4-ctrls">
-            <button class="gtp4-btn" onclick="prevTrack()" title="Önceki">⏮</button>
-            <button id="play-pause-btn" class="gtp4-btn gtp4-btn-play" onclick="togglePlay()" title="Oynat / Durdur">▶</button>
-            <button class="gtp4-btn" onclick="nextTrack()" title="Sonraki">⏭</button>
-          </div>
-          <div class="gtp4-aux">
-            <button id="shuffle-btn" class="gtp4-btn-sm" onclick="toggleShuffle()" title="Karıştır">🔀</button>
-            <button id="repeat-btn"  class="gtp4-btn-sm" onclick="toggleRepeat()"  title="Tekrarla">🔁</button>
-          </div>
-          <div class="gtp4-vol">
-            <span class="gtp4-vol-icon">🔊</span>
-            <input type="range" min="0" max="1" step="0.05" value="1"
-                   oninput="changeVolume(this.value)" class="gtp4-vol-slider">
-          </div>
+        <!-- Zaman çubuğu -->
+        <div class="t-timeline-wrap">
+            <span id="current-time" class="t-time">00:00</span>
+            <div id="timeline-container" class="timeline-container" onclick="seekTrack(event)">
+                <div id="timeline-progress" class="timeline-progress"></div>
+            </div>
+            <span id="total-duration" class="t-time">00:00</span>
         </div>
-      </div>
 
-      <!-- Zaman çubuğu -->
-      <div class="gtp4-timeline-wrap">
-        <span id="current-time"  class="gtp4-time">00:00</span>
-        <div id="timeline-container" class="timeline-container" onclick="seekTrack(event)">
-          <div id="timeline-progress" class="timeline-progress"></div>
-        </div>
-        <span id="total-duration" class="gtp4-time">00:00</span>
-      </div>
+        <!-- Görselleştirici -->
+        <canvas id="viz-canvas" class="viz-canvas" height="46"></canvas>
+        <canvas id="wave-canvas" class="wave-canvas" height="30"></canvas>
 
-      <!-- Görselleştirici -->
-      <canvas id="viz-canvas" class="gt-viz-canvas" height="44"></canvas>
-
-      <audio id="main-audio" src=""></audio>
+        <audio id="main-audio" src=""></audio>
     </div>
 
     <!-- KAHVE MODAL -->
@@ -4796,8 +4632,7 @@ Bu ikiliye özel, ${acilanAci} odaklı, 2-3 cümlelik SICAK ve SAMİMİ bir tavs
                 _initVisualizer();
                 isPlaying = true;
                 b.innerHTML = "⏸";
-                p.classList.add("playing");
-                _initFlame(); } }
+                p.classList.add("playing"); } }
 
         function nextTrack() {
             curTrack = isShuffle ? Math.floor(Math.random() * musicList.length) : (curTrack + 1) % musicList.length;
@@ -4815,10 +4650,10 @@ Bu ikiliye özel, ${acilanAci} odaklı, 2-3 cümlelik SICAK ve SAMİMİ bir tavs
                 audio.play(); } else nextTrack(); }
 
         function toggleShuffle() { isShuffle = !isShuffle;
-            document.getElementById("shuffle-btn").classList.toggle("gt-active", isShuffle); }
+            document.getElementById("shuffle-btn").classList.toggle("t-active", isShuffle); }
 
         function toggleRepeat() { isRepeat = !isRepeat;
-            document.getElementById("repeat-btn").classList.toggle("gt-active", isRepeat); }
+            document.getElementById("repeat-btn").classList.toggle("t-active", isRepeat); }
 
         function updateTimeline() { if (audio.duration) { const p = (audio.currentTime / audio.duration) * 100;
                 document.getElementById("timeline-progress").style.width = `${p}%`;
@@ -5021,8 +4856,6 @@ Bu ikiliye özel, ${acilanAci} odaklı, 2-3 cümlelik SICAK ve SAMİMİ bir tavs
             else if (tip === 'lezzetler') body.innerHTML = _sehirLezzetHTML(s.y, s.n);
             else if (tip === 'tarih')     body.innerHTML = _sehirTarihHTML(s.t, s.n);
             else if (tip === 'ozellik')   body.innerHTML = _sehirOzellikHTML(s.o);
-            // Yapay zeka detaylı bilgi yükle
-            _sehirTabAI(s.n, tip, body);
         }
 
         // ── Mekan ve Yemek detay veritabanı ──────────────────────
@@ -5102,179 +4935,6 @@ Bu ikiliye özel, ${acilanAci} odaklı, 2-3 cümlelik SICAK ve SAMİMİ bir tavs
 
         function _sehirOzellikHTML(o) {
             return `<div class="sehir-pb-ozellik"><span class="sehir-pb-ozellik-icon">⭐</span>${o}</div>`;
-        }
-
-        // ── AI ŞEHİR SEKME YÜKLEYİCİ ──────────────────────────────────────────────
-        // ── AI ŞEHİR CHIP SİSTEMİ ─────────────────────────────────────────────────
-        const _sehirAICache = {};
-        const _sehirAIDetailCache = {};
-
-        // Liste prompt'ları — her sekme için tıklanabilir öğe listesi üretir
-        const _sehirListPrompts = {
-            kok:      (s) => s + ' şehrinin adının kökeniyle ilgili 4-5 farklı teori veya dilbilimsel açıklamayı çok kısa başlıklar hâlinde listele (her biri 2-4 kelime). SADECE JSON array döndür, başka metin ekleme. Örnek: ["Türkçe Kök Teorisi","Arapça Köken","Bizans Dönemi Adı"]',
-            lezzetler:(s) => s + ' şehrinin en bilinen 5-6 yöresel yemeğini veya içeceğini listele. SADECE JSON array döndür, başka metin ekleme. Örnek: ["Adana Kebabı","Şalgam Suyu"]',
-            tarih:    (s) => s + ' şehrinin en önemli 5-6 tarihi alanını, sit alanını veya doğal güzelliğini listele. SADECE JSON array döndür, başka metin ekleme. Örnek: ["Çukurova Arkeoloji Müzesi","Yılan Kalesi"]',
-            ozellik:  (s) => s + ' şehriyle ilgili 4-5 çarpıcı, az bilinen tarihi gerçek veya efsaneyi çok kısa başlıklar hâlinde listele (her biri 2-5 kelime). SADECE JSON array döndür, başka metin ekleme. Örnek: ["İpek Yolu Kavşağı","Türkiye\'nin En Sıcak İli"]'
-        };
-
-        // Detay prompt'ları — seçilen öğe için bilgi üretir
-        const _sehirDetailSys = 'Sen Türkiye tarihi, coğrafyası ve kültürü konusunda uzman bir akademisyensin. SADECE gerçek, kaynaklara dayalı bilgi yaz. Eğer bir bilgiden %100 emin değilsen o cümleyi hiç yazma — yanlış bilgi yazmak kesinlikle yasak. Yiyecek mi içecek mi tatlı mı olduğunu doğru tespit et; kategorisini yanlış tanımlama. Emoji kullanma, madde işareti kullanma, yalnızca akıcı paragraf yaz.';
-
-        const _sehirDetailPrompts = {
-            kok:      (s, item) => s + ' şehrinin adının kökeniyle ilgili "' + item + '" açıklaması hakkında yalnızca teyitli dilbilimsel ve tarihsel bilgileri yaz. Kanıtlanmamış iddialara yer verme. 3-4 cümle.',
-            lezzetler:(s, item) => '"' + item + '", ' + s + ' yöresine ait bir lezzettir. Bu lezzetin ne olduğunu (yiyecek/içecek/tatlı) doğru tanımla; gerçek tarihçesini, nasıl hazırlandığını ve ' + s + ' kültüründeki yerini sadece bilinen, doğrulanmış bilgilerle anlat. Emin olmadığın hiçbir şeyi yazma. 3-4 cümle.',
-            tarih:    (s, item) => '"' + item + '", ' + s + ' iline ait bir tarihi alan veya doğal güzelliktir. Yalnızca doğrulanmış tarihi, mimari veya coğrafi bilgilerle açıkla. Uydurma detay ekleme. 3-4 cümle.',
-            ozellik:  (s, item) => '"' + item + '" başlığıyla ilgili ' + s + ' şehrine ait bu gerçeği veya efsaneyi yalnızca teyitli kaynaklara dayanarak anlat. Belirsiz veya tartışmalı noktaları uydurma, bunun yerine "kesin olarak bilinmemekle birlikte" gibi ifadeler kullan. 3-4 cümle.'
-        };
-
-        async function _sehirTabAI(sehirAdi, tip, containerEl) {
-            const cacheKey = sehirAdi + '_' + tip;
-
-            // Daha önce yüklendiyse tekrar render et
-            if (_sehirAICache[cacheKey]) {
-                _renderSehirChips(sehirAdi, tip, containerEl, _sehirAICache[cacheKey]);
-                return;
-            }
-
-            // Yükleme göstergesi
-            const loadingEl = document.createElement('div');
-            loadingEl.className = 'sehir-ai-loading';
-            loadingEl.innerHTML = '<span class="ai-pulse"></span> Yapay zeka içerik hazırlıyor...';
-            containerEl.appendChild(loadingEl);
-
-            try {
-                const raw = await _callAI([
-                    { role: 'system', content: 'Sadece geçerli JSON array döndür. Başka hiçbir metin, açıklama veya kod bloğu ekleme.' },
-                    { role: 'user', content: (_sehirListPrompts[tip] || _sehirListPrompts.ozellik)(sehirAdi) }
-                ], 180);
-
-                // JSON array'i raw yanıttan çıkar
-                const match = raw.match(/\[[\s\S]*?\]/);
-                const items = match ? JSON.parse(match[0]) : [];
-                if (!Array.isArray(items) || items.length === 0) throw new Error('empty');
-
-                _sehirAICache[cacheKey] = items;
-                if (loadingEl.parentNode) loadingEl.remove();
-                _renderSehirChips(sehirAdi, tip, containerEl, items);
-            } catch(e) {
-                if (loadingEl.parentNode) loadingEl.remove();
-                // Sessizce başarısız ol — statik içerik zaten gösteriliyor
-            }
-        }
-
-        function _renderSehirChips(sehirAdi, tip, containerEl, items) {
-            const wrap = document.createElement('div');
-            wrap.className = 'sehir-ai-wrap';
-
-            const labelEl = document.createElement('div');
-            labelEl.className = 'sehir-ai-label';
-            labelEl.textContent = '🤖 yapay zeka — daha fazlası';
-            wrap.appendChild(labelEl);
-
-            const chipsEl = document.createElement('div');
-            chipsEl.className = 'sehir-ai-chips';
-            wrap.appendChild(chipsEl);
-
-            const detailEl = document.createElement('div');
-            wrap.appendChild(detailEl);
-
-            containerEl.appendChild(wrap);
-
-            items.forEach(item => {
-                const chip = document.createElement('button');
-                chip.className = 'sehir-ai-chip';
-                chip.textContent = item;
-                chip.onclick = () => _sehirChipClick(sehirAdi, tip, item, chip, chipsEl, detailEl);
-                chipsEl.appendChild(chip);
-            });
-        }
-
-        // ── Wikipedia TR özet çekici ──────────────────────────────────────────────
-        async function _fetchWiki(query) {
-            try {
-                // 1. Ara
-                const sRes = await fetch(
-                    'https://tr.wikipedia.org/w/api.php?action=query&list=search' +
-                    '&srsearch=' + encodeURIComponent(query) +
-                    '&format=json&origin=*&srlimit=1&srnamespace=0'
-                );
-                const sData = await sRes.json();
-                const hit = sData?.query?.search?.[0];
-                if (!hit) return null;
-
-                // 2. Giriş paragrafını çek
-                const eRes = await fetch(
-                    'https://tr.wikipedia.org/w/api.php?action=query' +
-                    '&titles=' + encodeURIComponent(hit.title) +
-                    '&prop=extracts&exintro=true&explaintext=true' +
-                    '&format=json&origin=*&exchars=2000'
-                );
-                const eData = await eRes.json();
-                const pages = eData?.query?.pages;
-                if (!pages) return null;
-                const page = Object.values(pages)[0];
-                const text = page?.extract?.replace(/\s+/g, ' ').trim();
-                return text ? { title: hit.title, text: text.slice(0, 1800) } : null;
-            } catch(e) { return null; }
-        }
-
-        async function _sehirChipClick(sehirAdi, tip, item, chipEl, chipsEl, detailEl) {
-            // Aynı chip tekrar tıklanırsa kapat
-            if (chipEl.classList.contains('aktif')) {
-                chipEl.classList.remove('aktif');
-                detailEl.innerHTML = '';
-                return;
-            }
-            chipsEl.querySelectorAll('.sehir-ai-chip').forEach(c => c.classList.remove('aktif'));
-            chipEl.classList.add('aktif');
-
-            const cacheKey = sehirAdi + '_' + tip + '_' + item;
-            if (_sehirAIDetailCache[cacheKey]) {
-                detailEl.innerHTML = _sehirAIDetailCache[cacheKey];
-                return;
-            }
-
-            detailEl.innerHTML = '<div class="sehir-ai-loading"><span class="ai-pulse"></span> ' + item + ' Wikipedia\'da aranıyor...</div>';
-
-            try {
-                // Arama sorgusunu sekmeye göre belirle
-                const wikiQuery = (tip === 'tarih')
-                    ? item + ' ' + sehirAdi
-                    : item;
-
-                // Wikipedia'dan gerçek veri çek
-                const wiki = await _fetchWiki(wikiQuery);
-
-                let systemMsg, userMsg;
-
-                if (wiki) {
-                    // Wikipedia verisi bulunduysa: AI yalnızca bunu özetler, uyduramaz
-                    systemMsg = 'Sen bir editörsün. Sana verilen Wikipedia metnini kullanarak kullanıcıya kısa, akıcı Türkçe bir özet yaz. Metinde olmayan hiçbir bilgiyi ekleme, uydurma. Emoji kullanma, madde işareti kullanma. Yalnızca paragraf.';
-                    userMsg = 'Aşağıdaki Wikipedia metni "' + item + '" hakkındadır. ' +
-                              'Bu metni temel alarak ' + sehirAdi + ' bağlamında 3-4 cümlelik öz, doğru bir özet yaz. ' +
-                              'Metinde olmayan hiçbir detayı ekleme.\n\n' +
-                              '=== Wikipedia: ' + wiki.title + ' ===\n' + wiki.text;
-                } else {
-                    // Wikipedia bulunamazsa: AI yalnızca çok emin olduğu şeyleri yazar
-                    systemMsg = 'Sen Türkiye tarihi ve kültürü uzmanısın. SADECE %100 emin olduğun bilgileri yaz. Emin olmadığın hiçbir detayı — malzeme, tarih, köken, pişirme yöntemi — yazma. Yanlış bilgi yazmaktansa "bu konuda kesin bilgiye sahip değilim" de. Emoji yok, madde işareti yok, yalnızca paragraf.';
-                    userMsg = (_sehirDetailPrompts[tip] || _sehirDetailPrompts.ozellik)(sehirAdi, item);
-                }
-
-                const text = await _callAI([
-                    { role: 'system', content: systemMsg },
-                    { role: 'user',   content: userMsg   }
-                ], 380);
-
-                const safe = t => t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-                const srcTag = wiki
-                    ? '<div class="sehir-ai-wiki-src">📖 Kaynak: <a href="https://tr.wikipedia.org/wiki/' + encodeURIComponent(wiki.title) + '" target="_blank" rel="noopener">' + safe(wiki.title) + '</a></div>'
-                    : '';
-                const html = '<div class="sehir-ai-detail"><div class="sehir-ai-detail-name">' + safe(item) + '</div><div class="sehir-ai-detail-text">' + safe(text) + '</div>' + srcTag + '</div>';
-                _sehirAIDetailCache[cacheKey] = html;
-                detailEl.innerHTML = html;
-            } catch(e) {
-                detailEl.innerHTML = '<div class="sehir-ai-error">Bilgi yüklenemedi, lütfen tekrar deneyin.</div>';
-            }
         }
 
         function _mekanDetay(el, isim) {
@@ -5374,205 +5034,256 @@ Bu ikiliye özel, ${acilanAci} odaklı, 2-3 cümlelik SICAK ve SAMİMİ bir tavs
                 </div>`;
             wrap._sehirDat = s;
             setTimeout(() => wrap.scrollIntoView({ behavior:'smooth', block:'nearest' }), 60);
-            // Başlangıçta Kökeni sekmesi için AI yükle
-            const _initBody = document.getElementById('sehir-panel-body');
-            if (_initBody) _sehirTabAI(s.n, 'kok', _initBody);
         }
-        // ═══════════════════════════════════════════════════════════════════════════
-        // WEB AUDIO VİZÜALİZER + TENGRİ KAPISI PORTAL SİSTEMİ v4
-        // ═══════════════════════════════════════════════════════════════════════════
         let _vizCtx = null, _vizAnalyser = null, _vizInited = false;
-        let _beatSmooth = 0;
-        // Işın partikülleri
-        const _RAYS = [];
-        let _raysCanvas = null, _raysCtx = null;
-        // Runik partiküller (bas vuruşunda fırlayan rün harfleri)
-        const _runeParts = [];
-        const _RUNE_CHARS = ['𐱅','𐰭','𐰼','𐰃','𐰇','𐰠','𐰏','𐰤','𐰴','𐰣','𐰆','𐰢','𐰖','𐰔','𐰱','𐰽'];
 
         function _initVisualizer() {
-            if (_vizInited) { if (_vizCtx && _vizCtx.state === 'suspended') _vizCtx.resume(); return; }
+            if (_vizInited) {
+                if (_vizCtx && _vizCtx.state === 'suspended') _vizCtx.resume();
+                return;
+            }
             try {
                 _vizCtx = new (window.AudioContext || window.webkitAudioContext)();
                 _vizAnalyser = _vizCtx.createAnalyser();
-                _vizAnalyser.fftSize = 512;
-                _vizAnalyser.smoothingTimeConstant = 0.78;
+                _vizAnalyser.fftSize = 256;
+                _vizAnalyser.smoothingTimeConstant = 0.76;
                 const src = _vizCtx.createMediaElementSource(audio);
                 src.connect(_vizAnalyser);
                 _vizAnalyser.connect(_vizCtx.destination);
                 _vizInited = true;
-                // Işın canvas
-                _raysCanvas = document.getElementById('gtp4-rays');
-                if (_raysCanvas) _raysCtx = _raysCanvas.getContext('2d');
                 _drawViz();
-            } catch(e) { console.warn('Visualizer başlatılamadı:', e); }
+            } catch(e) { console.warn('Visualizer init failed:', e); }
         }
 
-        // ─── PORTAL IŞINLARI ─────────────────────────────────────────────────────────
-        // Tamga etrafında dönen ışın partikülleri — bas enerjisiyle çoğalır
-        function _spawnRay(energy) {
-            const angle = Math.random() * Math.PI * 2;
-            _RAYS.push({
-                angle,
-                r0: 42,            // başlangıç yarıçapı (tamga kenarı)
-                r:  42,
-                rMax: 60 + energy * 42,
-                speed: 0.6 + energy * 1.2,
-                alpha: 0.7 + energy * 0.3,
-                width: 0.5 + energy * 1.5,
-                hue:  energy > 0.7 ? 185 : 190,  // beyaza yakın tepe, normal mavi-yeşil
-            });
+// ── Runik parçacık sistemi ───────────────────────────────────────────────────
+        const _RUNE_CHARS = ['𐰚','𐰇','𐱅','𐰭','𐰼','𐰃','𐰴','𐰖','𐰉','𐰆','𐰕','𐰞','𐰢','𐰣','𐰦','𐰸','𐱁','𐰓','𐰅','𐰽','𐰈','𐰠','𐰤','𐱃'];
+        const _rParts = [];
+        let _rPCanvas = null, _rPCtx = null, _rPInited = false;
+
+        function _initRuneParts() {
+            _rPCanvas = document.getElementById('rune-particles');
+            if (!_rPCanvas) return;
+            _rPCtx = _rPCanvas.getContext('2d');
+            _rPInited = true;
         }
 
-        function _drawRays(energy) {
-            if (!_raysCtx || !_raysCanvas) return;
-            const W = _raysCanvas.width, H = _raysCanvas.height;
-            const cx = W/2, cy = H/2;
-            _raysCtx.clearRect(0, 0, W, H);
-            // Yeni ışın spawn
-            if (energy > 0.18 && _RAYS.length < 36 && Math.random() < 0.35 + energy * 0.5)
-                _spawnRay(energy);
-            // Ilerlet ve çiz
-            for (let i = _RAYS.length - 1; i >= 0; i--) {
-                const ray = _RAYS[i];
-                ray.r += ray.speed;
-                ray.alpha *= 0.94;
-                if (ray.r >= ray.rMax || ray.alpha < 0.04) { _RAYS.splice(i, 1); continue; }
-                const progress = (ray.r - ray.r0) / (ray.rMax - ray.r0);
-                const sx = cx + Math.cos(ray.angle) * ray.r0;
-                const sy = cy + Math.sin(ray.angle) * ray.r0;
-                const ex = cx + Math.cos(ray.angle) * ray.r;
-                const ey = cy + Math.sin(ray.angle) * ray.r;
-                const grad = _raysCtx.createLinearGradient(sx, sy, ex, ey);
-                grad.addColorStop(0, 'hsla('+ray.hue+',100%,75%,'+(ray.alpha*0.9).toFixed(2)+')');
-                grad.addColorStop(1, 'hsla('+ray.hue+',100%,90%,0)');
-                _raysCtx.beginPath();
-                _raysCtx.moveTo(sx, sy);
-                _raysCtx.lineTo(ex, ey);
-                _raysCtx.strokeStyle = grad;
-                _raysCtx.lineWidth   = ray.width * (1 - progress * 0.6);
-                _raysCtx.globalAlpha = ray.alpha;
-                _raysCtx.stroke();
-                _raysCtx.globalAlpha = 1;
+        function _drawRuneParts(bassLevel, accent) {
+            if (!_rPInited) _initRuneParts();
+            if (!_rPCanvas || !_rPCtx) return;
+            const PW = _rPCanvas.parentElement ? _rPCanvas.parentElement.offsetWidth : 800;
+            const PH = _rPCanvas.parentElement ? _rPCanvas.parentElement.offsetHeight : 120;
+            if (_rPCanvas.width !== PW) _rPCanvas.width = PW;
+            if (_rPCanvas.height !== PH) _rPCanvas.height = PH;
+            // Spawn
+            if (Math.random() < bassLevel * 0.07) {
+                const n = bassLevel > 0.65 ? 2 : 1;
+                for (let k = 0; k < n; k++) {
+                    _rParts.push({
+                        x: Math.random() * PW, y: PH - 5,
+                        vx: (Math.random() - 0.5) * 0.9,
+                        vy: -(0.5 + Math.random() * 1.4 + bassLevel),
+                        ch: _RUNE_CHARS[Math.floor(Math.random() * _RUNE_CHARS.length)],
+                        al: 0.5 + Math.random() * 0.4,
+                        sz: 9 + Math.floor(Math.random() * 9)
+                    });
+                }
             }
+            _rPCtx.clearRect(0, 0, PW, PH);
+            for (let i = _rParts.length - 1; i >= 0; i--) {
+                const p = _rParts[i];
+                p.x += p.vx; p.y += p.vy; p.al -= 0.007;
+                if (p.al <= 0 || p.y < -20) { _rParts.splice(i, 1); continue; }
+                _rPCtx.globalAlpha = p.al;
+                _rPCtx.fillStyle = accent;
+                _rPCtx.font = p.sz + 'px serif';
+                _rPCtx.fillText(p.ch, p.x, p.y);
+            }
+            _rPCtx.globalAlpha = 1;
         }
 
-        // ─── RUNİK PARTİKÜLLER (bas tepesi) ─────────────────────────────────────────
-        function _spawnRune(bassLevel) {
-            if (_runeParts.length >= 16 || bassLevel < 0.55) return;
-            _runeParts.push({
-                x: 50 + (Math.random() - 0.5) * 220,
-                y: 40 + (Math.random() - 0.5) * 60,
-                char: _RUNE_CHARS[Math.floor(Math.random() * _RUNE_CHARS.length)],
-                alpha: 0.8 + Math.random() * 0.2,
-                vy: -0.8 - Math.random() * 1.2,
-                vx: (Math.random() - 0.5) * 0.6,
-                size: 11 + Math.random() * 9,
-                life: 1,
-                decay: 0.012 + Math.random() * 0.012,
-            });
+        // ── Yeni efekt durum değişkenleri ───────────────────────────────────────────
+        let _smkCanvas=null,_smkCtx=null,_smkParts=[],_smkInited=false;
+        let _waveCanvas=null,_waveCtx=null,_waveInited=false,_waveData=null;
+        // ── Beat-reactive nabız ───────────────────────────────────────────────────
+        let _beatSmooth = 0;
+
+
+        // ═══════════════════════════════════════════════════════════════════════════
+        // DUMAN / SİS PARÇACIKLARı
+        // ═══════════════════════════════════════════════════════════════════════════
+        function _initSmoke() {
+            _smkCanvas = document.getElementById('smoke-canvas');
+            if (!_smkCanvas) return;
+            _smkCtx = _smkCanvas.getContext('2d');
+            _smkInited = true;
+        }
+        function _drawSmoke(bassLevel, accentRgb) {
+            if (!_smkInited) { _initSmoke(); if (!_smkInited) return; }
+            const PW = _smkCanvas.parentElement ? _smkCanvas.parentElement.offsetWidth  : 800;
+            const PH = _smkCanvas.parentElement ? _smkCanvas.parentElement.offsetHeight : 140;
+            if (_smkCanvas.width  !== PW) _smkCanvas.width  = PW;
+            if (_smkCanvas.height !== PH) _smkCanvas.height = PH;
+            const spawnR = 0.035 + bassLevel*0.055;
+            if (Math.random() < spawnR) {
+                const side = Math.random() < 0.5;
+                _smkParts.push({
+                    x: side ? PW - Math.random()*70 : Math.random()*70,
+                    y: PH  - Math.random()*25,
+                    vx: (side ? -0.12 : 0.12) + (Math.random()-0.5)*0.08,
+                    vy: -(0.22 + Math.random()*0.45),
+                    r: 16 + Math.random()*28,
+                    life: 1.0,
+                    al: 0.028 + bassLevel*0.018,
+                    decay: 0.0038 + Math.random()*0.003
+                });
+            }
+            _smkCtx.clearRect(0, 0, PW, PH);
+            for (let i=_smkParts.length-1; i>=0; i--) {
+                const s = _smkParts[i];
+                s.x += s.vx; s.y += s.vy; s.life -= s.decay; s.r += 0.15;
+                if (s.life <= 0) { _smkParts.splice(i,1); continue; }
+                const a = s.al * s.life;
+                const g = _smkCtx.createRadialGradient(s.x,s.y,0, s.x,s.y,s.r);
+                g.addColorStop(0,   `rgba(${accentRgb},${a.toFixed(3)})`);
+                g.addColorStop(0.45,`rgba(${accentRgb},${(a*0.45).toFixed(3)})`);
+                g.addColorStop(1,   `rgba(${accentRgb},0)`);
+                _smkCtx.fillStyle = g;
+                _smkCtx.beginPath();
+                _smkCtx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+                _smkCtx.fill();
+            }
+            if (_smkParts.length > 90) _smkParts.splice(0, _smkParts.length-90);
         }
 
-        // ─── BEAT EFEKTI ─────────────────────────────────────────────────────────────
+        // ═══════════════════════════════════════════════════════════════════════════
+        // DALGA FORMU (Waveform)
+        // ═══════════════════════════════════════════════════════════════════════════
+        function _initWave() {
+            _waveCanvas = document.getElementById('wave-canvas');
+            if (!_waveCanvas || !_vizAnalyser) return;
+            _waveCtx  = _waveCanvas.getContext('2d');
+            _waveData = new Uint8Array(_vizAnalyser.fftSize);
+            _waveInited = true;
+        }
+        function _drawWaveform(accentRgb) {
+            if (!_waveInited) { _initWave(); if (!_waveInited) return; }
+            const W = _waveCanvas.offsetWidth || 600;
+            if (_waveCanvas.width !== W) _waveCanvas.width = W;
+            const H = _waveCanvas.height;
+            _vizAnalyser.getByteTimeDomainData(_waveData);
+            _waveCtx.clearRect(0, 0, W, H);
+            const sliceW = W / _waveData.length;
+            const grd = _waveCtx.createLinearGradient(0,0,W,0);
+            grd.addColorStop(0,    `rgba(${accentRgb},0)`);
+            grd.addColorStop(0.12, `rgba(${accentRgb},0.65)`);
+            grd.addColorStop(0.5,  `rgba(${accentRgb},1)`);
+            grd.addColorStop(0.88, `rgba(${accentRgb},0.65)`);
+            grd.addColorStop(1,    `rgba(${accentRgb},0)`);
+            _waveCtx.strokeStyle = grd;
+            _waveCtx.lineWidth  = 1.4;
+            _waveCtx.shadowBlur = 9;
+            _waveCtx.shadowColor = `rgba(${accentRgb},0.55)`;
+            _waveCtx.beginPath();
+            for (let i=0; i<_waveData.length; i++) {
+                const v = _waveData[i] / 128.0;
+                const y = (v * H) / 2;
+                const x = i * sliceW;
+                i === 0 ? _waveCtx.moveTo(x,y) : _waveCtx.lineTo(x,y);
+            }
+            _waveCtx.stroke();
+            _waveCtx.shadowBlur = 0;
+        }
+
         function _applyBeat(bassLevel, accent, accentRgb) {
-            _beatSmooth = _beatSmooth * 0.76 + bassLevel * 0.24;
-            const pl   = document.getElementById('cyber-audio-player');
-            const ring = document.getElementById('gtp4-beat-ring');
+            _beatSmooth = _beatSmooth * 0.72 + bassLevel * 0.28;
+            const pl = document.getElementById('cyber-audio-player');
+            const ring = document.getElementById('beat-ring');
             if (!pl) return;
             const g = _beatSmooth;
-            // Çalar çerçevesi cyan parıltı
-            if (g > 0.18) {
-                const t = Math.min((g - 0.18) / 0.82, 1);
-                pl.style.boxShadow =
-                    'inset 0 0 ' + Math.round(t*20) + 'px rgba(0,200,212,' + (t*0.12).toFixed(3) + '),' +
-                    '0 0 ' + Math.round(t*55) + 'px rgba(0,200,212,' + (t*0.2).toFixed(3) + ')';
+            if (g > 0.22) {
+                const t = Math.min((g - 0.22) / 0.78, 1);
+                pl.style.boxShadow = 'inset 0 0 ' + Math.round(t*30) + 'px rgba(' + accentRgb + ',' + (t*0.11).toFixed(3) + '), 0 0 ' + Math.round(t*55) + 'px rgba(' + accentRgb + ',' + (t*0.16).toFixed(3) + ')';
             } else { pl.style.boxShadow = ''; }
-            // Oynat butonu etrafı beat ring
             if (ring) {
-                if (g > 0.22) {
-                    const ri = Math.min((g - 0.22) / 0.78, 1);
-                    ring.style.borderColor = '#00c8d4';
-                    ring.style.boxShadow   = '0 0 ' + Math.round(ri*22) + 'px #00c8d4bb,0 0 ' + Math.round(ri*55) + 'px #00c8d444';
-                    ring.style.opacity     = (0.18 + ri * 0.82).toFixed(2);
+                if (g > 0.28) {
+                    const ri = Math.min((g - 0.28) / 0.72, 1);
+                    ring.style.borderColor = accent;
+                    ring.style.boxShadow = '0 0 ' + Math.round(ri*22) + 'px ' + accent + 'aa, 0 0 ' + Math.round(ri*44) + 'px ' + accent + '44';
+                    ring.style.opacity = (0.25 + ri * 0.75).toFixed(2);
                 } else { ring.style.borderColor = 'transparent'; ring.style.boxShadow = ''; ring.style.opacity = '0'; }
             }
-            // Runik partikülleri spawn
-            if (Math.random() < bassLevel * 0.55) _spawnRune(bassLevel);
         }
 
-        // ─── ANA ÇİZİM DÖNGÜSÜ ───────────────────────────────────────────────────────
         function _drawViz() {
             if (!_vizAnalyser) return;
             const canvas = document.getElementById('viz-canvas');
             if (!canvas) { requestAnimationFrame(_drawViz); return; }
-            const W = canvas.offsetWidth || 600;
-            const H = canvas.height || 44;
+            const W = canvas.offsetWidth;
+            const H = canvas.height || 52;
             if (W > 0 && canvas.width !== W) canvas.width = W;
             const ctx2 = canvas.getContext('2d');
-
+            const cs = getComputedStyle(document.documentElement);
+            const accent   = cs.getPropertyValue('--player-accent').trim()     || '#d4af37';
+            const accentRgb = cs.getPropertyValue('--player-accent-rgb').trim() || '212,175,55';
             const buf = new Uint8Array(_vizAnalyser.frequencyBinCount);
             _vizAnalyser.getByteFrequencyData(buf);
+            ctx2.clearRect(0, 0, W, H);
 
-            // Bas hesapla
-            const bassN = Math.max(1, Math.floor(buf.length * 0.14));
+            const midY = Math.floor(H / 2);
+            const barCount = Math.floor(buf.length * 0.58);
+            const barW = W / barCount;
+
+            // Bas frekans seviyesi (beat)
+            const bassN = Math.floor(barCount * 0.12);
             let bassSum = 0;
             for (let i = 0; i < bassN; i++) bassSum += buf[i];
-            const bassLevel = (bassSum / bassN) / 255;
+            const bassLevel = bassN > 0 ? (bassSum / bassN) / 255 : 0;
 
-            // ── Vizüalizer çubukları — kozmik dalga, cyan/indigo palette ──
-            ctx2.clearRect(0, 0, W, H);
-            const barCount = Math.floor(buf.length * 0.55);
-            const barW = W / barCount;
+            // Gradient + glow çubuklar
             for (let i = 0; i < barCount; i++) {
-                const val  = buf[i] / 255;
-                const barH = val * H * 1.05;
+                const val = buf[i] / 255;
+                const barH = val * midY * 1.1;
                 if (barH < 1) continue;
-                const x  = i * barW;
-                const bw = Math.max(barW - 1.2, 1);
-                // Kozmik palet: düşük → lacivert, orta → cyan, yüksek → beyaz
-                const hue = 190 - val * 15;
-                const lit = 35 + val * 55;
+                const x = i * barW;
+                const bw = Math.max(barW - 1.0, 1);
                 ctx2.globalAlpha = 0.15 + val * 0.85;
-                if (val > 0.35) { ctx2.shadowColor = 'rgba(0,200,212,0.8)'; ctx2.shadowBlur = val * 10; }
-                else { ctx2.shadowBlur = 0; }
-                const gBar = ctx2.createLinearGradient(x, H, x, H - barH);
-                gBar.addColorStop(0,    'rgba(0,80,120,0.9)');
-                gBar.addColorStop(0.4,  'rgba(0,200,212,' + (0.5 + val * 0.5).toFixed(2) + ')');
-                gBar.addColorStop(1,    'rgba(180,255,255,' + (val * 0.4).toFixed(2) + ')');
-                ctx2.fillStyle = gBar;
-                ctx2.fillRect(x, H - barH, bw, barH);
-                // Peak — beyaz parlama
-                if (val > 0.65) {
-                    ctx2.shadowBlur  = 14;
-                    ctx2.fillStyle   = 'rgba(220,255,255,' + ((val - 0.65) / 0.35 * 0.85).toFixed(2) + ')';
-                    ctx2.globalAlpha = (val - 0.65) / 0.35 * 0.8;
-                    ctx2.fillRect(x, H - barH - 2, bw, 2);
+                ctx2.shadowColor = accent;
+                ctx2.shadowBlur  = val > 0.45 ? val * 12 : 0;
+                // Yukarı — parlak alttan soluk üste
+                const gUp = ctx2.createLinearGradient(x, midY, x, midY - barH);
+                gUp.addColorStop(0,   'rgba(' + accentRgb + ',0.95)');
+                gUp.addColorStop(0.55,'rgba(' + accentRgb + ',0.55)');
+                gUp.addColorStop(1,   'rgba(' + accentRgb + ',0.08)');
+                ctx2.fillStyle = gUp;
+                ctx2.fillRect(x, midY - barH, bw, barH);
+                // Aşağı ayna
+                const gDn = ctx2.createLinearGradient(x, midY, x, midY + barH);
+                gDn.addColorStop(0, 'rgba(' + accentRgb + ',0.45)');
+                gDn.addColorStop(1, 'rgba(' + accentRgb + ',0.01)');
+                ctx2.fillStyle = gDn;
+                ctx2.fillRect(x, midY, bw, barH);
+                // Peak nokta
+                if (val > 0.55) {
+                    ctx2.shadowBlur = 10;
+                    ctx2.fillStyle = accent;
+                    ctx2.globalAlpha = (val - 0.55) / 0.45 * 0.9;
+                    ctx2.fillRect(x, midY - barH - 2, bw, 2);
                 }
             }
             ctx2.shadowBlur = 0; ctx2.globalAlpha = 1;
+            // Orta çizgi
+            ctx2.globalAlpha = 0.1; ctx2.fillStyle = accent;
+            ctx2.fillRect(0, midY - 0.5, W, 1);
+            ctx2.globalAlpha = 1;
 
-            // Runik partikülleri canvas üzerine çiz (viz canvas'ı paylaşıyor)
-            for (let i = _runeParts.length - 1; i >= 0; i--) {
-                const rp = _runeParts[i];
-                rp.x    += rp.vx;
-                rp.y    += rp.vy;
-                rp.alpha -= rp.decay;
-                rp.life  -= rp.decay;
-                if (rp.alpha <= 0 || rp.life <= 0) { _runeParts.splice(i, 1); continue; }
-                ctx2.save();
-                ctx2.globalAlpha = rp.alpha;
-                ctx2.font        = rp.size + 'px sans-serif';
-                ctx2.fillStyle   = 'rgba(0,200,212,' + rp.alpha.toFixed(2) + ')';
-                ctx2.shadowColor = '#00c8d4';
-                ctx2.shadowBlur  = 10;
-                ctx2.fillText(rp.char, rp.x, rp.y);
-                ctx2.restore();
-            }
-
-            _drawRays(bassLevel);
-            _applyBeat(bassLevel, '#00c8d4', '0,200,212');
+            _applyBeat(bassLevel, accent, accentRgb);
+            _drawRuneParts(bassLevel, accent);
+            // ── Yeni efektler ──
+            _drawSmoke(bassLevel, accentRgb);
+            _drawWaveform(accentRgb);
             requestAnimationFrame(_drawViz);
         }
+
         function changeVolume(v) { audio.volume = v; if (v == 1) showToast("🔊 Kulaklarını seviyorsan sesi biraz kıs"); }
 
         // ==========================================================================
