@@ -9708,7 +9708,6 @@ Kurallar:
     <!-- ── Firebase ─────────────────────────────────────── -->
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
     <script>
     // ─────────────────────────────────────────────────────────────────────────
     // Firebase senkron başlatma — window.load BEKLENMEZ.
@@ -10215,42 +10214,6 @@ Kurallar:
                 });
         }
 
-        function _showLogin() {
-            if (document.getElementById('_adm-gate')) return;
-            var gate = document.createElement('div');
-            gate.id = '_adm-gate';
-            gate.style.cssText = 'position:fixed;inset:0;z-index:999999999;background:rgba(4,6,12,0.98);display:flex;align-items:center;justify-content:center;font-family:system-ui,sans-serif';
-            gate.innerHTML =
-                '<div style="background:rgba(16,20,36,0.98);border:1px solid rgba(212,175,55,0.3);border-radius:14px;padding:32px 28px;width:340px;box-shadow:0 20px 60px rgba(0,0,0,0.9)">' +
-                  '<div style="color:#d4af37;font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:20px;text-align:center">&#9881; Y\u00f6netim Paneli</div>' +
-                  '<input id="_auth-email" type="email" placeholder="Admin e-posta" autocomplete="username" style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(212,175,55,0.2);border-radius:8px;color:#fff;font-size:14px;outline:none;box-sizing:border-box;margin-bottom:10px">' +
-                  '<input id="_auth-pass" type="password" placeholder="\u015eifre" autocomplete="current-password" style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(212,175,55,0.2);border-radius:8px;color:#fff;font-size:14px;outline:none;box-sizing:border-box;margin-bottom:10px">' +
-                  '<div id="_auth-err" style="color:rgba(255,90,90,0.85);font-size:11px;text-align:center;min-height:16px;margin-bottom:10px"></div>' +
-                  '<button id="_auth-btn" style="width:100%;padding:12px;background:rgba(212,175,55,0.15);border:1px solid rgba(212,175,55,0.35);border-radius:8px;color:#d4af37;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:1px">G\u0130R\u0130\u015e YAP</button>' +
-                '</div>';
-            document.body.appendChild(gate);
-            var emailInp = document.getElementById('_auth-email');
-            var passInp  = document.getElementById('_auth-pass');
-            var btn      = document.getElementById('_auth-btn');
-            var err      = document.getElementById('_auth-err');
-            setTimeout(function() { emailInp.focus(); }, 80);
-            function _attempt() {
-                var email = emailInp.value.trim();
-                var pass  = passInp.value;
-                if (!email || !pass) { err.textContent = 'E-posta ve \u015fifre gerekli'; return; }
-                btn.disabled = true; btn.textContent = '\u2026';
-                firebase.auth().signInWithEmailAndPassword(email, pass)
-                    .then(function() { gate.remove(); })
-                    .catch(function(e) {
-                        var code = e && e.code ? e.code : '';
-                        err.textContent = '\u2717 ' + ((code === 'auth/wrong-password' || code === 'auth/invalid-credential' || code === 'auth/invalid-login-credentials') ? 'E-posta veya \u015fifre yanl\u0131\u015f' : (e && e.message ? e.message : 'Giri\u015f ba\u015far\u0131s\u0131z'));
-                        btn.disabled = false; btn.textContent = 'G\u0130R\u0130\u015e YAP';
-                    });
-            }
-            btn.addEventListener('click', _attempt);
-            passInp.addEventListener('keydown', function(e) { if (e.key === 'Enter') _attempt(); });
-            emailInp.addEventListener('keydown', function(e) { if (e.key === 'Enter') passInp.focus(); });
-        }
         // Giriş ekranı — ilk kurulumda "şifre belirle", sonraki girişlerde "şifre gir"
         function _showGate(storedHash, onSuccess) {
             var isSetup = !storedHash;
@@ -10315,37 +10278,18 @@ Kurallar:
         // ── Admin paneli (sadece ?yonetim=tengri ile açılır) ──────────────────
         if (!_isAdmin) return;
 
-        // Firebase Auth ile giriş
-        var _origFetch = window.fetch.bind(window);
-        window.fetch = function(input, init) {
-            try {
-                var url = typeof input === "string" ? input : (input && input.url);
-                if (url && url.indexOf("tengri3-default-rtdb") !== -1 && url.indexOf("auth=") === -1 && window._authToken) {
-                    url += (url.indexOf("?") === -1 ? "?" : "&") + "auth=" + window._authToken;
-                    return _origFetch(url, init);
-                }
-            } catch(e) {}
-            return _origFetch(input, init);
-        };
-
-        firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-                user.getIdToken().then(function(token) {
-                    window._authToken = token;
-                    _buildPanel();
-                });
-                setInterval(function() {
-                    if (firebase.auth().currentUser) {
-                        firebase.auth().currentUser.getIdToken(true).then(function(token) { window._authToken = token; }).catch(function(){});
-                    }
-                }, 50 * 60 * 1000);
-            } else {
-                _showLogin();
-            }
+        // Her girişte Firebase'den hash oku — sessionStorage/localStorage yok
+        _db.ref('_adm/h').once('value').then(function(snap) {
+            var storedHash = snap.val() || null;
+            _showGate(storedHash, function() { _buildPanel(); });
+        }).catch(function() {
+            var errDiv = document.createElement('div');
+            errDiv.style.cssText = 'position:fixed;inset:0;z-index:999999999;background:rgba(4,6,12,0.98);display:flex;align-items:center;justify-content:center;color:#ff6b6b;font-family:system-ui;font-size:13px;text-align:center;padding:20px';
+            errDiv.textContent = 'Firebase bağlantı hatası. Sayfayı yenileyin.';
+            document.body.appendChild(errDiv);
         });
 
         function _buildPanel() {
-        if (document.getElementById('_adm-panel')) return;
         var _panelOpen = false;
 
         var toggleTab = document.createElement('div');
