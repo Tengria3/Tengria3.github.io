@@ -11024,6 +11024,92 @@ Kurallar:
 
 
 // ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+// MARKA MENŞEİ — Firebase (automation/brandOrigins)
+// ═══════════════════════════════════════════════════════════════════
+(function() {
+  var _oSection = document.createElement('div');
+  _oSection.innerHTML =
+    '<div style="font-size:9px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:1.2px;margin:14px 0 7px">' +
+      '\uD83C\uDF0D Marka Men\u015fei' +
+      '<span id="_adm-origin-badge" style="display:none;background:rgba(100,180,255,0.85);color:#fff;font-size:9px;font-weight:700;padding:1px 7px;border-radius:10px;margin-left:6px;vertical-align:middle">0</span>' +
+    '</div>' +
+    '<div style="background:rgba(255,255,255,0.03);border:1px solid rgba(100,180,255,0.18);border-radius:8px;padding:12px;margin-bottom:14px">' +
+      '<div style="font-size:10px;color:rgba(180,210,255,0.5);margin-bottom:9px;line-height:1.6">Bir talepte bu marka ge\u00e7erse ve sayfadaki men\u015fei ile uyu\u015fmazsa otomatik uyar\u0131 \u00e7\u0131kar.</div>' +
+      '<div style="display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap">' +
+        '<input id="_adm-bor-brand" type="text" placeholder="Marka ad\u0131\u2026" style="flex:1;min-width:100px;padding:8px 10px;background:rgba(255,255,255,0.04);border:1px solid rgba(100,180,255,0.25);border-radius:7px;color:#e0eeff;font-size:11.5px;outline:none;box-sizing:border-box;font-family:system-ui,sans-serif">' +
+        '<input id="_adm-bor-origin" type="text" placeholder="Men\u015fei\u2026" style="flex:1;min-width:100px;padding:8px 10px;background:rgba(255,255,255,0.04);border:1px solid rgba(100,180,255,0.25);border-radius:7px;color:#e0eeff;font-size:11.5px;outline:none;box-sizing:border-box;font-family:system-ui,sans-serif">' +
+        '<button id="_adm-bor-add" style="padding:8px 13px;background:rgba(100,180,255,0.15);border:1px solid rgba(100,180,255,0.4);border-radius:7px;color:#90c8ff;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap">+ Ekle</button>' +
+      '</div>' +
+      '<div id="_adm-bor-list" style="display:flex;flex-direction:column;gap:5px">' +
+        '<div id="_adm-bor-empty" style="text-align:center;color:rgba(255,255,255,0.22);font-size:11px;padding:12px 0;border:1px dashed rgba(100,180,255,0.15);border-radius:7px">Hen\u00fcz marka men\u015fei eklenmedi</div>' +
+      '</div>' +
+    '</div>';
+  var _rbOr = document.getElementById('_adm-reset-btn');
+  if (_rbOr && _rbOr.parentNode) {
+    while (_oSection.firstChild) { _rbOr.parentNode.insertBefore(_oSection.firstChild, _rbOr); }
+  } else { panel.appendChild(_oSection); }
+
+  var _oList = document.getElementById('_adm-bor-list');
+  var _oEmpty = document.getElementById('_adm-bor-empty');
+  var _oBadge = document.getElementById('_adm-origin-badge');
+  var _oBrand = document.getElementById('_adm-bor-brand');
+  var _oOrigin = document.getElementById('_adm-bor-origin');
+  var _oAddBtn = document.getElementById('_adm-bor-add');
+
+  function _escO(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function(c) {
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+  function _renderOrigins(data) {
+    var ch = Array.prototype.slice.call(_oList.children);
+    ch.forEach(function(c) { if (c.id !== '_adm-bor-empty') _oList.removeChild(c); });
+    if (!data || !Object.keys(data).length) {
+      _oEmpty.style.display = 'block'; _oBadge.style.display = 'none'; return;
+    }
+    var keys = Object.keys(data);
+    _oEmpty.style.display = 'none';
+    _oBadge.style.display = 'inline';
+    _oBadge.textContent = keys.length;
+    keys.forEach(function(k) {
+      var item = data[k];
+      var brand = item && item.brand ? String(item.brand) : '';
+      var origin = item && item.origin ? String(item.origin) : '';
+      if (!brand || !origin) return;
+      var row = document.createElement('div');
+      row.style.cssText = 'display:flex;align-items:center;justify-content:space-between;gap:8px;background:rgba(100,180,255,0.06);border:1px solid rgba(100,180,255,0.2);border-radius:6px;padding:8px 10px;';
+      row.innerHTML =
+        '<div style="flex:1;min-width:0;font-size:12px;color:rgba(200,225,255,0.9);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' +
+          '<b style="font-weight:700">' + _escO(brand) + '</b>' +
+          '<span style="opacity:0.5;margin:0 6px">\u2192</span>' +
+          '<span style="color:rgba(140,220,255,0.95);font-weight:600">' + _escO(origin) + '</span>' +
+        '</div>' +
+        '<button data-bor-del="' + _escO(k) + '" style="background:rgba(255,50,50,0.1);border:1px solid rgba(255,50,50,0.28);color:#ff7a7a;border-radius:5px;font-size:10px;padding:3px 9px;cursor:pointer;font-weight:600;flex-shrink:0">Kald\u0131r</button>';
+      _oList.insertBefore(row, _oEmpty);
+    });
+  }
+  _db.ref('automation/brandOrigins').on('value', function(s) { _renderOrigins(s.val()); });
+
+  function _addOrigin() {
+    var brand = (_oBrand.value || '').trim();
+    var origin = (_oOrigin.value || '').trim();
+    if (!brand) { _oBrand.focus(); return; }
+    if (!origin) { _oOrigin.focus(); return; }
+    _db.ref('automation/brandOrigins').push({ brand: brand, origin: origin }).catch(function(){});
+    _oBrand.value = ''; _oOrigin.value = ''; _oBrand.focus();
+  }
+  _oAddBtn.addEventListener('click', _addOrigin);
+  _oBrand.addEventListener('keydown', function(e) { if (e.key === 'Enter') _oOrigin.focus(); });
+  _oOrigin.addEventListener('keydown', function(e) { if (e.key === 'Enter') _addOrigin(); });
+  _oList.addEventListener('click', function(e) {
+    var k = e.target.dataset && e.target.dataset.borDel;
+    if (!k) return;
+    if (!confirm('Bu marka men\u015feini silmek istiyor musun?')) return;
+    _db.ref('automation/brandOrigins/' + k).remove().catch(function(){});
+  });
+})();
+
 // YASAKLI KELİMELER — Firebase (automation/bannedWords)
 // ═══════════════════════════════════════════════════════════════════
 (function() {
