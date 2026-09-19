@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mistik Muzik AI</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0014;color:#e8d5f5;min-height:100vh;overflow-x:hidden}
+.stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+.star{position:absolute;background:white;border-radius:50%;animation:twinkle 3s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(.8)}50%{opacity:1;transform:scale(1.2)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 20px rgba(168,85,247,.4)}50%{box-shadow:0 0 40px rgba(168,85,247,.8)}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+.orb{position:fixed;border-radius:50%;filter:blur(80px);opacity:.3;animation:orbFloat 15s ease-in-out infinite}
+.orb1{top:5rem;left:5rem;width:300px;height:300px;background:rgba(168,85,247,.3)}
+.orb2{bottom:5rem;right:5rem;width:300px;height:300px;background:rgba(236,72,153,.3);animation-delay:5s}
+@keyframes orbFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,-30px)}}
+.container{max-width:1200px;margin:0 auto;padding:1rem;position:relative;z-index:10}
+header{text-align:center;padding:2rem 1rem;border-bottom:1px solid rgba(168,85,247,.3);background:rgba(10,5,30,.7);backdrop-filter:blur(20px)}
+h1{font-size:2rem;background:linear-gradient(90deg,#a855f7,#ec4899,#f9a8d4,#ec4899,#a855f7);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 4s linear infinite;margin-bottom:.5rem}
+.subtitle{color:rgba(196,181,253,.7);font-size:.9rem}
+.tabs{display:flex;justify-content:center;gap:.5rem;margin:1.5rem 0;flex-wrap:wrap}
+.tab{padding:.75rem 1.5rem;background:rgba(20,10,40,.6);border:1px solid rgba(168,85,247,.3);border-radius:12px;cursor:pointer;transition:all .3s;color:#c4b5fd;font-weight:600}
+.tab.active{background:linear-gradient(135deg,#7c3aed,#a855f7,#ec4899);border-color:transparent;color:white}
+.tab:hover:not(.active){background:rgba(168,85,247,.2)}
+.section{display:none;background:rgba(20,10,40,.4);border:1px solid rgba(168,85,247,.3);border-radius:20px;padding:1.5rem;margin-bottom:1.5rem;backdrop-filter:blur(20px)}
+.section.active{display:block;animation:fadeIn .5s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+label{display:block;margin-bottom:.5rem;color:#c4b5fd;font-weight:600}
+textarea,select{width:100%;padding:1rem;background:rgba(20,10,40,.6);border:1px solid rgba(168,85,247,.3);border-radius:12px;color:#e8d5f5;font-size:1rem;font-family:inherit;resize:vertical}
+textarea:focus,select:focus{outline:none;border-color:rgba(168,85,247,.6);box-shadow:0 0 0 3px rgba(168,85,247,.2)}
+textarea::placeholder{color:rgba(168,85,247,.5)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.75rem;margin-top:.75rem}
+.option{padding:1rem;background:rgba(20,10,40,.6);border:1px solid rgba(168,85,247,.3);border-radius:12px;text-align:center;cursor:pointer;transition:all .3s}
+.option:hover{background:rgba(168,85,247,.2)}
+.option.selected{transform:scale(1.05);border-color:rgba(168,85,247,.8)}
+.option .icon{font-size:2rem;margin-bottom:.5rem}
+.option .text{font-size:.875rem;font-weight:600;color:#e8d5f5}
+.btn{background:linear-gradient(135deg,#7c3aed,#a855f7,#ec4899);color:white;border:none;padding:1rem 2rem;border-radius:12px;font-size:1.125rem;font-weight:bold;cursor:pointer;transition:all .3s;box-shadow:0 0 20px rgba(168,85,247,.5);width:100%;margin-top:1rem}
+.btn:hover{box-shadow:0 0 40px rgba(168,85,247,.8);transform:translateY(-2px)}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.loading{text-align:center;padding:2rem}
+.loading-icon{font-size:3rem;animation:float 3s ease-in-out infinite}
+.progress{width:100%;height:8px;background:rgba(168,85,247,.2);border-radius:999px;overflow:hidden;margin:1rem 0}
+.progress-fill{height:100%;background:linear-gradient(90deg,#a855f7,#ec4899);transition:width .3s}
+.songs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-top:1.5rem}
+.song-card{background:linear-gradient(135deg,rgba(168,85,247,.1),rgba(236,72,153,.05));border:1px solid rgba(168,85,247,.3);border-radius:20px;overflow:hidden;transition:all .3s}
+.song-card:hover{border-color:rgba(168,85,247,.6);box-shadow:0 0 30px rgba(168,85,247,.3);transform:translateY(-4px)}
+.song-art{height:180px;background:linear-gradient(135deg,#7c3aed,#ec4899,#6366f1);display:flex;align-items:center;justify-content:center;position:relative}
+.song-art-icon{font-size:4rem;animation:float 6s ease-in-out infinite}
+.song-info{padding:1.25rem}
+.song-title{font-size:1.25rem;font-weight:bold;color:#e8d5f5;margin-bottom:.5rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.song-desc{font-size:.875rem;color:rgba(196,181,253,.7);margin-bottom:1rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.song-tags{display:flex;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap}
+.tag{padding:.25rem .75rem;background:rgba(168,85,247,.2);color:#c4b5fd;border-radius:8px;font-size:.75rem;font-weight:600;border:1px solid rgba(168,85,247,.3)}
+.song-actions{display:flex;gap:.5rem;justify-content:space-between;align-items:center}
+.play-btn{display:flex;align-items:center;gap:.5rem;padding:.5rem 1rem;background:linear-gradient(135deg,#7c3aed,#a855f7,#ec4899);color:white;border:none;border-radius:10px;cursor:pointer;font-weight:600;transition:all .3s}
+.play-btn:hover{transform:scale(1.05)}
+.play-btn.playing{background:rgba(236,72,153,.3);color:#f9a8d4}
+.delete-btn{padding:.5rem 1rem;background:rgba(239,68,68,.2);color:#fca5a5;border:1px solid rgba(239,68,68,.5);border-radius:10px;cursor:pointer;font-weight:600;transition:all .3s}
+.delete-btn:hover{background:rgba(239,68,68,.3)}
+.waveform{display:flex;align-items:flex-end;gap:2px;height:40px;margin:1rem 0}
+.waveform-bar{flex:1;background:linear-gradient(to top,#a855f7,#ec4899);border-radius:2px;transition:height .1s}
+.progress-bar{width:100%;height:6px;background:rgba(168,85,247,.2);border-radius:999px;overflow:hidden;margin-bottom:1rem}
+.progress-bar-fill{height:100%;background:linear-gradient(90deg,#a855f7,#ec4899);transition:width .1s}
+.empty{text-align:center;padding:3rem 1rem}
+.empty-icon{font-size:4rem;margin-bottom:1rem;animation:float 6s ease-in-out infinite}
+.empty-title{font-size:1.5rem;font-weight:bold;color:#e8d5f5;margin-bottom:.5rem}
+.empty-text{color:rgba(196,181,253,.7)}
+@media(max-width:768px){.grid{grid-template-columns:repeat(2,1fr)}.songs-grid{grid-template-columns:1fr}h1{font-size:1.5rem}}
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<header>
+<h1>🎵 Mistik Müzik AI</h1>
+<p class="subtitle">Gerçek Ses Sentezi ile Şarkı Oluştur</p>
+</header>
+<div class="container">
+<div class="tabs">
+<div class="tab active" onclick="showView('create')">✦ Oluştur</div>
+<div class="tab" onclick="showView('library')">☽ Kütüphane (<span id="songCount">0</span>)</div>
+</div>
+<div class="section active" id="createView">
+<div style="text-align:center;margin-bottom:2rem">
+<div style="font-size:3rem;margin-bottom:1rem" class="float">🎵</div>
+<h2 style="font-size:1.5rem;margin-bottom:.5rem;background:linear-gradient(90deg,#a855f7,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Gerçek Müzik Yarat</h2>
+<p style="color:rgba(196,181,253,.7)">Web Audio API ile gerçek ses sentezi</p>
+</div>
+<div style="margin-bottom:1.5rem">
+<label>✦ Şarkı Açıklaması</label>
+<textarea id="promptInput" rows="4" placeholder="Nasıl bir şarkı istiyorsun? Detaylı anlat..."></textarea>
+<p style="font-size:.75rem;color:rgba(168,85,247,.6);margin-top:.5rem">💡 Ne kadar detaylı anlatırsan, şarkı o kadar iyi olur</p>
+</div>
+<div style="margin-bottom:1.5rem">
+<label>🎸 Tür Seç</label>
+<div class="grid" id="genreGrid"></div>
+</div>
+<div style="margin-bottom:1.5rem">
+<label>💫 Ruh Hali</label>
+<div class="grid" id="moodGrid"></div>
+</div>
+<div id="createButtonContainer">
+<button class="btn" onclick="createSong()">✦ Şarkı Oluştur ✦</button>
+</div>
+</div>
+<div class="section" id="libraryView">
+<h2 style="font-size:1.5rem;margin-bottom:1rem;background:linear-gradient(90deg,#a855f7,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:text-align:center">🎵 Müzik Kütüphanem</h2>
+<p style="color:rgba(196,181,253,.7);margin-bottom:1.5rem;text-align:center">Oluşturduğun <span id="libraryCount">0</span> şarkı burada</p>
+<div class="songs-grid" id="songsGrid"></div>
+<div id="emptyState" class="empty" style="display:none">
+<div class="empty-icon">🎵</div>
+<h3 class="empty-title">Henüz şarkı yok</h3>
+<p class="empty-text">İlk şarkını oluştur ve burada görünsün</p>
+</div>
+</div>
+</div>
+<script>
+const genres=[{name:'Pop',icon:'🎤',color:'linear-gradient(135deg,#ec4899,#f43f5e)',tempo:120,scale:'major'},{name:'Rock',icon:'🎸',color:'linear-gradient(135deg,#ef4444,#f97316)',tempo:140,scale:'minor'},{name:'Hip Hop',icon:'🎧',color:'linear-gradient(135deg,#a855f7,#6366f1)',tempo:90,scale:'minor'},{name:'Electronic',icon:'🎹',color:'linear-gradient(135deg,#06b6d4,#3b82f6)',tempo:128,scale:'minor'},{name:'Jazz',icon:'🎷',color:'linear-gradient(135deg,#f59e0b,#eab308)',tempo:110,scale:'major'},{name:'Classical',icon:'🎻',color:'linear-gradient(135deg,#8b5cf6,#a855f7)',tempo:100,scale:'major'},{name:'R&B',icon:'🎵',color:'linear-gradient(135deg,#d946ef,#ec4899)',tempo:95,scale:'minor'},{name:'Folk',icon:'🪕',color:'linear-gradient(135deg,#10b981,#059669)',tempo:115,scale:'major'}];
+const moods=[{name:'Neşeli',icon:'😊'},{name:'Hüzünlü',icon:'😢'},{name:'Romantik',icon:'💕'},{name:'Enerjik',icon:'⚡'},{name:'Sakin',icon:'🌙'},{name:'Epik',icon:'🔥'},{name:'Mistik',icon:'✨'},{name:'Melankolik',icon:'🌧️'}];
+const scales={major:[0,2,4,5,7,9,11],minor:[0,2,3,5,7,8,10]};
+let songs=[];let selectedGenre='';let selectedMood='';let playingSongId=null;let currentSynth=null;let currentInterval=null;
+function init(){createStars();renderGenres();renderMoods();updateSongCount()}
+function createStars(){const c=document.getElementById('stars');for(let i=0;i<100;i++){const s=document.createElement('div');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.width=s.style.height=Math.random()*3+1+'px';s.style.animationDelay=Math.random()*3+'s';c.appendChild(s)}}
+function renderGenres(){document.getElementById('genreGrid').innerHTML=genres.map(g=>'<div class="option" onclick="selectGenre(\''+g.name+'\')" id="genre-'+g.name+'"><div class="icon">'+g.icon+'</div><div class="text">'+g.name+'</div></div>').join('')}
+function renderMoods(){document.getElementById('moodGrid').innerHTML=moods.map(m=>'<div class="option" onclick="selectMood(\''+m.name+'\')" id="mood-'+m.name+'"><div class="icon">'+m.icon+'</div><div class="text">'+m.name+'</div></div>').join('')}
+function selectGenre(n){selectedGenre=n;document.querySelectorAll('[id^="genre-"]').forEach(b=>{b.classList.remove('selected');b.style.background='rgba(20,10,40,.6)'});const b=document.getElementById('genre-'+n);b.classList.add('selected');b.style.background=genres.find(g=>g.name===n).color}
+function selectMood(n){selectedMood=n;document.querySelectorAll('[id^="mood-"]').forEach(b=>{b.classList.remove('selected');b.style.background='rgba(20,10,40,.6)'});const b=document.getElementById('mood-'+n);b.classList.add('selected');b.style.background='linear-gradient(135deg,rgba(124,58,237,.5),rgba(236,72,153,.5))'}
+function showView(v){document.getElementById('createView').classList.toggle('active',v==='create');document.getElementById('libraryView').classList.toggle('active',v==='library');document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',i===(v==='create'?0:1)));if(v==='library')renderSongs()}
+function generateMelody(gn){const g=genres.find(x=>x.name===gn)||genres[0];const s=scales[g.scale];const m=[];for(let i=0;i<16;i++){m.push(s[Math.floor(Math.random()*s.length)]+(Math.random()>.5?0:12)+60)}return m}
+function generateTitle(p){const w=p.split(' ').slice(0,3).join(' ');return[w+' Rüyası',w+' Melodisi',w+' Şarkısı',w+' Hikayesi'][Math.floor(Math.random()*4)]}
+async function createSong(){const p=document.getElementById('promptInput').value.trim();if(!p){alert('Lütfen şarkı açıklaması yaz!');return}const g=selectedGenre||'Pop';const m=selectedMood||'Neşeli';const gd=genres.find(x=>x.name===g);const c=document.getElementById('createButtonContainer');c.innerHTML='<div class="loading"><div class="loading-icon">🎵</div><p style="margin:1rem 0;font-weight:bold">Şarkın Oluşturuluyor...</p><div class="progress"><div class="progress-fill" id="loadingFill" style="width:0%"></div></div><p id="loadingPercent" style="font-family:monospace">%0</p></div>';let pr=0;const iv=setInterval(()=>{pr+=2;document.getElementById('loadingFill').style.width=pr+'%';document.getElementById('loadingPercent').textContent='%'+pr;if(pr>=100){clearInterval(iv);const ns={id:Date.now(),title:generateTitle(p),prompt:p,genre:g,mood:m,duration:(Math.floor(Math.random()*2)+3)+':'+String(Math.floor(Math.random()*60)).padStart(2,'0'),createdAt:'Az önce',isPlaying:false,progress:0,melody:generateMelody(g),tempo:gd.tempo};songs.unshift(ns);updateSongCount();document.getElementById('promptInput').value='';selectedGenre='';selectedMood='';document.querySelectorAll('.option').forEach(b=>{b.classList.remove('selected');b.style.background='rgba(20,10,40,.6)'});c.innerHTML='<button class="btn" onclick="createSong()">✦ Şarkı Oluştur ✦</button>';alert('✨ Şarkın oluşturuldu! Kütüphane sekmesinden dinleyebilirsin.')}},100)}
+function updateSongCount(){document.getElementById('songCount').textContent=songs.length;document.getElementById('libraryCount').textContent=songs.length}
+function renderSongs(){const g=document.getElementById('songsGrid');const e=document.getElementById('emptyState');if(songs.length===0){g.style.display='none';e.style.display='block';return}g.style.display='grid';e.style.display='none';g.innerHTML=songs.map((s,i)=>{let w='';let p='';if(s.isPlaying){let b='';for(let j=0;j<50;j++)b+='<div class="waveform-bar" style="height:'+Math.random()*100+'%"></div>';w='<div class="waveform">'+b+'</div>';p='<div class="progress-bar"><div class="progress-bar-fill" style="width:'+s.progress+'%"></div></div>'}return'<div class="song-card" style="animation-delay:'+i*.1+'s"><div class="song-art"><div class="song-art-icon">🎵</div></div><div class="song-info"><h3 class="song-title">'+s.title+'</h3><p class="song-desc">'+s.prompt+'</p><div class="song-tags"><span class="tag">'+s.genre+'</span><span class="tag">'+s.mood+'</span></div>'+w+p+'<div class="song-actions"><button class="play-btn '+(s.isPlaying?'playing':'')+'" onclick="togglePlay('+s.id+')"><i class="fas '+(s.isPlaying?'fa-pause':'fa-play')+'"></i><span>'+(s.isPlaying?'Durdur':'Çal')+'</span></button><button class="delete-btn" onclick="deleteSong('+s.id+')"><i class="fas fa-trash"></i></button></div></div></div>'}).join('')}
+function deleteSong(id){if(!confirm('Bu şarkıyı silmek istediğine emin misin?'))return;if(playingSongId===id)stopPlayback();songs=songs.filter(s=>s.id!==id);updateSongCount();renderSongs()}
+async function togglePlay(id){const s=songs.find(x=>x.id===id);if(!s)return;if(s.isPlaying){stopPlayback();s.isPlaying=false;s.progress=0;playingSongId=null}else{songs.forEach(x=>{if(x.isPlaying){x.isPlaying=false;x.progress=0}});stopPlayback();s.isPlaying=true;s.progress=0;playingSongId=id;await playMelody(s.melody,s.tempo,id)}renderSongs()}
+async function playMelody(m,t,id){await Tone.start();const sy=new Tone.PolySynth(Tone.Synth).toDestination();const rv=new Tone.Reverb({decay:2,wet:.3}).toDestination();sy.connect(rv);currentSynth=sy;Tone.getTransport().bpm.value=t;let n=0;currentInterval=setInterval(()=>{if(n>=m.length){clearInterval(currentInterval);const s=songs.find(x=>x.id===id);if(s){s.isPlaying=false;s.progress=0}playingSongId=null;renderSongs();return}const nt=Tone.Frequency(m[n],'midi').toNote();sy.triggerAttackRelease(nt,'8n');n++;const s=songs.find(x=>x.id===id);if(s)s.progress=(n/m.length)*100},60000/t/2)}
+function stopPlayback(){if(currentInterval){clearInterval(currentInterval);currentInterval=null}if(currentSynth){currentSynth.dispose();currentSynth=null}Tone.getTransport().stop();Tone.getTransport().cancel()}
+window.addEventListener('load',init);
+</script>
+</body>
+</html>
