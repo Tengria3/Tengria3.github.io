@@ -15,7 +15,7 @@
             --accent-hover: #bfa030;
             --border-color: #333;
             --font-heading: 'Playfair Display', Georgia, serif;
-            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,13 +30,14 @@
 
         a { text-decoration: none; color: inherit; transition: color 0.3s ease; }
         button { cursor: pointer; border: none; outline: none; font-family: inherit; }
+        img { max-width: 100%; height: auto; display: block; }
 
         /* --- HEADER --- */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(18, 18, 18, 0.95);
+            background: rgba(18, 18, 18, 0.98);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
             z-index: 1000;
@@ -54,12 +55,7 @@
             color: var(--accent-color);
             letter-spacing: 1px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
-        
-        .logo span { font-size: 0.8rem; color: var(--text-secondary); font-family: var(--font-body); font-weight: 400; text-transform: uppercase; letter-spacing: 2px; }
 
         nav ul {
             list-style: none;
@@ -74,6 +70,7 @@
             font-weight: 600;
             color: var(--text-primary);
             position: relative;
+            cursor: pointer;
         }
 
         nav a::after {
@@ -90,7 +87,13 @@
         nav a:hover::after { width: 100%; }
         nav a:hover { color: var(--accent-color); }
 
-        .menu-btn { display: none; color: var(--accent-color); font-size: 1.5rem; cursor: pointer; }
+        .menu-btn { 
+            display: none; 
+            color: var(--accent-color); 
+            font-size: 1.8rem; 
+            cursor: pointer;
+            user-select: none;
+        }
 
         /* --- HERO SECTION --- */
         .hero {
@@ -102,10 +105,10 @@
             text-align: center;
             padding: 2rem;
             background: linear-gradient(to bottom, rgba(18,18,18,0.6), rgba(18,18,18,1)), 
-                        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+                        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Parallax effect feel */
+            background-attachment: fixed;
         }
 
         .hero h1 {
@@ -172,6 +175,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 600;
+            cursor: pointer;
         }
         .view-all:hover { color: var(--accent-color); }
 
@@ -411,6 +415,24 @@
             border-radius: 0 4px 4px 0;
         }
 
+        /* Inline Image in Article */
+        .inline-img {
+            width: 100%;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border: 1px solid var(--border-color);
+        }
+        
+        .img-caption {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-top: -1rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
         /* --- FOOTER --- */
         footer {
             background-color: #0a0a0a;
@@ -433,16 +455,11 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .hero p { font-size: 1rem; }
-            nav ul { display: none; }
             .menu-btn { display: block; }
-            .article-h1 { font-size: 2rem; }
-            .container { padding: 2rem 1rem; }
-            .grid { grid-template-columns: 1fr; }
             
             /* Mobile Nav Overlay */
-            .mobile-nav-active {
-                display: flex !important;
-                flex-direction: column;
+            #main-nav {
+                display: none;
                 position: absolute;
                 top: 60px;
                 left: 0;
@@ -450,12 +467,24 @@
                 background: var(--bg-color);
                 padding: 2rem;
                 border-bottom: 1px solid var(--border-color);
-                gap: 1.5rem;
-                z-index: 999;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.5);
             }
+            
+            #main-nav.active {
+                display: block;
+            }
+
+            #main-nav ul {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .article-h1 { font-size: 2rem; }
+            .container { padding: 2rem 1rem; }
+            .grid { grid-template-columns: 1fr; }
         }
     </style>
-    <!-- Google Fonts for better typography -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -464,9 +493,7 @@
 
     <!-- Header -->
     <header>
-        <div class="logo" onclick="showHome()">
-            ERDEM SANATI
-        </div>
+        <div class="logo" onclick="showHome()">ERDEM SANATI</div>
         <nav id="main-nav">
             <ul>
                 <li><a onclick="filterCategory('beceri')">Beceriler</a></li>
@@ -526,7 +553,7 @@
     </footer>
 
     <script>
-        // --- DATA STORE (Expanded & Detailed) ---
+        // --- DATA STORE (Expanded, Fixed Images, Rich Content) ---
         const articlesData = [
             // BECERİLER (SKILLS)
             {
@@ -536,13 +563,16 @@
                 title: "Hayatta Kalmanın ABC'si: 5 Kritik Düğüm Tekniği",
                 excerpt: "Doğada veya acil durumlarda ip bağlamak basit bir eylem değil, hayati bir beceridir. İşte her erkeğin ezberlemesi gereken düğümler.",
                 readTime: "6 dk",
-                image: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+                image: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
                 content: `
-                    <p>Bir ipin ucunu doğru bağlamak, bazen hayat kurtarır, bazen de kamp maceranızı felaketten döndürür. Çoğu insan yanlış düğüm attığı için ipler gevşer, kopar veya çözülmez hale gelir. The Art of Manliness arşivlerinden derlenen bu rehberde, en güvenilir 5 düğümü öğreneceksiniz.</p>
+                    <p>Bir ipin ucunu doğru bağlamak, bazen hayat kurtarır, bazen de kamp maceranızı felaketten döndürür. Çoğu insan yanlış düğüm attığı için ipler gevşer, kopar veya çözülmez hale gelir. Bu rehberde, en güvenilir 5 düğümü öğreneceksiniz.</p>
 
                     <h2>1. Kement Bağı (Bowline)</h2>
                     <p>Sultanların düğümü olarak da bilinir. Neden mi? Çünkü sıkışmaz ama kolayca çözülür. Bir ağaç dalına ip bağlayacaksanız veya can yeleği yapacaksanız ilk tercihiniz budur. Asla "kilitlenmeyen" olması onu kurtarma operasyonlarında vazgeçilmez kılar.</p>
-                    <div class="quote-block">"Kement bağı, dünyanın en faydalı düğümüdür." - Ashley Buchanan</div>
+                    
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Bowline_knot.svg/1200px-Bowline_knot.svg.png" alt="Kement Bağı Şeması" class="inline-img">
+                    <p class="img-caption">Kement Bağının Adım Adım Oluşumu</p>
+
                     <ul>
                         <li><strong>Kullanım Alanı:</strong> Sabitleme, kurtarma, halat ucu koruması.</li>
                         <li><strong>Avantajı:</strong> Yüksek yük altında bile el ile kolayca çözülür.</li>
@@ -550,6 +580,9 @@
 
                     <h2>2. Sekiz Bağı (Figure-Eight Knot)</h2>
                     <p>Tırmanış sporlarının vazgeçilmezidir. Dağınık görünse de son derece güvenlidir. İpin uçlarının ayrılmasını engellemek için mükemmeldir. Ayrıca, diğer düğümlere göre daha az güç kaybına neden olur (%20-30 civarı).</p>
+                    
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Figure-eight_knot_on_belaying_rope.jpg/1200px-Figure-eight_knot_on_belaying_rope.jpg" alt="Sekiz Bağı" class="inline-img">
+                    <p class="img-caption">Tırmanışta kullanılan standart sekiz bağı</p>
 
                     <h2>3. Çift Balıkçı Bağı (Double Fisherman's Knot)</h2>
                     <p>İki farklı ipi birbirine eklemek için kullanılan en güçlü yöntemlerden biridir. Özellikle kaygan sentetik iplerde (paracord vb.) tercih edilir. Kayıp giden bir halatı onarmak veya iki ayrı ipi birleştirmek için idealdir.</p>
@@ -560,7 +593,7 @@
                     <h2>5. Clove Hitches (Çengel Bağlantısı)</h2>
                     <p>Hızlı ve geçici sabitlemeler için kullanılır. Bir direğe veya ağaca hızlıca sarıp işinizi bitirdikten sonra kolayca çözersiniz. Ancak yük altında kendiliğinden çözülme riski vardır, bu yüzden güvenli bir düğümle desteklenmelidir.</p>
                     
-                    <p><em>Pratik Yapın: Bu düğümleri sadece okuyarak öğrenemezsiniz. Elinize bir parça ip alın ve her gün 5 dakika pratik yapın. Kas hafızası, zihinsel bilgiden daha kalıcıdır.</em></p>
+                    <div class="quote-block">"Pratik Yapın: Bu düğümleri sadece okuyarak öğrenemezsiniz. Elinize bir parça ip alın ve her gün 5 dakika pratik yapın. Kas hafızası, zihinsel bilgiden daha kalıcıdır."</div>
                 `
             },
             {
@@ -570,18 +603,24 @@
                 title: "Islak Havada Ateş Yakmak: Doğanın Sırrını Çöz",
                 excerpt: "Yağmur yağıyor, rüzgar esiyor ve odunlar sırılsıklam. Panik yapmak yerine bilimi kullanın. İşte zorlu koşullarda ateş yakma stratejileri.",
                 readTime: "8 dk",
-                image: "https://images.unsplash.com/photo-1548802673-380aa8cff835?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+                image: "https://images.unsplash.com/photo-1548802673-380aa8cff835?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
                 content: `
                     <p>Yağmurda veya nemli ormanda ateş yakmak, hayatta kalma becerilerinin zirvesidir. Islak odunla uğraşmak yerine strateji kullanmalısınız. Unutmayın, ateş sadece sıcaklık değil, moral demektir.</p>
 
                     <h2>1. Tinder (Tutuşturucu) Hazırlığı: Kuruyu Bul</h2>
                     <p>Ateşi başlatmak için en küçük kıvılcıma ihtiyaç vardır. Islak havada bile yanabilen malzemeler bulun: Huş kabuğu (betulin içerdiği için su geçirmez), reçineli çam dalları ("fatwood"), kuru ot kümeleri veya pamuklu bez parçaları. Yanınızda her zaman bir kutu kibrit veya magnezyum çubuğu bulundurun.</p>
+                    
+                    <img src="https://images.unsplash.com/photo-1523362628745-0c100150b504?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Huş Kabuğu" class="inline-img">
+                    <p class="img-caption">Su geçirmez huş kabuğu, doğanın en iyi tutuşturucusudur.</p>
 
                     <h2>2. Odun Seçimi ve İşleme: Katmanları Soy</h2>
                     <p>Dış yüzeyi ıslak olsa da, büyük kütüklerin iç kısmı genellikle kurudur. Bir bıçak kullanarak odunun dış katmanlarını soyun. İçindeki kuru ahşabı ince çubuklar haline getirin. Ne kadar ince olursa, o kadar hızlı tutuşur.</p>
 
                     <h2>3. Tipi Yapısı: Teepee vs. Lean-To</h2>
                     <p>"Teepee" tipi en iyi hava sirkülasyonu sağlar ancak yağmurda su içeri sızabilir. Islak havalarda "Lean-To" (Eğik Duvar) tipi tercih edilmelidir. Rüzgarı kesen bir doğal duvar (kaya, devrilmiş ağaç) arkasında ateşi koruyun. Isıyı yansıtmak için arkasına bir kaya koyabilirsiniz.</p>
+                    
+                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Ateş Yapısı" class="inline-img">
+                    <p class="img-caption">Rüzgara karşı korunaklı Lean-To ateş yapısı örneği.</p>
 
                     <h2>4. Süreklilik: Küçükten Büyüğe</h2>
                     <p>Ateşi asla doğrudan büyük kütüklerle yakmaya çalışmayın. Önce mum fitili gibi ince tinder, sonra kibrit çöpü büyüklüğünde kindling, en sonunda ise parmak kalınlığında fuel wood ile başlayın. Ateş ısındıkça daha büyük odunları ekleyin.</p>
@@ -596,18 +635,24 @@
                 title: "Usta Çağırmadan Önce: Evdeki 5 Yaygın Sorunun Çözümü",
                 excerpt: "Damlayan musluk, tıkalı lavabo veya gevşek menteşe... Profesyonel çağırmadan önce kendi yeteneklerinizi test edin. %80 arıza basit müdahalelerle çözülür.",
                 readTime: "5 dk",
-                image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+                image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
                 content: `
                     <p>Erkeklik, her sorunu tek başına çözmek değildir; ancak temel bakım işlerini anlayabilmek özgüven verir. İşte evinizde karşılaşabileceğiniz en yaygın sorunlar ve bunları nasıl çözeceğiniz.</p>
 
                     <h2>1. Damlayan Musluk</h2>
                     <p>%90 ihtimalle conta yıpranmıştır. Su vanasını kapatın, musluk başlığını sökün ve contayı değiştirin. Maliyet: 5 TL. Gerekli alet: Ayarlı anahtar veya pense.</p>
+                    
+                    <img src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Musluk Tamiri" class="inline-img">
+                    <p class="img-caption">Basit bir conta değişimi çoğu damlama sorununu çözer.</p>
 
                     <h2>2. Tıkalı Lavabo</h2>
                     <p>Pompalama hareketiyle basınç uygulayın. İşe yaramazsa, lavabo altındaki U borusunu (trap) söküp temizleyin. Kimyasal açıcılar boruları aşındırabilir ve çevreye zarar verir; mekanik temizlik her zaman daha iyidir.</p>
 
                     <h2>3. Gevşek Kapı Menteşeleri</h2>
                     <p>Vidalar boşaldığında kapı düşer veya kapanmaz. Vida deliğine kürdan veya kibrit çöpü batırıp üzerine ahşap tutkalı sürerek vidayı tekrar sıkıştırın. Delik küçülecek ve vida sağlam kavrayacaktır.</p>
+                    
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Ahşap Tutkal" class="inline-img">
+                    <p class="img-caption">Kürdan ve tutkal kombinasyonu, gevşek vida deliklerini onarır.</p>
 
                     <h2>4. Duvar Boyası Çatlakları</h2>
                     <p>Küçük çatlaklar için alçı dolgu macunu kullanın. Büyük delikler için gazete kağıdı topu yapıp içine doldurun, üzerini macunla kaplayın ve zımparalayın. Sonrasında boyayla örtün.</p>
@@ -625,7 +670,7 @@
                 title: "Epiktetos'un Öğretisi: Kontrol Edemediğini Kabul Et",
                 excerpt: "Hayatımızdaki stresin kaynağı olaylar değil, olaylara verdiğimiz tepkilerdir. Stoacı felsefenin temel taşı olan 'Dichotomy of Control' ilkesini günlük hayata nasıl uygularsınız?",
                 readTime: "7 dk",
-                image: "https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+                image: "https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
                 content: `
                     <p>Epiktetos'un dediği gibi: <strong>"Bizi rahatsız eden şeyler olaylar değil, onlara yüklediğimiz anlamlardır."</strong> Bu cümle, binlerce yıllık bilgelikle yoğrulmuş bir gerçektir. Modern çağın kaosunda ayakta kalmak için bu ilkeyi benimsemek şarttır.</p>
 
@@ -636,6 +681,9 @@
                         <li><strong>Elimizde Olmayanlar:</strong> Sonuçlar, başkalarının görüşleri, hava durumu, ekonomi, geçmiş, sağlık durumumuz (kısmen).</li>
                     </ul>
                     <p>Acı çektiğiniz her an kendinize sorun: "Bu durum benim kontrolümde mi?" Cevap hayırsa, enerjinizi boşa harcamayın. Kabullenin ve odaklanabileceğiniz alana yönelin.</p>
+                    
+                    <img src="https://images.unsplash.com/photo-1476611338391-6f395a0ebf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Felsefe Kitabı" class="inline-img">
+                    <p class="img-caption">Stoacı metinler, zihinsel dayanıklılık inşa etmek için en iyi araçlardır.</p>
 
                     <h2>2. Enerji Yönetimi</h2>
                     <p>Elimizde olmayan şeylere harcadığımız enerji boşa gider. Trafikte sıkışmak sizi sinirlendirir ama trafiği akıtmaz. Başkasının sizi eleştirmesi sizi üzülür ama fikrini değiştirmez. Sadece kontrol edebildiğiniz alana odaklanın. Bu, sizi hem daha verimli hem de daha huzurlu yapar.</p>
@@ -653,12 +701,15 @@
                 title: "Motivasyon Bir Efsanedir: Disiplin Nasıl İnşa Edilir?",
                 excerpt: "Motivasyon gelip geçer, disiplin kalıcıdır. Her gün aynı saatte kalkmayı, çalışmayı ve üretmeyi sağlayan sistemleri nasıl kurarsınız?",
                 readTime: "6 dk",
-                image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+                image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
                 content: `
                     <p>Çoğu insan motivasyon eksikliğinden yakınır. Ancak gerçek şu ki, motivasyon duygusal bir dalgalanmadır; disiplini ise bir kas gibidir. Çalıştıkça güçlenir.</p>
 
                     <h2>1. Ortamı Tasarla</h2>
                     <p>İrade gücü sınırlı bir kaynaktır. Telefonunuz yatak odasındaysa, uyumakta zorlanacaksınız. Çalışma masanızda oyun konsolu varsa, çalışmakta zorlanacaksınız. Doğru davranışı kolaylaştırın, yanlış davranışı zorlaştırın.</p>
+                    
+                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Minimalist Masası" class="inline-img">
+                    <p class="img-caption">Dağınıklıktan arındırılmış bir çalışma alanı, odaklanmayı artırır.</p>
 
                     <h2>2. 2 Dakika Kuralı</h2>
                     <p>Bir alışkanlığı başlatmak için en büyük engel başlamaktır. Kendinize "Sadece 2 dakika yapacağım" deyin. Spor ayakkabılarınızı giymek 2 dakikadır. Kitabın ilk sayfasını okumak 2 dakikadır. Başladıktan sonra devam etmek çok daha kolaydır.</p>
@@ -677,7 +728,7 @@
                 title: "Karizmatik Konuşmacı Olmak: Kelimelerin Ötesinde",
                 excerpt: "Vücut dili, ses tonu ve retorik teknikleriyle dinleyenleri etkisi altına almanın sırları. İlk izleniminizi yönetin.",
                 readTime: "5 dk",
-                image: "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+                image: "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
                 content: `
                     <p>Karizma doğuştan gelmez, kas hafızası gibidir; çalışıldıkça gelişir. İyi bir konuşmacı olmak, mesajınızı doğru şekilde aktarmaktır.</p>
 
@@ -686,6 +737,9 @@
 
                     <h2>2. Göz Teması</h2>
                     <p>Salondaki herkesle kısa süreli (3-5 saniye) göz teması kurun. Bu, herkese özel konuşuyormuş hissi verir. Yere bakmak veya tavanda gezinmek özgüvensizlik belirtisidir.</p>
+                    
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Toplantı" class="inline-img">
+                    <p class="img-caption">Etkili iletişim, karşılıklı göz temasıyla kurulur.</p>
 
                     <h2>3. Hikaye Anlatıcılığı</h2>
                     <p>Rakamlar unutulur, hikayeler hatırlanır. Mesajınızı somut bir olay üzerinden aktarın. "Başarı nedir?" diye sormak yerine, başarısızlıktan başarıya uzanan kişisel bir anınızı anlatın.</p>
@@ -703,7 +757,7 @@
                 title: "Ağırlıksız Vücut: Calisthenics ile Güçlü Bir Beden İnşa Et",
                 excerpt: "Pahalı ekipmanlara gerek yok. Sadece yerçekimine karşı mücadele ederek fonksiyonel güç kazanın. Pull-up, push-up ve dip bar hareketlerinin anatomisi.",
                 readTime: "9 dk",
-                image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+                image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
                 content: `
                     <p>The Art of Manliness'in en popüler konularından biri fiziksel dayanıklılıktır. Ancak modern fitness dünyası genellikle makineler ve izolasyon egzersizlerine odaklanır. Calisthenics (beden ağırlığı antrenmanı), vücudunuzu bir bütün olarak çalıştıran, eski okul bir yaklaşımdır.</p>
 
@@ -716,7 +770,13 @@
 
                     <h2>2. Üç Temel Hareket</h2>
                     <p><strong>Pull-Up (Barfiks):</strong> Sırt ve pazı kasları için kraliyet egzersizidir. Omuz stabilitesini artırır.</p>
+                    <img src="https://images.unsplash.com/photo-1598971639058-fab3c3109a00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Pull Up" class="inline-img">
+                    <p class="img-caption">Doğru form ile yapılan pull-up, üst beden gücünün temelidir.</p>
+
                     <p><strong>Push-Up (Şınav):</strong> Göğüs, omuz ve triceps için temel harekettir. Core bölgesini de aktive eder.</p>
+                    <img src="https://images.unsplash.com/photo-1571019614242-c5c949cd7bf1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Push Up" class="inline-img">
+                    <p class="img-caption">Şınav, dünyanın en etkili itme egzersizidir.</p>
+
                     <p><strong>Dip (Paralel Bar):</strong> Triceps ve alt göğüs için en etkili harekettir. Kol hacmini artırır.</p>
 
                     <h2>3. Progresyon Stratejisi</h2>
@@ -732,12 +792,15 @@
                 title: "Performansın Gizli Silahı: Bilimsel Uyku Hijyeni",
                 excerpt: "Ne kadar iyi beslenirseniz beslenin, ne kadar çalışırsanız çalışın; uykusuzsanız beyin sislenir. Derin uykuya ulaşmanın kanıtlanmış yolları.",
                 readTime: "6 dk",
-                image: "https://images.unsplash.com/photo-1541781774459-bb2bc2fd03bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+                image: "https://images.unsplash.com/photo-1541781774459-bb2bc2fd03bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
                 content: `
                     <p>Uyku lüks değildir, biyolojik bir zorunluluktur. Hormonal denge, hafıza konsolidasyonu ve kas onarımı tamamen uyku sırasında gerçekleşir.</p>
 
                     <h2>1. Işık Kontrolü</h2>
                     <p>Mavi ışık melatonin üretimini baskılar. Yatmadan 1 saat önce ekranlardan uzak durun veya mavi ışık filtreli gözlük kullanın. Yatak odanız zifiri karanlık olmalıdır.</p>
+                    
+                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Karanlık Oda" class="inline-img">
+                    <p class="img-caption">Tamamen karartılmış bir oda, derin uyku için kritiktir.</p>
 
                     <h2>2. Sıcaklık Dengesi</h2>
                     <p>Vücudunuz uyumak için çekirdek sıcaklığını düşürmelidir. Oda sıcaklığını 18-19°C arasında tutun. Ilık bir duş almak, vücut ısısını geçici olarak artırıp ardından hızla düşmesini sağlayarak uykuya dalışınızı kolaylaştırır.</p>
@@ -758,7 +821,7 @@
                 title: "Az Çoktur: Her Erkeğin Gardırobunda Olması Gereken 10 Parça",
                 excerpt: "Marka takıntısından kurtulun. Zamansız, kaliteli ve kombinlenebilir parçalardan oluşan minimalist bir gardırop nasıl kurulur?",
                 readTime: "7 dk",
-                image: "https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+                image: "https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
                 content: `
                     <p>Giysi sayısı önemli değildir, nitelik önemlidir. Her sabah "Ne giyeceğim?" stresi yaşamamak için temel parçalara yatırım yapın.</p>
 
@@ -770,6 +833,9 @@
                         <li><strong>Siyah Deri Ceket:</strong> Rock'n roll ruhu ve klasik şıklığın birleşimi.</li>
                         <li><strong>Nötr Renkli Kazak (Boynuz/Koyu Gri):</strong> Soğuk havalarda blazer altına giyilir.</li>
                     </ol>
+                    
+                    <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Blazer Kombin" class="inline-img">
+                    <p class="img-caption">Lacivert blazer ve chino pantolon, smart casual stilin temeli.</p>
 
                     <h2>Alt Giyim & Ayakkabı</h2>
                     <ol start="6">
@@ -790,12 +856,15 @@
                 title: "Detaylarda Saklı Olan: Erkek Kişisel Bakım Rehberi",
                 excerpt: "Ten renginiz, saç modeliniz ve kokunuz ilk izlenimin %70'idir. Basit ama etkili bakım rutinleri.",
                 readTime: "5 dk",
-                image: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+                image: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
                 content: `
                     <p>Bakım, narsisizm değildir. Çevrenize ve kendinize duyduğunuz saygının göstergesidir.</p>
 
                     <h2>1. Cilt Bakımı</h2>
                     <p>Sabun yüzünüzü kurutur. Hafif bir jel cleanser kullanın. Nemlendirici sürmeyi ihmal etmeyin. Güneş kremi yaşlanmanın en büyük düşmanıdır.</p>
+                    
+                    <img src="https://images.unsplash.com/photo-1556228578-8c8937986609?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Cilt Bakım Ürünleri" class="inline-img">
+                    <p class="img-caption">Temel üçlü: Cleanser, Moisturizer, SPF.</p>
 
                     <h2>2. Saç Modeli</h2>
                     <p>Yüz şeklinize uygun bir kesim seçin. Kulaklarınızın arkasındaki tüyleri düzenli olarak traş ettirin. Saç ürünlerinde mat bitişli kil (clay) veya pomad tercih edin; jelin sert görüntüsü modası geçti.</p>
@@ -816,7 +885,7 @@
                 title: "Zengin Olmak İçin Değil, Özgür Olmak İçin Yatırım Yap",
                 excerpt: "Kompleks finansal terimlerden korkmayın. Bileşik getiri, endeks fonları ve pasif gelir kavramlarını sade bir dille anlayın.",
                 readTime: "8 dk",
-                image: "https://images.unsplash.com/photo-1611974765270-ca1258634369?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+                image: "https://images.unsplash.com/photo-1611974765270-ca1258634369?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
                 content: `
                     <p>Finansal özgürlük, çok para kazanmak değil, paranın sizin için çalıştığı bir sistem kurmaktır.</p>
 
@@ -825,6 +894,9 @@
 
                     <h2>2. Borç Yönetimi</h2>
                     <p>Kredi kartı borcu (yüksek faizli) her zaman öncelikli olarak kapatılmalıdır. "Bad debt" (tüketim kredisi) ile "Good debt" (ipotek/eğitim) arasındaki farkı bilin.</p>
+                    
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Hesaplama" class="inline-img">
+                    <p class="img-caption">Borç ödeme planı oluşturmak, finansal kontrolü yeniden kazanmanın ilk adımıdır.</p>
 
                     <h2>3. Endeks Fonları (Index Funds)</h2>
                     <p>Hisse senedi seçmeye çalışmayın. Piyasanın ortalamasını yakalayan düşük maliyetli ETF'lere (örn: S&P 500 veya Borsa İstanbul 30) yatırım yapın. Warren Buffett'ın tavsiyesi nettir: "Sabit ücretli çalışanlar için en iyi yatırım, düşük maliyetli S&P 500 endeks fonudur."</p>
@@ -842,7 +914,7 @@
                 title: "Masada Oturan Adam: Maaş Görüşmesinde Kazanmanın Sanatı",
                 excerpt: "Değerinizi pazarlık konusu yapmayın. Veri toplayın, alternatif yaratın ve psikolojik üstünlüğü elinizde tutun.",
                 readTime: "6 dk",
-                image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+                image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
                 content: `
                     <p>Maaş görüşmesi bir çatışma değil, bir iş birliği fırsatıdır. Ancak tarafınızın lehine sonuçlanması için hazırlıklı olmalısınız.</p>
 
@@ -851,6 +923,9 @@
 
                     <h2>2. Beklentiyi Yükseltin</h2>
                     <p>İlk teklifi siz vermeyin. Karşı tarafın bütçesini ve beklentisini anlamaya çalışın. "Bu rol için bütçeniz nedir?" sorusu kritiktir.</p>
+                    
+                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Ofis Toplantısı" class="inline-img">
+                    <p class="img-caption">Hazırlıklı olmak, görüşme masasında özgüveninizi artırır.</p>
 
                     <h2>3. Paket Halinde Düşünün</h2>
                     <p>Sadece net maaşa odaklanmayın. Bonus, hisse opsiyonu, uzaktan çalışma hakkı, eğitim bütçesi veya araç tahsisi gibi kalemleri masaya yatırın. Esneklik bazen paradan daha değerlidir.</p>
@@ -872,12 +947,8 @@
                 filteredArticles = articlesData.filter(a => a.category === filter);
             }
 
-            // Group by Category for Home View (Optional enhancement, keeping it simple flat grid for now based on request)
-            // Actually, let's group them visually if no filter is applied
-            
+            // Group by Category for Home View
             if (!filter) {
-                // Show sections headers dynamically? For simplicity, just show all mixed or grouped.
-                // Let's stick to a clean grid of all items for the main view, sorted by category logically.
                 const categoriesOrder = ['beceri', 'karakter', 'fitness', 'stil', 'finans'];
                 const categoryNames = {
                     'beceri': 'Pratik Beceriler',
@@ -953,6 +1024,12 @@
             document.getElementById('article-view').style.display = 'none';
             window.scrollTo(0, 0);
             renderCards(null); // Reset to full view
+            
+            // Close mobile menu if open
+            const nav = document.getElementById('main-nav');
+            if(nav.classList.contains('active')) {
+                nav.classList.remove('active');
+            }
         }
 
         function openArticle(id) {
@@ -980,11 +1057,17 @@
             document.getElementById('home-view').style.display = 'block';
             renderCards(category);
             window.scrollTo(0, 0);
+            
+            // Close mobile menu after selection
+            const nav = document.getElementById('main-nav');
+            if(nav.classList.contains('active')) {
+                nav.classList.remove('active');
+            }
         }
 
         function toggleMenu() {
             const nav = document.getElementById('main-nav');
-            nav.classList.toggle('mobile-nav-active');
+            nav.classList.toggle('active');
         }
 
         // Initialize
@@ -997,7 +1080,7 @@
             const nav = document.getElementById('main-nav');
             const btn = document.querySelector('.menu-btn');
             if (!nav.contains(event.target) && !btn.contains(event.target)) {
-                nav.classList.remove('mobile-nav-active');
+                nav.classList.remove('active');
             }
         });
 
