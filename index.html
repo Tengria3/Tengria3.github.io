@@ -383,19 +383,27 @@
         }
 
         function renderHome() {
-            const list = state.filter ? ARTICLES.filter(a => a.cat === state.filter) : ARTICLES;
+            // Filter logic for main grid
+            const filteredList = state.filter ? ARTICLES.filter(a => a.cat === state.filter) : ARTICLES;
             const title = state.filter ? state.filter + ' Yazıları' : 'Tüm Yazılar';
             
-            // Safe selection for bento picks
-            const bentoPicks = [];
-            const indices = [0, 1, 4, 9, 10];
-            indices.forEach(i => {
-                if (ARTICLES[i]) bentoPicks.push(ARTICLES[i]);
-            });
-            // Fill remaining slots if needed
-            while(bentoPicks.length < 5 && ARTICLES.length > bentoPicks.length) {
-                 bentoPicks.push(ARTICLES[bentoPicks.length]);
+            // --- FIX START: Dynamic Bento Picks ---
+            // Instead of hardcoded indices, we take the first 5 items from the FILTERED list.
+            // This ensures that when you click "Karakter", the big cards also show Character articles.
+            let bentoSource = filteredList;
+            
+            // If the category has fewer than 5 articles, fallback to general popular ones or just what's available
+            if (bentoSource.length < 5 && !state.filter) {
+                 // Only do this if no filter is active and somehow less than 5 exist (unlikely with current data but safe)
+                 bentoSource = ARTICLES.slice(0, 5);
+            } else if (bentoSource.length < 5 && state.filter) {
+                 // If filtering results in few items, maybe mix in some others? 
+                 // For strict categorization, we'll just show what we have. 
+                 // To prevent layout breakage, we ensure we don't access undefined.
             }
+
+            const bentoPicks = bentoSource.slice(0, 5);
+            // --- FIX END ---
 
             const bentoHTML = bentoPicks.map((a, i) => `
                 <button type="button" class="bento-item fade ${i === 0 ? 'bento-hero' : ''}" data-action="article" data-id="${a.id}">
@@ -418,7 +426,7 @@
             const chipsHTML = `<button type="button" class="chip ${!state.filter ? 'active' : ''}" data-action="cat" data-cat="">Tümü</button>` +
                 CATEGORIES.map(c => `<button type="button" class="chip ${state.filter === c.name ? 'active' : ''}" data-action="cat" data-cat="${esc(c.name)}">${esc(c.name)}</button>`).join('');
 
-            const cardsHTML = list.length ? list.map(a => `
+            const cardsHTML = filteredList.length ? filteredList.map(a => `
                 <button type="button" class="art-card fade" data-action="article" data-id="${a.id}">
                     <div class="art-visual"><span class="mono-letter">${esc(a.title.charAt(0))}</span></div>
                     <div class="art-body">
@@ -428,7 +436,7 @@
                         <div class="foot"><span>${esc(a.date)}</span><span class="read">${esc(a.read)} →</span></div>
                     </div>
                 </button>
-            `).join('') : '<p style="color:var(--muted);grid-column:1/-1;">Bu kategoride henüz yazı yok.</p>';
+            `).join('') : '<p style="color:var(--muted);grid-column:1/-1;text-align:center;padding:40px;">Bu kategoride henüz yazı yok.</p>';
 
             return `
             <section class="hero">
@@ -474,8 +482,8 @@
                     <div class="section-head fade">
                         <div>
                             <span class="kicker">— Bu Hafta Öne Çıkanlar</span>
-                            <h2>Yeni ve derinlemesine yazılar</h2>
-                            <p>Her yazı; zamansız bir ilkeyi, modern hayatın gerçekleriyle buluşturur.</p>
+                            <h2>${state.filter ? esc(state.filter) + ' Kategorisi' : 'Yeni ve derinlemesine yazılar'}</h2>
+                            <p>${state.filter ? 'Seçtiğiniz kategoriden en güncel yazılar.' : 'Her yazı; zamansız bir ilkeyi, modern hayatın gerçekleriyle buluşturur.'}</p>
                         </div>
                         <button type="button" class="link-arrow" data-action="cat" data-cat="">Tüm yazılar →</button>
                     </div>
