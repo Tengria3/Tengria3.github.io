@@ -4,549 +4,220 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Erkeklik Sanatı — Zamansız Erdemler, Modern Bir Rehber</title>
-<meta name="description" content="Karakter, beceri, sağlık, ilişkiler ve kariyer üzerine derinlemesine Türkçe rehber. Modern erkek için zamansız ilkeler.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ============================================================
-   RESET & TOKENS
-   ============================================================ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none !important}
 
 :root{
-  --bg:#faf8f3;
-  --bg-2:#f2ede3;
-  --surface:#ffffff;
-  --surface-2:#f7f3ec;
-  --text:#171412;
-  --text-2:#3d3833;
-  --muted:#78716c;
-  --border:#e7e0d3;
-  --border-2:#d9d0bf;
-  --accent:#c2410c;
-  --accent-2:#9a3412;
-  --accent-soft:#fed7aa;
-  --gold:#b45309;
-  --shadow-sm:0 1px 2px rgba(23,20,18,.05);
-  --shadow:0 4px 16px -4px rgba(23,20,18,.08),0 2px 6px -2px rgba(23,20,18,.05);
-  --shadow-lg:0 24px 48px -16px rgba(23,20,18,.18),0 8px 24px -8px rgba(23,20,18,.10);
-  --radius:14px;
-  --radius-lg:22px;
-  --radius-sm:8px;
-  --maxw:1240px;
-  --narrow:720px;
+  --bg:#faf8f3;--bg-2:#f2ede3;--surface:#fff;--surface-2:#f7f3ec;
+  --text:#171412;--text-2:#3d3833;--muted:#78716c;--border:#e7e0d3;--border-2:#d9d0bf;
+  --accent:#c2410c;--accent-2:#9a3412;--gold:#b45309;
+  --shadow:0 4px 16px -4px rgba(23,20,18,.08);--shadow-lg:0 24px 48px -16px rgba(23,20,18,.18);
+  --radius:14px;--radius-lg:22px;--maxw:1240px;--narrow:720px;
   --ease:cubic-bezier(.22,1,.36,1);
 }
-
 [data-theme="dark"]{
-  --bg:#0b0a09;
-  --bg-2:#141210;
-  --surface:#171412;
-  --surface-2:#1f1b17;
-  --text:#f5f0e8;
-  --text-2:#d6cec2;
-  --muted:#a29a8e;
-  --border:#2a2520;
-  --border-2:#3b342c;
-  --accent:#fb923c;
-  --accent-2:#fdba74;
-  --accent-soft:#7c2d12;
-  --gold:#fbbf24;
-  --shadow-sm:0 1px 2px rgba(0,0,0,.4);
-  --shadow:0 4px 16px -4px rgba(0,0,0,.5);
-  --shadow-lg:0 24px 48px -16px rgba(0,0,0,.6);
+  --bg:#0b0a09;--bg-2:#141210;--surface:#171412;--surface-2:#1f1b17;
+  --text:#f5f0e8;--text-2:#d6cec2;--muted:#a29a8e;--border:#2a2520;--border-2:#3b342c;
+  --accent:#fb923c;--accent-2:#fdba74;--gold:#fbbf24;
 }
 
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{
-  font-family:'Inter',system-ui,-apple-system,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.65;
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
-  overflow-x:hidden;
-  transition:background .35s var(--ease),color .35s var(--ease);
-}
-
-/* Subtle grain texture */
-body::before{
-  content:"";
-  position:fixed;inset:0;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
-  pointer-events:none;z-index:1;opacity:.5;mix-blend-mode:multiply;
-}
-[data-theme="dark"] body::before{opacity:.35;mix-blend-mode:screen}
-
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .3s,color .3s}
 h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.02em;line-height:1.12;color:var(--text)}
-a{color:inherit;text-decoration:none;cursor:pointer}
+a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
-button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;font-size:inherit;text-align:left}
 
 .container{max-width:var(--maxw);margin:0 auto;padding:0 24px;position:relative;z-index:2}
 .narrow{max-width:var(--narrow);margin:0 auto}
-
 .mono{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
 
-/* ============================================================
-   PROGRESS BAR
-   ============================================================ */
-.progress{
-  position:fixed;top:0;left:0;height:3px;width:0%;
-  background:linear-gradient(90deg,var(--accent),var(--gold));
-  z-index:200;transition:width .1s linear;
-}
+.progress{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--accent),var(--gold));z-index:200;transition:width .1s linear}
 
-/* ============================================================
-   HEADER
-   ============================================================ */
-.site-header{
-  position:sticky;top:0;z-index:100;
-  background:color-mix(in srgb,var(--bg) 82%,transparent);
-  backdrop-filter:saturate(160%) blur(18px);
-  -webkit-backdrop-filter:saturate(160%) blur(18px);
-  border-bottom:1px solid var(--border);
-  transition:border-color .3s var(--ease),background .3s var(--ease);
-}
-.site-header .container{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:16px 24px;gap:24px;
-}
-.logo{
-  font-family:'Fraunces',serif;font-weight:700;font-size:1.4rem;
-  letter-spacing:-.03em;display:flex;align-items:center;gap:8px;
-  color:var(--text);
-}
-.logo .mark{
-  width:32px;height:32px;border-radius:9px;
-  background:linear-gradient(135deg,var(--accent),var(--gold));
-  display:grid;place-items:center;color:#fff;font-size:1rem;font-weight:900;
-  font-family:'Fraunces',serif;
-  box-shadow:0 4px 12px -2px color-mix(in srgb,var(--accent) 40%,transparent);
-}
+/* HEADER */
+.site-header{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:saturate(160%) blur(18px);-webkit-backdrop-filter:saturate(160%) blur(18px);border-bottom:1px solid var(--border)}
+.site-header .container{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;gap:24px}
+.logo{display:flex;align-items:center;gap:9px;font-family:'Fraunces',serif;font-weight:700;font-size:1.4rem;letter-spacing:-.03em;color:var(--text);padding:0}
+.logo .mark{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--gold));display:grid;place-items:center;color:#fff;font-size:1rem;font-weight:900;font-family:'Fraunces',serif;box-shadow:0 4px 12px -2px color-mix(in srgb,var(--accent) 40%,transparent);flex-shrink:0}
 .logo em{font-style:normal;color:var(--accent)}
 
 .nav{display:flex;align-items:center;gap:2px}
-.nav a{
-  padding:8px 14px;border-radius:8px;font-size:.9rem;font-weight:500;
-  color:var(--text-2);transition:all .2s var(--ease);
-}
-.nav a:hover{color:var(--accent);background:var(--surface-2)}
+.nav button{padding:8px 14px;border-radius:8px;font-size:.9rem;font-weight:500;color:var(--text-2);transition:all .2s var(--ease);text-align:center}
+.nav button:hover{color:var(--accent);background:var(--surface-2)}
 
 .header-actions{display:flex;align-items:center;gap:8px}
-.icon-btn{
-  width:38px;height:38px;border-radius:10px;display:grid;place-items:center;
-  color:var(--text-2);border:1px solid var(--border);background:var(--surface);
-  transition:all .2s var(--ease);
-}
+.icon-btn{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;color:var(--text-2);border:1px solid var(--border);background:var(--surface);transition:all .2s var(--ease);padding:0}
 .icon-btn:hover{color:var(--accent);border-color:var(--accent)}
 .icon-btn svg{width:17px;height:17px}
 .menu-btn{display:none}
 
-.nav-mobile{
-  display:none;flex-direction:column;background:var(--surface);
-  border-bottom:1px solid var(--border);padding:8px 24px 20px;
-}
+.nav-mobile{display:none;flex-direction:column;background:var(--surface);border-bottom:1px solid var(--border);padding:8px 24px 20px}
 .nav-mobile.open{display:flex}
-.nav-mobile a{padding:14px 0;border-bottom:1px solid var(--border);font-weight:500;color:var(--text-2)}
-.nav-mobile a:last-child{border-bottom:none}
+.nav-mobile button{padding:14px 0;border-bottom:1px solid var(--border);font-weight:500;color:var(--text-2);text-align:left;width:100%}
+.nav-mobile button:last-child{border-bottom:none}
 
-/* ============================================================
-   HERO
-   ============================================================ */
-.hero{
-  position:relative;padding:90px 0 100px;overflow:hidden;
-  background:
-    radial-gradient(circle at 20% 0%,color-mix(in srgb,var(--accent) 12%,transparent),transparent 55%),
-    radial-gradient(circle at 85% 30%,color-mix(in srgb,var(--gold) 14%,transparent),transparent 50%),
-    var(--bg);
-}
-.hero::after{
-  content:"";position:absolute;inset:0;
-  background:
-    linear-gradient(var(--border) 1px,transparent 1px) 0 0/100% 80px,
-    linear-gradient(90deg,var(--border) 1px,transparent 1px) 0 0/80px 100%;
-  mask-image:radial-gradient(circle at center,black 10%,transparent 75%);
-  -webkit-mask-image:radial-gradient(circle at center,black 10%,transparent 75%);
-  opacity:.5;pointer-events:none;
-}
-.hero-inner{
-  position:relative;z-index:2;
-  display:grid;grid-template-columns:1.25fr .85fr;gap:60px;align-items:center;
-}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:6px 14px;border-radius:100px;font-size:.78rem;font-weight:500;
-  background:var(--surface);border:1px solid var(--border);
-  color:var(--text-2);margin-bottom:24px;
-  box-shadow:var(--shadow-sm);
-}
-.hero-badge .dot{
-  width:6px;height:6px;border-radius:50%;background:var(--accent);
-  animation:pulse 2s infinite;
-}
+/* HERO */
+.hero{position:relative;padding:90px 0 100px;overflow:hidden;background:radial-gradient(circle at 20% 0%,color-mix(in srgb,var(--accent) 12%,transparent),transparent 55%),radial-gradient(circle at 85% 30%,color-mix(in srgb,var(--gold) 14%,transparent),transparent 50%),var(--bg)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(var(--border) 1px,transparent 1px) 0 0/100% 80px,linear-gradient(90deg,var(--border) 1px,transparent 1px) 0 0/80px 100%;mask-image:radial-gradient(circle at center,black 10%,transparent 75%);-webkit-mask-image:radial-gradient(circle at center,black 10%,transparent 75%);opacity:.5;pointer-events:none}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.25fr .85fr;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:100px;font-size:.78rem;font-weight:500;background:var(--surface);border:1px solid var(--border);color:var(--text-2);margin-bottom:24px;box-shadow:var(--shadow)}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
-
-.hero h1{
-  font-size:clamp(2.4rem,5.2vw,4.4rem);
-  font-weight:500;letter-spacing:-.035em;line-height:1.02;
-  margin-bottom:24px;
-}
-.hero h1 em{
-  font-style:italic;font-weight:400;
-  background:linear-gradient(120deg,var(--accent),var(--gold));
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-}
-.hero p.lead{
-  font-size:1.15rem;color:var(--text-2);max-width:560px;margin-bottom:34px;line-height:1.6;
-}
+.hero h1{font-size:clamp(2.4rem,5.2vw,4.4rem);font-weight:500;letter-spacing:-.035em;line-height:1.02;margin-bottom:24px}
+.hero h1 em{font-style:italic;font-weight:400;background:linear-gradient(120deg,var(--accent),var(--gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p.lead{font-size:1.15rem;color:var(--text-2);max-width:560px;margin-bottom:34px;line-height:1.6}
 .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px}
 
-.btn{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:14px 26px;border-radius:12px;font-size:.95rem;font-weight:600;
-  background:var(--text);color:var(--bg);border:1px solid var(--text);
-  transition:all .25s var(--ease);position:relative;overflow:hidden;
-}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:12px;font-size:.95rem;font-weight:600;background:var(--text);color:var(--bg);border:1px solid var(--text);transition:all .25s var(--ease);text-align:center}
 .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
-.btn svg{width:15px;height:15px}
-.btn-accent{
-  background:linear-gradient(135deg,var(--accent),var(--gold));color:#fff;border-color:transparent;
-  box-shadow:0 8px 24px -8px color-mix(in srgb,var(--accent) 60%,transparent);
-}
+.btn svg{width:15px;height:15px;flex-shrink:0}
+.btn-accent{background:linear-gradient(135deg,var(--accent),var(--gold));color:#fff;border-color:transparent;box-shadow:0 8px 24px -8px color-mix(in srgb,var(--accent) 60%,transparent)}
 .btn-accent:hover{box-shadow:0 14px 32px -8px color-mix(in srgb,var(--accent) 70%,transparent)}
 .btn-ghost{background:transparent;color:var(--text);border-color:var(--border-2)}
 .btn-ghost:hover{background:var(--surface);border-color:var(--accent);color:var(--accent)}
 
 .hero-stats{display:flex;gap:40px;flex-wrap:wrap}
-.stat .num{
-  font-family:'Fraunces',serif;font-size:1.9rem;font-weight:600;
-  letter-spacing:-.03em;line-height:1;color:var(--text);
-}
+.stat .num{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:600;letter-spacing:-.03em;line-height:1;color:var(--text)}
 .stat .lbl{font-size:.78rem;color:var(--muted);margin-top:6px;text-transform:uppercase;letter-spacing:.1em;font-weight:500}
 
-/* Hero visual: floating cards */
-.hero-visual{
-  position:relative;height:480px;
-  display:flex;justify-content:center;align-items:center;
-}
-.float-card{
-  position:absolute;background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow-lg);
-  width:260px;transition:transform .6s var(--ease);
-}
+.hero-visual{position:relative;height:480px;display:flex;justify-content:center;align-items:center}
+.float-card{position:absolute;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow-lg);width:260px;transition:transform .6s var(--ease)}
 .float-card .tag{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;font-family:'JetBrains Mono',monospace}
 .float-card .title{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:600;line-height:1.3;letter-spacing:-.02em;margin-bottom:8px;color:var(--text)}
 .float-card .meta{font-size:.78rem;color:var(--muted)}
-
 .fc-1{top:20px;left:0;transform:rotate(-6deg);animation:float1 6s ease-in-out infinite}
 .fc-2{bottom:40px;right:0;transform:rotate(5deg);animation:float2 7s ease-in-out infinite}
 .fc-3{top:50%;left:50%;transform:translate(-50%,-50%) rotate(-2deg);z-index:3;width:290px;animation:float3 8s ease-in-out infinite}
-
 @keyframes float1{0%,100%{transform:rotate(-6deg) translateY(0)}50%{transform:rotate(-6deg) translateY(-12px)}}
 @keyframes float2{0%,100%{transform:rotate(5deg) translateY(0)}50%{transform:rotate(5deg) translateY(-14px)}}
 @keyframes float3{0%,100%{transform:translate(-50%,-50%) rotate(-2deg)}50%{transform:translate(-50%,calc(-50% - 10px)) rotate(-2deg)}}
 
-/* ============================================================
-   SECTIONS
-   ============================================================ */
+/* SECTIONS */
 section{padding:80px 0;position:relative}
 .section-head{margin-bottom:44px;display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
-.section-head .kicker{
-  font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:500;
-  letter-spacing:.18em;text-transform:uppercase;color:var(--accent);
-  margin-bottom:12px;display:block;
-}
+.section-head .kicker{font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;display:block}
 .section-head h2{font-size:clamp(1.8rem,3.2vw,2.6rem);letter-spacing:-.03em;font-weight:500;max-width:640px}
 .section-head p{color:var(--muted);margin-top:12px;max-width:520px;font-size:1rem}
-.link-arrow{
-  font-size:.88rem;font-weight:600;color:var(--accent);
-  display:inline-flex;align-items:center;gap:6px;
-}
+.link-arrow{font-size:.88rem;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:6px;padding:6px 0}
 .link-arrow:hover{gap:10px;transition:gap .2s}
 
-/* ============================================================
-   BENTO FEATURED
-   ============================================================ */
-.bento{
-  display:grid;grid-template-columns:1.5fr 1fr 1fr;
-  grid-template-rows:auto auto;gap:20px;
-}
-.bento-item{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--radius-lg);padding:28px;position:relative;overflow:hidden;
-  transition:all .35s var(--ease);display:flex;flex-direction:column;
-  cursor:pointer;
-}
+/* BENTO */
+.bento{display:grid;grid-template-columns:1.5fr 1fr 1fr;grid-template-rows:auto auto;gap:20px}
+.bento-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;position:relative;overflow:hidden;transition:all .35s var(--ease);display:flex;flex-direction:column;text-align:left;width:100%}
 .bento-item:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:var(--shadow-lg)}
-.bento-item::before{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(135deg,transparent 40%,color-mix(in srgb,var(--accent) 4%,transparent));
-  opacity:0;transition:opacity .35s;
-}
-.bento-item:hover::before{opacity:1}
-.bento-hero{grid-column:span 2;grid-row:span 2;min-height:420px;justify-content:flex-end;background:
-  linear-gradient(180deg,color-mix(in srgb,var(--accent) 8%,var(--surface)),var(--surface));}
+.bento-hero{grid-column:span 2;grid-row:span 2;min-height:420px;justify-content:flex-end;background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 8%,var(--surface)),var(--surface))}
 .bento-hero h3{font-size:clamp(1.6rem,2.6vw,2.2rem);letter-spacing:-.03em;font-weight:500;line-height:1.15;margin-bottom:14px}
 .bento-item h3{font-size:1.18rem;font-weight:600;letter-spacing:-.02em;line-height:1.3;margin-bottom:10px}
 .bento-item p{color:var(--muted);font-size:.92rem;line-height:1.6;flex:1}
-.bento-item .tag{
-  font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:500;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
-  margin-bottom:14px;display:inline-block;
-}
+.bento-item .tag{font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:inline-block}
 .bento-item .meta{font-size:.78rem;color:var(--muted);margin-top:16px;display:flex;align-items:center;gap:10px}
 .bento-item .meta .dot{width:3px;height:3px;border-radius:50%;background:var(--muted)}
 
-/* ============================================================
-   CATEGORIES
-   ============================================================ */
+/* CATEGORIES */
 .cats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
-.cat-card{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--radius);padding:24px 20px;text-align:left;
-  transition:all .3s var(--ease);position:relative;overflow:hidden;cursor:pointer;
-}
+.cat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 20px;transition:all .3s var(--ease);position:relative;overflow:hidden;width:100%;text-align:left}
 .cat-card:hover{border-color:var(--accent);transform:translateY(-3px)}
-.cat-card .icon{
-  width:42px;height:42px;border-radius:11px;display:grid;place-items:center;
-  background:var(--surface-2);color:var(--accent);margin-bottom:16px;
-  transition:all .3s var(--ease);
-}
+.cat-card .icon{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;background:var(--surface-2);color:var(--accent);margin-bottom:16px;transition:all .3s var(--ease)}
 .cat-card:hover .icon{background:var(--accent);color:#fff;transform:rotate(-6deg) scale(1.05)}
 .cat-card .icon svg{width:20px;height:20px}
 .cat-card h3{font-size:1.02rem;font-weight:600;margin-bottom:4px}
 .cat-card .count{font-size:.78rem;color:var(--muted);font-family:'JetBrains Mono',monospace}
 
-/* ============================================================
-   ARTICLE GRID
-   ============================================================ */
+/* FILTERS */
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
-.chip{
-  padding:8px 16px;border-radius:100px;font-size:.84rem;font-weight:500;
-  border:1px solid var(--border);background:var(--surface);color:var(--text-2);
-  transition:all .2s var(--ease);
-}
+.chip{padding:8px 16px;border-radius:100px;font-size:.84rem;font-weight:500;border:1px solid var(--border);background:var(--surface);color:var(--text-2);transition:all .2s var(--ease)}
 .chip:hover{border-color:var(--accent);color:var(--accent)}
 .chip.active{background:var(--text);color:var(--bg);border-color:var(--text)}
 
+/* ARTICLE GRID */
 .articles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
-.art-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);
-  overflow:hidden;display:flex;flex-direction:column;
-  transition:all .35s var(--ease);cursor:pointer;
-}
+.art-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column;transition:all .35s var(--ease);width:100%;text-align:left}
 .art-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--border-2)}
-.art-visual{
-  aspect-ratio:16/9;position:relative;overflow:hidden;
-  background:linear-gradient(135deg,var(--surface-2),var(--bg-2));
-  display:grid;place-items:center;
-}
-.art-visual .mono-letter{
-  font-family:'Fraunces',serif;font-size:5rem;font-weight:900;font-style:italic;
-  color:color-mix(in srgb,var(--accent) 22%,transparent);line-height:1;
-  transition:transform .5s var(--ease);
-}
+.art-visual{aspect-ratio:16/9;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--surface-2),var(--bg-2));display:grid;place-items:center}
+.art-visual .mono-letter{font-family:'Fraunces',serif;font-size:5rem;font-weight:900;font-style:italic;color:color-mix(in srgb,var(--accent) 22%,transparent);line-height:1;transition:transform .5s var(--ease)}
 .art-card:hover .art-visual .mono-letter{transform:scale(1.12) rotate(-3deg);color:color-mix(in srgb,var(--accent) 40%,transparent)}
-.art-visual::after{
-  content:"";position:absolute;inset:0;
-  background:
-    repeating-linear-gradient(45deg,transparent 0 20px,color-mix(in srgb,var(--accent) 6%,transparent) 20px 21px);
-  opacity:0;transition:opacity .35s;
-}
+.art-visual::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent 0 20px,color-mix(in srgb,var(--accent) 6%,transparent) 20px 21px);opacity:0;transition:opacity .35s}
 .art-card:hover .art-visual::after{opacity:1}
-
 .art-body{padding:22px;display:flex;flex-direction:column;flex:1}
-.art-body .tag{
-  font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:500;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;
-}
+.art-body .tag{font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
 .art-body h3{font-size:1.15rem;font-weight:600;line-height:1.3;letter-spacing:-.02em;margin-bottom:10px;transition:color .2s}
 .art-card:hover .art-body h3{color:var(--accent)}
 .art-body p{font-size:.9rem;color:var(--muted);line-height:1.6;flex:1;margin-bottom:16px}
-.art-body .foot{
-  display:flex;justify-content:space-between;align-items:center;
-  font-size:.78rem;color:var(--muted);padding-top:14px;border-top:1px solid var(--border);
-}
+.art-body .foot{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:var(--muted);padding-top:14px;border-top:1px solid var(--border)}
 .art-body .foot .read{color:var(--accent);font-weight:600}
 
-/* ============================================================
-   QUOTE BAND
-   ============================================================ */
-.quote-band{
-  background:var(--text);color:var(--bg);border-radius:0;
-  padding:90px 0;position:relative;overflow:hidden;
-}
-.quote-band::before{
-  content:"";position:absolute;top:-40%;right:-10%;width:600px;height:600px;
-  background:radial-gradient(circle,color-mix(in srgb,var(--accent) 30%,transparent),transparent 65%);
-  pointer-events:none;
-}
+/* QUOTE */
+.quote-band{background:var(--text);color:var(--bg);padding:90px 0;position:relative;overflow:hidden}
+.quote-band::before{content:"";position:absolute;top:-40%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 30%,transparent),transparent 65%);pointer-events:none}
 .quote-band .container{position:relative;z-index:2;text-align:center;max-width:820px}
-.quote-band blockquote{
-  font-family:'Fraunces',serif;font-size:clamp(1.5rem,3.2vw,2.4rem);
-  font-weight:400;font-style:italic;line-height:1.3;letter-spacing:-.02em;
-  margin-bottom:28px;
-}
-.quote-band cite{
-  font-style:normal;font-family:'JetBrains Mono',monospace;
-  font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;
-  color:color-mix(in srgb,var(--bg) 65%,transparent);
-}
+.quote-band blockquote{font-family:'Fraunces',serif;font-size:clamp(1.5rem,3.2vw,2.4rem);font-weight:400;font-style:italic;line-height:1.3;letter-spacing:-.02em;margin-bottom:28px}
+.quote-band cite{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:color-mix(in srgb,var(--bg) 65%,transparent)}
 
-/* ============================================================
-   NEWSLETTER
-   ============================================================ */
-.newsletter{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--radius-lg);padding:60px 40px;text-align:center;
-  position:relative;overflow:hidden;
-}
-.newsletter::before{
-  content:"";position:absolute;top:0;left:0;right:0;height:4px;
-  background:linear-gradient(90deg,var(--accent),var(--gold),var(--accent));
-}
+/* NEWSLETTER */
+.newsletter{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:60px 40px;text-align:center;position:relative;overflow:hidden}
+.newsletter::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),var(--gold),var(--accent))}
 .newsletter h2{font-size:clamp(1.7rem,3vw,2.3rem);letter-spacing:-.03em;font-weight:500;margin-bottom:12px}
 .newsletter p{color:var(--muted);margin-bottom:28px;max-width:480px;margin-left:auto;margin-right:auto}
 .newsletter form{display:flex;gap:10px;max-width:520px;margin:0 auto;flex-wrap:wrap}
-.newsletter input{
-  flex:1;min-width:220px;padding:14px 18px;border-radius:12px;
-  border:1px solid var(--border);background:var(--bg);color:var(--text);
-  font-size:.95rem;font-family:inherit;transition:border .2s;
-}
+.newsletter input{flex:1;min-width:220px;padding:14px 18px;border-radius:12px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:.95rem;font-family:inherit;transition:border .2s}
 .newsletter input:focus{outline:none;border-color:var(--accent)}
 .newsletter small{display:block;color:var(--muted);font-size:.78rem;margin-top:14px}
 
-/* ============================================================
-   ARTICLE READER
-   ============================================================ */
-.reader{display:none;padding:70px 0}
-.reader.active{display:block}
-.reader .back{
-  display:inline-flex;align-items:center;gap:8px;font-size:.88rem;font-weight:600;
-  color:var(--accent);margin-bottom:40px;
-}
+/* READER */
+.reader{padding:70px 0}
+.reader .back{display:inline-flex;align-items:center;gap:8px;font-size:.88rem;font-weight:600;color:var(--accent);margin-bottom:40px;padding:6px 0}
 .reader .back:hover{gap:12px;transition:gap .2s}
-.reader .kicker{
-  font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:500;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;
-}
-.reader h1{
-  font-size:clamp(2rem,4vw,3.2rem);font-weight:500;letter-spacing:-.03em;
-  line-height:1.05;margin-bottom:22px;
-}
-.reader .meta{
-  display:flex;align-items:center;gap:14px;padding-bottom:28px;margin-bottom:44px;
-  border-bottom:1px solid var(--border);font-size:.86rem;color:var(--muted);
-  flex-wrap:wrap;
-}
+.reader .kicker{font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;display:block}
+.reader h1{font-size:clamp(2rem,4vw,3.2rem);font-weight:500;letter-spacing:-.03em;line-height:1.05;margin-bottom:22px}
+.reader .meta{display:flex;align-items:center;gap:14px;padding-bottom:28px;margin-bottom:44px;border-bottom:1px solid var(--border);font-size:.86rem;color:var(--muted);flex-wrap:wrap}
 .reader .meta .dot{width:4px;height:4px;border-radius:50%;background:var(--muted)}
-.reader .lead{
-  font-family:'Fraunces',serif;font-size:1.35rem;line-height:1.5;
-  color:var(--text-2);font-style:italic;margin-bottom:36px;font-weight:400;
-}
+.reader .content .lead{font-family:'Fraunces',serif;font-size:1.35rem;line-height:1.5;color:var(--text-2);font-style:italic;margin-bottom:36px;font-weight:400}
 .reader .content p{margin-bottom:22px;font-size:1.08rem;line-height:1.75;color:var(--text-2)}
-.reader .content h2{
-  font-size:1.6rem;font-weight:600;letter-spacing:-.02em;margin:48px 0 18px;
-  color:var(--text);position:relative;padding-left:18px;
-}
-.reader .content h2::before{
-  content:"";position:absolute;left:0;top:.35em;bottom:.35em;width:3px;
-  background:linear-gradient(180deg,var(--accent),var(--gold));border-radius:2px;
-}
+.reader .content h2{font-size:1.6rem;font-weight:600;letter-spacing:-.02em;margin:48px 0 18px;color:var(--text);position:relative;padding-left:18px}
+.reader .content h2::before{content:"";position:absolute;left:0;top:.35em;bottom:.35em;width:3px;background:linear-gradient(180deg,var(--accent),var(--gold));border-radius:2px}
 .reader .content ul,.reader .content ol{margin:0 0 24px 22px}
 .reader .content li{margin-bottom:12px;font-size:1.05rem;line-height:1.7;color:var(--text-2)}
 .reader .content li strong{color:var(--text);font-weight:600}
-.reader .content blockquote{
-  border-left:3px solid var(--accent);background:var(--surface-2);
-  padding:22px 26px;margin:32px 0;border-radius:0 var(--radius) var(--radius) 0;
-  font-family:'Fraunces',serif;font-style:italic;font-size:1.18rem;line-height:1.5;
-  color:var(--text);letter-spacing:-.01em;
-}
+.reader .content blockquote{border-left:3px solid var(--accent);background:var(--surface-2);padding:22px 26px;margin:32px 0;border-radius:0 var(--radius) var(--radius) 0;font-family:'Fraunces',serif;font-style:italic;font-size:1.18rem;line-height:1.5;color:var(--text);letter-spacing:-.01em}
 .reader .content strong{color:var(--text);font-weight:600}
-.reader .content em{font-style:italic}
-.reader .content hr{
-  border:none;text-align:center;margin:44px 0;
-}
-.reader .content hr::before{
-  content:"❦";color:var(--accent);font-size:1.4rem;
-}
 .reader .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:48px;padding-top:28px;border-top:1px solid var(--border)}
-.reader .tags span{
-  font-size:.78rem;padding:6px 14px;background:var(--surface-2);
-  border-radius:100px;color:var(--text-2);font-weight:500;
-}
+.reader .tags span{font-size:.78rem;padding:6px 14px;background:var(--surface-2);border-radius:100px;color:var(--text-2);font-weight:500}
 
-/* ============================================================
-   ABOUT
-   ============================================================ */
+/* ABOUT */
 .about-hero{padding:80px 0 40px;text-align:center}
 .about-hero h1{font-size:clamp(2rem,4vw,3.2rem);letter-spacing:-.03em;font-weight:500;margin-bottom:20px}
 .about-hero p{font-size:1.15rem;color:var(--text-2);max-width:640px;margin:0 auto}
 .about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin:60px 0}
-.about-card{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--radius-lg);padding:30px;
-}
-.about-card .num{
-  font-family:'Fraunces',serif;font-size:1.4rem;font-weight:600;
-  color:var(--accent);margin-bottom:14px;letter-spacing:-.02em;
-}
+.about-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:30px}
+.about-card .num{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:600;color:var(--accent);margin-bottom:14px;letter-spacing:-.02em}
 .about-card h3{font-size:1.15rem;font-weight:600;margin-bottom:10px}
 .about-card p{color:var(--muted);font-size:.94rem;line-height:1.65}
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
-.site-footer{
-  background:var(--surface);border-top:1px solid var(--border);
-  padding:70px 0 30px;margin-top:40px;
-}
-.footer-grid{
-  display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;
-  margin-bottom:50px;
-}
+/* FOOTER */
+.site-footer{background:var(--surface);border-top:1px solid var(--border);padding:70px 0 30px;margin-top:40px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:50px}
 .footer-brand .logo{margin-bottom:18px}
 .footer-brand p{color:var(--muted);font-size:.92rem;max-width:320px;line-height:1.7}
-.footer-col h4{
-  font-family:'Inter',sans-serif;font-size:.76rem;font-weight:600;
-  text-transform:uppercase;letter-spacing:.14em;color:var(--text);
-  margin-bottom:18px;
-}
-.footer-col a{
-  display:block;color:var(--muted);font-size:.9rem;padding:6px 0;
-  transition:color .2s;
-}
-.footer-col a:hover{color:var(--accent)}
-.footer-bottom{
-  padding-top:30px;border-top:1px solid var(--border);
-  display:flex;justify-content:space-between;align-items:center;
-  font-size:.84rem;color:var(--muted);flex-wrap:wrap;gap:16px;
-}
+.footer-col h4{font-family:'Inter',sans-serif;font-size:.76rem;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--text);margin-bottom:18px}
+.footer-col button{display:block;color:var(--muted);font-size:.9rem;padding:6px 0;transition:color .2s;width:100%}
+.footer-col button:hover{color:var(--accent)}
+.footer-bottom{padding-top:30px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:.84rem;color:var(--muted);flex-wrap:wrap;gap:16px}
 
-/* ============================================================
-   FADE IN
-   ============================================================ */
+/* FADE */
 .fade{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .fade.in{opacity:1;transform:translateY(0)}
 
-/* ============================================================
-   BACK TO TOP
-   ============================================================ */
-.back-top{
-  position:fixed;bottom:28px;right:28px;width:46px;height:46px;border-radius:50%;
-  background:var(--text);color:var(--bg);display:grid;place-items:center;
-  box-shadow:var(--shadow-lg);z-index:90;opacity:0;pointer-events:none;
-  transition:all .3s var(--ease);
-}
+/* BACK TO TOP */
+.back-top{position:fixed;bottom:28px;right:28px;width:46px;height:46px;border-radius:50%;background:var(--text);color:var(--bg);display:grid;place-items:center;box-shadow:var(--shadow-lg);z-index:90;opacity:0;pointer-events:none;transition:all .3s var(--ease);padding:0}
 .back-top.show{opacity:1;pointer-events:auto}
 .back-top:hover{background:var(--accent);transform:translateY(-3px)}
 .back-top svg{width:16px;height:16px}
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
+/* RESPONSIVE */
 @media (max-width:1020px){
   .hero-inner{grid-template-columns:1fr;gap:40px}
   .hero-visual{height:380px;max-width:520px;margin:0 auto}
@@ -569,7 +240,6 @@ section{padding:80px 0;position:relative}
   .footer-grid{grid-template-columns:1fr;gap:32px}
   .newsletter{padding:40px 24px}
   .reader{padding:40px 0}
-  .reader .content blockquote{font-size:1.05rem;padding:18px 20px}
   .about-grid{margin:40px 0}
 }
 </style>
@@ -578,262 +248,73 @@ section{padding:80px 0;position:relative}
 
 <div class="progress" id="progress"></div>
 
-<!-- ============================================================
-     HEADER
-     ============================================================ -->
+<!-- ================= HEADER ================= -->
 <header class="site-header">
   <div class="container">
-    <a class="logo" onclick="go('home')">
+    <button type="button" class="logo" data-action="home">
       <span class="mark">E</span>
       Erkeklik<em>Sanatı</em>
-    </a>
+    </button>
     <nav class="nav">
-      <a onclick="go('home')">Ana Sayfa</a>
-      <a onclick="filterCat('Karakter')">Karakter</a>
-      <a onclick="filterCat('Beceri')">Beceri</a>
-      <a onclick="filterCat('Sağlık')">Sağlık</a>
-      <a onclick="filterCat('İlişkiler')">İlişkiler</a>
-      <a onclick="go('hakkinda')">Hakkında</a>
+      <button type="button" data-action="home">Ana Sayfa</button>
+      <button type="button" data-action="cat" data-cat="Karakter">Karakter</button>
+      <button type="button" data-action="cat" data-cat="Beceri">Beceri</button>
+      <button type="button" data-action="cat" data-cat="Sağlık">Sağlık</button>
+      <button type="button" data-action="cat" data-cat="İlişkiler">İlişkiler</button>
+      <button type="button" data-action="about">Hakkında</button>
     </nav>
     <div class="header-actions">
-      <button class="icon-btn" onclick="toggleTheme()" title="Tema">
-        <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-        </svg>
+      <button type="button" class="icon-btn" data-action="theme" title="Tema">
+        <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
-      <button class="icon-btn menu-btn" onclick="toggleMenu()">
+      <button type="button" class="icon-btn menu-btn" data-action="menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
     </div>
   </div>
   <div class="nav-mobile" id="navMobile">
-    <a onclick="go('home');toggleMenu()">Ana Sayfa</a>
-    <a onclick="filterCat('Karakter');toggleMenu()">Karakter</a>
-    <a onclick="filterCat('Beceri');toggleMenu()">Beceri</a>
-    <a onclick="filterCat('Sağlık');toggleMenu()">Sağlık</a>
-    <a onclick="filterCat('İlişkiler');toggleMenu()">İlişkiler</a>
-    <a onclick="go('hakkinda');toggleMenu()">Hakkında</a>
+    <button type="button" data-action="home">Ana Sayfa</button>
+    <button type="button" data-action="cat" data-cat="Karakter">Karakter</button>
+    <button type="button" data-action="cat" data-cat="Beceri">Beceri</button>
+    <button type="button" data-action="cat" data-cat="Sağlık">Sağlık</button>
+    <button type="button" data-action="cat" data-cat="İlişkiler">İlişkiler</button>
+    <button type="button" data-action="about">Hakkında</button>
   </div>
 </header>
 
-<!-- ============================================================
-     HOME PAGE
-     ============================================================ -->
-<div id="page-home" class="page">
+<!-- ================= APP (içerik JS ile render edilir) ================= -->
+<main id="app"></main>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container hero-inner">
-      <div>
-        <div class="hero-badge">
-          <span class="dot"></span>
-          Her pazar yeni bir yazı · Bağımsız yayın
-        </div>
-        <h1>Zamansız erdemler,<br><em>modern bir erkek</em> için.</h1>
-        <p class="lead">Karakter, beceri, sağlık ve ilişkiler üzerine derinlemesine yazılar. Erkekliği bir kalıp değil, bir yolculuk olarak görenler için.</p>
-        <div class="hero-cta">
-          <button class="btn btn-accent" onclick="document.getElementById('featured').scrollIntoView()">
-            Yazıları Keşfet
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </button>
-          <button class="btn btn-ghost" onclick="go('hakkinda')">Hakkımızda</button>
-        </div>
-        <div class="hero-stats">
-          <div class="stat"><div class="num" data-count="15">0</div><div class="lbl">Özgün Yazı</div></div>
-          <div class="stat"><div class="num" data-count="8">0</div><div class="lbl">Kategori</div></div>
-          <div class="stat"><div class="num" data-count="42">0</div><div class="lbl">Dakika Ortalama</div></div>
-        </div>
-      </div>
-
-      <div class="hero-visual">
-        <div class="float-card fc-1">
-          <div class="tag">Karakter</div>
-          <div class="title">Sessizlik zayıflık değil, derinliktir.</div>
-          <div class="meta">6 dk okuma</div>
-        </div>
-        <div class="float-card fc-2">
-          <div class="tag">İlişkiler</div>
-          <div class="title">Erkekler neden 30'undan sonra yalnızlaşır?</div>
-          <div class="meta">9 dk okuma</div>
-        </div>
-        <div class="float-card fc-3">
-          <div class="tag">Beceri</div>
-          <div class="title">Her erkeğin bilmesi gereken 7 temel tamir</div>
-          <div class="meta">12 dk okuma</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURED BENTO -->
-  <section id="featured">
-    <div class="container">
-      <div class="section-head fade">
-        <div>
-          <span class="kicker">— Bu Hafta Öne Çıkanlar</span>
-          <h2>Yeni ve derinlemesine yazılar</h2>
-          <p>Her yazı; zamansız bir ilkeyi, modern hayatın gerçekleriyle buluşturur.</p>
-        </div>
-        <a class="link-arrow" onclick="filterCat('')">Tüm yazılar →</a>
-      </div>
-      <div class="bento" id="bentoGrid"></div>
-    </div>
-  </section>
-
-  <!-- CATEGORIES -->
-  <section>
-    <div class="container">
-      <div class="section-head fade">
-        <div>
-          <span class="kicker">— Keşfet</span>
-          <h2>Kategoriler</h2>
-        </div>
-      </div>
-      <div class="cats-grid" id="catsGrid"></div>
-    </div>
-  </section>
-
-  <!-- ARTICLES -->
-  <section>
-    <div class="container">
-      <div class="section-head fade">
-        <div>
-          <span class="kicker">— Kütüphane</span>
-          <h2 id="gridTitle">Tüm Yazılar</h2>
-        </div>
-      </div>
-      <div class="filters" id="filters"></div>
-      <div class="articles-grid" id="articleGrid"></div>
-    </div>
-  </section>
-
-  <!-- QUOTE -->
-  <section class="quote-band">
-    <div class="container">
-      <blockquote>“İnsan, kendisini bekleyen işi yapmadığı her gün, biraz daha küçülür.”</blockquote>
-      <cite>— Erkeklik Sanatı</cite>
-    </div>
-  </section>
-
-  <!-- NEWSLETTER -->
-  <section>
-    <div class="container">
-      <div class="newsletter fade">
-        <span class="kicker" style="font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:14px;">— Bülten</span>
-        <h2>Her pazar, tek bir sağlam fikir.</h2>
-        <p>Spam yok. Reklam yok. Sadece haftanın en iyi yazısı ve düşünmeye değer bir soru.</p>
-        <form onsubmit="subscribe(event)">
-          <input type="email" placeholder="merhaba@ornek.com" required>
-          <button type="submit" class="btn btn-accent">Abone Ol</button>
-        </form>
-        <small>İstediğin zaman çıkabilirsin. Sözümüz söz.</small>
-      </div>
-    </div>
-  </section>
-
-</div>
-
-<!-- ============================================================
-     ABOUT PAGE
-     ============================================================ -->
-<div id="page-hakkinda" class="page">
-  <div class="container">
-    <div class="about-hero">
-      <span class="kicker" style="font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);">— Hakkında</span>
-      <h1 style="margin-top:16px;">Erkekliği yeniden <em style="font-style:italic;color:var(--accent);">düşünmek</em> üzerine.</h1>
-      <p>Erkeklik Sanatı, erkeklerin karakter, beceri ve amaç bakımından daha sağlam bir hayat kurmalarına yardımcı olmak için kurulmuş bağımsız bir yayındır.</p>
-    </div>
-
-    <div class="about-grid">
-      <div class="about-card">
-        <div class="num">01</div>
-        <h3>Zamansız ilkeler</h3>
-        <p>Moda akımların değil, yüzyıllardır işe yarayan ilkelerin peşindeyiz. Cesaret, sadakat, ölçülülük, sorumluluk.</p>
-      </div>
-      <div class="about-card">
-        <div class="num">02</div>
-        <h3>Modern gerçekler</h3>
-        <p>Gelenek körü körüne tekrarlanmaz. Bugünün dünyasında ne anlama geldiğini sorgular, yeniden yorumlarız.</p>
-      </div>
-      <div class="about-card">
-        <div class="num">03</div>
-        <h3>Pratik bilgi</h3>
-        <p>Felsefe güzel ama elin iş tutması da gerek. Her yazının sonunda uygulanabilir bir adım vardır.</p>
-      </div>
-      <div class="about-card">
-        <div class="num">04</div>
-        <h3>Bağımsız ses</h3>
-        <p>Algoritma bize ne yazacağımızı söylemez. Reklamveren değil, okur önce gelir.</p>
-      </div>
-    </div>
-
-    <div class="narrow" style="padding:20px 0 40px;">
-      <div class="reader content" style="display:block;">
-        <h2>Neden varız?</h2>
-        <p>Bugünün erkeği, tarihte hiç olmadığı kadar çok bilgiye, ama çok az rehberliğe sahip. Bir yanda "erkek adam ağlamaz" diyen katı bir gelenek; diğer yanda köklerinden kopmuş, her şeyi reddeden bir modernlik. İkisi de eksik.</p>
-        <p>Biz üçüncü bir yol öneriyoruz: <strong>sorumluluk alan, ama duygularını bastırmayan; güçlü olan, ama kibirli olmayan; öğrenmeye devam eden, ama kendine dürüst kalan bir erkeklik.</strong></p>
-        <blockquote>Erkeklik bir kalıp değil, bir yolculuktur. Varış yok, yön var.</blockquote>
-        <p>Burada bulacağın her yazı, bu yolculuğun bir durağıdır. Acele etme. Oku. Düşün. Uygula. Sonra bir sonrakine geç.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ============================================================
-     ARTICLE READER
-     ============================================================ -->
-<div id="page-yazi" class="page reader">
-  <div class="container narrow">
-    <a class="back" onclick="go('home')">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      Tüm Yazılar
-    </a>
-    <div class="kicker" id="rCat"></div>
-    <h1 id="rTitle"></h1>
-    <div class="meta">
-      <span id="rDate"></span>
-      <span class="dot"></span>
-      <span id="rRead"></span>
-      <span class="dot"></span>
-      <span>Erkeklik Sanatı</span>
-    </div>
-    <div class="content" id="rBody"></div>
-    <div class="tags" id="rTags"></div>
-  </div>
-</div>
-
-<!-- ============================================================
-     FOOTER
-     ============================================================ -->
+<!-- ================= FOOTER ================= -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a class="logo" onclick="go('home')">
+        <button type="button" class="logo" data-action="home">
           <span class="mark">E</span>
           Erkeklik<em>Sanatı</em>
-        </a>
+        </button>
         <p>Zamansız erdemler, pratik beceriler ve sağlam bir hayat üzerine bağımsız bir Türkçe yayın.</p>
       </div>
       <div class="footer-col">
         <h4>Kategoriler</h4>
-        <a onclick="filterCat('Karakter')">Karakter</a>
-        <a onclick="filterCat('Beceri')">Beceri</a>
-        <a onclick="filterCat('Sağlık')">Sağlık</a>
-        <a onclick="filterCat('İlişkiler')">İlişkiler</a>
+        <button type="button" data-action="cat" data-cat="Karakter">Karakter</button>
+        <button type="button" data-action="cat" data-cat="Beceri">Beceri</button>
+        <button type="button" data-action="cat" data-cat="Sağlık">Sağlık</button>
+        <button type="button" data-action="cat" data-cat="İlişkiler">İlişkiler</button>
       </div>
       <div class="footer-col">
         <h4>Keşfet</h4>
-        <a onclick="filterCat('Aile')">Aile</a>
-        <a onclick="filterCat('Kariyer')">Kariyer</a>
-        <a onclick="filterCat('Stil')">Stil</a>
-        <a onclick="filterCat('Zihin')">Zihin</a>
+        <button type="button" data-action="cat" data-cat="Aile">Aile</button>
+        <button type="button" data-action="cat" data-cat="Kariyer">Kariyer</button>
+        <button type="button" data-action="cat" data-cat="Stil">Stil</button>
+        <button type="button" data-action="cat" data-cat="Zihin">Zihin</button>
       </div>
       <div class="footer-col">
         <h4>Yayın</h4>
-        <a onclick="go('hakkinda')">Hakkında</a>
-        <a onclick="alert('İletişim: merhaba@erkekliksanati.example')">İletişim</a>
-        <a onclick="alert('Bu site tamamen özgün bir yayındır.')">Gizlilik</a>
+        <button type="button" data-action="about">Hakkında</button>
+        <button type="button" data-action="contact">İletişim</button>
+        <button type="button" data-action="privacy">Gizlilik</button>
       </div>
     </div>
     <div class="footer-bottom">
@@ -843,13 +324,13 @@ section{padding:80px 0;position:relative}
   </div>
 </footer>
 
-<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+<button type="button" class="back-top" id="backTop" data-action="top">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
 <script>
 /* ============================================================
-   ARTICLES DATA
+   VERİ
    ============================================================ */
 const CATEGORIES = [
   { name:'Karakter',   icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>' },
@@ -863,846 +344,398 @@ const CATEGORIES = [
 ];
 
 const ARTICLES = [
-{
-  id:1, cat:'İlişkiler', date:'12 Ekim 2026', read:'9 dk',
+{ id:1, cat:'İlişkiler', date:'12 Ekim 2026', read:'9 dk', tags:['Arkadaşlık','Modern Hayat','Bağ Kurma'],
   title:'Erkekler Neden 30’undan Sonra Yalnızlaşır?',
   excerpt:'Telefonunda yüzlerce kişi var ama arayacak kimsen yok. Bu bir zayıflık değil, yapısal bir sorun — ve çözülebilir.',
-  tags:['Arkadaşlık','Modern Hayat','Bağ Kurma'],
   lead:'Birçok erkek, otuzuna geldiğinde telefonunda yüzlerce kişi varken gerçek bir dostu olmadığını fark eder. Bu, kişisel bir başarısızlık değildir. Yapısal bir sorundur — ve çözülebilir.',
-  body:`
-<p>Yirmili yaşlarının sonuna doğru birçok erkek, tuhaf bir boşlukla karşılaşır. Üniversiteden, işten ya da mahalleden tanıdığı insanlar telefonunda kayıtlıdır. Ama cuma akşamı arayacak kimse yoktur. Bekârlık ya da evlilik fark etmez; bu duygu sınıf, meslek, gelir ayrımı yapmadan gelir.</p>
+  body:`<p>Yirmili yaşlarının sonuna doğru birçok erkek, tuhaf bir boşlukla karşılaşır. Üniversiteden, işten ya da mahalleden tanıdığı insanlar telefonunda kayıtlıdır. Ama cuma akşamı arayacak kimse yoktur.</p><h2>Erkek arkadaşlığı neden farklı kurulur?</h2><p>Kadınlar çoğunlukla yüz yüze konuşarak bağ kurar. Erkeklerse yan yana bir şey <em>yaparak</em>. Bu, klişe değil; sosyal psikolojinin on yıllardır tekrarladığı bir gözlemdir.</p><p>Bu yüzden erkek dostlukları çoğu zaman bir <strong>aktiviteye bağlıdır</strong>. Okul bitince, iş değişince, takım dağılınca dostluk sessizce solar.</p><blockquote>Dostluk, tesadüfen değil, tekrar tekrar tercih edilerek büyür.</blockquote><h2>Ne yapılabilir?</h2><ol><li><strong>Haftalık bir ritüel kurun.</strong> Aynı gün, aynı saat. Kahve, yürüyüş, halı saha.</li><li><strong>Derin sorular sorun.</strong> “Nasılsın?” yerine “Bu aralar seni en çok ne zorluyor?”</li><li><strong>Eski bir arkadaşı arayın.</strong> Yıllar sonra bile bir mesaj kapıyı aralar.</li><li><strong>Bir kulübe katılın.</strong> Satranç, koşu, marangozluk, kitap.</li><li><strong>Yardım isteyin.</strong> Zayıflığını göstermek güveni inşa eder.</li><li><strong>Sırlarınızı paylaşın.</strong> Yüzeysellik yakınlığı öldürür.</li><li><strong>Kendiniz olun.</strong> Rol yaparak kurulan dostluk kısa ömürlüdür.</li></ol><h2>Sonuç</h2><p>Yalnızlık bir kader değil, bir alışkanlıktır. Bugün tek bir mesajla başla. Üç ay sonra, o sessiz boşluğun yerini dolduran birkaç isim göreceksin.</p>` },
 
-<p>Bu yalnızlık, genellikle “ben zaten yalnız kalmayı severim” cümlesiyle örtbas edilir. Ama aslında bu, bir kaybın farkına varamamaktır. Erkekler dostluk kurma becerisini kaybetmemiştir. Kurma fırsatını kaybetmiştir.</p>
-
-<h2>Erkek arkadaşlığı neden farklı kurulur?</h2>
-
-<p>Kadınlar çoğunlukla yüz yüze konuşarak bağ kurar. Erkeklerse yan yana bir şey <em>yaparak</em>. Bu, klişe değil; sosyal psikolojinin on yıllardır tekrarladığı bir gözlemdir. İki erkeğin dostluğu bir balık tutma gezisinde, bir maçta, bir tamir işinde filizlenir. Konuşma, eylemin yan ürünüdür.</p>
-
-<p>Bu yüzden erkek dostlukları çoğu zaman bir <strong>aktiviteye bağlıdır</strong>. Okul bitince, iş değişince, takım dağılınca, aktivite de biter — ve dostluk sessizce solar. Kimse kavga etmez, kimse veda etmez. Sadece uzaklaşılır.</p>
-
-<blockquote>Dostluk, tesadüfen değil, tekrar tekrar tercih edilerek büyür.</blockquote>
-
-<h2>Peki neden tam da otuzunda?</h2>
-
-<p>Otuzlu yaşlar, hayatın üç koldan sıkıştığı dönemdir: kariyer, aile, beden. Zaman kıtlaşır, öncelikler keskinleşir. Sosyal çevre daralır ve daralan bu çevre, çoğu zaman “işe yarar” ilişkilere indirgenir. Derinlik değil, fayda öne çıkar.</p>
-
-<p>Aynı dönemde erkekler duygusal dillerini de kaybeder. Bir arkadaşına “nasılsın?” diye sorduğunda cevap hep aynıdır: “İyiyim, sen?” Bu, gerçek bir soru değil, bir selamlaşma ritüelidir. Ve ritüelin arkasında ne acı, ne sevinç, ne kaygı vardır.</p>
-
-<h2>Peki ne yapılabilir?</h2>
-
-<p>İyi haber şu: dostluk kurmak bir yetenek değil, bir <strong>alışkanlıktır</strong>. Ve alışkanlıklar öğrenilir. Aşağıdaki yedi adım, bunun pratikte nasıl işlediğini gösterir.</p>
-
-<ol>
-<li><strong>Haftalık bir ritüel kurun.</strong> Aynı gün, aynı saat. Kahve, yürüyüş, halı saha — ne olursa. Ritüel, iradeyi devre dışı bırakır; programa güvenirsin.</li>
-<li><strong>Derin sorular sorun.</strong> “Nasılsın?” yerine “Bu aralar seni en çok ne zorluyor?” Ya da “Neyle gurur duyuyorsun?” Bu sorular, tanıdıklığı dostluğa çevirir.</li>
-<li><strong>Eski bir arkadaşı arayın.</strong> Yıllar sonra bile bir mesaj kapıyı aralar. Utanma; o da seni özlüyor.</li>
-<li><strong>Bir kulübe katılın.</strong> Satranç, koşu, marangozluk, kitap. Ortak bir ilgi, kendiliğinden bağ kurar.</li>
-<li><strong>Yardım isteyin.</strong> Zayıflığını göstermek güveni inşa eder. “Buna ihtiyacım var” demek, güçsüzlük değil, cesarettir.</li>
-<li><strong>Sırlarınızı paylaşın.</strong> Yüzeysellik yakınlığı öldürür. Küçük bir itirafla başla: bir korku, bir pişmanlık, bir hayal.</li>
-<li><strong>Kendiniz olun.</strong> Rol yaparak kurulan dostluk, kısa ömürlüdür. Maskeyi çıkar; seni seven o halini sevsin.</li>
-</ol>
-
-<h2>Bir uyarı: dijital yeterli değil</h2>
-
-<p>Mesajlaşma, dostluğu sürdürebilir ama başlatamaz. On yıllık arkadaşınla günde üç mesaj atabilirsin; ama yeni bir dost, ancak yüz yüze kurulur. Ekran, mesafeyi azaltmaz. Uzatır.</p>
-
-<p>Bu yüzden her hafta en az bir kez, bir insanla <em>yan yana</em> ol. Konuşmasan bile. Sadece aynı masada otur, aynı yolu yürü, aynı maçı izle. Bedenler yakın olunca, ruhlar da yakınlaşır.</p>
-
-<h2>Sonuç</h2>
-
-<p>Yalnızlık bir kader değil, bir alışkanlıktır. Ve her alışkanlık gibi, yerine yenisini koymadıkça kırılmaz. Bugün tek bir mesajla başla. Yarın bir kahveyle. Ertesi hafta bir yürüyüşle. Üç ay sonra, o sessiz boşluğun yerini dolduran birkaç isim göreceksin.</p>
-
-<p>Erkek dostluğu, hayatın en büyük sığınağıdır. İnşa etmesi zaman alır; ama bir kez inşa edildi mi, hayat boyu ayakta kalır.</p>
-`
-},
-{
-  id:2, cat:'Karakter', date:'10 Ekim 2026', read:'7 dk',
+{ id:2, cat:'Karakter', date:'10 Ekim 2026', read:'7 dk', tags:['Alışkanlık','Disiplin','Sabah'],
   title:'Bir Erkeğin Sabah Rutini: Güne Sağlam Başlamanın 5 İlkesi',
   excerpt:'Sabah nasıl başlarsa gün öyle gider. İrade değil, sistem kur — ve gün ilk dakikadan senin olsun.',
-  tags:['Alışkanlık','Disiplin','Sabah'],
   lead:'Sabah nasıl başlarsa, gün öyle gider. Ama iyi bir sabah irade gerektirmez — sistem gerektirir. İrade her gün tükenir; sistem kendini taşır.',
-  body:`
-<p>Birçok erkek güne yenik başlar. Alarm çalar, telefon uzanır, ekran aydınlanır. Beş dakika diye başlayan kaydırma, yarım saat olur. Kalktığında ise gün çoktan başlamıştır — ama kendi gündemin değil, başkalarının.</p>
+  body:`<p>Birçok erkek güne yenik başlar. Alarm çalar, telefon uzanır, ekran aydınlanır. Beş dakika diye başlayan kaydırma, yarım saat olur.</p><h2>1. Telefonu 30 dakika ertele</h2><p>Uyandığın ilk yarım saat, zihnin en savunmasız olduğu zamandır. Bu saatte ekrana bakmak, beynini başkalarının gündemine teslim etmektir.</p><h2>2. Su iç, hafif hareket et</h2><p>Gece boyunca beden susuz kalır. Bir bardak su ve beş dakika esneme, kanı harekete geçirir.</p><blockquote>Beden hareket etmeden, zihin de yerinden kalkmaz.</blockquote><h2>3. Günün üç hedefini yaz</h2><p>Kafandaki otuz şeyi kağıda dökmek zihni boşaltır. Ama üçten fazla yazmak, hedefleri değil dilekleri listeler.</p><h2>4. On dakika oku</h2><p>Ekran değil, kağıt. On dakika, ayda bir kitap demektir. Yılda on iki.</p><h2>5. Sessizlik, dua ya da nefes</h2><p>Dört saniye al, altı saniye ver. Beş tur. Bu kadar. Ama her gün.</p><h2>Sonuç</h2><p>Bu beş adımın hepsini her gün yapamayacaksın. Sorun değil. Önemli olan, bir gün kaçırdığında iki gün kaçırmamak.</p>` },
 
-<p>Sabah rutini, günün en sessiz ama en kritik yatırımıdır. Doğru kurulursa, günün geri kalanını taşır. Yanlış kurulursa, gün boyu telaş ve dağınıklık olur.</p>
-
-<h2>1. Telefonu 30 dakika ertele</h2>
-
-<p>Uyandığın ilk yarım saat, zihnin en savunmasız olduğu zamandır. Bu saatte ekrana bakmak, beynini başkalarının gündemine teslim etmek demektir. Bir e-posta, bir haber başlığı, bir sosyal medya bildirimi — hepsi zihnine sızar ve günün tonunu belirler.</p>
-
-<p>Kural basit: yatak odasında telefon uyandırma görevi görmesin. Ayrı bir alarm kullan. Telefon ise başka bir odada dursun. İlk yarım saat, sana ait.</p>
-
-<h2>2. Su iç, hafif hareket et</h2>
-
-<p>Gece boyunca beden susuz kalır. Bir bardak su, sadece susuzluğu gidermez; metabolizmayı da uyandırır. Ardından beş dakika esneme ya da kısa bir yürüyüş, kanı harekete geçirir ve zihni açar.</p>
-
-<p>Ne spor salonuna gitmek gerek, ne uzun bir yoga seansı. Yataktan kalkıp esnemek, kolları açmak, boynu çevirmek — hepsi bu. Ama her gün.</p>
-
-<blockquote>Beden hareket etmeden, zihin de yerinden kalkmaz.</blockquote>
-
-<h2>3. Günün üç hedefini yaz</h2>
-
-<p>Kafandaki otuz şeyi kağıda dökmek, zihni boşaltır. Ama üçten fazla yazmak, hedefleri değil, dilekleri listeler. Gerçek günlerde üç şey yapılır, otuz şey yapılmaz.</p>
-
-<p>Her sabah bir kağıt, bir kalem. Bugün bitmesi gereken üç şey. Ve sonunda bir tanesi mutlaka zor olsun. Kolay günler insanı büyütmez.</p>
-
-<h2>4. On dakika oku</h2>
-
-<p>Ekran değil, kağıt. Roman, felsefe, biyografi, tarih — fark etmez. On dakika, ayda bir kitap demektir. Yılda on iki. On yılda yüz yirmi.</p>
-
-<p>Okumak, zihni başkalarının düşünceleriyle beslemektir. Ve bir erkeğin en büyük serveti, kendi kafasında taşıdığı fikirlerdir.</p>
-
-<h2>5. Sessizlik, dua ya da nefes</h2>
-
-<p>Gün harekete geçmeden önce, birkaç dakika durgunluk. Dua eden için dua; etmeyen için nefes; ikisi için de sessizlik. Amaç, zihni günün karmaşasına hazırlamak.</p>
-
-<p>Dört saniye al, altı saniye ver. Beş tur. Bu kadar. Ama her gün. Zihnin berraklaşır, beden sakinleşir, kararlar netleşir.</p>
-
-<h2>Sonuç: mükemmellik değil, süreklilik</h2>
-
-<p>Bu beş adımın hepsini her gün yapamayacaksın. Bazı sabahlar sadece su içebileceksin. Bazı sabahlar sadece nefes alacaksın. Sorun değil. Önemli olan, bir gün kaçırdığında iki gün kaçırmamak.</p>
-
-<p>Sabah rutini bir yarış değil, bir sığınaktır. Gün dışarıda ne getirirse getirsin, ilk yarım saat senin olur. Ve o yarım saat, günün geri kalanının tonunu belirler.</p>
-`
-},
-{
-  id:3, cat:'Beceri', date:'8 Ekim 2026', read:'6 dk',
+{ id:3, cat:'Beceri', date:'8 Ekim 2026', read:'6 dk', tags:['İletişim','Beden Dili','Karizma'],
   title:'İlk İzlenim Sanatı: İlk 30 Saniyede Güven Vermek',
   excerpt:'İnsanlar seni tanımak için yıllar harcamaz. İlk yarım dakikada bir izlenim oluşur ve kolay değişmez.',
-  tags:['İletişim','Beden Dili','Karizma'],
   lead:'İnsanlar sizi tanımak için yıllar harcamaz. İlk 30 saniyede bir izlenim oluşur ve o izlenim kolay kolay değişmez. İyi haber: bu 30 saniye kontrol edilebilir.',
-  body:`
-<p>Bir toplantıya girdiğinde, bir davete katıldığında ya da biriyle ilk kez tanıştığında, karşı tarafın zihninde üç şey hızla belirir: <em>Bu kişi tehdit mi?</em>, <em>Bu kişi güvenilir mi?</em>, <em>Bu kişi ilgi çekici mi?</em> Bu üç soru, saniyeler içinde cevaplanır. Ve çoğu zaman bilinçsizdir.</p>
+  body:`<p>Bir toplantıya girdiğinde, karşı tarafın zihninde üç şey hızla belirir: <em>Bu kişi tehdit mi? Güvenilir mi? İlgi çekici mi?</em> Bu üç soru saniyeler içinde cevaplanır.</p><h2>Beden dili</h2><ul><li><strong>Omuzlar geri, çene düz.</strong></li><li><strong>Göz teması.</strong> Kaçırmadan, dikmeden.</li><li><strong>El sıkışma.</strong> Sıkı ama kırıcı değil, iki saniye.</li><li><strong>Eller görünür olsun.</strong> Cepte saklanan eller güvensizlik verir.</li><li><strong>Yavaş hareket et.</strong> Aceleci beden kaygılı zihin demektir.</li></ul><blockquote>Karizma doğuştan değil, alışkanlıktır.</blockquote><h2>Konuşma</h2><p>İyi bir dinleyici, iyi bir konuşmacıdan daha etkileyicidir. Konuşurken yavaş, net ve kısa konuş.</p><h2>Giyim</h2><p>Ortama göre giyin. Ne fazla resmi, ne özensiz. Ama her şeyden önce <strong>temiz</strong>. Ütülü bir gömlek, pahalı bir takımdan çok konuşur.</p><h2>Sonuç</h2><p>Karşı taraf seni değil, senin ona verdiği hissi hatırlar. Bu his iyi olsun; gerisi kendiliğinden gelir.</p>` },
 
-<p>Bu yüzden ilk izlenim, bir oyun değil, bir sorumluluktur. Kendini doğru ifade etmek, olduğundan farklı görünmek değildir.</p>
-
-<h2>Beden dili: sözlerden önce konuşan şey</h2>
-
-<p>Beden dili, sözlü iletişimden önce başlar. Kapıdan girdiğin anda, omuzlarının duruşu, yürüyüşünün ritmi, gözlerinin nereye baktığı — hepsi bir mesajdır.</p>
-
-<ul>
-<li><strong>Omuzlar geri, çene düz.</strong> Kambur durmak, sadece sağlığa değil, algıya da zarar verir.</li>
-<li><strong>Göz teması.</strong> Kaçırmadan, dikmeden. Yaklaşık %60–70 oranında göz teması, ideal kabul edilir.</li>
-<li><strong>El sıkışma.</strong> Sıkı ama kırıcı değil. İki saniye. Avuç içi terli olmasın.</li>
-<li><strong>Eller görünür olsun.</strong> Cepte saklanan eller, güvensizlik sinyali verir.</li>
-<li><strong>Yavaş hareket et.</strong> Aceleci beden, kaygılı zihin demektir.</li>
-</ul>
-
-<blockquote>Karizma doğuştan değil, alışkanlıktır. Ve her alışkanlık gibi, tekrar ile oturur.</blockquote>
-
-<h2>Konuşma: az söyle, çok dinle</h2>
-
-<p>İyi bir dinleyici, iyi bir konuşmacıdan daha etkileyicidir. Çünkü insanlar kendilerini önemseyen kişiyi severler. Ve dinlemek, önemsemenin en somut hâlidir.</p>
-
-<p>Konuşurken üç kurala dikkat et: <strong>yavaş konuş, net konuş, kısa konuş</strong>. Acele eden ses, kontrolsüz zihin; belirsiz ses, kararsız kişilik; uzun konuşma, kendine güvensizlik izlenimi verir.</p>
-
-<h2>Giyim: bağırma, konuş</h2>
-
-<p>Ortama göre giyinmek, bir zorunluluk değil, bir nezakettir. Ne fazla resmi, ne özensiz. Ama her şeyden önce <strong>temiz</strong>. Ütülü bir gömlek, pahalı bir takımdan daha çok konuşur. Ayakkabıların bakımlı olsun — insanlar ayakkabına bakar, farkında olmasan bile.</p>
-
-<p>Renkler konusunda temel bir kural: koyu tonlar otorite, açık tonlar yakınlık verir. Lacivert, gri, beyaz — yanılmayan üçlü.</p>
-
-<h2>Zihinsel hazırlık: asıl fark burada</h2>
-
-<p>İlk izlenim, sadece dış görünüşle kurulmaz. İç durumun da dışarıya sızar. Kaygılıysan, karşı taraf hisseder. Sakin ve meraklıysan, o da hisseder.</p>
-
-<p>Bu yüzden bir görüşmeden ya da tanışmadan önce kendine üç soru sor: <em>Ne kontrol edebilirim, ne edemem? Karşımdaki insan ne hissediyor olabilir? Ona gerçekten ne verebilirim?</em> Bu üç soru, kaygıyı meraka çevirir. Merak ise karizmanın en saf hâlidir.</p>
-
-<h2>Sonuç</h2>
-
-<p>İlk izlenim, kader değil. Öğrenilir, geliştirilir, zamanla oturur. Ama tek bir şeyi hatırla: karşı taraf seni değil, senin ona verdiği hissi hatırlar. Bu his iyi olsun; gerisi kendiliğinden gelir.</p>
-`
-},
-{
-  id:4, cat:'Aile', date:'6 Ekim 2026', read:'8 dk',
+{ id:4, cat:'Aile', date:'6 Ekim 2026', read:'8 dk', tags:['Babalar','Çocuk','Aile'],
   title:'Baba Olmak: Her Gün 10 Dakikada Derin Bağ Kurmak',
-  excerpt:'Çocuğun geçirdiği saatleri hatırlamaz; o saatlerde nasıl hissettiğini hatırlar. Ve bunu değiştirmek için 10 dakika yeter.',
-  tags:['Babalar','Çocuk','Aile'],
-  lead:'Çocuğunuz sizinle geçirdiği saatleri hatırlamaz — o saatlerde nasıl hissettiğini hatırlar. Bu yüzden miktar değil, nitelik belirleyicidir. Ve bunu değiştirmek için günde on dakika yeter.',
-  body:`
-<p>Modern babalık, tarihin en zor ve en ödüllendirici rollerinden biridir. Bir yanda iş, bir yanda ev; bir yanda ekonomik sorumluluk, diğer yanda duygusal varlık. Çoğu baba bu iki dünyayı dengelemeye çalışırken yorulur ve farkında olmadan çocuğundan uzaklaşır.</p>
+  excerpt:'Çocuğun geçirdiği saatleri hatırlamaz; o saatlerde nasıl hissettiğini hatırlar.',
+  lead:'Çocuğunuz sizinle geçirdiği saatleri hatırlamaz — o saatlerde nasıl hissettiğini hatırlar. Bu yüzden miktar değil, nitelik belirleyicidir.',
+  body:`<p>Modern babalık, tarihin en zor ve en ödüllendirici rollerinden biridir. İyi haber şu: çocuk, babanın ne kadar zaman geçirdiğini değil, o zamanın nasıl geçtiğini hatırlar.</p><h2>10 Dakika Kuralı</h2><p>Her gün, telefonu bırakıp çocuğunuza tam on dakika ayırın. Sadece ona. Ne öğretmek için, ne disipline etmek için — <em>onunla olmak</em> için.</p><ul><li>Yanına oturun, göz hizasına inin.</li><li>Onun başlattığı konuşmayı takip edin.</li><li>“Sonra anlatırsın” demeyin. Şimdi dinleyin.</li><li>Fiziksel temas: omzuna dokunmak, saçını okşamak.</li></ul><blockquote>Bir babanın en büyük mirası, çocuğuna ayırdığı zamandır.</blockquote><h2>Dinleyin, öğretmeyin</h2><p>Bir çocuk anlatırken en çok yapılan hata, hemen çözüm sunmaktır. “Anlıyorum” demek, “şöyle yap” demekten daha güçlüdür.</p><h2>Sonuç</h2><p>Mükemmel bir baba olmaya çalışmayın. <strong>Sadece orada olan</strong> bir baba olun. Bugün orada olun. Yarın da.</p>` },
 
-<p>Ama iyi haber şu: <strong>çocuk, babanın ne kadar zaman geçirdiğini değil, o zamanın nasıl geçtiğini hatırlar.</strong> On dakika tam dikkat, bir saat yarım dikkatten daha değerlidir.</p>
-
-<h2>10 Dakika Kuralı</h2>
-
-<p>Her gün, telefonu bırakıp çocuğunuza tam on dakika ayırın. Sadece ona. Ne öğretmek için, ne disipline etmek için, ne kontrol etmek için. Sadece <em>onunla olmak</em> için.</p>
-
-<p>Bu on dakikanın içinde:</p>
-<ul>
-<li>Yanına oturun, göz hizasına inin.</li>
-<li>Onun başlattığı konuşmayı takip edin.</li>
-<li>“Sonra anlatırsın” demeyin. Şimdi dinleyin.</li>
-<li>Fiziksel temas: omzuna dokunmak, saçını okşamak, sarılmak.</li>
-<li>Ekran yok. Sadece ikiniz.</li>
-</ul>
-
-<blockquote>Bir babanın en büyük mirası, çocuğuna ayırdığı zamandır.</blockquote>
-
-<h2>Birlikte yapın</h2>
-
-<p>Erkek çocuklar için özellikle önemli: birlikte bir şey <em>yapmak</em>, birlikte konuşmaktan daha etkilidir. Bir oyuncak tamir etmek, bir kek pişirmek, bir ampul değiştirmek, bir yürüyüşe çıkmak. Konuşma zaten kendiliğinden gelir.</p>
-
-<p>Kız çocuklar için de aynı kural geçerlidir. Kızlar, babalarından öğrendikleri şeyleri bir ömür boyu taşır: nasıl saygı göreceklerini, nasıl sevileceklerini, nasıl güvende hissedeceklerini. Babanın varlığı, kızının kendi değerini görmesinin ilk aynasıdır.</p>
-
-<h2>Dinleyin, öğretmeyin</h2>
-
-<p>Bir çocuk anlatırken en çok yapılan hata, hemen çözüm sunmaktır. “Şöyle yapsaydın” cümlesi, çocuğun anlattığı şeyi yarıda keser. Oysa ilk ihtiyaç çözüm değil, anlaşılmaktır.</p>
-
-<p>“Anlıyorum” demek, “şöyle yap” demekten daha güçlüdür. “Bu zor olmalı” demek, “kolay” demekten daha şifalıdır. Çözümü sona sakla; bazen sormadan da söyleme.</p>
-
-<h2>Kendi babanızla barışın</h2>
-
-<p>Baba olmak, çoğu erkeğe kendi babasıyla ilişkisini yeniden düşündürür. Belki babanız size çok zaman ayırmadı. Belki çok sertti. Belki hiç yoktu.</p>
-
-<p>Bu, sizin kaderiniz değil, sizin dersinizdir. Ne yapmamanız gerektiğini öğrendiğiniz bir derstir. Kendi babanızı affetmek zorunda değilsiniz; ama ona benzememeyi seçmek elinizdedir. Ve bu seçim, çocuğunuza yapacağınız en büyük iyiliktir.</p>
-
-<h2>Sonuç</h2>
-
-<p>Çocuklar hızlı büyür. Bunu ancak büyüdükten sonra fark edersiniz. Bu yüzden mükemmel bir baba olmaya çalışmayın. <strong>Sadece orada olan</strong> bir baba olun. Bugün orada olun. Yarın da. Sonraki gün de. On dakika. Sadece on dakika. Gerisi kendiliğinden gelir.</p>
-`
-},
-{
-  id:5, cat:'Beceri', date:'4 Ekim 2026', read:'10 dk',
+{ id:5, cat:'Beceri', date:'4 Ekim 2026', read:'10 dk', tags:['Pratik','Tamir','Bağımsızlık'],
   title:'Her Erkeğin Bilmesi Gereken 7 Temel Tamir Becerisi',
   excerpt:'Modern hayat erkeği beceriksizleştirdi. Oysa bir tornavida tutmak, özgüvenin en somut halidir.',
-  tags:['Pratik','Tamir','Bağımsızlık'],
   lead:'Modern hayat, erkeği beceriksizleştirdi. Oysa bir tornavida tutmak, özgüvenin en somut halidir. Kendi işini yapan adam, kimseye mecbur olmayan adamdır.',
-  body:`
-<p>Yüz yıl önce her erkek, evindeki basit tamirleri kendisi yapardı. Yüz yıl sonra, bir ampul değiştirmek için bile "usta" çağırıyoruz. Bu sadece bir pratiklik kaybı değil; bir özgüven kaybıdır.</p>
+  body:`<p>Yüz yıl önce her erkek, evindeki basit tamirleri kendisi yapardı. Yüz yıl sonra, bir ampul değiştirmek için bile “usta” çağırıyoruz.</p><h2>1. Lastik değiştirmek</h2><p>Bagajda stepne, kriko ve bijon anahtarı bulundurun. Bir pazar öğleden sonrasını öğrenmeye ayırın.</p><h2>2. Sigorta kutusunu tanımak</h2><p>Hangi şalter hangi odayı kontrol ediyor, not alın. Üzerlerine bant ve kalemle yazın.</p><h2>3. Musluk contası değiştirmek</h2><p>Damlayan musluk, ayda onlarca litre suyu boşa akıtır. Contanın kendisi kuruş, tamirci çağrı ücreti kat kat pahalı.</p><blockquote>Kendi işini yapan adam, kimseye mecbur olmayan adamdır.</blockquote><h2>4. Duvar delmek</h2><p>Doğru matkap ucu, doğru dübel, doğru vida. Delmeden önce duvarın içinde ne olduğunu tahmin edin.</p><h2>5. Araç bakımı</h2><p>Ayda bir yağ, su, akü, lastik basıncı. Beş dakika. Ama binlerce lira tasarruf.</p><h2>6. Basit marangozluk</h2><p>Bir testere, bir matkap, bir zımpara. İlk projeyi basit tutun.</p><h2>7. İlk yardım</h2><p>Kanamayı durdurmak, yanığı soğutmak, Heimlich manevrası. Kızılay’ın ücretsiz eğitimleri var.</p><h2>Sonuç</h2><p>Bu beceriler bir erkeğe iç huzur verir: <em>Kendi başımın çaresine bakabilirim.</em> Bu huzur paha biçilemez.</p>` },
 
-<p>Bir şeyi kendi elinle tamir etmek, kendine olan güveni somutlaştırır. Bu yüzden aşağıdaki yedi beceri, lüks değil, bir erkeğin temel donanımıdır.</p>
-
-<h2>1. Lastik değiştirmek</h2>
-
-<p>Yolda kalma ihtimali binde bir olsa bile, o binde bir geldiğinde yanınızda kimse olmayacak. Bagajda stepne, kriko ve bijon anahtarı bulundurun. Arabanızı tanıyın: kriko nereye oturur, bijonlar hangi yöne açılır, stepnenin hava basıncı kaç olmalı.</p>
-
-<p>Youtube'da milyonlarca video var. Bir pazar öğleden sonrasını ayırın. Öğrendikten sonra asla unutmayacaksınız.</p>
-
-<h2>2. Sigorta kutusunu tanımak</h2>
-
-<p>Elektrik kesildiğinde panik yapan erkek, sigortasını tanımayan erkektir. Evin sigorta kutusunu açın. Hangi şalter hangi odayı kontrol ediyor, not alın. Bir kağıt bant ve kalem ile üzerlerine yazın.</p>
-
-<p>Sigorta atınca ne yapılır? Önce o cihazı fişten çekin. Sonra şalteri kaldırın. Atma devam ederse, o hatta bağlı bir cihazda sorun var demektir.</p>
-
-<blockquote>Kendi işini yapan adam, kimseye mecbur olmayan adamdır.</blockquote>
-
-<h2>3. Musluk contası değiştirmek</h2>
-
-<p>Damlayan bir musluk, ayda onlarca litre suyu boşa akıtır. Ve tamirciye çağrı ücreti, contanın kendisinden on kat pahalıdır. Doğru anahtar, yeni bir conta, on dakika. Hepsi bu.</p>
-
-<p>Musluğun altındaki su vanasını kapatın. Kolunu sökün. Contayı çıkarın ve yeni contayı takın. Tersine çevirerek toplayın. Su vanasını açın ve test edin. İlk seferde mükemmel olmayabilir; ikinci seferde olacak.</p>
-
-<h2>4. Duvar delmek</h2>
-
-<p>Bir tabloyu asmak için bile artık "askı hizmeti" çağırıyoruz. Oysa duvar delmek üç şeyden ibarettir: doğru matkap ucu, doğru dübel, doğru vida.</p>
-
-<p>Beton duvar için çekiçli matkap ve beton ucu; alçıpan için dübel; tuğla için standart uç. Delmeden önce duvarın içinde ne olduğunu tahmin edin — elektrik kablosu, su borusu. Şüpheniz varsa, deliği matkap ucuyla işaretleyip iki santim ilerleyin; direnç hissederseniz durun.</p>
-
-<h2>5. Araç bakımı</h2>
-
-<p>Arabanızın yağını, suyunu, aküsünü ve lastik basıncını kontrol etmek, ayda beş dakika sürer. Ama bu beş dakika, binlerce liralık tamir faturasını önler.</p>
-
-<ul>
-<li><strong>Yağ çubuğu:</strong> Ayda bir kontrol. Seviye iki çizgi arasında olmalı.</li>
-<li><strong>Motor suyu:</strong> Genleşme deposuna bakın. Soğukken açmayın.</li>
-<li><strong>Akü:</strong> Kutuplarında beyaz tortu varsa temizleyin.</li>
-<li><strong>Lastik basıncı:</strong> Sürücü kapısının içinde yazan değeri kullanın.</li>
-</ul>
-
-<h2>6. Basit marangozluk ve ahşap işleri</h2>
-
-<p>Bir çekmece rafı, bir kitaplık, bir tamir — ahşap işleri, erkeğin el becerisini geliştirir. Sadece üç aletle başlayın: bir testere, bir matkap, bir zımpara. İlk projeyi basit tutun. Yanlış keserseniz, düzeltmek yerine yeni tahta alın.</p>
-
-<p>Bu beceri, size sadece mobilya kazandırmaz. Sabrı ve el-göz koordinasyonunu da öğretir.</p>
-
-<h2>7. İlk yardım</h2>
-
-<p>Bu listeye son ama en önemli madde. Kanamayı durdurmak, yanığı soğutmak, kırığa müdahale etmek, boğulmakta olan birine Heimlich manevrası yapmak — bu beceriler hayat kurtarır.</p>
-
-<p>Kızılay'ın ücretsiz ilk yardım eğitimleri var. Bir hafta sonunuzu ayırın. Öğrendiğiniz bilgiyi asla umarız kullanmanız gerekmez; ama gerekirse, o an sizin elinizde olacak.</p>
-
-<h2>Sonuç</h2>
-
-<p>Bu yedi beceri, bir erkeği "erkek" yapmaz. Bunu zaten yapan şey başkadır. Ama bu beceriler, erkeğe bir tür <strong>iç huzur</strong> verir: <em>Kendi başımın çaresine bakabilirim.</em> Bu huzur, paha biçilemez.</p>
-
-<p>Bugün birini öğrenmeye başlayın. Haftaya bir sonrakini. Yıl sonunda, hem elleriniz hem de kendinize olan güveniniz farklı olacak.</p>
-`
-},
-{
-  id:6, cat:'Zihin', date:'2 Ekim 2026', read:'7 dk',
+{ id:6, cat:'Zihin', date:'2 Ekim 2026', read:'7 dk', tags:['Duygular','Özdenetim','Zihin'],
   title:'Öfke Yönetimi: Sakin Kalan Erkek Daha Güçlüdür',
   excerpt:'Öfke kötü değildir. Kontrolsüz öfke kötüdür. Aradaki fark, güç ile zayıflık arasındaki farktır.',
-  tags:['Duygular','Özdenetim','Zihin'],
-  lead:'Öfke kötü değildir. Kontrolsüz öfke kötüdür. Aradaki fark, güçle zayıflık arasındaki farktır. Öfkesini taşıyan erkek güçlüdür; öfkesine yenilen erkek değil.',
-  body:`
-<p>Birçok erkek, öfkeyi ya bastırır ya patlatır. İkisi de yanlıştır. Bastırmak, içeride çürütür; patlatmak, dışarıda yıkar. Doğru yol, üçüncüsüdür: <strong>öfkeyi tanımak, anlamak ve yönlendirmek.</strong></p>
+  lead:'Öfke kötü değildir. Kontrolsüz öfke kötüdür. Aradaki fark, güçle zayıflık arasındaki farktır. Öfkesini taşıyan erkek güçlüdür; öfkesine yenilen değil.',
+  body:`<p>Birçok erkek, öfkeyi ya bastırır ya patlatır. İkisi de yanlıştır. Doğru yol üçüncüsüdür: <strong>öfkeyi tanımak, anlamak ve yönlendirmek.</strong></p><h2>90 saniye kuralı</h2><p>Bir duygu dalgası, kimyasal olarak ortalama 90 saniye sürer. 90 saniyeyi geçtiğinde öfke devam ediyorsa, o artık biyolojik değil, zihinseldir — kendi düşüncelerimizle besliyoruzdur.</p><blockquote>Öfkeye yenilen erkek değil, öfkeyi taşıyan erkek güçlüdür.</blockquote><h2>Beş yöntem</h2><ol><li><strong>Nefes:</strong> 4 saniye al, 6 saniye ver. 5 tur.</li><li><strong>Ortamı değiştir:</strong> Masadan kalk, yürü.</li><li><strong>Yaz, sonra sil:</strong> Sansürsüz yaz, oku ve sil.</li><li><strong>Ertele:</strong> “Buna 1 saat sonra karar vereceğim.”</li><li><strong>Fizyolojiyi gör:</strong> Çene, omuz, göğüs gerginliğini fark et.</li></ol><h2>Sonuç</h2><p>Sakin kalan erkek zayıf değildir. Tam tersi. Öfkeye kapılmak kolaydır; sakin kalmak irade ve farkındalık gerektirir.</p>` },
 
-<h2>Öfke neden var?</h2>
-
-<p>Öfke, bir tehdit sinyalidir. Beden, bir sınırın ihlal edildiğini fark eder ve harekete geçmek için enerji üretir. Bu, biyolojik bir savunma mekanizmasıdır. Sorun, bu mekanizmanın modern hayatta yanlış tetiklenmesidir.</p>
-
-<p>Trafikte, işte, ailede — küçük bir söz, küçük bir jest, bir kez daha öfkeyi ateşler. Ama gerçek tehdit yoktur. Sadece algılanan bir tehdit vardır. Ve öfke, algıyla gerçek arasındaki mesafeyi kapatmaya çalışırken yakar.</p>
-
-<h2>90 saniye kuralı</h2>
-
-<p>Nörobilim bize şunu söyler: bir duygu dalgası, kimyasal olarak ortalama 90 saniye sürer. Nabız yükselir, adrenalin salınır, kaslar gerilir. Sonra vücut normale döner.</p>
-
-<p>Ama 90 saniyeyi geçtiğinde öfke devam ediyorsa, o artık biyolojik değil, <em>zihinsel</em>dir. Yani kendi düşüncelerimizle besliyoruzdur. "Bana nasıl bunu der?", "Bu adam hep böyle", "Hak etmediği şey..." — bu iç konuşma, öfkeyi besleyen asıl yakıttır.</p>
-
-<blockquote>Öfkeye yenilen erkek değil, öfkeyi taşıyan erkek güçlüdür.</blockquote>
-
-<h2>Beş pratik yöntem</h2>
-
-<h3 style="font-size:1.1rem;font-weight:600;margin:22px 0 10px;color:var(--text);">1. Nefes</h3>
-<p>4 saniye al, 6 saniye ver. Beş tur. Bu, parasempatik sinir sistemini devreye sokar ve nabzı düşürür. Basit ama nörobilimsel olarak kanıtlanmış bir müdahaledir.</p>
-
-<h3 style="font-size:1.1rem;font-weight:600;margin:22px 0 10px;color:var(--text);">2. Ortamı değiştir</h3>
-<p>Masadan kalk, odadan çık, yürü. Bedeni hareket ettirmek, öfkenin bedendeki kilitlenmesini çözer. Aynı odada kalmak, öfkeyi besler.</p>
-
-<h3 style="font-size:1.1rem;font-weight:600;margin:22px 0 10px;color:var(--text);">3. Yaz, sonra sil</h3>
-<p>Söylemek istediğin her şeyi yaz. Sansürsüz. Sonra oku ve sil. Yazmak, zihindeki döngüyü kırar. Silmek, üzerinde kontrol kurduğunu gösterir.</p>
-
-<h3 style="font-size:1.1rem;font-weight:600;margin:22px 0 10px;color:var(--text);">4. Ertele</h3>
-<p>"Buna bir saat sonra karar vereceğim." Bu cümle, öfkenin ani kararlar almasını engeller. Bir saat sonra, çoğu öfkenin küçüldüğünü fark edersin.</p>
-
-<h3 style="font-size:1.1rem;font-weight:600;margin:22px 0 10px;color:var(--text);">5. Fizyolojiyi gör</h3>
-<p>Öfkelendiğin anda, bedenindeki değişiklikleri fark et: çene sıkışması, omuz gerginliği, göğüs sıkışması. Bedenini fark ettiğin anda, öfke otomatik olarak küçülür. Bu, farkındalığın gücüdür.</p>
-
-<h2>Uzun vadede: kaynağa inmek</h2>
-
-<p>Öfke, çoğu zaman ikincil bir duygudur. Altında korku, utanç, yalnızlık, hayal kırıklığı vardır. Öfke, bu duyguları örtmek için bir kalkandır.</p>
-
-<p>Bir erkeğin gerçek gücü, kalkanı bırakıp altındaki duyguyu görmesindedir. "Kızgınım" demek kolaydır. "Korkuyorum" ya da "Yalnızım" demek zordur. Ama ikincisi, gerçek iyileşmenin başlangıcıdır.</p>
-
-<h2>Sonuç</h2>
-
-<p>Sakin kalan erkek, zayıf değildir. Tam tersi. Öfkeye kapılmak kolaydır; sakin kalmak, irade ve farkındalık gerektirir. Ve irade, her gün küçük küçük egzersizlerle büyür.</p>
-
-<p>Bugün bir kez dur, nefes al, sor: <em>Bu öfke bana ne anlatmaya çalışıyor?</em> Cevap, her zaman gözüktüğü yerde değildir. Ama her zaman vardır.</p>
-`
-},
-{
-  id:7, cat:'Stil', date:'30 Eylül 2026', read:'6 dk',
-  title:'İlk Takım Elbise Rehberi: Doğru Beden, Doğru Renk, Doğru Kumaş',
+{ id:7, cat:'Stil', date:'30 Eylül 2026', read:'6 dk', tags:['Stil','Takım Elbise','Giyim'],
+  title:'İlk Takım Elbise Rehberi',
   excerpt:'Takım elbise, erkeğin zırhıdır. Ama yanlış seçilirse zırh değil, yük olur.',
-  tags:['Stil','Takım Elbise','Giyim'],
-  lead:'Takım elbise, erkeğin zırhıdır. Doğru seçildiğinde özgüveni iki katına çıkarır. Yanlış seçildiğinde ise bir yük olur. İşte ilk elbisenizi doğru seçmenin yolu.',
-  body:`
-<p>Bir erkeğin hayatında birkaç an vardır ki takım elbise giymesi gerekir: bir mülakat, bir düğün, bir cenaze, önemli bir toplantı, bir ödül töreni. Bu anlarda üzerindeki elbise, sadece bir kumaş parçası değildir. Kendisiyle ilgili verdiği bir mesajdır.</p>
+  lead:'Takım elbise, erkeğin zırhıdır. Doğru seçildiğinde özgüveni iki katına çıkarır. Yanlış seçildiğinde ise bir yük olur.',
+  body:`<p>Bir erkeğin hayatında takım elbise giymesi gereken birkaç an vardır: bir mülakat, bir düğün, bir cenaze, önemli bir toplantı. Bu anlarda üzerindeki elbise, kendisiyle ilgili verdiği bir mesajdır.</p><h2>Beden: en kritik üç nokta</h2><ul><li><strong>Omuzlar.</strong> Elbise omuzdan oturmalı.</li><li><strong>Göğüs ve bel.</strong> Göğüs düz, bel vücudu takip etmeli.</li><li><strong>Kollar ve paçalar.</strong> Manşet bir santim görünmeli.</li></ul><blockquote>Elbise seni değil, sen elbiseyi taşırsın.</blockquote><h2>Renk</h2><ul><li><strong>Lacivert.</strong> En esnek renk.</li><li><strong>Antrasit.</strong> Ciddi, otoriter, resmi.</li><li><strong>Siyah.</strong> Özel geceler ve cenazeler için.</li></ul><h2>Kumaş</h2><p>Cevap net: <strong>yün.</strong> Nefes alır, dökümü güzeldir, yıllarca dayanır. Polyesterden kaçının.</p><h2>Küçük detaylar</h2><ul><li><strong>Gömlek:</strong> Beyaz ya da açık mavi, desensiz.</li><li><strong>Kravat:</strong> İpek.</li><li><strong>Ayakkabı:</strong> Oxford tipi en klasik.</li><li><strong>Kemer:</strong> Ayakkabıyla aynı renk.</li><li><strong>Çorap:</strong> Pantolonla aynı ton. Beyaz asla.</li></ul><h2>Sonuç</h2><p>İyi bir terzi, ucuz elbiseyi pahalı gösterebilir. Doğru beden ve iyi terzi varsa, elbisenin fiyatı ikinci plandadır.</p>` },
 
-<p>İyi bir takım elbise, ucuz olmak zorunda değildir. Ama <em>doğru</em> olmak zorundadır. Doğru beden, doğru renk, doğru kumaş.</p>
-
-<h2>Beden: en kritik üç nokta</h2>
-
-<p>Bir takım elbisenin bedeni, üç yerden değerlendirilir. Bu üç yer oturuyorsa, elbise size oturmuş demektir.</p>
-
-<ul>
-<li><strong>Omuzlar.</strong> Elbise omuzdan oturmalı; ne sarkmalı, ne sıkmış gibi durmalı. Omuz, elbisenin geri kalanının temelidir. Omuz olmuyorsa, elbise olmuyor demektir — çünkü omuz daraltılamaz, sadece genişletilebilir.</li>
-<li><strong>Göğüs ve bel.</strong> Göğüs bölgesi düz durmalı, ama hareket alanı bırakmalı. Bel, vücudun doğal hattını takip etmeli. Ne torba gibi, ne korse gibi.</li>
-<li><strong>Kollar ve paçalar.</strong> Ceketin kolları, gömleğin manşetini bir santim göstermelidir. Pantolon paçası, ayakkabının üstüne hafifçe değmeli — ne topukta toplanmalı, ne bilekte kesilmeli.</li>
-</ul>
-
-<blockquote>Elbise seni değil, sen elbiseyi taşırsın. Bunu unutma.</blockquote>
-
-<h2>Renk: yanılmayan üçlü</h2>
-
-<p>İlk takım elbise için cesur olmaya gerek yok. Zamansız üç renk, her ortama uyar:</p>
-
-<ul>
-<li><strong>Lacivert.</strong> En esnek renk. Düğüne de gider, işe de. Gündüz de, akşam da. İlk elbise için en iyi seçim.</li>
-<li><strong>Koyu gri (antrasit).</strong> Ciddi, otoriter, resmi. Toplantılar için ideal.</li>
-<li><strong>Siyah.</strong> Sadece özel geceler ve cenazeler için. Gündüz giyildiğinde ağır durabilir.</li>
-</ul>
-
-<p>Desenli elbiseye başlangıçta girmeyin. İnce çizgili olabilir; ama kareli, ekose ya da parlak kumaşlardan kaçının. İlk elbiseniz, sade ve sağlam olmalı.</p>
-
-<h2>Kumaş: yün, her zaman</h2>
-
-<p>Takım elbise kumaşında üç seçenek vardır: yün, polyester, karışım. Cevap net: <strong>yün.</strong> Yün nefes alır, dökümü güzeldir, yıllarca dayanır. Polyester ucuzdur ama terletir, parlar, çabuk yıpranır.</p>
-
-<p>Yaz için hafif yün (Super 100s–130s), kış için kalın yün (flannel). Karışımlar (yün-polyester) bütçe dostudur, ama saf yün her zaman daha iyidir.</p>
-
-<h2>Küçük detaylar, büyük fark</h2>
-
-<ul>
-<li><strong>Gömlek:</strong> Beyaz ya da açık mavi. Desensiz. %100 pamuk.</li>
-<li><strong>Kravat:</strong> İpek. Elbiseden bir ton koyu ya da açık. Desen uyumlu olsun.</li>
-<li><strong>Ayakkabı:</strong> Koyu kahverengi (lacivert ve gri için), siyah (siyah için). Oxford tipi en klasik.</li>
-<li><strong>Kemer:</strong> Ayakkabıyla aynı renk. Bu, kuraldır.</li>
-<li><strong>Çorap:</strong> Pantolonla aynı ton. Beyaz çorap asla — bu bir hatadır, hata.</li>
-</ul>
-
-<h2>Sonuç</h2>
-
-<p>İyi bir takım elbise, ucuz olmak zorunda değildir. Ama iyi bir terzi, ucuz olan elbiseyi pahalı gösterebilir. Bu yüzden satın almadan önce iki şeyi düşün: <strong>doğru beden</strong> ve <strong>iyi terzi.</strong> Bu ikisi varsa, elbisenin fiyatı ikinci plandadır.</p>
-
-<p>Unutma: elbise, seni daha iyi bir insan yapmaz. Ama kendine duyduğun saygıyı gösterir. Bu saygı, herkesin gözünde bir karizmadır.</p>
-`
-},
-{
-  id:8, cat:'Kariyer', date:'28 Eylül 2026', read:'8 dk',
+{ id:8, cat:'Kariyer', date:'28 Eylül 2026', read:'8 dk', tags:['Para','Kariyer','Finans'],
   title:'30’lu Yaşlarda Para Yönetimi: Sistem Kurmak',
-  excerpt:'Gelir arttıkça harcama artıyorsa, sorun gelirde değil, sistemde. İşte sistem kurmanın yolu.',
-  tags:['Para','Kariyer','Finans'],
-  lead:'Çoğu erkek 30’lu yaşlarında ilk defa "iyi para" kazanır ama bir türlü birikim yapamaz. Sebep basit: sistem yok. Ve sistem olmadan, gelir ne kadar artarsa artsın, hesap boş kalır.',
-  body:`
-<p>Yirmili yaşlarınızda çoğu zaman az kazanır, çok harcarsınız. Otuzlu yaşlarınızda daha çok kazanırsınız — ama yine çok harcarsınız. Çünkü gelirle birlikte harcama da büyür. Buna <em>yaşam tarzı enflasyonu</em> denir.</p>
+  excerpt:'Gelir arttıkça harcama artıyorsa, sorun gelirde değil, sistemde.',
+  lead:'Çoğu erkek 30’lu yaşlarında ilk defa “iyi para” kazanır ama bir türlü birikim yapamaz. Sebep basit: sistem yok.',
+  body:`<p>Yirmili yaşlarınızda az kazanır, çok harcarsınız. Otuzlu yaşlarınızda daha çok kazanırsınız — ama yine çok harcarsınız. Buna <em>yaşam tarzı enflasyonu</em> denir.</p><h2>50/30/20 kuralı</h2><ul><li><strong>%50 — İhtiyaçlar.</strong> Kira, faturalar, market, ulaşım.</li><li><strong>%30 — İstekler.</strong> Yemek dışarı, tatil, hobi.</li><li><strong>%20 — Birikim ve yatırım.</strong> Acil durum, emeklilik.</li></ul><blockquote>Para, kazandığın değil, tuttuğun kadardır.</blockquote><h2>Önce borç</h2><p>Kredi kartı borcu, en pahalı borçtur. Hiçbir yatırım o faizi yenemez.</p><h2>Acil durum fonu</h2><p>3–6 aylık giderinizi kenarda tutun. Bu panik değil, özgürlüktür.</p><h2>Otomatikleştir</h2><p>Beynin iradesine güvenme. Maaş yattığı gün, otomatik transferle %20 birikime gitsin.</p><h2>Sonuç</h2><p>Para yönetimi, kazanma değil <strong>tutma</strong> sanatıdır. Zengin olmak için dahi olmak gerekmez; tutarlı olmak yeter.</p>` },
 
-<p>Bu döngüyü kırmanın tek yolu vardır: <strong>sistem.</strong> Sistem, iradenin yerini alır. Ve irade, her zaman tükenir; sistem, tam tersine, kendini besler.</p>
-
-<h2>50/30/20 kuralı</h2>
-
-<p>En basit ve en dayanıklı sistemlerden biri budur. Aylık net gelirinizin üçe bölünmesi:</p>
-
-<ul>
-<li><strong>%50 — İhtiyaçlar.</strong> Kira, faturalar, market, ulaşım, sigorta, kredi kartı minimumu.</li>
-<li><strong>%30 — İstekler.</strong> Yemek dışarı, tatil, hobi, giysi, abonelikler. Burada kendinizi sıkmayın; ama abartmayın.</li>
-<li><strong>%20 — Birikim ve yatırım.</strong> Acil durum fonu, emeklilik, borsa, altın, ne olursa.</li>
-</ul>
-
-<p>Bu oranlar sabit değildir. Gençseniz ve borcunuz yoksa, %30 birikime kayabilir. Çocukluysanız, %15 birikim de yeterli olabilir. Önemli olan, hangi oranı koyarsanız koyun, <em>otomatikleştirmek</em>tir.</p>
-
-<blockquote>Para, kazandığın değil, tuttuğun kadardır.</blockquote>
-
-<h2>Önce borç, sonra yatırım</h2>
-
-<p>Kredi kartı borcu, en pahalı borçtur. Aylık %3–5 faizle çalışır; yıllık %40–60'a denk gelir. Hiçbir yatırım, o faizi yenemez. Bu yüzden önce kredi kartı, sonra diğer borçlar, en son yatırım.</p>
-
-<p>Bir istisna: işveren katkılı emeklilik fonu varsa, ona her zaman katılın. Çünkü o katkı bedavadır ve her yıl otomatik yükselir.</p>
-
-<h2>Acil durum fonu</h2>
-
-<p>3 ila 6 aylık giderinizi kenarda tutun. Bu, panik değil, özgürlüktür. İşinizi kaybettiğinizde, bir sağlık sorunu çıktığında, arabanız bozulduğunda — bu fon, sizi kredi kartına mecbur bırakmaz.</p>
-
-<p>Nereye koyacaksınız? Vadeli mevduat, para piyasası fonu ya da kolayca bozdurulabilen bir hesap. Getiri önemli değil; erişim önemli.</p>
-
-<h2>Otomatikleştir</h2>
-
-<p>Beynin iradesine güvenme. Banka hesabınızda maaş yattığı gün, otomatik transferle birikim hesabına %20 gitsin. Otomatik ödeme talimatları ile faturalar zamanında ödensin. Kalan para, harcanabilir paradır.</p>
-
-<p>Bu kural, kararları alışkanlığa çevirir. Ve alışkanlık, iradeden çok daha güçlüdür.</p>
-
-<h2>Yatırım: basit ve sabırlı</h2>
-
-<p>Yatırım konusunda iki uç vardır: ya hiç yapmamak, ya da kumar gibi yapmak. İkisi de yanlıştır. Doğru yol: <strong>basit, düzenli, uzun vadeli.</strong></p>
-
-<ul>
-<li>Borsa endeksi fonları (uzun vadede en güvenli).</li>
-<li>Altın (enflasyona karşı koruma).</li>
-<li>Devlet tahvili (düşük getiri, düşük risk).</li>
-<li>Gayrimenkul (uzun vadeli, yüksek sermaye gerektirir).</li>
-</ul>
-
-<p>Portföyünüzü çeşitlendirin ama abartmayın. Beş farklı şeye yatırım yapmak yeter. Her ay düzenli al. Panik yaptığında satma. Ve asla anlamadığın bir şeye yatırım yapma.</p>
-
-<h2>Sonuç</h2>
-
-<p>Para yönetimi, kazanma sanatı değildir. <strong>Tutma sanatıdır.</strong> Zengin olmak için dahi olmak gerekmez; tutarlı olmak yeter. Yirmi yıl boyunca gelirinizin %20'sini biriktirirseniz, otuz yıl sonra hesabınızda hiç beklemediğiniz bir rakam olur.</p>
-
-<p>Sistem kurun. Otomatikleştirin. Unutun. Zaman, gerisini yapar.</p>
-`
-},
-{
-  id:9, cat:'Zihin', date:'26 Eylül 2026', read:'6 dk',
+{ id:9, cat:'Zihin', date:'26 Eylül 2026', read:'6 dk', tags:['Sessizlik','Farkındalık','Zihin'],
   title:'Sessizliğin Gücü: Gürültülü Dünyada Zihni Dinlendirmek',
-  excerpt:'Berrak düşünce, sessizlikte doğar. Ve sessizlik, modern erkeğin en nadir ve en değerli kaynağıdır.',
-  tags:['Sessizlik','Farkındalık','Zihin'],
-  lead:'Modern erkek, sabahtan akşama kadar bir ekrana bakıyor. Beyin hiç susmuyor. Oysa berrak düşünce, sessizlikte doğar. Ve sessizlik, bugünün en nadir ve en değerli kaynağıdır.',
-  body:`
-<p>Bugün bir erkeğin zihni, tarihte hiç olmadığı kadar meşguldür. Sabah alarm, hemen ardından e-posta. İşte Slack, Teams, WhatsApp. Akşam YouTube, Netflix, Instagram. Yatakta Twitter. Ve tüm bunlar, beynin <em>hiç susmaması</em> anlamına gelir.</p>
+  excerpt:'Berrak düşünce, sessizlikte doğar. Ve sessizlik, modern erkeğin en nadir kaynağıdır.',
+  lead:'Modern erkek, sabahtan akşama kadar bir ekrana bakıyor. Beyin hiç susmuyor. Oysa berrak düşünce, sessizlikte doğar.',
+  body:`<p>Bugün bir erkeğin zihni, tarihte hiç olmadığı kadar meşguldür. Beyin bir kas gibidir; sürekli çalışırsa tükenir.</p><h2>Günde 10 dakika</h2><p>Günün bir bölümünde on dakika boyunca hiçbir şey yapmayın. Telefon yok, müzik yok, konuşma yok, ekran yok.</p><blockquote>Sessizlik zayıflık değil, derinliktir.</blockquote><h2>Kulaklıksız yürüyüş</h2><p>Yarım saatlik kulaklıksız bir yürüyüş, zihni iki saatlik ekran tatilinden daha iyi dinlendirir.</p><h2>Yazma</h2><p>Her akşam beş satır. Kafanızdaki düğümler kağıda dökülünce çözülür.</p><h2>Telefon orucu</h2><p>Haftada bir gün telefonu bırakın. İlk hafta zor, ikinci hafta sıkıcı, üçüncü hafta huzurlu, dördüncü hafta vazgeçilmez.</p><h2>Sonuç</h2><p>En derin sular, en sessiz akar.</p>` },
 
-<p>Beyin bir kas gibidir. Sürekli çalışırsa tükenir. Dinlenmezse, verim düşer, kararlar bulanıklaşır, kaygı artar. Sessizlik, lüks değil, bir ihtiyaçtır.</p>
-
-<h2>Günde 10 dakika</h2>
-
-<p>Günün bir bölümünde on dakika boyunca hiçbir şey yapmayın. Telefon yok, müzik yok, konuşma yok, ekran yok. Sadece siz ve düşünceleriniz.</p>
-
-<p>İlk başta zor gelecek. Zihin, boşluğa düşünce hemen bir şeyle meşgul olmak isteyecek. Bu normal. Ama o boşlukta, aslında beynin <em>temizlik</em> yaptığını fark edeceksiniz. Düşünceler yavaşlar, öncelikler berraklaşır.</p>
-
-<blockquote>Sessizlik zayıflık değil, derinliktir.</blockquote>
-
-<h2>Kulaklıksız yürüyüş</h2>
-
-<p>Yürümek, en eski terapi yöntemidir. Ama kulaklıkla yürümek, bu terapiyi iptal eder. Kulaklıksız çıkın. Ayak seslerinizi duyun, kuşları duyun, rüzgârı duyun. Beyniniz, doğal ritme döner.</p>
-
-<p>Yarım saatlik bir yürüyüş, zihni iki saatlik bir ekran tatilinden daha iyi dinlendirir. Ve hiçbir maliyeti yoktur.</p>
-
-<h2>Yazma: kafayı kağıda dökmek</h2>
-
-<p>Her akşam beş satır. Sadece beş. Ne yazdığınız önemli değil; kafanızdaki düğümler kağıda dökülünce çözülür. Yazmak, düşüncenin taşındığı ve hafiflediği bir kanaldır.</p>
-
-<p>Kurallar basit: sansürsüz, düzenli, kısa. Sabah da olur, akşam da. Ama her gün. Bir hafta sonra, kendi düşüncelerinize dışarıdan bakabileceksiniz. Bu, farkındalığın başlangıcıdır.</p>
-
-<h2>Telefon orucu</h2>
-
-<p>Haftada bir gün, telefonu tamamen bırakın. Cumartesi ya da pazar. Sadece acil aramalar için açık tutun. Geri kalan her şey, bir gün bekleyebilir.</p>
-
-<p>İlk hafta zor olacak. İkinci hafta sıkıcı. Üçüncü hafta huzurlu. Dördüncü hafta, artık vazgeçemeyeceğiniz bir ritüel olacak.</p>
-
-<h2>Sessizliği seven erkek</h2>
-
-<p>Sessizlik, zayıf erkekler için bir kaçıştır. Ama güçlü erkekler için bir sığınaktır. Sessizlikte düşünen erkek, dünyada daha berrak konuşur. Kendini dinleyen erkek, başkalarını daha iyi anlar.</p>
-
-<p>Unutmayın: en derin sular, en sessiz akar.</p>
-`
-},
-{
-  id:10, cat:'Karakter', date:'24 Eylül 2026', read:'9 dk',
-  title:'Türkiye’de Erkeklik: Gelenek, Modernlik ve Kendi Yolunu Bulmak',
+{ id:10, cat:'Karakter', date:'24 Eylül 2026', read:'9 dk', tags:['Türkiye','Kimlik','Erkeklik'],
+  title:'Türkiye’de Erkeklik: Kendi Yolunu Bulmak',
   excerpt:'İki dünya arasında yürümek zor. Ama üçüncü bir yol var: kendi yolunuz.',
-  tags:['Türkiye','Kimlik','Erkeklik'],
   lead:'Türkiye’de erkek olmak, iki dünya arasında yürümek gibidir: bir yanda gelenek, diğer yanda modern şehir hayatı. Bu yürüyüşte denge bulmak, bir erkeğin ömürlük işidir.',
-  body:`
-<p>Türkiye'de erkek olmak, dünyanın çoğu yerinden daha karmaşık bir meseledir. Çünkü bu topraklarda erkeklik, aynı anda hem çok övülür hem çok yüklenir. Çocukluğundan itibaren "erkek adam" olman söylenir; ama nasıl olacağın söylenmez.</p>
+  body:`<p>Bir yanda geleneğin sesi: <em>Erkek adam ağlamaz. Dik durur. Evini geçindirir.</em> Diğer yanda modern şehrin sesi: <em>Duygularını ifade et. Kendini keşfet. Mutlu olmak için yaşa.</em></p><h2>İki tuzağı tanı</h2><p><strong>Birinci tuzak: katı gelenek.</strong> Duyguları bastırır. Uzun vadede yalnızlık, öfke, depresyon.</p><p><strong>İkinci tuzak: köksüz modernlik.</strong> Her şeyi reddeder. Kendini “özgür” ilan eder ama boşluktadır.</p><h2>Üçüncü yol</h2><ul><li><strong>Sorumluluk al.</strong> Aile, iş, çevre, ülke.</li><li><strong>Duyguları tanı.</strong> Bastırmak değil, anlamak.</li><li><strong>Öğrenmeye devam et.</strong> Kitap, beceri, dil, zanaat.</li><li><strong>Köklerini bil.</strong> Nereden geldiğini bilmeyen, nereye gittiğini bilemez.</li><li><strong>Kendine dürüst ol.</strong> Başkasının hayatını yaşama.</li><li><strong>Topluluğa katıl.</strong> Kendinden büyük bir şeye ait ol.</li></ul><blockquote>Erkeklik bir kalıp değil, bir yolculuktur. Varış yok, yön var.</blockquote><h2>Sonuç</h2><p>Bu topraklarda erkek olmak, iki dünyayı birleştirmek gibi bir iştir. Ve bu iş, bir erkeğin ömürlük işidir.</p>` },
 
-<p>Bir yanda geleneğin sesi: <em>Erkek adam ağlamaz. Erkek adam dik durur. Erkek adam evini geçindirir. Erkek adam sözünü tutar.</em> Diğer yanda modern şehrin sesi: <em>Duygularını ifade et. Kendini keşfet. Kendine zaman ayır. Mutlu olmak için yaşa.</em></p>
+{ id:11, cat:'Sağlık', date:'22 Eylül 2026', read:'8 dk', tags:['Antrenman','Sağlık','Yaşlanma'],
+  title:'Fiziksel Güç: 40 Yaşında Formda Olmanın Yolu',
+  excerpt:'Kas kaybetmek kaçınılmaz değil. Doğru antrenman ile 40 yaşında 25 yaşından güçlü olabilirsin.',
+  lead:'40 yaş, çoğu erkeğin “artık geçti” dediği yaştır. Oysa doğru yaklaşımla 40 yaş, en güçlü dönemin başlangıcıdır.',
+  body:`<p>30’lu yaşlardan sonra çoğu erkek yılda %1–2 kas kütlesi kaybeder. Ama bu kayıp kaçınılmaz değildir.</p><h2>Antrenman: üç kural</h2><ol><li><strong>Ağırlık kaldır.</strong> Kası korumak için direnç gerekir.</li><li><strong>Az ama düzenli.</strong> Haftada 2 gün, 5 yıl boyunca.</li><li><strong>Kardiyo ihmal edilmesin.</strong> Haftada 150 dakika.</li></ol><blockquote>Kas, sadece bedenin değil, iradenin de göstergesidir.</blockquote><h2>Beslenme</h2><p>Kilo başına 1,6–2,2 gram protein. 80 kiloysanız günde 130–175 gram.</p><h2>Uyku</h2><p>Kas uykuda büyür. Hedef: 7–8 saat.</p><h2>Sonuç</h2><p>40 yaşında formda olmak, 25 yaşında olmaktan farklıdır. Daha az kahramanlık, daha çok disiplin.</p>` },
 
-<p>Bu iki ses, çoğu zaman birbiriyle çelişir. Ve arada kalan erkek, ne tam geleneksel ne tam modern olabilir. Bir üçüncü yol bulmak zorundadır.</p>
+{ id:12, cat:'Sağlık', date:'20 Eylül 2026', read:'7 dk', tags:['Uyku','Sağlık','Zihin'],
+  title:'Uyku ve Zihin Sağlığı: En Çok İhmal Edilen İlaç',
+  excerpt:'Kronik uykusuzluk sadece yorgunluk değildir. Öfke, kaygı ve düşük testosteronun da sebebidir.',
+  lead:'Kronik uykusuzluk, sadece yorgunluk değildir. Öfke, kaygı, karar bozukluğu ve düşük testosteronun da sebebidir.',
+  body:`<p>Bir erkeğin en büyük yanılgılarından biri, az uyumayı bir erdem sanmaktır.</p><h2>Uykusuzluğun bedeli</h2><ul><li><strong>Öfke kontrolü bozulur.</strong></li><li><strong>Testosteron düşer.</strong> 5 saat uyuyan genç erkeklerde %10–15 düşüş.</li><li><strong>İnsülin direnci artar.</strong></li><li><strong>Bağışıklık zayıflar.</strong></li><li><strong>Karar verme yeteneği düşer.</strong></li></ul><blockquote>Uyku, bedenin değil, beynin en önemli ilacıdır.</blockquote><h2>Yedi yol</h2><ol><li>Aynı saatte yat, aynı saatte kalk.</li><li>Yatmadan 1 saat önce ekranı bırak.</li><li>Odayı karanlık ve serin yap (18–20°C).</li><li>Kafeini öğleden sonra kes.</li><li>Alkolü azalt.</li><li>Yatakta başka iş yapma.</li><li>Akşam ritüeli kur.</li></ol><h2>Sonuç</h2><p>Uyku, bedava, doğal ve en güçlü ilaçtır. Ne spor salonu, ne takviye onun yerini alamaz.</p>` },
 
-<h2>İki tuzağı tanı</h2>
-
-<h3 style="font-size:1.1rem;font-weight:600;margin:22px 0 10px;color:var(--text);">Birinci tuzak: katı gelenek</h3>
-
-<p>Bu tuzağa düşen erkek, duygularını bastırır. Ağlamaz, korkmaz, yorulmaz. Sürekli güçlü görünmek zorundadır. Bu tutum, kısa vadede saygı kazandırır; uzun vadede içini çürütür. Yalnızlık, öfke, depresyon — bunlar bu tuzağın kaçınılmaz sonuçlarıdır.</p>
-
-<h3 style="font-size:1.1rem;font-weight:600;margin:22px 0 10px;color:var(--text);">İkinci tuzak: köksüz modernlik</h3>
-
-<p>Bu tuzağa düşen erkek, her şeyi reddeder. Ailesini, geleneği, dini, aidiyeti. Kendini "modern" ve "özgür" ilan eder. Ama bu özgürlük, çoğu zaman bir boşluktur. Kim olduğunu, neye bağlı olduğunu, niçin yaşadığını bilemez.</p>
-
-<p>İkisi de eksiktir. İkisi de bir insanı tam yapmaz.</p>
-
-<h2>Üçüncü yol</h2>
-
-<p>Sağlam bir erkeklik, ne tam gelenek ne tam modernliktir. İkisinden de öğrenir. Ve üçüncü bir yol kurar.</p>
-
-<ul>
-<li><strong>Sorumluluk al.</strong> Aile, iş, çevre, ülke. Sorumluluktan kaçan erkek, özgür değildir; sadece kayıptır. Gerçek özgürlük, taşıdığın yükü kabul etmekle başlar.</li>
-<li><strong>Duyguları tanı.</strong> Bastırmak değil, anlamak. Ağlamak zayıflık değildir; ağlayamayan erkek, çoğu zaman daha zayıftır. Ama duygunun içinde boğulmak da çözüm değildir. Duyguyu tanı, anla, sonra yoluna devam et.</li>
-<li><strong>Öğrenmeye devam et.</strong> Kitap, beceri, dil, zanaat. Bir erkek, öğrenmeyi bıraktığı gün yaşlanır. Öğrenmeye devam ettiği sürece genç kalır.</li>
-<li><strong>Köklerini bil.</strong> Nereden geldiğini bilmeyen erkek, nereye gittiğini de bilemez. Aileni tanı, tarihini oku, kültürünü anla. Bunları reddetmek zorunda değilsin; ama bilmek zorundasın.</li>
-<li><strong>Kendine dürüst ol.</strong> Başkasının hayatını yaşamak, en yaygın erkeklik tuzağıdır. Babanın istediği meslek, annenin hayal ettiği evlilik, çevrenin beklediği başarı — bunlar senin değil, onların hayatıdır. Kendi hayatını kurmak, cesaret ister.</li>
-<li><strong>Topluluğa katıl.</strong> İnsan, yalnız yaşayamaz. Bir dernek, bir cemaat, bir mahalle, bir takım. Kendinden büyük bir şeye ait olmak, köksüzlüğü iyileştirir.</li>
-</ul>
-
-<blockquote>Erkeklik bir kalıp değil, bir yolculuktur. Varış yok, yön var.</blockquote>
-
-<h2>Türkiye’nin kendine has zorluğu</h2>
-
-<p>Bu ülkede erkek olmak, aynı zamanda bir <em>geçiş</em> meselesidir. Bir ayağın Anadolu'da, diğeri İstanbul'da. Bir yanın gelenekten, diğer yanın modernlikten. Bu geçiş, kolay değildir. Ama bu toprakların erkeği, bu geçişi yüzyıllardır yapıyor. Yani bir maharet var.</p>
-
-<p>Bu maharet, denge kurmaktır. Ne geçmişi tamamen reddetmek, ne bugüne tamamen teslim olmak. İkisinden de doğru olanı almak. Ve kendi yolunu kurmak.</p>
-
-<h2>Sonuç</h2>
-
-<p>Erkeklik, bir sınav değildir. Bir yolculuktur. Kimse mükemmel erkek olarak doğmaz. Kimse mükemmel erkek olarak ölmez. Ama herkes, her gün biraz daha iyi olabilir. Biraz daha dürüst, biraz daha cesur, biraz daha şefkatli, biraz daha sağlam.</p>
-
-<p>Bu topraklarda erkek olmak, tam da bu yüzden zordur ve güzeldir. Çünkü burada, iki dünyayı birleştirmek gibi bir iş vardır. Ve bu iş, bir erkeğin ömürlük işidir.</p>
-`
-},
-{
-  id:11, cat:'Sağlık', date:'22 Eylül 2026', read:'8 dk',
-  title:'Fiziksel Güç: 40 Yaşında Formda Olmanın Gerçek Yolu',
-  excerpt:'Kas kaybetmek kaçınılmaz değil. Doğru antrenman, doğru beslenme ve doğru uyku ile 40 yaşında 25 yaşından güçlü olabilirsin.',
-  tags:['Antrenman','Sağlık','Yaşlanma'],
-  lead:'40 yaş, çoğu erkeğin "artık geçti" dediği yaştır. Oysa doğru yaklaşımla 40 yaş, en güçlü dönemin başlangıcıdır. Kas kaybetmek kaçınılmaz değildir; hareketsizlik kaçınılmazdır.',
-  body:`
-<p>30’lu yaşlardan sonra, çoğu erkek yılda %1 ila %2 oranında kas kütlesi kaybeder. 40 yaşına geldiğinde, yirmili yaşlarındaki kilosunu korusa bile, vücudunun yapısı farklıdır: daha az kas, daha çok yağ. Buna <em>sarkopeni</em> denir.</p>
-
-<p>Ama bu kayıp kaçınılmaz değildir. Bilim bize şunu söylüyor: <strong>kuvvet antrenmanı yapan 60 yaşındaki bir erkek, yapmayan 30 yaşındaki bir erkekten daha güçlü olabilir.</strong> Yaş, sadece bir sayıdır — doğru yaklaşıldığında.</p>
-
-<h2>Antrenman: üç kural</h2>
-
-<h3 style="font-size:1.1rem;font-weight:600;margin:22px 0 10px;color:var(--text);">1. Ağırlık kaldır</h3>
-<p>Koşu, bisiklet, yüzme — hepsi iyidir. Ama kas kaybını durdurmaz. Kası korumak için <em>direnç</em> gerekir. Ağırlık antrenmanı, 40 yaşından sonra bir lüks değil, bir zorunluluktur.</p>
-
-<p>Haftada 2–3 gün yeterlidir. Her seans 45–60 dakika. Temel hareketler: squat, deadlift, bench press, row, overhead press, pull-up. Bu altı hareket, vücudun tamamını çalıştırır.</p>
-
-<h3 style="font-size:1.1rem;font-weight:600;margin:22px 0 10px;color:var(--text);">2. Az ama düzenli</h3>
-<p>Haftada 5 gün spor salonuna gidip iki hafta sonra bırakmak, hiç gitmemekten iyi değildir. Haftada 2 gün, ama 5 yıl boyunca. Süreklilik, yoğunluktan önemlidir.</p>
-
-<h3 style="font-size:1.1rem;font-weight:600;margin:22px 0 10px;color:var(--text);">3. Kardiyo ihmal edilmesin</h3>
-<p>Kalp, hayatın motorudur. Haftada 150 dakika orta yoğunlukta kardiyo (tempolu yürüyüş, hafif koşu), kalp sağlığını korur, stresi azaltır, uykuyu iyileştirir. Ama ağırlığın yerini almaz — onu tamamlar.</p>
-
-<blockquote>Kas, sadece bedenin değil, iradenin de göstergesidir.</blockquote>
-
-<h2>Beslenme: protein, protein, protein</h2>
-
-<p>40 yaşından sonra beslenmenin bir numaralı kuralı proteindir. Kilogram başına 1,6 ila 2,2 gram protein, kas kaybını önler ve kas yapımını destekler. 80 kiloysanız, günde 130–175 gram protein.</p>
-
-<p>Bunun için günde üç öğün ve her öğünde bir protein kaynağı: yumurta, tavuk, kırmızı et, balık, süt ürünleri, baklagil. Supplement şart değildir; ama pratikse kullanılabilir.</p>
-
-<p>Karbonhidrat ve yağ da gereklidir. Sadece protein yemek, uzun vadede sürdürülemez. Temel kural: <strong>işlenmemiş gıda, ölçülü porsiyon, düzenli öğün.</strong></p>
-
-<h2>Uyku: en çok ihmal edilen ilaç</h2>
-
-<p>Kas, spor salonunda değil, uykuda büyür. Testosteron, büyüme hormonu, kortizol dengesi — hepsi uykuda ayarlanır. 6 saatten az uyuyan bir erkek, ne kadar iyi antrenman yaparsa yapsın, ilerleme kaydedemez.</p>
-
-<p>Hedef: 7–8 saat. Bunun için: yatmadan 1 saat önce ekran kapat, oda karanlık ve serin olsun, alkol ve kafeini akşamdan sonra bırak. Basit ama etkili.</p>
-
-<h2>Stres: sessiz yıkıcı</h2>
-
-<p>Kronik stres, kortizolü yükseltir; kortizol da kas yıkar, yağ depolar, testosteronu düşürür. Yani ne kadar iyi antrenman yaparsan yap, stres altındaysan ilerleme duracaktır.</p>
-
-<p>Stresi azaltmak için: doğada zaman geçir, meditasyon yap, nefes egzersizleri uygula, ekran süresini azalt. Ve en önemlisi: hayatında seni yoran ilişkileri ve işleri gözden geçir.</p>
-
-<h2>Sonuç</h2>
-
-<p>40 yaşında formda olmak, 25 yaşında formda olmaktan farklıdır. Daha az kahramanlık, daha çok disiplin; daha az yoğunluk, daha çok süreklilik. Ama sonuç aynıdır: güçlü, sağlıklı, enerjik bir beden.</p>
-
-<p>Unutma: yaşlanma, bir kayıp değil, bir dönüşümdür. Doğru yönetildiğinde, 40 yaşındaki erkek, 25 yaşındaki halinden daha çok şeye sahiptir: deneyim, sabır, bilgelik — ve evet, güç.</p>
-`
-},
-{
-  id:12, cat:'Sağlık', date:'20 Eylül 2026', read:'7 dk',
-  title:'Uyku ve Zihin Sağlığı: Erkeklerin En Çok İhmal Ettiği İlaç',
-  excerpt:'Kronik uykusuzluk, sadece yorgunluk değildir. Öfke, kaygı, karar bozukluğu ve düşük testosteronun da sebebidir.',
-  tags:['Uyku','Sağlık','Zihin'],
-  lead:'Kronik uykusuzluk, sadece yorgunluk değildir. Öfke, kaygı, karar bozukluğu ve düşük testosteronun da sebebidir. Ve çoğu erkek, uykusuzluğunu bir "başarı" olarak görür.',
-  body:`
-<p>Bir erkeğin en büyük yanılgılarından biri, az uyumayı bir erdem sanmaktır. "Ben 5 saatle idare ederim", "Uyku tembelliktir", "Gece çalışmak daha verimli" — bu cümleler, çoğu zaman bir övünç vesilesidir. Oysa bilim bize tam tersini söyler.</p>
-
-<h2>Uykusuzluğun bedeli</h2>
-
-<p>6 saatten az uyuyan bir erkekte şu değişimler gözlemlenir:</p>
-
-<ul>
-<li><strong>Öfke kontrolü bozulur.</strong> Amigdala (beynin duygu merkezi) hiperaktif hale gelir; prefrontal korteks (karar merkezi) zayıflar.</li>
-<li><strong>Testosteron düşer.</strong> Bir hafta boyunca 5 saat uyuyan genç erkeklerde testosteron seviyesi %10–15 oranında düşer. Bu, 10 yıl yaşlanmaya denktir.</li>
-<li><strong>İnsülin direnci artar.</strong> Şeker metabolizması bozulur; kilo alımı kolaylaşır.</li>
-<li><strong>Bağışıklık zayıflar.</strong> Hastalıklara karşı direnç azalır.</li>
-<li><strong>Hafıza ve öğrenme zayıflar.</strong> Yeni bilgi tutmak neredeyse imkânsız hale gelir.</li>
-<li><strong>Karar verme yeteneği düşer.</strong> Riskli kararlar daha kolay alınır.</li>
-</ul>
-
-<blockquote>Uyku, bedenin değil, beynin en önemli ilacıdır. Uykusuz erkek, yavaş yavaş kendinden uzaklaşır.</blockquote>
-
-<h2>Kaç saat uyumalı?</h2>
-
-<p>Bilimsel konsensüs: <strong>7 ila 9 saat.</strong> Bazı erkekler 7 saatle iyi olur; bazıları 9 saat ister. Bunu kendin keşfet. Bir hafta boyunca 8 saat uyu ve nasıl hissettiğini gözlemle. Sonra 7 ve 9'u dene. Kendine en uygun süreyi bulacaksın.</p>
-
-<p>Kalite de en az süre kadar önemlidir. 8 saat uyuyup yorgun kalkıyorsan, sorun sürede değil, derinliktedir.</p>
-
-<h2>Uykuyu iyileştirmenin yedi yolu</h2>
-
-<ol>
-<li><strong>Aynı saatte yat, aynı saatte kalk.</strong> Hafta sonu bile. Vücut bir ritme alışır ve bu ritme güvenmek ister.</li>
-<li><strong>Yatmadan 1 saat önce ekranı bırak.</strong> Mavi ışık, melatonin (uyku hormonu) üretimini bozar. Alternatif: kitap, sohbet, sessizlik.</li>
-<li><strong>Odayı karanlık ve serin yap.</strong> İdeal sıcaklık: 18–20 derece. Tam karanlık için kalın perde ya da uyku maskesi.</li>
-<li><strong>Kafeini öğleden sonra kes.</strong> Kafeinin yarı ömrü 5–6 saattir. Öğleden sonra 3’te içilen kahve, akşam 9'da hâlâ sistemdedir.</li>
-<li><strong>Alkolü azalt.</strong> Alkol uykuya dalmayı kolaylaştırır ama derin uykuyu bozar. Yani yüzeysel uyursun, yorgun kalkarsın.</li>
-<li><strong>Yatakta başka iş yapma.</strong> Yatak, sadece uyku ve cinsellik için olmalı. Telefon, laptop, iş — bunlar yatağın dışında.</li>
-<li><strong>Ritüel kur.</strong> Her akşam aynı sıralamayı yap: yatmadan önce duş, hafif okuma, ışıkları kısma, nefes egzersizi. Bu, beynin "yatmaya hazırım" sinyalidir.</li>
-</ol>
-
-<h2>Uykusuzlukla savaşmak</h2>
-
-<p>Bazı geceler uyku gelmeyecektir. Bu normaldir. Yatakta dönüp durmak yerine, kalkın. Başka bir odada oturun, loş ışıkta kitap okuyun. Uykunuz gelene kadar yatağa dönmeyin. Bu, yatakla "savaş alanı" ilişkisini kırar.</p>
-
-<p>Eğer uykusuzluk haftalarca devam ediyorsa, bir doktora danışın. Uyku apnesi, hipertiroidi, depresyon — bunlar tedavi edilebilir durumlardır. Erkeklerde uyku apnesi çok yaygındır ve çoğu zaman fark edilmez.</p>
-
-<h2>Sonuç</h2>
-
-<p>Uyku, bedava, doğal ve en güçlü ilaçtır. Ne spor salonu, ne takviye, ne beslenme — hiçbiri iyi uykunun yerini alamaz. Uykuyu bir lüks değil, bir yatırım olarak görün. Çünkü en iyi yatırım, kendinize yaptığınız yatırımdır.</p>
-`
-},
-{
-  id:13, cat:'Kariyer', date:'18 Eylül 2026', read:'7 dk',
+{ id:13, cat:'Kariyer', date:'18 Eylül 2026', read:'7 dk', tags:['Kariyer','Mülakat','İş'],
   title:'Mülakat Sanatı: İşe Alınmanın Görünmeyen Kuralları',
-  excerpt:'İyi bir CV kapıyı açar. Ama mülakatta kazanan şey, CV değildir. İşte asıl sınavın kuralları.',
-  tags:['Kariyer','Mülakat','İş'],
-  lead:'İyi bir CV, kapıyı aralar. Ama mülakatta kazanan şey, CV değildir. Karşı taraf, senin ne bildiğini zaten biliyor. Şimdi merak ettiği şu: sen nasıl bir insansın?',
-  body:`
-<p>Bir mülakata giren çoğu erkek, yanlış sorulara hazırlanır. "Kendinizden bahsedin", "güçlü yönleriniz neler", "zayıf yönleriniz neler" — bu sorular, artık klişe. İyi bir mülakatçı, bunları sormaz bile. Asıl merak ettiği şey başkadır: <em>Bu adamı ekibe alırsam, ne olur?</em></p>
+  excerpt:'İyi bir CV kapıyı açar. Ama mülakatta kazanan şey, CV değildir.',
+  lead:'İyi bir CV, kapıyı aralar. Ama mülakatta kazanan şey CV değildir. Karşı taraf artık şunu merak ediyor: sen nasıl bir insansın?',
+  body:`<p>Bir mülakata giren çoğu erkek, yanlış sorulara hazırlanır. İyi bir mülakatçı, klişe soruları sormaz bile.</p><h2>İlk 30 saniye</h2><p>Mülakatta ilk izlenim, tokalaşmadan önce başlar. Rahat ol ama laubali olma.</p><h2>Hikâye anlat</h2><p>STAR tekniği: <strong>S</strong>ituation (Durum), <strong>T</strong>ask (Görev), <strong>A</strong>ction (Aksiyon), <strong>R</strong>esult (Sonuç).</p><blockquote>İnsanlar veriyi unutur, hikâyeyi hatırlar.</blockquote><h2>Zayıflıklar</h2><p>Gerçek bir zayıflık söyle ve <em>ne yaptığını</em> ekle. Sahtelik hemen fark edilir.</p><h2>Sen de soru sor</h2><ul><li>Bu pozisyonda başarılı olan kişi ilk 6 ayda neyi başarmış olur?</li><li>Ekibin en büyük zorluğu şu anda ne?</li><li>Burada çalışan biri kariyerini nasıl geliştirir?</li></ul><h2>Sonuç</h2><p>Mülakat bir sınav değil, bir sohbettir. En iyi iş, en çok para ödeyen değil, seni büyüten iştir.</p>` },
 
-<h2>İlk 30 saniye</h2>
-
-<p>Mülakatta ilk izlenim, tokalaşmadan önce başlar. Odaya girişindeki duruş, gözlerinin nereye baktığı, oturuşun — hepsi bir mesajdır. Rahat ol ama laubali olma. Gülümse ama sırıtma. Göz teması kur ama dikme.</p>
-
-<p>Tokalaşma: sıkı, iki saniye, göz temasıyla birlikte. Terli avuç, kaçan göz, gevşek el — hepsi olumsuz bir mesaj verir.</p>
-
-<h2>Hikâye anlat, madde sayma</h2>
-
-<p>"5 yıl şu şirkette çalıştım, sonra buraya geçtim, orada şu projeyi yönettim" — bu bir özgeçmiş okumasıdır. Mülakatçının umurunda değil. O, hikâyenin içindeki <em>seni</em> görmek istiyor.</p>
-
-<p>STAR tekniği: <strong>S</strong>ituation (Durum), <strong>T</strong>ask (Görev), <strong>A</strong>ction (Aksiyon), <strong>R</strong>esult (Sonuç). Her cevabında bu dörtlüyü kullan.</p>
-
-<blockquote>İnsanlar veriyi unutur, hikâyeyi hatırlar.</blockquote>
-
-<h2>Zayıflıklarını sorduğunda</h2>
-
-<p>"Zayıf yönüm mükemmeliyetçilik" demek, en kötü cevaptır. Yapay ve sahte. Gerçek bir zayıflık söyle ve <em>ne yaptığını</em> ekle. "Sunum yaparken heyecanlanırım; bu yüzden her sunumdan önce üç kez prova yapıyorum. Son iki yılda beş büyük sunum yaptım ve hepsi iyi geçti."</p>
-
-<p>Bu cevap, hem dürüstlüğü hem de çözüm üretme becerisini gösterir. İkisi de işe alınmanın anahtarıdır.</p>
-
-<h2>Sen de soru sor</h2>
-
-<p>Mülakat tek yönlü değildir. Karşı taraf da seni değerlendiriyor; sen de onları. İyi bir aday, mülakatın sonunda üç-dört soru sorar. Bu, hem ilgi gösterir hem de doğru kararı vermene yardımcı olur.</p>
-
-<p>İyi sorular:</p>
-<ul>
-<li>Bu pozisyonda başarılı olan kişi, ilk 6 ayda neyi başarmış olur?</li>
-<li>Ekibin en büyük zorluğu şu anda ne?</li>
-<li>Şirketin bu pozisyonu neden açtı? Yeni mi, büyüme mi, değişim mi?</li>
-<li>Burada çalışan biri, kariyerini nasıl geliştirir?</li>
-</ul>
-
-<h2>Maaş pazarlığı</h2>
-
-<p>Maaş konusu, ilk mülakatta değil, teklif aşamasında konuşulur. İlk mülakatta "beklentiniz nedir?" diye sorulursa: "Pozisyonun kapsamına ve sorumluluklarına göre değişir. Sizin bütçeniz ne öngörüyor?" diye cevap ver.</p>
-
-<p>Teklif geldiğinde, hemen kabul etme. "Düşünmek için bir gün alabilir miyim?" de. Ve karşı teklif yap: piyasa araştırmasına dayalı, gerçekçi, saygılı. Çoğu işveren, ilk teklifin üstüne %5–15 daha koyabilir. Ama bunu ancak isteyen alır.</p>
-
-<h2>Sonuç</h2>
-
-<p>Mülakat, bir sınav değil, bir sohbettir. Sen de karşı tarafı değerlendiriyorsun. Bu zihniyetle girdiğinde, kaygı azalır, özgüven artar. Ve özgüven, işe alınmanın görünmeyen kuralıdır.</p>
-
-<p>Unutma: en iyi iş, en çok para ödeyen iş değildir. Seni büyüten, sana değer veren, sabah kalkmaya değer kılan iştir.</p>
-`
-},
-{
-  id:14, cat:'İlişkiler', date:'16 Eylül 2026', read:'8 dk',
+{ id:14, cat:'İlişkiler', date:'16 Eylül 2026', read:'8 dk', tags:['Evlilik','İlişki','Aşk'],
   title:'Uzun İlişkiler: Aşkı Canlı Tutmanın Sessiz Sanatı',
-  excerpt:'Aşk, bir duygu değil, bir pratiktir. Ve pratik, her gün tekrar edilirse büyür, edilmezse solar.',
-  tags:['Evlilik','İlişki','Aşk'],
-  lead:'Aşk, bir duygu değil, bir pratiktir. Ve her pratik gibi, her gün yapılırsa büyür, ihmal edilirse solar. Uzun ilişkiler, tutkuyla değil, alışkanlıklarla ayakta kalır.',
-  body:`
-<p>İlk yıl her şey kolaydır. Kalp hızlı atar, mesajlar uzun olur, gözler parlar. Ama zamanla, o hızlı kalp yavaşlar. Mesajlar kısalır. Ve iki insan, birbirini tanıdıkça, birbirine yabancılaşabilir.</p>
+  excerpt:'Aşk, bir duygu değil, bir pratiktir. Ve pratik her gün tekrar edilirse büyür, edilmezse solar.',
+  lead:'Aşk, bir duygu değil, bir pratiktir. Ve her pratik gibi, her gün yapılırsa büyür, ihmal edilirse solar.',
+  body:`<p>İlk yıl her şey kolaydır. Ama zamanla o hızlı kalp yavaşlar. Bu, aşkın bittiği anlamına gelmez; <em>değiştiği</em> anlamına gelir.</p><h2>Aşk bir pratiktir</h2><p>Uzun ilişkilerde aşk bir <strong>karar</strong>dır. Her sabah o insanı tekrar seçmek.</p><blockquote>Aşk bir anda olmaz. Her gün yeniden inşa edilir.</blockquote><h2>Küçük şeyler</h2><ul><li>Eve girdiğinde telefonu bırak, eşini selamla.</li><li>Çıkarken öp, sarıl.</li><li>İltifat et — her hafta, ayda bir değil.</li><li>Onun anlattığı bir şeyi hatırla, ertesi hafta sor.</li><li>Dokun: elini tut, saçını okşa.</li></ul><h2>Doğru kavga</h2><ol><li>Aynı takımda olduğunuzu hatırla.</li><li>Geçmişi deşme.</li><li>“Sen hep” yerine “Ben hissediyorum” dili.</li><li>Dinle, cevap vermeden önce.</li><li>Özür dile, gerektiğinde.</li><li>Sarılarak bitir.</li></ol><h2>Sonuç</h2><p>Aşk, bir kıvılcım değil, bir ateştir. Kıvılcım kendiliğinden gelir; ateşi canlı tutmak için her gün odun atmak gerekir.</p>` },
 
-<p>Bu, aşkın bittiği anlamına gelmez. Bu, aşkın <em>değiştiği</em> anlamına gelir. Ve bu değişimi doğru yöneten çiftler, ömür boyu birlikte kalır.</p>
-
-<h2>Aşk bir duygu değil, bir pratiktir</h2>
-
-<p>Popüler kültür bize aşkı bir duygu olarak öğretir. "Aşık oldum" deriz, sanki bir anda olmuş gibi. Ama uzun ilişkilerde aşk, bir <strong>karar</strong> ve bir <strong>pratik</strong>tir. Her sabah o insanı tekrar seçmek, her akşam onun yanında olmayı tekrar istemek.</p>
-
-<blockquote>Aşk, bir anda olmaz. Her gün yeniden inşa edilir.</blockquote>
-
-<h2>Küçük şeyler, büyük fark</h2>
-
-<p>Uzun ilişkiler, büyük jestlerle değil, küçük alışkanlıklarla ayakta kalır:</p>
-
-<ul>
-<li><strong>Selamlaşma.</strong> Eve girdiğinde, telefonu bırak ve eşini selamla. On saniye ayır — sadece ona.</li>
-<li><strong>Vedalaşma.</strong> Çıkarken öp, sarıl, "iyi günler" de. Bu, her gün tekrarlanması gereken bir ritüeldir.</li>
-<li><strong>İltifat.</strong> "Bugün çok güzelsin" ya da "Bu yemeği harika yapmışsın." Küçük ama gerçek. Ayda bir kez değil, her hafta.</li>
-<li><strong>Dinleme.</strong> Onun anlattığı bir şeyi hatırla. Ertesi hafta sor: "O iş ne oldu?" İşte bu, sevildiğini hissettirir.</li>
-<li><strong>Dokunma.</strong> Elini tut, saçını okşa, sırtına masaj yap. Fiziksel temas, kelimelerden çok şey söyler.</li>
-</ul>
-
-<h2>Kavga etmeyi öğrenmek</h2>
-
-<p>Sağlıklı bir ilişki, kavga etmeyen ilişki değildir. <em>Doğru kavga eden</em> ilişkidir. Yanlış kavgada herkes kaybeder: ses yükselir, geçmiş deşilir, kalpler kırılır. Doğru kavgada herkes kazanır: sorun çözülür, bağ güçlenir.</p>
-
-<p>Doğru kavganın kuralları:</p>
-<ol>
-<li><strong>Aynı takımda olduğunuzu hatırla.</strong> Sorun, sen ve ben değil; sen ve ben <em>karşısında</em> sorundur.</li>
-<li><strong>Geçmişi deşme.</strong> Şu anki sorunu çöz, eski olayları değil.</li>
-<li><strong>Suçlama yerine "ben" dili kullan.</strong> "Sen hep böyle yapıyorsun" yerine "Ben bu durumda kendimi yalnız hissediyorum."</li>
-<li><strong>Dinle, cevap vermeden önce.</strong> Karşı tarafı gerçekten duymadan savunmaya geçme.</li>
-<li><strong>Özür dile, gerektiğinde.</strong> "Haklısın, ben hatalıydım" demek, zayıflık değil, olgunluktur.</li>
-<li><strong>Sarılarak bitir.</strong> Kavganın sonunda, fiziksel temas, ilişkiyi onarır.</li>
-</ol>
-
-<h2>Ortak hedefler</h2>
-
-<p>Uzun bir ilişkiyi ayakta tutan bir diğer güçlü şey, <strong>ortak hedeflerdir</strong>. Bir ev, bir tatil, bir çocuk, bir proje, bir hayal. Beraber bir şey inşa etmek, iki insanı birbirine bağlar.</p>
-
-<p>Her yıl bir kez, birlikte oturup şu soruları sorun: Bu yıl neyi başarmak istiyoruz? Beş yıl sonra nerede olmak istiyoruz? Bu ilişkide daha çok neye ihtiyacımız var? Bu konuşmalar, ilişkiyi canlı tutar.</p>
-
-<h2>Kendine de zaman ayır</h2>
-
-<p>İyi bir ilişki, iki bütün insanın bir araya gelmesidir. Yarım insanlar, bir bütün oluşturamaz. Bu yüzden kendi arkadaşların, kendi hobilerin, kendi hedeflerin olsun. Eşin de kendi hayatına sahip olsun. Birlikte olmak, bir olmak değildir.</p>
-
-<h2>Sonuç</h2>
-
-<p>Uzun bir ilişki, bir maratondur. Sprint değil. Sabır, fedakârlık ve süreklilik ister. Ama doğru insanla, doğru pratiklerle, bu maraton bir yük değil, bir ödül olur.</p>
-
-<p>Aşk, bir kıvılcım değil, bir ateştir. Kıvılcım kendiliğinden gelir; ateşi canlı tutmak için her gün odun atmak gerekir.</p>
-`
-},
-{
-  id:15, cat:'Beceri', date:'14 Eylül 2026', read:'9 dk',
+{ id:15, cat:'Beceri', date:'14 Eylül 2026', read:'9 dk', tags:['Yemek','Mutfak','Öz Bakım'],
   title:'Evde Yemek Yapmak: Bir Erkeğin Mutfakta Kendini Bulması',
-  excerpt:'Yemek yapmak, bir zorunluluk değil, bir özgürlüktür. Kendini besleyebilen erkek, kimseye mecbur değildir.',
-  tags:['Yemek','Mutfak','Öz bakım'],
-  lead:'Yemek yapmak, bir zorunluluk değil, bir özgürlüktür. Kendini besleyebilen erkek, kimseye mecbur değildir. Ve iyi yemek yapan erkek, çevresindekilere de iyi bakar.',
-  body:`
-<p>Yakın zamana kadar mutfak, erkekler için bir "kadın alanı" olarak görülüyordu. Bugün ise yemek yapmak, bir erkeğin öz bakımının ve bağımsızlığının en somut göstergelerinden biri haline geldi. Çünkü yemek yapmak, sadece karın doyurmak değildir.</p>
-
-<p>Yemek yapmak; planlama, sabır, yaratıcılık ve el becerisinin bir arada kullanıldığı bir pratiktir. Ve bu pratik, bir erkeğin hayatının her alanına yansır.</p>
-
-<h2>İlk adım: mutfağı tanımak</h2>
-
-<p>Yemek yapmayı öğrenmenin ilk kuralı, mutfağını tanımaktır. Hangi tencere, hangi tava, hangi bıçak — her birinin bir işi vardır. Başlangıç için şu beş ekipman yeterlidir:</p>
-
-<ul>
-<li><strong>Bir tencere</strong> (makarna, çorba, pilav için).</li>
-<li><strong>Bir tava</strong> (yumurta, et, sebze için).</li>
-<li><strong>Bir şef bıçağı</strong> (doğrama, kesme için — kaliteli bir bıçak, en iyi yatırımdır).</li>
-<li><strong>Bir kesme tahtası</strong> (ahşap ya da plastik).</li>
-<li><strong>Bir spatula ve bir kepçe.</strong></li>
-</ul>
-
-<p>Bunlar varsa, gerisi gelir. Pahalı ekipman, iyi yemeğin şartı değildir. Bıçak keskin olsun, tencere düz olsun — yeter.</p>
-
-<blockquote>Yemek yapabilen erkek, kendine yeten erkektir.</blockquote>
-
-<h2>Beş temel beceri</h2>
-
-<h3 style="font-size:1.1rem;font-weight:600;margin:22px 0 10px;color:var(--text);">1. Doğrama</h3>
-<p>Soğan, sarımsak, domates, biber. Her birinin kesim şekli farklıdır; ama hepsinin temeli aynıdır: bıçağı ileri-geri hareket ettir, parmaklarını içe kıvır, gözünü bıçağa değil, malzemeye odakla.</p>
-
-<h3 style="font-size:1.1rem;font-weight:600;margin:22px 0 10px;color:var(--text);">2. Kızartma</h3>
-<p>Tava ısınmadan malzeme koyma. Yağ yeterli olmalı, ama fazla olmamalı. Yüksek ateş, dışı yakar içi çiğ bırakır. Orta ateş, çoğu yemek için idealdir.</p>
-
-<h3 style="font-size:1.1rem;font-weight:600;margin:22px 0 10px;color:var(--text);">3. Haşlama</h3>
-<p>Sebze, makarna, yumurta. Tuzlu suda haşla, süreyi takip et. Aşırı haşlanan makarna, kurtarılamaz.</p>
-
-<h3 style="font-size:1.1rem;font-weight:600;margin:22px 0 10px;color:var(--text);">4. Baharatlama</h3>
-<p>Tuz, karabiber, pul biber, kekik, kimyon. Dört temel baharat yeterlidir: tuz, karabiber, kekik, pul biber. Gerisi zamanla gelir. Az baharatla başla, tadına bak, ekle.</p>
-
-<h3 style="font-size:1.1rem;font-weight:600;margin:22px 0 10px;color:var(--text);">5. Zamanlama</h3>
-<p>Yemeği aynı anda masaya koymak, deneyimle gelir. Başlangıç için tek yemek yap. Sonra ikiye çıkar. Üçüncüye bir salata ekle. Yavaş yavaş çoğalt.</p>
-
-<h2>Başlangıç için üç yemek</h2>
-
-<p>İlk hafta üç yemek yeter: <strong>omlet</strong>, <strong>makarna</strong>, <strong>mercimek çorbası</strong>. Bu üç yemek, temel becerileri öğretir ve mutfak korkusunu kırar.</p>
-
-<p>İkinci hafta üçe ekle: <strong>tavuk sote</strong>, <strong>pilav</strong>, <strong>salata</strong>. Üçüncü hafta: <strong>köfte</strong>, <strong>sebze güveç</strong>, <strong>menemen</strong>. Bir ay sonunda elinde dokuz yemek olur. Bu, tek başına yaşayan bir erkeğin ihtiyacını fazlasıyla karşılar.</p>
-
-<h2>Yemek yapmanın gizli faydaları</h2>
-
-<ul>
-<li><strong>Sağlık.</strong> Dışarıda yapılan yemekler, neredeyse her zaman daha yağlı, daha tuzlu, daha şekerlidir. Kendi yemeğin, sağlığının kontrolüdür.</li>
-<li><strong>Para.</strong> Evde yemek yapmak, dışarıda yemekten üç-dört kat daha ekonomiktir. Aylık ciddi bir birikim.</li>
-<li><strong>Zihin.</strong> Yemek yapmak, meditasyona benzer bir farkındalık pratiğidir. Sadece bir şeye odaklanırsın: o an.</li>
-<li><strong>İlişki.</strong> Sevdiklerine yemek yapmak, sözcüklerle anlatılamayan bir sevgi dilidir.</li>
-<li><strong>Özgüven.</strong> Kendini besleyebilen erkek, hayatın her alanında daha güçlü hisseder.</li>
-</ul>
-
-<h2>Sonuç</h2>
-
-<p>Mutfak, bir erkeğin kendini bulduğu yerlerden biridir. Sadece yemek pişirmek değil, sabrı, dikkati ve özeni öğrendiği yerdir. Bugün bir omlet yaparak başla. Yarın bir makarna. Ertesi hafta bir çorba. Bir ay sonra, arkadaşlarını yemeğe çağıracak kadar güveneceksin kendine.</p>
-
-<p>Ve o gün, fark edeceksin ki yemek yapmak, sadece bir beceri değil, bir yaşam biçimidir.</p>
-`
-}
+  excerpt:'Yemek yapmak bir zorunluluk değil, bir özgürlüktür. Kendini besleyebilen erkek, kimseye mecbur değildir.',
+  lead:'Yemek yapmak bir zorunluluk değil, bir özgürlüktür. Kendini besleyebilen erkek, kimseye mecbur değildir.',
+  body:`<p>Yakın zamana kadar mutfak, erkekler için bir “kadın alanı” olarak görülüyordu. Bugün ise yemek yapmak, bir erkeğin bağımsızlığının en somut göstergesidir.</p><h2>İlk adım: mutfağı tanımak</h2><ul><li>Bir tencere, bir tava, bir şef bıçağı, bir kesme tahtası, bir spatula.</li></ul><blockquote>Yemek yapabilen erkek, kendine yeten erkektir.</blockquote><h2>Beş temel beceri</h2><ol><li>Doğrama.</li><li>Kızartma.</li><li>Haşlama.</li><li>Baharatlama.</li><li>Zamanlama.</li></ol><h2>Başlangıç için üç yemek</h2><p>Omlet, makarna, mercimek çorbası. İlk hafta bu üç yemek yeter.</p><h2>Faydaları</h2><ul><li>Sağlık, para, zihin, ilişki, özgüven.</li></ul><h2>Sonuç</h2><p>Bugün bir omlet yaparak başla. Bir ay sonra arkadaşlarını yemeğe çağıracak kadar güveneceksin kendine.</p>` }
 ];
 
 /* ============================================================
-   STATE & INIT
+   DURUM
    ============================================================ */
-let currentFilter = '';
+const state = {
+  view: 'home',     // 'home' | 'article' | 'about'
+  articleId: null,
+  filter: ''
+};
 
-/* ---- TEMA ---- */
-function toggleTheme(){
-  const html = document.documentElement;
-  const current = html.getAttribute('data-theme');
-  const next = current === 'dark' ? 'light' : 'dark';
-  html.setAttribute('data-theme', next);
-  localStorage.setItem('theme', next);
-  updateThemeIcon(next);
+/* ============================================================
+   YARDIMCI
+   ============================================================ */
+function esc(s){
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
+
+/* ============================================================
+   RENDER FONKSİYONLARI
+   ============================================================ */
+function renderHome(){
+  const list = state.filter ? ARTICLES.filter(a => a.cat === state.filter) : ARTICLES;
+  const title = state.filter ? state.filter + ' Yazıları' : 'Tüm Yazılar';
+
+  const bentoPicks = [ARTICLES[0], ARTICLES[1], ARTICLES[4], ARTICLES[9], ARTICLES[10]];
+  const bentoHTML = bentoPicks.map((a, i) => `
+    <button type="button" class="bento-item fade ${i===0?'bento-hero':''}" data-action="article" data-id="${a.id}">
+      <span class="tag">${esc(a.cat)}</span>
+      <h3>${esc(a.title)}</h3>
+      <p>${esc(a.excerpt)}</p>
+      <div class="meta"><span>${esc(a.date)}</span><span class="dot"></span><span>${esc(a.read)} okuma</span></div>
+    </button>
+  `).join('');
+
+  const catsHTML = CATEGORIES.map(c => {
+    const count = ARTICLES.filter(a => a.cat === c.name).length;
+    return `
+      <button type="button" class="cat-card fade" data-action="cat" data-cat="${esc(c.name)}">
+        <div class="icon">${c.icon}</div>
+        <h3>${esc(c.name)}</h3>
+        <div class="count">${count} yazı</div>
+      </button>
+    `;
+  }).join('');
+
+  const chipsHTML = `
+    <button type="button" class="chip ${!state.filter?'active':''}" data-action="cat" data-cat="">Tümü</button>
+    ${CATEGORIES.map(c => `
+      <button type="button" class="chip ${state.filter===c.name?'active':''}" data-action="cat" data-cat="${esc(c.name)}">${esc(c.name)}</button>
+    `).join('')}
+  `;
+
+  const cardsHTML = list.length ? list.map(a => `
+    <button type="button" class="art-card fade" data-action="article" data-id="${a.id}">
+      <div class="art-visual"><span class="mono-letter">${esc(a.title.charAt(0))}</span></div>
+      <div class="art-body">
+        <span class="tag">${esc(a.cat)}</span>
+        <h3>${esc(a.title)}</h3>
+        <p>${esc(a.excerpt)}</p>
+        <div class="foot"><span>${esc(a.date)}</span><span class="read">${esc(a.read)} →</span></div>
+      </div>
+    </button>
+  `).join('') : '<p style="color:var(--muted);grid-column:1/-1;">Bu kategoride henüz yazı yok.</p>';
+
+  return `
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <div class="hero-badge"><span class="dot"></span>Her pazar yeni bir yazı · Bağımsız yayın</div>
+          <h1>Zamansız erdemler,<br><em>modern bir erkek</em> için.</h1>
+          <p class="lead">Karakter, beceri, sağlık ve ilişkiler üzerine derinlemesine yazılar. Erkekliği bir kalıp değil, bir yolculuk olarak görenler için.</p>
+          <div class="hero-cta">
+            <button type="button" class="btn btn-accent" data-action="scroll" data-target="featured">
+              Yazıları Keşfet
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </button>
+            <button type="button" class="btn btn-ghost" data-action="about">Hakkımızda</button>
+          </div>
+          <div class="hero-stats">
+            <div class="stat"><div class="num" data-count="15">0</div><div class="lbl">Özgün Yazı</div></div>
+            <div class="stat"><div class="num" data-count="8">0</div><div class="lbl">Kategori</div></div>
+            <div class="stat"><div class="num" data-count="42">0</div><div class="lbl">Dakika Ortalama</div></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="float-card fc-1">
+            <div class="tag">Karakter</div>
+            <div class="title">Sessizlik zayıflık değil, derinliktir.</div>
+            <div class="meta">6 dk okuma</div>
+          </div>
+          <div class="float-card fc-2">
+            <div class="tag">İlişkiler</div>
+            <div class="title">Erkekler neden 30’undan sonra yalnızlaşır?</div>
+            <div class="meta">9 dk okuma</div>
+          </div>
+          <div class="float-card fc-3">
+            <div class="tag">Beceri</div>
+            <div class="title">Her erkeğin bilmesi gereken 7 temel tamir</div>
+            <div class="meta">12 dk okuma</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="featured">
+      <div class="container">
+        <div class="section-head fade">
+          <div>
+            <span class="kicker">— Bu Hafta Öne Çıkanlar</span>
+            <h2>Yeni ve derinlemesine yazılar</h2>
+            <p>Her yazı; zamansız bir ilkeyi, modern hayatın gerçekleriyle buluşturur.</p>
+          </div>
+          <button type="button" class="link-arrow" data-action="cat" data-cat="">Tüm yazılar →</button>
+        </div>
+        <div class="bento">${bentoHTML}</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head fade">
+          <div><span class="kicker">— Keşfet</span><h2>Kategoriler</h2></div>
+        </div>
+        <div class="cats-grid">${catsHTML}</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head fade">
+          <div><span class="kicker">— Kütüphane</span><h2>${esc(title)}</h2></div>
+        </div>
+        <div class="filters">${chipsHTML}</div>
+        <div class="articles-grid">${cardsHTML}</div>
+      </div>
+    </section>
+
+    <section class="quote-band">
+      <div class="container">
+        <blockquote>“İnsan, kendisini bekleyen işi yapmadığı her gün, biraz daha küçülür.”</blockquote>
+        <cite>— Erkeklik Sanatı</cite>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="newsletter fade">
+          <h2>Her pazar, tek bir sağlam fikir.</h2>
+          <p>Spam yok. Reklam yok. Sadece haftanın en iyi yazısı ve düşünmeye değer bir soru.</p>
+          <form id="newsletterForm">
+            <input type="email" placeholder="merhaba@ornek.com" required>
+            <button type="submit" class="btn btn-accent">Abone Ol</button>
+          </form>
+          <small>İstediğin zaman çıkabilirsin. Sözümüz söz.</small>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function renderArticle(){
+  const a = ARTICLES.find(x => x.id === state.articleId);
+  if (!a) return '<div class="container" style="padding:80px 24px;text-align:center;"><p>Yazı bulunamadı.</p></div>';
+  return `
+    <div class="reader">
+      <div class="container narrow">
+        <button type="button" class="back" data-action="home">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Tüm Yazılar
+        </button>
+        <span class="kicker">— ${esc(a.cat)}</span>
+        <h1>${esc(a.title)}</h1>
+        <div class="meta">
+          <span>${esc(a.date)}</span><span class="dot"></span>
+          <span>${esc(a.read)} okuma</span><span class="dot"></span>
+          <span>Erkeklik Sanatı</span>
+        </div>
+        <div class="content">
+          <p class="lead">${esc(a.lead)}</p>
+          ${a.body}
+        </div>
+        <div class="tags">${a.tags.map(t => `<span>#${esc(t)}</span>`).join('')}</div>
+      </div>
+    </div>
+  `;
+}
+
+function renderAbout(){
+  return `
+    <div class="container">
+      <div class="about-hero">
+        <span class="kicker" style="font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);">— Hakkında</span>
+        <h1 style="margin-top:16px;">Erkekliği yeniden <em style="font-style:italic;color:var(--accent);">düşünmek</em> üzerine.</h1>
+        <p>Erkeklik Sanatı, erkeklerin karakter, beceri ve amaç bakımından daha sağlam bir hayat kurmalarına yardımcı olmak için kurulmuş bağımsız bir yayındır.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-card"><div class="num">01</div><h3>Zamansız ilkeler</h3><p>Moda akımların değil, yüzyıllardır işe yarayan ilkelerin peşindeyiz.</p></div>
+        <div class="about-card"><div class="num">02</div><h3>Modern gerçekler</h3><p>Gelenek körü körüne tekrarlanmaz. Bugünün dünyasında ne anlama geldiğini sorgularız.</p></div>
+        <div class="about-card"><div class="num">03</div><h3>Pratik bilgi</h3><p>Her yazının sonunda uygulanabilir bir adım vardır.</p></div>
+        <div class="about-card"><div class="num">04</div><h3>Bağımsız ses</h3><p>Algoritma bize ne yazacağımızı söylemez. Reklamveren değil, okur önce gelir.</p></div>
+      </div>
+      <div class="narrow" style="padding:20px 0 40px;">
+        <div class="reader content" style="display:block;padding:0;">
+          <h2>Neden varız?</h2>
+          <p>Bugünün erkeği, tarihte hiç olmadığı kadar çok bilgiye, ama çok az rehberliğe sahip. Bir yanda “erkek adam ağlamaz” diyen katı bir gelenek; diğer yanda köklerinden kopmuş bir modernlik. İkisi de eksik.</p>
+          <p>Biz üçüncü bir yol öneriyoruz: <strong>sorumluluk alan, ama duygularını bastırmayan; güçlü olan, ama kibirli olmayan; öğrenmeye devam eden, ama kendine dürüst kalan bir erkeklik.</strong></p>
+          <blockquote>Erkeklik bir kalıp değil, bir yolculuktur. Varış yok, yön var.</blockquote>
+          <p>Burada bulacağın her yazı, bu yolculuğun bir durağıdır. Acele etme. Oku. Düşün. Uygula.</p>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+/* ============================================================
+   RENDER (tek giriş noktası)
+   ============================================================ */
+function render(){
+  const app = document.getElementById('app');
+  if (!app) return;
+
+  let html = '';
+  if (state.view === 'article') html = renderArticle();
+  else if (state.view === 'about') html = renderAbout();
+  else html = renderHome();
+
+  app.innerHTML = html;
+  window.scrollTo({top:0, behavior:'auto'});
+  triggerFade();
+  animateCounters();
+  attachNewsletter();
+}
+
+/* ============================================================
+   EVENT DELEGATION — TÜM TIKLAMALAR
+   ============================================================ */
+document.addEventListener('click', (e) => {
+  const el = e.target.closest('[data-action]');
+  if (!el) return;
+  e.preventDefault();
+  e.stopPropagation();
+
+  const action = el.getAttribute('data-action');
+
+  if (action === 'home'){
+    state.view = 'home';
+    state.filter = '';
+    closeMenu();
+    render();
+  }
+  else if (action === 'about'){
+    state.view = 'about';
+    closeMenu();
+    render();
+  }
+  else if (action === 'article'){
+    const id = parseInt(el.getAttribute('data-id'), 10);
+    if (!isNaN(id)){
+      state.view = 'article';
+      state.articleId = id;
+      closeMenu();
+      render();
+    }
+  }
+  else if (action === 'cat'){
+    const cat = el.getAttribute('data-cat') || '';
+    state.view = 'home';
+    state.filter = cat;
+    closeMenu();
+    render();
+    setTimeout(() => {
+      const grid = document.querySelector('.articles-grid');
+      if (grid) {
+        const y = grid.getBoundingClientRect().top + window.scrollY - 100;
+        window.scrollTo({top: y, behavior:'smooth'});
+      }
+    }, 80);
+  }
+  else if (action === 'scroll'){
+    const target = document.getElementById(el.getAttribute('data-target'));
+    if (target) target.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+  else if (action === 'theme'){
+    toggleTheme();
+  }
+  else if (action === 'menu'){
+    toggleMenu();
+  }
+  else if (action === 'top'){
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  else if (action === 'contact'){
+    alert('İletişim: merhaba@erkekliksanati.example');
+  }
+  else if (action === 'privacy'){
+    alert('Bu site özgün bir yayındır. Art of Manliness ile bağlantısı yoktur.');
+  }
+});
+
+/* ============================================================
+   TEMA
+   ============================================================ */
 function updateThemeIcon(theme){
   const icon = document.getElementById('themeIcon');
   if (!icon) return;
@@ -1710,218 +743,107 @@ function updateThemeIcon(theme){
     ? '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>'
     : '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
 }
+function toggleTheme(){
+  const html = document.documentElement;
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  try { localStorage.setItem('theme', next); } catch(e){}
+  updateThemeIcon(next);
+}
 (function initTheme(){
-  const saved = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const theme = saved || (prefersDark ? 'dark' : 'light');
+  let theme = 'light';
+  try {
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    theme = saved || (prefersDark ? 'dark' : 'light');
+  } catch(e){}
   document.documentElement.setAttribute('data-theme', theme);
   updateThemeIcon(theme);
 })();
 
-/* ---- MENU ---- */
+/* ============================================================
+   MENÜ
+   ============================================================ */
 function toggleMenu(){
-  document.getElementById('navMobile').classList.toggle('open');
+  const m = document.getElementById('navMobile');
+  if (m) m.classList.toggle('open');
+}
+function closeMenu(){
+  const m = document.getElementById('navMobile');
+  if (m) m.classList.remove('open');
 }
 
-/* ---- ROUTING ---- */
-function go(page){
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  const el = document.getElementById('page-' + page);
-  if (el) el.classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
-  setTimeout(() => triggerFade(), 100);
-  document.getElementById('progress').style.width = '0%';
+/* ============================================================
+   FADE IN
+   ============================================================ */
+let fadeObserver;
+function triggerFade(){
+  if (fadeObserver) fadeObserver.disconnect();
+  fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('in');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.05, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.fade:not(.in)').forEach(el => fadeObserver.observe(el));
 }
 
-/* ---- RENDER BENTO ---- */
-function renderBento(){
-  const grid = document.getElementById('bentoGrid');
-  const picks = [ARTICLES[0], ARTICLES[1], ARTICLES[4], ARTICLES[9], ARTICLES[10]];
-  grid.innerHTML = '';
-  picks.forEach((a, i) => {
-    const item = document.createElement('div');
-    item.className = 'bento-item fade' + (i === 0 ? ' bento-hero' : '');
-    item.onclick = () => openArticle(a.id);
-    item.innerHTML = `
-      <span class="tag">${a.cat}</span>
-      <h3>${a.title}</h3>
-      <p>${a.excerpt}</p>
-      <div class="meta">
-        <span>${a.date}</span>
-        <span class="dot"></span>
-        <span>${a.read} okuma</span>
-      </div>
-    `;
-    grid.appendChild(item);
+/* ============================================================
+   SAYAÇLAR
+   ============================================================ */
+function animateCounters(){
+  const els = document.querySelectorAll('[data-count]');
+  els.forEach(el => {
+    const target = parseInt(el.getAttribute('data-count'), 10);
+    if (isNaN(target)) return;
+    const start = performance.now();
+    const dur = 1400;
+    function tick(now){
+      const t = Math.min((now - start) / dur, 1);
+      const ease = 1 - Math.pow(1 - t, 3);
+      el.textContent = Math.round(target * ease);
+      if (t < 1) requestAnimationFrame(tick);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(tick);
   });
 }
 
-/* ---- RENDER CATEGORIES ---- */
-function renderCats(){
-  const grid = document.getElementById('catsGrid');
-  grid.innerHTML = '';
-  CATEGORIES.forEach(c => {
-    const count = ARTICLES.filter(a => a.cat === c.name).length;
-    const card = document.createElement('div');
-    card.className = 'cat-card fade';
-    card.onclick = () => filterCat(c.name);
-    card.innerHTML = `
-      <div class="icon">${c.icon}</div>
-      <h3>${c.name}</h3>
-      <div class="count">${count} yazı</div>
-    `;
-    grid.appendChild(card);
+/* ============================================================
+   NEWSLETTER
+   ============================================================ */
+function attachNewsletter(){
+  const form = document.getElementById('newsletterForm');
+  if (!form) return;
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const input = form.querySelector('input');
+    if (input && input.value) {
+      alert('Teşekkürler! ' + input.value + ' adresi kaydedildi.');
+      input.value = '';
+    }
   });
 }
 
-/* ---- RENDER FILTERS ---- */
-function renderFilters(){
-  const wrap = document.getElementById('filters');
-  wrap.innerHTML = '';
-  const all = document.createElement('button');
-  all.className = 'chip' + (currentFilter === '' ? ' active' : '');
-  all.textContent = 'Tümü';
-  all.onclick = () => filterCat('');
-  wrap.appendChild(all);
-  CATEGORIES.forEach(c => {
-    const btn = document.createElement('button');
-    btn.className = 'chip' + (currentFilter === c.name ? ' active' : '');
-    btn.textContent = c.name;
-    btn.onclick = () => filterCat(c.name);
-    wrap.appendChild(btn);
-  });
-}
-
-/* ---- RENDER ARTICLE GRID ---- */
-function renderGrid(){
-  const grid = document.getElementById('articleGrid');
-  const list = currentFilter ? ARTICLES.filter(a => a.cat === currentFilter) : ARTICLES;
-  document.getElementById('gridTitle').textContent = currentFilter ? currentFilter + ' Yazıları' : 'Tüm Yazılar';
-  grid.innerHTML = '';
-  if (!list.length) {
-    grid.innerHTML = '<p style="color:var(--muted);grid-column:1/-1;">Bu kategoride henüz yazı yok.</p>';
-    return;
-  }
-  list.forEach(a => {
-    const card = document.createElement('article');
-    card.className = 'art-card fade';
-    card.onclick = () => openArticle(a.id);
-    card.innerHTML = `
-      <div class="art-visual">
-        <span class="mono-letter">${a.title.charAt(0)}</span>
-      </div>
-      <div class="art-body">
-        <span class="tag">${a.cat}</span>
-        <h3>${a.title}</h3>
-        <p>${a.excerpt}</p>
-        <div class="foot">
-          <span>${a.date}</span>
-          <span class="read">${a.read} →</span>
-        </div>
-      </div>
-    `;
-    grid.appendChild(card);
-  });
-}
-
-/* ---- FILTER ---- */
-function filterCat(cat){
-  currentFilter = cat;
-  renderFilters();
-  renderGrid();
-  if (document.getElementById('page-home').classList.contains('active')) {
-    setTimeout(() => document.getElementById('gridTitle').scrollIntoView({behavior:'smooth',block:'start'}), 100);
-  } else {
-    go('home');
-    setTimeout(() => document.getElementById('gridTitle').scrollIntoView({behavior:'smooth',block:'start'}), 200);
-  }
-}
-
-/* ---- OPEN ARTICLE ---- */
-function openArticle(id){
-  const a = ARTICLES.find(x => x.id === id);
-  if (!a) return;
-  document.getElementById('rCat').textContent = '— ' + a.cat;
-  document.getElementById('rTitle').textContent = a.title;
-  document.getElementById('rDate').textContent = a.date;
-  document.getElementById('rRead').textContent = a.read + ' okuma';
-  document.getElementById('rBody').innerHTML = '<p class="lead">' + a.lead + '</p>' + a.body;
-  document.getElementById('rTags').innerHTML = a.tags.map(t => '<span>#' + t + '</span>').join('');
-  go('yazi');
-}
-
-/* ---- SUBSCRIBE ---- */
-function subscribe(e){
-  e.preventDefault();
-  const input = e.target.querySelector('input');
-  alert('Teşekkürler! ' + input.value + ' adresi kaydedildi.');
-  input.value = '';
-}
-
-/* ---- SCROLL PROGRESS + BACK TO TOP ---- */
+/* ============================================================
+   SCROLL PROGRESS + BACK TO TOP
+   ============================================================ */
 window.addEventListener('scroll', () => {
   const h = document.documentElement;
   const total = h.scrollHeight - h.clientHeight;
   const pct = total > 0 ? (h.scrollTop / total) * 100 : 0;
   const bar = document.getElementById('progress');
   if (bar) bar.style.width = pct + '%';
-
   const bt = document.getElementById('backTop');
   if (bt) bt.classList.toggle('show', h.scrollTop > 500);
-});
+}, {passive:true});
 
-/* ---- FADE IN OBSERVER ---- */
-let fadeObserver;
-function triggerFade(){
-  if (fadeObserver) fadeObserver.disconnect();
-  fadeObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-        fadeObserver.unobserve(entry.target);
-      }
-    });
-  }, {threshold:0.08, rootMargin:'0px 0px -60px 0px'});
-  document.querySelectorAll('.fade:not(.in)').forEach(el => fadeObserver.observe(el));
-}
-
-/* ---- NUMBER COUNTERS ---- */
-function animateCounters(){
-  const els = document.querySelectorAll('[data-count]');
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = parseInt(el.getAttribute('data-count'));
-        const dur = 1400;
-        const start = performance.now();
-        function tick(now){
-          const t = Math.min((now - start) / dur, 1);
-          const ease = 1 - Math.pow(1 - t, 3);
-          el.textContent = Math.round(target * ease);
-          if (t < 1) requestAnimationFrame(tick);
-          else el.textContent = target;
-        }
-        requestAnimationFrame(tick);
-        obs.unobserve(el);
-      }
-    });
-  }, {threshold:0.4});
-  els.forEach(el => obs.observe(el));
-}
-
-/* ---- INIT ---- */
-renderBento();
-renderCats();
-renderFilters();
-renderGrid();
-triggerFade();
-animateCounters();
-
-/* Re-trigger fade on page switch */
-document.querySelectorAll('.page').forEach(p => {
-  p.addEventListener('click', () => setTimeout(triggerFade, 50), true);
-});
+/* ============================================================
+   BAŞLAT
+   ============================================================ */
+render();
 </script>
 </body>
 </html>
