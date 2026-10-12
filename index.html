@@ -9,18 +9,14 @@
             --bg-color: #1a1a1a;
             --text-primary: #e0e0e0;
             --text-secondary: #a0a0a0;
-            --accent-color: #c5a059; /* Altın/Bronz tonu */
+            --accent-color: #c5a059; /* Altın/Bronz */
             --card-bg: #252525;
             --font-heading: 'Georgia', serif;
             --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
             background-color: var(--bg-color);
             color: var(--text-primary);
@@ -29,7 +25,7 @@
             overflow-x: hidden;
         }
 
-        /* Header & Navigation */
+        /* --- HEADER & NAV --- */
         header {
             position: fixed;
             top: 0;
@@ -42,6 +38,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 60px;
         }
 
         .logo {
@@ -51,6 +48,7 @@
             color: var(--accent-color);
             text-decoration: none;
             letter-spacing: 1px;
+            cursor: pointer;
         }
 
         nav ul {
@@ -66,22 +64,36 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: color 0.3s ease;
+            cursor: pointer;
         }
 
-        nav a:hover {
+        nav a:hover { color: var(--accent-color); }
+
+        /* Mobile Menu Button */
+        .menu-btn {
+            display: none;
             color: var(--accent-color);
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
-        /* Hero Section */
+        /* --- VIEWS CONTAINER --- */
+        #app-container {
+            min-height: calc(100vh - 60px);
+            padding-top: 60px; /* Header offset */
+        }
+
+        /* --- HOME VIEW STYLES --- */
         .hero {
-            height: 80vh;
+            height: 70vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 2rem;
-            background: linear-gradient(to bottom, rgba(26,26,26,0.7), rgba(26,26,26,1)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background: linear-gradient(to bottom, rgba(26,26,26,0.7), rgba(26,26,26,1)), 
+                        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
             background-size: cover;
             background-position: center;
         }
@@ -101,7 +113,7 @@
             margin-bottom: 2rem;
         }
 
-        .btn {
+        .btn-hero {
             padding: 12px 30px;
             background-color: transparent;
             border: 2px solid var(--accent-color);
@@ -114,12 +126,11 @@
             display: inline-block;
         }
 
-        .btn:hover {
+        .btn-hero:hover {
             background-color: var(--accent-color);
             color: #1a1a1a;
         }
 
-        /* Main Content Grid */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -141,13 +152,15 @@
             gap: 2rem;
         }
 
-        /* Article Card */
         .card {
             background-color: var(--card-bg);
             border-radius: 4px;
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
         }
 
         .card:hover {
@@ -164,12 +177,13 @@
             transition: filter 0.3s ease;
         }
 
-        .card:hover .card-img {
-            filter: grayscale(0%);
-        }
+        .card:hover .card-img { filter: grayscale(0%); }
 
         .card-content {
             padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .card-category {
@@ -192,19 +206,95 @@
             font-size: 0.95rem;
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
+            flex-grow: 1;
         }
 
-        .read-more {
+        .read-more-text {
             color: var(--text-primary);
-            text-decoration: none;
             font-weight: bold;
             font-size: 0.9rem;
             border-bottom: 1px solid var(--accent-color);
             padding-bottom: 2px;
+            align-self: flex-start;
         }
 
-        .read-more:hover {
+        /* --- ARTICLE VIEW STYLES --- */
+        #article-view {
+            display: none; /* Hidden by default */
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
             color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .back-btn:hover { text-decoration: underline; }
+
+        .article-header h1 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .article-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #333;
+            padding-bottom: 1rem;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+        }
+
+        .article-body p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+
+        .article-body h2 {
+            font-family: var(--font-heading);
+            color: var(--accent-color);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .article-body ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .article-body li {
+            margin-bottom: 0.5rem;
+            color: #ccc;
+        }
+
+        .article-body strong {
+            color: white;
         }
 
         /* Footer */
@@ -215,33 +305,25 @@
             border-top: 1px solid #333;
             margin-top: 4rem;
         }
+        footer p { color: var(--text-secondary); font-size: 0.9rem; }
 
-        footer p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Mobile Adjustments */
+        /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
+            .hero h1 { font-size: 2.5rem; }
+            nav ul { display: none; }
+            .menu-btn { display: block; }
             
-            nav ul {
-                display: none; /* Basitleştirilmiş görünüm için gizle veya hamburger menü ekle */
-            }
-            
-            .header-mobile-toggle {
-                display: block;
-                color: var(--accent-color);
-                font-size: 1.5rem;
-                cursor: pointer;
-            }
-        }
-        
-        @media (min-width: 769px) {
-            .header-mobile-toggle {
-                display: none;
+            /* Simple mobile menu overlay if needed, keeping it simple here */
+            nav.mobile-open ul {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: #1a1a1a;
+                padding: 1rem;
+                border-bottom: 1px solid #333;
             }
         }
     </style>
@@ -250,180 +332,351 @@
 
     <!-- Header -->
     <header>
-        <a href="#" class="logo">ERDEM SANATI</a>
-        <nav>
+        <div class="logo" onclick="showHome()">ERDEM SANATI</div>
+        <nav id="main-nav">
             <ul>
-                <li><a href="#beceriler">Pratik Beceriler</a></li>
-                <li><a href="#karakter">Karakter Gelişimi</a></li>
-                <li><a href="#felsefe">Stoa & Felsefe</a></li>
-                <li><a href="#tarz">Giyim & Stil</a></li>
+                <li><a onclick="scrollToSection('beceriler')">Pratik Beceriler</a></li>
+                <li><a onclick="scrollToSection('karakter')">Karakter Gelişimi</a></li>
+                <li><a onclick="scrollToSection('felsefe')">Stoa & Felsefe</a></li>
             </ul>
         </nav>
-        <div class="header-mobile-toggle">☰</div>
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Geleneksel Değerler, Modern Yaşam.</h1>
-        <p>Kendini keşfetmek, becerilerini geliştirmek ve daha bilinçli bir birey olmak isteyen erkekler için kapsamlı rehber.</p>
-        <a href="#content-start" class="btn">Keşfetmeye Başla</a>
-    </section>
-
-    <!-- Main Content -->
-    <main id="content-start" class="container">
+    <div id="app-container">
         
-        <!-- Pratik Beceriler Bölümü -->
-        <section id="beceriler">
-            <h2 class="section-title">Hayatta Kalma & El Becerileri</h2>
-            <div class="grid">
+        <!-- HOME VIEW -->
+        <div id="home-view">
+            <section class="hero">
+                <h1>Geleneksel Değerler, Modern Yaşam.</h1>
+                <p>Kendini keşfetmek, becerilerini geliştirmek ve daha bilinçli bir birey olmak isteyen erkekler için kapsamlı rehber.</p>
+                <button class="btn-hero" onclick="document.getElementById('content-start').scrollIntoView({behavior: 'smooth'})">Keşfetmeye Başla</button>
+            </section>
+
+            <main id="content-start" class="container">
                 
-                <article class="card">
-                    <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Düğüm Atma" class="card-img">
-                    <div class="card-content">
-                        <span class="card-category">Temel Beceriler</span>
-                        <h3 class="card-title">8 Hayati Düğüm Tekniği</h3>
-                        <p class="card-excerpt">Doğada veya günlük hayatta işinize yarayacak, sağlam ve hızlı çözülebilen düğümlerin adım adım anlatımı.</p>
-                        <a href="#" class="read-more">Makaleyi Oku →</a>
-                    </div>
-                </article>
+                <!-- Section 1 -->
+                <section id="beceriler">
+                    <h2 class="section-title">Hayatta Kalma & El Becerileri</h2>
+                    <div class="grid">
+                        <article class="card" onclick="openArticle('dugum')">
+                            <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Düğüm Atma" class="card-img">
+                            <div class="card-content">
+                                <span class="card-category">Temel Beceriler</span>
+                                <h3 class="card-title">8 Hayati Düğüm Tekniği</h3>
+                                <p class="card-excerpt">Doğada veya günlük hayatta işinize yarayacak, sağlam ve hızlı çözülebilen düğümlerin adım adım anlatımı.</p>
+                                <span class="read-more-text">Makaleyi Oku →</span>
+                            </div>
+                        </article>
 
-                <article class="card">
-                    <img src="https://images.unsplash.com/photo-1548802673-380aa8cff835?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Ateş Yakma" class="card-img">
-                    <div class="card-content">
-                        <span class="card-category">Outdoor</span>
-                        <h3 class="card-title">Islak Havada Ateş Nasıl Yakılır?</h3>
-                        <p class="card-excerpt">En zor koşullarda bile ateş yakmanın bilimsel ve pratik yöntemleri. Çakmak taşından kibrite kadar alternatifler.</p>
-                        <a href="#" class="read-more">Makaleyi Oku →</a>
-                    </div>
-                </article>
+                        <article class="card" onclick="openArticle('ates')">
+                            <img src="https://images.unsplash.com/photo-1548802673-380aa8cff835?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Ateş Yakma" class="card-img">
+                            <div class="card-content">
+                                <span class="card-category">Outdoor</span>
+                                <h3 class="card-title">Islak Havada Ateş Nasıl Yakılır?</h3>
+                                <p class="card-excerpt">En zor koşullarda bile ateş yakmanın bilimsel ve pratik yöntemleri.</p>
+                                <span class="read-more-text">Makaleyi Oku →</span>
+                            </div>
+                        </article>
 
-                <article class="card">
-                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Tamirat" class="card-img">
-                    <div class="card-content">
-                        <span class="card-category">Ev Bakımı</span>
-                        <h3 class="card-title">Her Erkeğin Bilmesi Gereken 5 Tamir Yöntemi</h3>
-                        <p class="card-excerpt">Musluk sızıntısından elektrik prizine kadar evdeki basit sorunları profesyonel çağırmadan çözmenin sırları.</p>
-                        <a href="#" class="read-more">Makaleyi Oku →</a>
+                        <article class="card" onclick="openArticle('tamir')">
+                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Tamirat" class="card-img">
+                            <div class="card-content">
+                                <span class="card-category">Ev Bakımı</span>
+                                <h3 class="card-title">Her Erkeğin Bilmesi Gereken 5 Tamir Yöntemi</h3>
+                                <p class="card-excerpt">Musluk sızıntısından elektrik prizine kadar evdeki basit sorunları çözmenin sırları.</p>
+                                <span class="read-more-text">Makaleyi Oku →</span>
+                            </div>
+                        </article>
                     </div>
-                </article>
+                </section>
 
+                <br><br>
+
+                <!-- Section 2 -->
+                <section id="karakter">
+                    <h2 class="section-title">Zihin Gücü & Disiplin</h2>
+                    <div class="grid">
+                        <article class="card" onclick="openArticle('sabuh')">
+                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Sabah Rutini" class="card-img">
+                            <div class="card-content">
+                                <span class="card-category">Verimlilik</span>
+                                <h3 class="card-title">Şafak Disiplini: Sabah Rutini Oluşturma</h3>
+                                <p class="card-excerpt">Güne kazanarak başlamak için optimize edilmiş sabah programı.</p>
+                                <span class="read-more-text">Makaleyi Oku →</span>
+                            </div>
+                        </article>
+                         <article class="card" onclick="openArticle('okuma')">
+                            <img src="https://images.unsplash.com/photo-1476611338391-6f395a0ebf72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Kitap Okuma" class="card-img">
+                            <div class="card-content">
+                                <span class="card-category">Entelektüel</span>
+                                <h3 class="card-title">Derin Okuma Sanatı</h3>
+                                <p class="card-excerpt">Metnin özüne inmek ve bilgizi kişisel gelişiminize entegre etmek.</p>
+                                <span class="read-more-text">Makaleyi Oku →</span>
+                            </div>
+                        </article>
+                         <article class="card" onclick="openArticle('konasma')">
+                            <img src="https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Konuşma" class="card-img">
+                            <div class="card-content">
+                                <span class="card-category">Sosyal Zeka</span>
+                                <h3 class="card-title">Karizmatik Konuşmacı Olmak</h3>
+                                <p class="card-excerpt">Vücut dili ve retorik teknikleriyle dinleyenleri etkisi altına almak.</p>
+                                <span class="read-more-text">Makaleyi Oku →</span>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                 <br><br>
+
+                <!-- Section 3 -->
+                <section id="felsefe">
+                    <h2 class="section-title">Antik Bilgelik, Modern Çağrı</h2>
+                    <div class="grid">
+                        <article class="card" onclick="openArticle('stoa')">
+                            <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Marcus Aurelius" class="card-img">
+                            <div class="card-content">
+                                <span class="card-category">Stoacılık</span>
+                                <h3 class="card-title">Kontrol Edemediğini Kabul Et</h3>
+                                <p class="card-excerpt">Epiktetos'un öğretileri ışığında stres yönetimi ve duygusal dayanıklılık.</p>
+                                <span class="read-more-text">Makaleyi Oku →</span>
+                            </div>
+                        </article>
+                        <article class="card" onclick="openArticle('zaman')">
+                            <img src="https://images.unsplash.com/photo-1516571748831-5abc8bf7c1ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Seneca" class="card-img">
+                            <div class="card-content">
+                                <span class="card-category">Felsefe</span>
+                                <h3 class="card-title">Zamanın Kıymetini Bilmek</h3>
+                                <p class="card-excerpt">Seneca'nın eserinden günümüzün hız kültürüne karşı duruş sergilemek.</p>
+                                <span class="read-more-text">Makaleyi Oku →</span>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+
+        <!-- ARTICLE VIEW (Hidden Initially) -->
+        <div id="article-view">
+            <div class="back-btn" onclick="showHome()">&larr; Ana Sayfaya Dön</div>
+            <div class="article-header">
+                <h1 id="art-title"></h1>
+                <div class="article-meta" id="art-meta"></div>
             </div>
-        </section>
-
-        <br><br>
-
-        <!-- Karakter ve Zihin Bölümü -->
-        <section id="karakter">
-            <h2 class="section-title">Zihin Gücü & Disiplin</h2>
-            <div class="grid">
-                
-                <article class="card">
-                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Sabah Rutini" class="card-img">
-                    <div class="card-content">
-                        <span class="card-category">Verimlilik</span>
-                        <h3 class="card-title">Şafak Disiplini: Sabah Rutini Oluşturma</h3>
-                        <p class="card-excerpt">Güne kazanarak başlamak için uykudan kalkıştan ilk kahveye kadar optimize edilmiş sabah programı.</p>
-                        <a href="#" class="read-more">Makaleyi Oku →</a>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <img src="https://images.unsplash.com/photo-1476611338391-6f395a0ebf72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Kitap Okuma" class="card-img">
-                    <div class="card-content">
-                        <span class="card-category">Entelektüel</span>
-                        <h3 class="card-title">Derin Okuma Sanatı</h3>
-                        <p class="card-excerpt">Sadece sayfaları çevirmek değil, metnin özüne inmek ve bilgizi kişisel gelişiminize entegre etmek.</p>
-                        <a href="#" class="read-more">Makaleyi Oku →</a>
-                    </div>
-                </article>
-
-                 <article class="card">
-                    <img src="https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Konuşma" class="card-img">
-                    <div class="card-content">
-                        <span class="card-category">Sosyal Zeka</span>
-                        <h3 class="card-title">Karizmatik Konuşmacı Olmak</h3>
-                        <p class="card-excerpt">Vücut dili, ses tonu ve retorik teknikleriyle dinleyenleri etkisi altına almanın yolları.</p>
-                        <a href="#" class="read-more">Makaleyi Oku →</a>
-                    </div>
-                </article>
-
+            <img id="art-img" src="" alt="" class="article-image">
+            <div class="article-body" id="art-content">
+                <!-- Content injected via JS -->
             </div>
-        </section>
+        </div>
 
-         <br><br>
+    </div>
 
-        <!-- Stoa ve Felsefe Bölümü -->
-        <section id="felsefe">
-            <h2 class="section-title">Antik Bilgelik, Modern Çağrı</h2>
-            <div class="grid">
-                
-                <article class="card">
-                    <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Marcus Aurelius" class="card-img">
-                    <div class="card-content">
-                        <span class="card-category">Stoacılık</span>
-                        <h3 class="card-title">Kontrol Edemediğini Kabul Et</h3>
-                        <p class="card-excerpt">Epiktetos'un öğretileri ışığında stres yönetimi ve duygusal dayanıklılık inşa etme rehberi.</p>
-                        <a href="#" class="read-more">Makaleyi Oku →</a>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <img src="https://images.unsplash.com/photo-1516571748831-5abc8bf7c1ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Seneca" class="card-img">
-                    <div class="card-content">
-                        <span class="card-category">Felsefe</span>
-                        <h3 class="card-title">Zamanın Kıymetini Bilmek</h3>
-                        <p class="card-excerpt">Seneca'nın "De Vita Beata" esinden günümüzün hız kültürüne karşı duruş sergilemek.</p>
-                        <a href="#" class="read-more">Makaleyi Oku →</a>
-                    </div>
-                </article>
-
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
     <footer>
         <p>&copy; 2026 Erdem Sanatı. Tüm hakları saklıdır.</p>
-        <p style="margin-top: 10px; font-size: 0.8rem;">Kişisel gelişim, beceri edinme ve karakter inşası üzerine bağımsız yayın.</p>
     </footer>
 
     <script>
-        // Basit smooth scroll efekti
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if(target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80, // Header yüksekliği kadar offset
-                        behavior: 'smooth'
-                    });
+        // --- DATA STORE (All Articles Here) ---
+        const articlesData = {
+            'dugum': {
+                title: "8 Hayati Düğüm Tekniği",
+                category: "Temel Beceriler",
+                readTime: "5 dk",
+                image: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+                content: `
+                    <p>Bir ipin ucunu doğru bağlamak, bazen hayat kurtarır, bazen de kamp maceranızı felaketten döndürür. Çoğu insan yanlış düğüm attığı için ipler gevşer, kopar veya çözülmez hale gelir. İşte her erkeğin ezberlemesi gereken temel düğüm teknikleri...</p>
+
+                    <h2>1. Kement Bağı (Bowline)</h2>
+                    <p>Sultanların düğümü olarak da bilinir. Neden mi? Çünkü sıkışmaz ama kolayca çözülür. Bir ağaç dalına ip bağlayacaksanız veya can yeleği yapacaksanız ilk tercihiniz budur.</p>
+                    <ul>
+                        <li><strong>Kullanım Alanı:</strong> Sabitleme, kurtarma operasyonları.</li>
+                        <li><strong>Avantajı:</strong> Yük altında bile kolayca çözülür.</li>
+                    </ul>
+
+                    <h2>2. Sekiz Bağı (Figure-Eight Knot)</h2>
+                    <p>Tırmanış sporlarının vazgeçilmezidir. Dağınık görünse de son derece güvenlidir. İpin uçlarının ayrılmasını engellemek için mükemmeldir.</p>
+                    
+                    <h2>3. Çift Balıkçı Bağı (Double Fisherman's Knot)</h2>
+                    <p>İki farklı ipi birbirine eklemek için kullanılan en güçlü yöntemlerden biridir. Kayıp giden bir halatı onarmak için idealdir.</p>
+                    
+                    <p><em>(Not: Bu bir demo içeriğidir. Gerçek uygulamalarda mutlaka uzman eğitimi alınmalıdır.)</em></p>
+                `
+            },
+            'ates': {
+                title: "Islak Havada Ateş Nasıl Yakılır?",
+                category: "Outdoor",
+                readTime: "7 dk",
+                image: "https://images.unsplash.com/photo-1548802673-380aa8cff835?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+                content: `
+                    <p>Yağmurda veya nemli ormanda ateş yakmak, hayatta kalma becerilerinin zirvesidir. Islak odunla uğraşmak yerine strateji kullanmalısınız.</p>
+
+                    <h2>1. Tinder (Tutuşturucu) Hazırlığı</h2>
+                    <p>Ateşi başlatmak için en küçük kıvılcıma ihtiyaç vardır. Islak havada bile yanabilen malzemeler bulun: Huş kabuğu, reçineli çam dalları veya pamuklu bez parçaları.</p>
+
+                    <h2>2. Odun Seçimi ve İşleme</h2>
+                    <p>Dış yüzeyi ıslak olsa da, iç kısmı genellikle kurudur. Bir bıçak kullanarak odunun dış katmanlarını soyun. İçindeki kuru ahşabı ince çubuklar haline getirin.</p>
+
+                    <h2>3. Tipi Yapısı</h2>
+                    <p>"Teepee" tipi en iyi hava sirkülasyonu sağlar. Ancak rüzgar varsa "Lean-To" (Eğik Duvar) tipi tercih edilmelidir. Rüzgarı kesen bir doğal duvar arkasında ateşi koruyun.</p>
+                `
+            },
+            'tamir': {
+                title: "Her Erkeğin Bilmesi Gereken 5 Tamir Yöntemi",
+                category: "Ev Bakımı",
+                readTime: "6 dk",
+                image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+                content: `
+                    <p>Profesyonel çağırmadan önce kendi yeteneklerinizi test edin. Evdeki %80 arıza basit müdahalelerle çözülür.</p>
+
+                    <h2>1. Damlayan Musluk</h2>
+                    <p>%90 ihtimalle conta yıpranmıştır. Su vanasını kapatın, musluk başlığını sökün ve contayı değiştirin. Maliyet: 5 TL.</p>
+
+                    <h2>2. Tıkalı Lavabo</h2>
+                    <p>Pompalama hareketiyle basınç uygulayın. İşe yaramazsa, lavabo altındaki U borusunu söküp temizleyin. Kimyasal açıcılar boruları aşındırabilir, mekanik temizlik her zaman daha iyidir.</p>
+
+                    <h2>3. Gevşek Kapı Menteşeleri</h2>
+                    <p>Vidalar boşaldığında kapı düşer. Vida deliğine kürdan veya kibrit çöpü batırıp üzerine tutkal sürerek vidayı tekrar sıkıştırın. Delik küçülecek ve vida kavrayacaktır.</p>
+                `
+            },
+            'sabuh': {
+                title: "Şafak Disiplini: Sabah Rutini Oluşturma",
+                category: "Verimlilik",
+                readTime: "4 dk",
+                image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+                content: `
+                    <p>Günün ilk saati, geri kalanının kaderini belirler. Reaktif değil, proaktif bir başlangıç yapın.</p>
+
+                    <h2>1. Dijital Detoks</h2>
+                    <p>Uyanınca ilk 30 dakika telefona bakmayın. Dopamin reseptörlerinizi sabote etmeyin. Beyninizin "mod" durumundan çıkmasına izin verin.</p>
+
+                    <h2>2. Hidrasyon ve Hareket</h2>
+                    <p>Gece boyunca susuz kalan vücudunuza hemen su verin. Ardından 5 dakikalık esneme veya yürüyüş yaparak kan dolaşımını hızlandırın.</p>
+
+                    <h2>3. Niyet Belirleme</h2>
+                    <p>O gün yapılacak en önemli 3 görevi kağıda yazın. Zihniniz bulanık olmaktan çıkar, hedefe odaklanır.</p>
+                `
+            },
+            'okuma': {
+                title: "Derin Okuma Sanatı",
+                category: "Entelektüel",
+                readTime: "8 dk",
+                image: "https://images.unsplash.com/photo-1476611338391-6f395a0ebf72?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+                content: `
+                    <p>Okumak sadece göz gezdirmek değildir. Yazarla sohbet etmek, argümanlarını sorgulamak ve bilgiyi sindirmektir.</p>
+
+                    <h2>1. Aktif Not Alma</h2>
+                    <p>Altını çizmek pasif bir eylemdir. Kenar boşluklarına sorular yazın, fikirleri kendi cümlelerinizle özetleyin.</p>
+
+                    <h2>2. Syntopical Reading (Sintaktik Okuma)</h2>
+                    <p>Aynı konu hakkında 3 farklı kitap okuyun. Yazarların nerede uzlaştığını, nerede çatıştığını görün. Gerçek öğrenme burada başlar.</p>
+                `
+            },
+            'konasma': {
+                title: "Karizmatik Konuşmacı Olmak",
+                category: "Sosyal Zeka",
+                readTime: "6 dk",
+                image: "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+                content: `
+                    <p>Karizma doğuştan gelmez, kas hafızası gibidir; çalışıldıkça gelişir.</p>
+
+                    <h2>1. Ses Tonu ve Duraksama</h2>
+                    <p>Hızlı konuşmak heyecanı değil, stresi işaret eder. Cümlelerin arasına 2 saniyelik sessizlik koyun. Dinleyiciye düşünme alanı açar ve otoritenizi artırır.</p>
+
+                    <h2>2. Göz Teması</h2>
+                    <p>Salondaki herkesle kısa süreli (3-5 saniye) göz teması kurun. Bu, herkese özel konuşuyormuş hissi verir.</p>
+
+                    <h2>3. Hikaye Anlatıcılığı</h2>
+                    <p>Rakamlar unutulur, hikayeler hatırlanır. Mesajınızı somut bir olay üzerinden aktarın.</p>
+                `
+            },
+            'stoa': {
+                title: "Kontrol Edemediğini Kabul Et",
+                category: "Stoacılık",
+                readTime: "5 dk",
+                image: "https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+                content: `
+                    <p>Epiktetos'un dediği gibi: "Bizi rahatsız eden şeyler olaylar değil, onlara yüklediğimiz anlamlardır."</p>
+
+                    <h2>1. İkili Kontrol İlkesi</h2>
+                    <p>Hayattaki her şeyi ikiye ayırın: Elimizde olanlar (düşüncelerimiz, tepkilerimiz, emeğimiz) ve elimizde olmayanlar (sonuçlar, başkalarının görüşleri, hava durumu).</p>
+
+                    <h2>2. Enerji Yönetimi</h2>
+                    <p>Elimizde olmayan şeylere harcadığımız enerji boşa gider. Sadece kontrol edebildiğiniz alana odaklanın. Bu, sizi hem daha verimli hem de daha huzurlu yapar.</p>
+                `
+            },
+            'zaman': {
+                title: "Zamanın Kıymetini Bilmek",
+                category: "Felsefe",
+                readTime: "4 dk",
+                image: "https://images.unsplash.com/photo-1516571748831-5abc8bf7c1ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+                content: `
+                    <p>Seneca der ki: "Para kaybettiğinde üzülürsün ama zaman kaybettiğinde fark etmezsin." Halbuki zaman paradan çok daha değerlidir, çünkü asla geri kazanılamaz.</p>
+
+                    <h2>1. Prokrastinasyon Tuzağı</h2>
+                    <p>"Yarın yaparım" demek, gelecekteki kendine haksızlıktır. Şimdi yapılması gereken şey, şimdi yapılır. Erteleme, ölümün provasıdır.</p>
+
+                    <h2>2. Varoluşsal Farkındalık</h2>
+                    <p>Memento Mori (Öleceğini Hatırla). Günün sonunda geriye dönüp baktığınızda, hangi saatleriniz gerçekten "sizindi"? Hangileri başkalarının beklentilerine köle olmuştu? Dengeyi kurun.</p>
+                `
+            }
+        };
+
+        // --- FUNCTIONS ---
+
+        function showHome() {
+            document.getElementById('home-view').style.display = 'block';
+            document.getElementById('article-view').style.display = 'none';
+            window.scrollTo(0, 0);
+            // Reset nav state if needed
+        }
+
+        function openArticle(id) {
+            const data = articlesData[id];
+            if (!data) return;
+
+            // Populate Data
+            document.getElementById('art-title').innerText = data.title;
+            document.getElementById('art-meta').innerHTML = `Kategori: ${data.category} | Okuma Süresi: ${data.readTime}`;
+            document.getElementById('art-img').src = data.image;
+            document.getElementById('art-content').innerHTML = data.content;
+
+            // Switch Views
+            document.getElementById('home-view').style.display = 'none';
+            document.getElementById('article-view').style.display = 'block';
+            
+            // Scroll to top of article
+            window.scrollTo(0, 0);
+        }
+
+        function scrollToSection(sectionId) {
+            // Ensure we are on home view first
+            if(document.getElementById('article-view').style.display === 'block') {
+                showHome();
+            }
+            
+            setTimeout(() => {
+                const element = document.getElementById(sectionId);
+                if(element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
                 }
-            });
+            }, 100);
+        }
+
+        function toggleMenu() {
+            const nav = document.getElementById('main-nav');
+            nav.classList.toggle('mobile-open');
+        }
+
+        // Close mobile menu when clicking outside or links
+        document.addEventListener('click', function(event) {
+            const nav = document.getElementById('main-nav');
+            const btn = document.querySelector('.menu-btn');
+            if (!nav.contains(event.target) && !btn.contains(event.target)) {
+                nav.classList.remove('mobile-open');
+            }
         });
 
-        // Mobil menü toggle (Basit versiyon)
-        const toggleBtn = document.querySelector('.header-mobile-toggle');
-        const navUl = document.querySelector('nav ul');
-        
-        if(toggleBtn && navUl) {
-            toggleBtn.addEventListener('click', () => {
-                if(navUl.style.display === 'flex') {
-                    navUl.style.display = 'none';
-                } else {
-                    navUl.style.display = 'flex';
-                    navUl.style.flexDirection = 'column';
-                    navUl.style.position = 'absolute';
-                    navUl.style.top = '60px';
-                    navUl.style.right = '0';
-                    navUl.style.background = '#1a1a1a';
-                    navUl.style.width = '100%';
-                    navUl.style.padding = '1rem';
-                    navUl.style.borderBottom = '1px solid #333';
-                }
-            });
-        }
     </script>
 </body>
 </html>
